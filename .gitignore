@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# generated temp/build artifacts
+.tmp/
+marvel-multiverse-artifacts/
+
+# local editor state
+.vscode/
+
+# logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# optional: keep local scratch files out of Git
+*.tmp
