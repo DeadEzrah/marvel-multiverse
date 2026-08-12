@@ -1,0 +1,20 @@
+<form>
+    {{#each formulas}}
+    <div class="form-group">
+        <label>Formula {{#if type}}({{type}}){{/if}}</label>
+        <input type="text" name="formula" value="{{formula}}" disabled>
+    </div>
+    {{/each}}
+    {{#if chooseModifier}}
+    <div class="form-group">
+        <label>Ability Modifier</label>
+        <select name="ability">
+            {{selectOptions abilities selected=defaultAbility labelAttr="label"}}
+        </select>
+    </div>
+    {{/if}}
+    <div class="form-group">
+        <label>Situational Bonus</label>
+        <input type="text" name="bonus" value="" placeholder="@bonus"/>
+    </div>
+</form>

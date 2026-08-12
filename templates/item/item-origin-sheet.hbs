@@ -1,0 +1,22 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img">
+      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input">
+        <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Description --}}
+    <div class="mm-styled-field -fill">
+      <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
+      <div class="mm-styled-input">
+        {{editor system.description target="system.description" button=false engine="prosemirror" collaborate=false}}
+      </div>
+    </div>
+  </section>
+
+</form>

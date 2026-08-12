@@ -1,0 +1,172 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+      <div class="flexrow">
+
+        <div class="flexcol -gap-sm -space-between -grow-2">
+          {{!-- codename --}}
+          <div class="mm-styled-field">
+            <label class="mm-styled-label -align-left" for="name"><span>Codename</span></label>
+            <div class="mm-styled-input">
+              <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+            </div>  
+          </div>
+          <div class="flexrow -nowrap">
+            {{!-- Portrait --}}
+            <div class="mm-npc-portrait-block">
+              <div class="mm-hero-portrait">
+                <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+              </div>
+              {{!-- Rank, Health & Focus --}}
+              <div class="mm-rank-block">
+                <label class="mm-label" for="system.attributes.rank.value"><span>Rank</span></label>
+                <div class="mm-input">
+                  <input type="number" name="system.attributes.rank.value" value="{{system.attributes.rank.value}}" data-dtype="Number"/>
+                </div>
+              </div>
+              <div class="mm-npchealth-block">
+                {{!-- Health & Health DR --}}
+                
+                <div class="mm-stat-block">
+                  <label class="mm-label" for="system.health.value">Health</label>
+                  <div class="mm-input">
+                    <input type="number" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/> | <input type="number" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+                    <span><label class="mm-label" for="system.health.damage-reduction">DR</label>
+                    {{#if (gt system.healthDamageReduction 0)}}-{{/if}}
+                    {{system.healthDamageReduction}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mm-npcfocus-block">
+                {{!-- Focus & Focus DR --}}
+                <div class="flexrow">
+                  <div class="mm-stat-block">
+                    <label class="mm-label" for="system.focus.value">Focus</label>
+                    <div class="mm-input">
+                      <input type="number" name="system.focus.value" value="{{system.focus.value}}" data-dtype="Number"/> | <input type="number" name="system.focus.max" value="{{system.focus.max}}" data-dtype="Number"/>
+                      <span><label class="mm-label" for="system.health.damage-reduction">DR</label>
+                      {{#if (gt system.focusDamageReduction 0)}}-{{/if}}
+                      {{system.focusDamageReduction}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{!-- Abilities --}}
+            <div class="flexcol -static-children -gap-sm -space-between">
+              <div class="flexrow mm-npc-styled-container mm-abilities-block">
+                <h3>Abilities</h3>
+                <ul class="mm-styled-container-body mm-ability-rows">
+                  <li>
+                    <div></div>
+                    <div>Ability Score</div>
+                    <div>Defense Score</div>
+                  </li>
+                  {{#each system.abilities as |ability key|}}
+                    <li>
+                      <div class="mm-npc-ability-name rollable" data-formula="{1d6,1dm,1d6}+@abilities.{{key}}.value" data-label="{{ability.label}}">
+                        {{#if (eq key "mle")}}
+                          Melee
+                        {{else if (eq key "agl")}}
+                          Agility
+                        {{else if (eq key "res")}}
+                          Resilience
+                        {{else if (eq key "vig")}}
+                          Vigilance
+                        {{else if (eq key "ego")}}
+                          Ego
+                        {{else if (eq key "log")}}
+                          Logic
+                        {{/if}}
+                      </div>
+                      <div>
+                        <input type="number" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+                      </div>
+                      <div>
+                        <div>{{ability.defense}}</div>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flexcol -gap-sm -nowrap">
+          {{!-- Damage --}}
+          <div class="mm-styled-container mm-damage-block">
+            <h3>Damage</h3>
+            <ul class="mm-styled-container-body mm-damage-rows">
+              <li>
+                <h6>Melee</h6>
+                <div class="mm-damage-multiply">
+                  <img src="systems/marvel-multiverse/icons/marvel-1.svg" title="MARVEL_MULTIVERSE.MarvelResult.M" alt="">
+                  <span>x</span>
+                  <span>{{system.abilities.mle.damageMultiplier}}</span>
+                </div>
+                <span>+</span>
+                <div class="mm-damage-addition">
+                  {{system.abilities.mle.value}}
+                </div>
+              </li>
+              <li>
+                <h6>Agility</h6>
+                <div class="mm-damage-multiply">
+                  <img src="systems/marvel-multiverse/icons/marvel-1.svg" title="MARVEL_MULTIVERSE.MarvelResult.M" alt="">
+                  <span>x</span>
+                  <span>{{system.abilities.agl.damageMultiplier}}</span>
+                </div>
+                <span>+</span>
+                <div class="mm-damage-addition">
+                  {{system.abilities.agl.value}}
+                </div>
+              </li>
+              <li>
+                <h6>Ego</h6>
+                <div class="mm-damage-multiply">
+                  <img src="systems/marvel-multiverse/icons/marvel-1.svg" title="MARVEL_MULTIVERSE.MarvelResult.M" alt="">
+                  <span>x</span>
+                  <span>{{system.abilities.ego.damageMultiplier}}</span>
+                </div>
+                <span>+</span>
+                <div class="mm-damage-addition">
+                  {{system.abilities.ego.value}}
+                </div>
+              </li>
+              <li>
+                <h6>Logic</h6>
+                <div class="mm-damage-multiply">
+                  <img src="systems/marvel-multiverse/icons/marvel-1.svg" title="MARVEL_MULTIVERSE.MarvelResult.M" alt="">
+                  <span>x</span>
+                  <span>{{system.abilities.log.damageMultiplier}}</span>
+                </div>
+                <span>+</span>
+                <div class="mm-damage-addition">
+                  {{system.abilities.log.value}}
+                </div>
+              </li>
+            </ul>
+          </div>
+          {{!-- Powers --}}
+          <div class="mm-styled-container mm-powers-block">
+            <h3>Powers</h3>
+            <div class="mm-styled-container-body">
+              {{> "systems/marvel-multiverse/templates/actor/parts/actor-powers.hbs"}}
+            </div>
+          </div>
+          {{!-- Traits & Tags --}}
+          <div class="mm-styled-container mm-traitstags-block">
+            <h3>Traits & Tags</h3>
+            <div class="mm-styled-container-body">
+              {{> "systems/marvel-multiverse/templates/actor/parts/actor-traits.hbs"}}
+              {{> "systems/marvel-multiverse/templates/actor/parts/actor-tags.hbs"}}
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+</form>
+
+{{log system}}
+

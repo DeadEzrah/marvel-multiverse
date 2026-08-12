@@ -1,0 +1,42 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img">
+      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input">
+        <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs mm-tabs -two" data-group="primary">
+    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+   {{!-- Attributes Tab --}}
+    <div class="tab flexcol -gap-sm" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
+        <div class="mm-styled-input">
+          {{editor system.description target="system.description" button=false engine="prosemirror" collaborate=false}}
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>restriction</span></label>
+        <div class="mm-styled-input">
+          <input type="text" name="system.restriction" value="{{system.restriction}}" data-dtype="String"/>
+        </div>
+      </div>
+    </div>
+    {{!-- Effects Tab --}}
+    <div class="tab trait-effects" data-group="primary" data-tab="effects">
+       {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}
+    </div>
+  </section>
+
+</form>

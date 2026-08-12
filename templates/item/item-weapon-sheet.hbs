@@ -1,0 +1,94 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img">
+      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input">
+        <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs mm-tabs -two" data-group="primary">
+    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Attributes Tab --}}
+    <div class="tab weapon-attributes" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
+        <div class="mm-styled-input">
+          {{editor system.description target="system.description" button=false engine="prosemirror" collaborate=false editable=editable}}
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>equipped</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" id="equipped" name="system.equipped"  {{ checked system.equipped }}>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left rollable" for="system.range" data-label="range"><span>Range</span></label>
+        <div class="mm-styled-input">
+          <input type="text" name="system.range" value="{{system.range}}" data-dtype="String"/>
+        </div>
+      </div>
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="flexcol gap-sm">
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Roll Formula</span></label>
+          <div class="mm-styled-input">
+            <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
+          </div>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Damage Multiplier Bonus</span></label>
+        <div class="mm-styled-input">
+          <input type="text" name="system.damageMultiplierBonus" value="{{system.damageMultiplierBonus}}" data-dtype="String"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -sm">
+        <label class="mm-styled-label -align-left"><span>Ability</span></label>
+        <div class="mm-styled-input">
+          <select name="system.ability">
+            {{selectOptions abilities selected=system.ability labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -sm">
+        <label class="mm-styled-label -align-left"><span>VS Defense</span></label>
+        <div class="mm-styled-input">
+          <select name="system.attackTarget">
+            {{selectOptions abilities selected=system.attackTarget labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -sm">
+        <label class="mm-styled-label -align-left"><span>Attack Kind</span></label>
+        <div class="mm-styled-input">
+          <select name="system.attackKind">
+            {{selectOptions attackKinds selected=system.attackKind labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -sm">
+        <label class="mm-styled-label -align-left"><span>Damage Type</span></label>
+        <div class="mm-styled-input">
+          <select name="system.damageType">
+            {{selectOptions damageTypes selected=system.damageType labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="tab weapon-effects" data-group="primary" data-tab="effects">
+        {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}
+    </div>
+  </section>
+
+</form>
+{{log system}}

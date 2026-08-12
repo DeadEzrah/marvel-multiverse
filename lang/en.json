@@ -1,0 +1,109 @@
+{
+  "MARVEL_MULTIVERSE": {
+    "fantasticRoll": "Fantastic Roll",
+    "edgeMode": {
+      "trouble": "Trouble",
+      "edge": "Edge",
+      "normal": "Normal"
+    },
+    "Size": {
+      "Microscopic": "Microscopic",
+      "Miniature": "Minature",
+      "Tiny": "Tiny",
+      "Little": "Little",
+      "Small": "Small",
+      "Average": "Average",
+      "Big": "Big",
+      "Huge": "Huge",
+      "Gargantuan": "Gargantuan",
+      "Titanic": "Titanic",
+      "Gigantic": "Gigantic"
+    },
+    "Ability": {
+      "Mel": {
+        "long": "Melee",
+        "abbr": "mel"
+      },
+      "Agl": {
+        "long": "Agility",
+        "abbr": "agl"
+      },
+      "Res": {
+        "long": "Resilience",
+        "abbr": "res"
+      },
+      "Vig": {
+        "long": "Vigilance",
+        "abbr": "vig"
+      },
+      "Ego": {
+        "long": "Ego",
+        "abbr": "ego"
+      },
+      "Log": {
+        "long": "Logic",
+        "abbr": "log"
+      }
+    },
+    "SheetLabels": {
+      "Actor": "MarvelMultiverse Actor Sheet",
+      "Item": "MarvelMultiverse Item Sheet",
+      "NPC": "MarvelMultiverse NPC Sheet"
+    },
+    "Item": {
+      "Power": {
+        "PowerSET": "{set}",
+        "AddPWR": "Power"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    },
+    "Movement": {
+      "Run": "Run",
+      "Jump": "Jump",
+      "Climb": "Climb",
+      "Swim": "Swim",
+      "Flight": "Flight",
+      "Glide": "Glide",
+      "Swingline": "Swingline",
+      "Levitation": "Levitation"
+    },
+    "Element": {
+      "Air": "Air",
+      "Earth": "Earth",
+      "Electricity": "Electricity",
+      "Energy": "Energy",
+      "Fire": "Fire",
+      "Force": "Force",
+      "Hellfire": "Hellfire",
+      "Ice": "Ice",
+      "Iron": "Iron",
+      "Sound": "Sound",
+      "Water": "Water",
+      "Chemical": "Chemical",
+      "Toxin": "Toxin",
+      "Swarm": "Swarm"
+    },
+    "Formula": "Formula",
+    "AbilityModifier": "Ability Modifier",
+    "RollSituationalBonus": "Situational Bonus?",
+    "RollMode": "Roll Mode"
+  },
+  "InitiativeRoll": "Initiative Roll",
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "item": "Item",
+      "trait": "Trait",
+      "power": "Power"
+    }
+  }
+}
