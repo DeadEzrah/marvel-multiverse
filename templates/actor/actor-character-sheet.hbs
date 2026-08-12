@@ -1,13 +1,13 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+<div class="{{cssClass}} {{actor.type}} flexcol">
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <div class="header-fields">
       <div class="flexrow -gap-md">
-        <div class="flexcol -gap-sm -space-between">
+        <div class="flexcol -gap-sm -space-between mm-character-portrait-panel">
           {{!-- Portrait --}}
           <div class="mm-hero-portrait-block">
             <div class="mm-hero-portrait">
-              <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+              <img src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}"/>
             </div>
             {{!-- Rank & Karma --}}
             <div class="mm-rank-block">
@@ -17,10 +17,11 @@
               </div>
             </div>
             <div class="mm-karma-block">
-              <label class="mm-label" for="system.karma.value"><span>Karma</span></label>
-              <div class="mm-input">
+              <label class="mm-label" for="system.karma.value"><span>{{localize "MARVEL_MULTIVERSE.Karma"}}</span></label>
+              <div class="mm-input mm-karma-values">
                 <input type="number" name="system.karma.value" value="{{system.karma.value}}" data-dtype="Number"/>
-                <input type="hidden" name="system.karma.max" value="{{system.karma.value}}"/>
+                <span>/</span>
+                <input type="number" name="system.karma.max" value="{{system.karma.max}}" data-dtype="Number"/>
               </div>
             </div>
           </div>
@@ -79,27 +80,16 @@
             </ul>
           </div>
         </div>
-        <div class="flexcol -static-children -gap-sm -space-between">
-          <div class="flexrow -nowrap -gap-sm">
+        <div class="flexcol -static-children -gap-sm -space-between mm-character-dashboard">
+          <div class="flexrow -nowrap -gap-sm mm-character-identity-panel">
             <div class="mm-styled-field -flex-relative">
               <label class="mm-styled-label -align-left" for="name"><span>Codename</span></label>
               <div class="mm-styled-input">
                 <input name="name" type="text" value="{{actor.name}}" placeholder="Codename"/>
               </div>
             </div>
-            <div class="mm-styled-field -flex-relative">
-              <label class="mm-styled-label -align-right"><span>Team Maneuver</span></label>
-              <div class="mm-styled-input team-maneuver">
-                <select name="system.teamManeuver.maneuverType">
-                  {{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank=""}}
-                </select>
-                <select name="system.teamManeuver.level">
-                  {{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}
-                </select>
-              </div>
-            </div>
           </div>
-          <div class="flexrow -gap-sm">
+          <div class="flexrow -gap-sm mm-character-resource-panel">
             {{!-- Health & Health DR --}}
             <div class="flexrow -relative">
               <div class="mm-stat-block">
@@ -116,6 +106,9 @@
                   {{#if (gt system.healthDamageReduction 0)}}-{{/if}}{{system.healthDamageReduction}}
                 </div>
               </div>
+              <button type="button" class="mm-karma-recovery" data-action="recoverWithKarma" data-resource="health" title="{{localize 'MARVEL_MULTIVERSE.RecoverHealthWithKarma'}}" aria-label="{{localize 'MARVEL_MULTIVERSE.RecoverHealthWithKarma'}}">
+                <i class="fas fa-heart" aria-hidden="true"></i>
+              </button>
             </div>
             {{!-- Focus & Focus DR --}}
             <div class="flexrow -relative">
@@ -133,19 +126,22 @@
                   {{#if (gt system.focusDamageReduction 0)}}-{{/if}}{{system.focusDamageReduction}}
                 </div>
               </div>
+              <button type="button" class="mm-karma-recovery" data-action="recoverWithKarma" data-resource="focus" title="{{localize 'MARVEL_MULTIVERSE.RecoverFocusWithKarma'}}" aria-label="{{localize 'MARVEL_MULTIVERSE.RecoverFocusWithKarma'}}">
+                <i class="fas fa-brain" aria-hidden="true"></i>
+              </button>
             </div>
             {{!-- Speed & Initative --}}
             <div class="flexrow -relative">
               <div class="mm-stat-block">
                 <label class="mm-label" for="system.speed">Speed</label>
                 <div class="mm-speed-fields">
-                  {{#each system.movement as |mvmnt|}}
-                    {{#if mvmnt.active }}
-                      <div class="flexrow -gap-sm">
-                        <span>{{mvmnt.label}}:</span><span>{{mvmnt.value}}</span>
-                      </div>
-                    {{/if}}
-                  {{/each}}
+                  <select class="mm-speed-select" aria-label="Movement speed">
+                    {{#each system.movement as |mvmnt key|}}
+                      {{#if mvmnt.active}}
+                        <option value="{{key}}">{{localize mvmnt.label}}: {{mvmnt.value}}</option>
+                      {{/if}}
+                    {{/each}}
+                  </select>
                 </div>
               </div>
               <div class="mm-stat-corner-block rollable roll-initiative" data-action="rollInitiative">
@@ -164,7 +160,7 @@
                 <div></div>
                 <div>Ability Score</div>
                 <div>Defense Score</div>
-                <div>Non-Combat<br />Checks</div>
+                <div>Non-Combat</div>
               </li>
               {{#each system.abilities as |ability key|}}
                 <li>
@@ -202,12 +198,13 @@
   </header>
 
   {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs mm-tabs -three" data-group="primary">
+  <nav class="sheet-tabs tabs mm-tabs -four" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
     <div class="sheet-tabs-wrapper">
-      <a class="item active" data-tab="abilities">Abilities</a>
-      <a class="item" data-tab="biography">Biography</a>
+      <a class="item active" data-tab="abilities">Powers &amp; Traits</a>
+      <a class="item" data-tab="conditions">Conditions</a>
       <a class="item" data-tab="gear">Gear & Weapons</a>
+      <a class="item" data-tab="biography">Biography</a>
     </div>
   </nav>
 
@@ -230,6 +227,21 @@
               </div>
             </div>
             {{> "systems/marvel-multiverse/templates/actor/parts/actor-powers.hbs"}}
+            <div class="mm-team-maneuver-panel">
+              <strong>Team Maneuver</strong>
+              <label>
+                <span>Maneuver</span>
+                <select name="system.teamManeuver.maneuverType" aria-label="Team maneuver">
+                  {{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank=""}}
+                </select>
+              </label>
+              <label>
+                <span>Level</span>
+                <select name="system.teamManeuver.level" aria-label="Team maneuver level">
+                  {{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}
+                </select>
+              </label>
+            </div>
           </div>
         </div>
         {{!-- Traits & Tags --}}
@@ -265,8 +277,40 @@
       </div>
 
     </div>
+
+    {{!-- Concentration & Conditions --}}
+    <div class="tab conditions" data-group="primary" data-tab="conditions">
+      <div class="flexcol -gap-sm -static-children">
+        <div class="mm-styled-container mm-statuses-block">
+          <h3>Concentration</h3>
+          <div class="mm-styled-container-body">
+            <div class="mm-status-summary">
+              <div class="mm-status-list">
+                {{#if statusDisplay.concentration.active}}
+                  <span class="mm-status-pill -concentration">Concentrating: {{statusDisplay.concentration.itemName}}</span>
+                {{else if statusDisplay.concentration.itemName}}
+                  <span class="mm-status-pill">Concentration available</span>
+                {{else}}
+                  <span class="mm-status-placeholder">No concentration source.</span>
+                {{/if}}
+              </div>
+              {{#if editable}}
+                <button type="button" class="mm-action-button" data-action="{{#if statusDisplay.concentration.active}}endConcentration{{else}}startConcentration{{/if}}">{{#if statusDisplay.concentration.active}}End{{else}}Start{{/if}}</button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-styled-container mm-conditions-block">
+          <h3>Conditions</h3>
+          <div class="mm-styled-container-body">
+            {{> "systems/marvel-multiverse/templates/actor/parts/actor-effects.hbs"}}
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-</form>
+</div>
 
 {{log system}}
 

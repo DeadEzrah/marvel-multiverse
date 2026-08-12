@@ -1,0 +1,291 @@
+{
+  "MARVEL_MULTIVERSE": {
+    "fantasticRoll": "Lancer fantastique",
+    "edgeMode": {
+      "trouble": "Difficulté",
+      "edge": "Avantage",
+      "normal": "Normal"
+    },
+    "Size": {
+      "Microscopic": "Microscopique",
+      "Miniature": "Miniature",
+      "Tiny": "Minuscule",
+      "Little": "Petit",
+      "Small": "Petit",
+      "Average": "Moyen",
+      "Big": "Grand",
+      "Huge": "Énorme",
+      "Gargantuan": "Gargantuesque",
+      "Titanic": "Titanesque",
+      "Gigantic": "Gigantesque"
+    },
+    "Ability": {
+      "Mel": {
+        "long": "Mêlée",
+        "abbr": "mêl"
+      },
+      "Agl": {
+        "long": "Agilité",
+        "abbr": "agl"
+      },
+      "Res": {
+        "long": "Résilience",
+        "abbr": "rés"
+      },
+      "Vig": {
+        "long": "Vigilance",
+        "abbr": "vig"
+      },
+      "Ego": {
+        "long": "Égo",
+        "abbr": "égo"
+      },
+      "Log": {
+        "long": "Logique",
+        "abbr": "log"
+      }
+    },
+    "SheetLabels": {
+      "Actor": "Fiche de personnage MarvelMultiverse",
+      "ModernActor": "Fiche de personnage moderne MarvelMultiverse",
+      "Item": "Fiche d’objet MarvelMultiverse",
+      "NPC": "Fiche de PNJ MarvelMultiverse"
+    },
+    "Item": {
+      "Power": {
+        "PowerSET": "{set}",
+        "AddPWR": "Pouvoir"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Activer l’effet",
+      "Temporary": "Effets temporaires",
+      "Passive": "Effets passifs",
+      "Inactive": "Effets inactifs"
+    },
+    "Movement": {
+      "Run": "Course",
+      "Jump": "Saut",
+      "Climb": "Escalade",
+      "Swim": "Natation",
+      "Flight": "Vol",
+      "Glide": "Plané",
+      "Swingline": "Ligne de balancement",
+      "Levitation": "Lévitation"
+    },
+    "Element": {
+      "Air": "Air",
+      "Earth": "Terre",
+      "Electricity": "Électricité",
+      "Energy": "Énergie",
+      "Fire": "Feu",
+      "Force": "Force",
+      "Hellfire": "Feu infernal",
+      "Ice": "Glace",
+      "Iron": "Fer",
+      "Sound": "Son",
+      "Water": "Eau",
+      "Chemical": "Chimique",
+      "Toxin": "Toxine",
+      "Swarm": "Nuée"
+    },
+    "Formula": "Formule",
+    "AbilityModifier": "Modificateur de capacité",
+    "RollSituationalBonus": "Bonus de situation ?",
+    "RollMode": "Mode de lancer",
+    "ApplyDamage": "DGT",
+    "ResolveAction": "Résoudre l'action",
+    "ActionResolved": "Action résolue",
+    "DamageApplyFailed": "Action résolue, mais les dégâts n'ont pas pu être appliqués.",
+    "DamagePartiallyApplied": "Action résolue, mais les dégâts ont échoué pour une ou plusieurs cibles.",
+    "ApplyHalfDamage": "½",
+    "ApplyDoubleDamage": "×2",
+    "ApplyCustomDamage": "…",
+    "UndoDamage": "↺",
+    "CustomDamage": "Dégâts personnalisés",
+    "EnterAmount": "Saisir la valeur des dégâts",
+    "NoDamageToUndo": "Aucun dégât à annuler.",
+    "UndoDamageRequested": "Annulation demandée.",
+    "UndoDamageFailed": "Échec de l’annulation.",
+    "SpendFocus": "Dépenser de la concentration",
+    "ChooseFocusCost": "Choisir le coût en concentration",
+    "SpendCustomFocus": "Dépenser une concentration personnalisée",
+    "RefundFocus": "Rembourser la concentration",
+    "FocusSpent": "Concentration dépensée.",
+    "FocusSpendFailed": "Échec du paiement de concentration.",
+    "FocusPaid": "Concentration payée",
+    "FocusRefunded": "Concentration remboursée",
+    "FocusRefundFailed": "Échec du remboursement de concentration.",
+    "FocusStatus": "Concentration",
+    "RollEscape": "Lancer d’évasion",
+    "EnterRollTotal": "Saisir le total du lancer",
+    "EscapeSucceeded": "Évasion réussie",
+    "EscapeFailed": "Évasion ratée",
+    "StartConcentration": "Commencer la concentration",
+    "EndConcentration": "Terminer la concentration",
+    "ConcentrationStarted": "Concentration commencée",
+    "ConcentrationEnded": "Concentration terminée",
+    "SetDifficulty": "Définir la difficulté",
+    "UpdateDifficulty": "Mettre à jour la difficulté",
+    "DifficultyDialogTitle": "Annoncez votre tentative",
+    "DifficultyDialogHint": "Saisissez la difficulté annoncée par le Narrateur et l'élément contre lequel elle est vérifiée.",
+    "DifficultyLabel": "Difficulté",
+    "DifficultyAgainstLabel": "Contre",
+    "DifficultyAgainstNone": "—",
+    "DifficultyConfirm": "Valider",
+    "DifficultyInvalid": "Saisissez une difficulté numérique valide.",
+    "DifficultySet": "Difficulté validée.",
+    "DifficultyBadge": "Difficulté {difficulty} contre {against}",
+    "DifficultyBadgeNoAgainst": "Difficulté {difficulty}",
+    "DifficultyDialogModeLabel": "Comparer avec",
+    "DifficultyDialogModeFixed": "Nombre de difficulté fixe",
+    "DifficultyDialogModeOpposed": "Total du jet opposé",
+    "OpponentTotalLabel": "Total de l'adversaire",
+    "OpponentFantasticLabel": "L'adversaire a obtenu un fantastique",
+    "OpponentLabelLabel": "Adversaire (nom/étiquette)",
+    "OpposedBadge": "Opposé {opponentTotal} ({opponentLabel})",
+    "CheckOutcome": {
+      "Success": "Réussite",
+      "Failure": "Échec",
+      "FantasticSuccess": "Réussite fantastique",
+      "FantasticFailure": "Échec fantastique",
+      "OpposedWin": "Confrontation gagnée",
+      "OpposedLoss": "Confrontation perdue",
+      "OpposedTie": "Égalité"
+    },
+    "ActionRoll": {
+      "DialogTitle": "Configurer le Jet",
+      "Ability": "Capacité",
+      "CheckModifier": "Modificateur de Test",
+      "CheckSuffix": "Test",
+      "SituationalModifier": "Modificateur Situationnel",
+      "Target": "Cible",
+      "NoTarget": "Aucune cible sélectionnée",
+      "Defense": "Défense",
+      "MultipleTargetsWarning": "Chaque cible sélectionnée sera résolue contre sa propre défense.",
+      "Targets": "Cibles",
+      "MultiTargetDefenseHint": "Chaque cible utilise sa propre défense comme nombre cible.",
+      "MultipleTargetsBlocked": "{action} ne prend en charge qu'une seule cible. Sélectionnez une seule cible et réessayez.",
+      "TargetRequiredFor": "{action} nécessite une cible. Ciblez un jeton et réessayez.",
+      "TargetHasNoActor": "La cible sélectionnée n'a pas de données de personnage et ne peut pas être utilisée.",
+      "DefenseUnavailable": "Valeur de défense indisponible - saisissez un Nombre Cible manuellement.",
+      "TargetNumberAuto": "Rempli automatiquement à partir de la défense de la cible - toujours modifiable.",
+      "TargetNumber": "Nombre Cible",
+      "TargetNumberPlaceholder": "Facultatif",
+      "Edge": "Avantage",
+      "Trouble": "Problème",
+      "BaseModifier": "Modificateur de Base",
+      "Roll": "Jet",
+      "RollButton": "Lancer",
+      "Cancel": "Annuler",
+      "ActorMissing": "Sélectionnez ou possédez un acteur avant de lancer.",
+      "RollFailed": "Le jet n'a pas pu être terminé.",
+      "UnexpectedError": "Une erreur s'est produite lors de la configuration de ce jet.",
+      "Damage": "Dégâts",
+      "NoDamage": "Aucun dégât.",
+      "HealthLabel": "Santé",
+      "FocusLabel": "Concentration",
+      "DamagePendingGM": "En attente que le Narrateur applique ces dégâts.",
+      "DamageNotApplied": "Les dégâts n'ont pas pu être appliqués automatiquement."
+    },
+    "RollSummary": {
+      "AttackRollVs": "Lancer d’attaque contre {ability}",
+      "EdgeApplied": "Avantage appliqué",
+      "TroubleApplied": "Difficulté appliquée",
+      "FantasticSuccess": "Succès fantastique",
+      "FantasticFailure": "Échec fantastique",
+      "DealsDamage": "Inflige {damageType} dégâts à {count}"
+    },
+    "GuidedPhase": {
+      "Configure": "Configurer",
+      "Roll": "Lancer",
+      "Resolve": "Résoudre",
+      "Apply": "Appliquer",
+      "ManualRequired": "Résolution manuelle requise"
+    },
+    "GuidedPhaseStatus": {
+      "Complete": "terminé",
+      "Current": "étape actuelle",
+      "Upcoming": "à venir",
+      "NotRequired": "non requis",
+      "Manual": "résolution manuelle"
+    },
+    "GuidedPhaseProgress": "Progression de la résolution guidée",
+    "Conditions": {
+      "restrained": "Entravé",
+      "grappled": "Agrippé",
+      "prone": "À terre",
+      "stunned": "Étourdi",
+      "blinded": "Aveuglé",
+      "poisoned": "Empoisonné",
+      "paralyzed": "Paralysé",
+      "frightened": "Effrayé"
+    },
+    "ConditionAliases": {
+      "restrained": ["restrained", "restrain", "tied up", "tied-up", "bound", "entravé", "attaché"],
+      "grappled": ["grappled", "grapple", "grabbed", "held", "agrippé"],
+      "prone": ["prone", "à terre", "a terre"],
+      "stunned": ["stunned", "stun", "étourdi", "etourdi"],
+      "blinded": ["blinded", "blind", "aveuglé", "aveugle", "aveuglee"],
+      "poisoned": ["poisoned", "poison", "empoisonné", "empoisonne"],
+      "paralyzed": ["paralyzed", "paralyze", "paralysis", "paralysé", "paralyse"],
+      "frightened": ["frightened", "fright", "effrayé", "effraye"]
+    },
+    "CosmeticStatuses": {
+      "bleeding": "Saignement",
+      "deafened": "Assourdi",
+      "encumbered": "Encombré",
+      "exhaustion": "Épuisé",
+      "flying": "Volant",
+      "incapacitated": "Incapacité",
+      "invisible": "Invisible",
+      "petrified": "Pétrifié",
+      "silenced": "Réduit au silence",
+      "surprised": "Surpris",
+      "unconscious": "Inconscient"
+    },
+    "Settings": {
+      "GuidedResolutionEnabled": {
+        "Name": "Activer la resolution guidee",
+        "Hint": "Active le flux guide Configurer -> Lancer -> Resoudre -> Appliquer avant les actions."
+      },
+      "AutoApplyDamageOnResolve": {
+        "Name": "Appliquer les degats automatiquement a la resolution",
+        "Hint": "Active par defaut : resoudre une attaque applique automatiquement ses degats. Desactivez pour exiger un clic explicite sur Appliquer les degats."
+      },
+      "AutoApplyDamageOnHit": {
+        "Name": "Appliquer automatiquement les degats a l'impact (necessite socketlib)",
+        "Hint": "Lorsque active, les degats sont appliques automatiquement des qu'une attaque touche, meme entre clients (via le module socketlib). Desactive par defaut. Sans socketlib installe/actif, cela ne fonctionne que pour les attaques effectuees pendant qu'un MJ est connecte."
+      },
+      "EnableOpposedCheckAutomation": {
+        "Name": "Activer les confrontations opposees (non verifie)",
+        "Hint": "Ajoute un mode de confrontation opposee au dialogue de resolution : compare le total d'un jet directement au total de l'adversaire saisi manuellement (le plus haut gagne, un fantastique isole gagne d'office, les egalites restent des egalites). Il s'agit d'une regle maison, pas d'une regle officielle confirmee. Desactive par defaut."
+      },
+      "EnableTurnBasedTriggers": {
+        "Name": "Activer les declencheurs par tour (non verifie)",
+        "Hint": "Permet aux evenements de pouvoir de se declencher au debut/fin du tour du combattant agissant et de toute cible visee. Aucune procedure officielle confirmee. Desactive par defaut."
+      },
+      "EnableExperimentalPowerOutcomes": {
+        "Name": "Activer les resultats de pouvoir experimentaux (non verifie)",
+        "Hint": "Permet aux evenements de pouvoir d'appliquer automatiquement des degats/soins/changements de ressource, un deplacement force et un redimensionnement. Ces types de resultat n'ont pas de regle officielle confirmee. Desactive par defaut."
+      },
+      "EnableSequencerEffects": {
+        "Name": "Activer les effets visuels Sequencer/JB2A",
+        "Hint": "Permet aux evenements de pouvoir de jouer une animation Sequencer (par exemple une ressource JB2A) lors de leur resolution. Purement cosmetique, necessite le module Sequencer installe et actif. Desactive par defaut."
+      }
+    }
+  },
+  "InitiativeRoll": "Lancer d’initiative",
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc": "PNJ"
+    },
+    "Item": {
+      "item": "Objet",
+      "trait": "Trait",
+      "power": "Pouvoir"
+    }
+  }
+}

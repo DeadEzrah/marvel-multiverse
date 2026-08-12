@@ -1,5 +1,22 @@
+{{!-- Always-visible add control: category groups below only render once they contain a power,
+     so this is the only way to add a first power (e.g. on a freshly-created NPC/character). --}}
+<ol class="mm-item-list">
+  <li class="flexrow item mm-item-header">
+    <span>Powers</span>
+    <hr />
+    <div class="item-controls">
+      <a
+        class="item-control item-create"
+        title="{{localize 'DOCUMENT.Create' type="Power"}}"
+        data-type="power"
+      >
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+  </li>
+</ol>
 {{#each powers as |powers powerSet|}}
-  {{#if powers}}
+  {{#if powers.length}}
     <ol class="mm-item-list">
       <li class="flexrow item mm-item-header">
         <span>{{localize "MARVEL_MULTIVERSE.Item.Power.PowerSET" set=powerSet}}</span>
@@ -17,10 +34,14 @@
       </li>
       {{#each powers as |item id|}}
         <li class="flexrow item mm-item" data-item-id="{{item._id}}" >
-          <div class="item-name mm-item-name">
+          <div class="item-name mm-item-name" title="{{item.name}}">
             <a class="rollable"
+              title="{{item.name}}"
               {{#if item.system.ability }}
-                data-formula="{1d6,1dm,1d6}+@abilities.{{item.system.ability}}.value" data-label="{{item.system.ability}}" data-damagetype="{{item.system.damageType}}" data-item-id="{{item._id}}" | {{ item.name }}"
+                data-formula="{1d6,1dm,1d6}+@abilities.{{item.system.ability}}.value"
+                data-label="{{item.system.ability}}"
+                data-damagetype="{{item.system.damageType}}"
+                data-item-id="{{item._id}}"
               {{else}}
                 data-roll-type="item" data-item-id="{{item._id}}"
               {{/if}}

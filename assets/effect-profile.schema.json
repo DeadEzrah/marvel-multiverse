@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mjording/marvel-multiverse/assets/effect-profile.schema.json",
+  "title": "Marvel Multiverse Semantic Effect Profile",
+  "type": "object",
+  "properties": {
+    "effectProfile": {
+      "type": "string",
+      "description": "Default semantic profile from assets/effects-manifest.json.",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "effectProfiles": {
+      "type": "object",
+      "description": "Optional semantic profiles selected for specific action phases.",
+      "properties": {
+        "activation": { "$ref": "#/$defs/profileId" },
+        "attack": { "$ref": "#/$defs/profileId" },
+        "cast": { "$ref": "#/$defs/profileId" },
+        "movement": { "$ref": "#/$defs/profileId" },
+        "hit": { "$ref": "#/$defs/profileId" },
+        "fantasticHit": { "$ref": "#/$defs/profileId" },
+        "miss": { "$ref": "#/$defs/profileId" },
+        "impact": { "$ref": "#/$defs/profileId" },
+        "landing": { "$ref": "#/$defs/profileId" },
+        "success": { "$ref": "#/$defs/profileId" },
+        "failure": { "$ref": "#/$defs/profileId" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/profileId" }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "profileId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    }
+  }
+}

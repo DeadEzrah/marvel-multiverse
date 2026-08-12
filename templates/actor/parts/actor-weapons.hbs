@@ -12,25 +12,29 @@
       </a>
     </div>
   </li>
-  {{#each weapons as |item id|}}
-    <li class="flexrow item mm-item" data-item-id='{{item._id}}' data-damagetype='{{item.system.damageType}}'>
-      <div class="item-name mm-item-name">
-        <a class="rollable" data-roll-type="item" data-damagetype="{{item.system.damageType}}">{{item.name}} </a>
-      </div>
-      <div class="item-controls">
-        <a
-          class="item-control item-edit"
-          title="{{localize 'DOCUMENT.Edit' type="weapon"}}"
-        >
-          <i class="fas fa-edit"></i>
-        </a>
-        <a
-          class="item-control item-delete"
-          title="{{localize 'DOCUMENT.Delete' type="weapon"}}"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
-      </div>
-    </li>
-  {{/each}}
+  {{#if weapons.length}}
+    {{#each weapons as |item id|}}
+      <li class="flexrow item mm-item" data-item-id='{{item._id}}' data-damagetype='{{item.system.damageType}}'>
+        <div class="item-name mm-item-name" title="{{item.name}}">
+          <a class="rollable" data-roll-type="item" data-damagetype="{{item.system.damageType}}" title="{{item.name}}"><span>{{item.name}}</span></a>
+        </div>
+        <div class="item-controls">
+          <a
+            class="item-control item-edit"
+            title="{{localize 'DOCUMENT.Edit' type="weapon"}}"
+          >
+            <i class="fas fa-edit"></i>
+          </a>
+          <a
+            class="item-control item-delete"
+            title="{{localize 'DOCUMENT.Delete' type="weapon"}}"
+          >
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+      </li>
+    {{/each}}
+  {{else}}
+    <li class="mm-empty-state">No weapons recorded yet.</li>
+  {{/if}}
 </ol>

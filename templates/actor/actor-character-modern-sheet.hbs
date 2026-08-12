@@ -1,0 +1,156 @@
+<div class="{{cssClass}} character mmrdp-sheet flexcol">
+  <header class="mmrdp-hero">
+    <img class="mmrdp-portrait" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}" alt="">
+    <div class="mmrdp-identity">
+      <div class="mmrdp-kicker">Marvel Multiverse Role-Playing Game</div>
+      <input class="mmrdp-name" name="name" type="text" value="{{actor.name}}" aria-label="Codename">
+      <div class="mmrdp-subtitle">
+        {{#if system.realname}}<span>{{system.realname}}</span>{{/if}}
+        {{#if system.teams}}<span>{{system.teams}}</span>{{/if}}
+        {{#if system.base}}<span>{{system.base}}</span>{{/if}}
+      </div>
+    </div>
+    <label class="mmrdp-rankbox">
+      <span class="mmrdp-rankbox__label">Rank</span>
+      <input class="mmrdp-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}">
+    </label>
+  </header>
+
+  <section class="mmrdp-stats">
+    <label class="mmrdp-resource mmrdp-resource--health">
+      <span class="mmrdp-resource__head">
+        <span class="mmrdp-resource__name">Health</span>
+        <span class="mmrdp-resource__numbers">
+          <input name="system.health.value" type="number" value="{{modernResources.health.value}}" aria-label="Current Health">
+          <span>/</span>
+          <input name="system.health.max" type="number" value="{{modernResources.health.max}}" aria-label="Maximum Health">
+        </span>
+      </span>
+      <span class="mmrdp-resource__bar"><span style="--pct: {{modernResources.health.percent}}%"></span></span>
+    </label>
+    <label class="mmrdp-resource mmrdp-resource--focus">
+      <span class="mmrdp-resource__head">
+        <span class="mmrdp-resource__name">Focus</span>
+        <span class="mmrdp-resource__numbers">
+          <input name="system.focus.value" type="number" value="{{modernResources.focus.value}}" aria-label="Current Focus">
+          <span>/</span>
+          <input name="system.focus.max" type="number" value="{{modernResources.focus.max}}" aria-label="Maximum Focus">
+        </span>
+      </span>
+      <span class="mmrdp-resource__bar"><span style="--pct: {{modernResources.focus.percent}}%"></span></span>
+    </label>
+    <label class="mmrdp-resource mmrdp-resource--karma">
+      <span class="mmrdp-resource__head">
+        <span class="mmrdp-resource__name">Karma</span>
+        <span class="mmrdp-resource__numbers">
+          <input name="system.karma.value" type="number" value="{{modernResources.karma.value}}" aria-label="Current Karma">
+          <span>/</span>
+          <input name="system.karma.max" type="number" value="{{modernResources.karma.max}}" aria-label="Maximum Karma">
+        </span>
+      </span>
+      <span class="mmrdp-resource__bar"><span style="--pct: {{modernResources.karma.percent}}%"></span></span>
+    </label>
+    <div class="mmrdp-movement">
+      <span class="mmrdp-movement__title">Speed</span>
+      {{#each modernMovement as |movement|}}
+        <span class="mmrdp-movement__stat"><strong>{{movement.value}}</strong>{{localize movement.label}}</span>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="mmrdp-body">
+    <aside class="mmrdp-sidebar">
+      <h2 class="mmrdp-section-title">Abilities</h2>
+      {{#each modernAbilities as |ability|}}
+        <div class="mmrdp-ability">
+          <button type="button" class="mmrdp-ability__roll rollable" data-formula="{1d6,1dm,1d6}+@abilities.{{ability.key}}.value" data-label="{{ability.key}}" title="Roll {{ability.label}}">
+            <span class="mmrdp-ability__letter">{{ability.letter}}</span>
+            <span class="mmrdp-ability__name">{{ability.label}}</span>
+          </button>
+          <label class="mmrdp-ability__value">
+            <input name="system.abilities.{{ability.key}}.value" type="number" value="{{ability.value}}" aria-label="{{ability.label}} score">
+            <small>Score</small>
+          </label>
+          <span class="mmrdp-ability__def"><strong>{{ability.defense}}</strong><small>Defense</small></span>
+        </div>
+      {{/each}}
+
+      <div class="mmrdp-damage">
+        <h2 class="mmrdp-section-title">Damage Multipliers</h2>
+        <div class="mmrdp-damage-grid">
+          {{#each modernAbilities as |ability|}}
+            {{#if ability.damageMultiplier}}
+              <div class="mmrdp-damage-chip" data-ability-key="{{ability.key}}">
+                <span>{{ability.label}}</span>
+                <strong>x{{ability.damageMultiplier}} <output class="mmrdp-damage-chip__bonus">{{numberFormat ability.value decimals=0 sign=true}}</output></strong>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </aside>
+
+    <main class="mmrdp-main">
+      <nav class="sheet-tabs tabs mmrdp-tabs" data-group="primary">
+        <a class="item mmrdp-tab active" data-tab="abilities">Powers &amp; Actions</a>
+        <a class="item mmrdp-tab" data-tab="traits">Traits &amp; Tags</a>
+        <a class="item mmrdp-tab" data-tab="gear">Equipment</a>
+        <a class="item mmrdp-tab" data-tab="biography">Biography</a>
+        <a class="item mmrdp-tab" data-tab="conditions">Conditions</a>
+      </nav>
+
+      <section class="sheet-body mmrdp-content">
+        <div class="tab mmrdp-page active" data-group="primary" data-tab="abilities">
+          <div class="mmrdp-layout-2">
+            <section class="mmrdp-card">
+              <h2 class="mmrdp-card__title"><span>Powers</span></h2>
+              <div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-powers.hbs"}}</div>
+            </section>
+            <section class="mmrdp-card">
+              <h2 class="mmrdp-card__title"><span>Action Setup</span></h2>
+              <div class="mmrdp-card__body mmrdp-action-setup">
+                <label><span>Default Element</span><select name="system.defaultElement">{{selectOptions elements selected=system.defaultElement labelAttr="label" blank=""}}</select></label>
+                <label><span>Team Maneuver</span><select name="system.teamManeuver.maneuverType">{{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank=""}}</select></label>
+                <label><span>Level</span><select name="system.teamManeuver.level">{{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}</select></label>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="tab mmrdp-page" data-group="primary" data-tab="traits">
+          <div class="mmrdp-layout-2">
+            <section class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Traits</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-traits.hbs"}}</div></section>
+            <section class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Tags</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-tags.hbs"}}</div></section>
+          </div>
+        </div>
+
+        <div class="tab mmrdp-page" data-group="primary" data-tab="gear">
+          <div class="mmrdp-layout-2">
+            <section class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Weapons</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-weapons.hbs"}}</div></section>
+            <section class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Gear</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-items.hbs"}}</div></section>
+          </div>
+        </div>
+
+        <div class="tab mmrdp-page" data-group="primary" data-tab="biography">
+          <div class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Identity</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-details.hbs"}}</div></div>
+          <div class="mmrdp-biography">{{> "systems/marvel-multiverse/templates/actor/parts/actor-biography.hbs"}}</div>
+        </div>
+
+        <div class="tab mmrdp-page" data-group="primary" data-tab="conditions">
+          <div class="mmrdp-card">
+            <h2 class="mmrdp-card__title"><span>Concentration</span></h2>
+            <div class="mmrdp-card__body mmrdp-status-summary">
+              {{#if statusDisplay.concentration.active}}
+                <span>Concentrating: {{statusDisplay.concentration.itemName}}</span>
+              {{else}}
+                <span>No active concentration.</span>
+              {{/if}}
+              {{#if editable}}<button type="button" class="mmrdp-mini-btn" data-action="{{#if statusDisplay.concentration.active}}endConcentration{{else}}startConcentration{{/if}}">{{#if statusDisplay.concentration.active}}End{{else}}Start{{/if}}</button>{{/if}}
+            </div>
+          </div>
+          <div class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Conditions &amp; Effects</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-effects.hbs"}}</div></div>
+        </div>
+      </section>
+    </main>
+  </section>
+</div>

@@ -1,9 +1,17 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+<div class="{{cssClass}} {{actor.type}} flexcol">
+  <nav class="sheet-tabs tabs mm-tabs -two" data-group="primary">
+    <div class="sheet-tabs-wrapper">
+      <a class="item active" data-tab="overview">Overview</a>
+      <a class="item" data-tab="conditions">Concentration & Conditions</a>
+    </div>
+  </nav>
+
+  <section class="sheet-body">
   {{!-- Sheet Header --}}
-  <header class="sheet-header">
+  <header class="sheet-header tab active" data-group="primary" data-tab="overview">
       <div class="flexrow">
 
-        <div class="flexcol -gap-sm -space-between -grow-2">
+        <div class="flexcol -gap-sm -space-between -grow-2 mm-npc-core-panel">
           {{!-- codename --}}
           <div class="mm-styled-field">
             <label class="mm-styled-label -align-left" for="name"><span>Codename</span></label>
@@ -15,7 +23,7 @@
             {{!-- Portrait --}}
             <div class="mm-npc-portrait-block">
               <div class="mm-hero-portrait">
-                <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+                <img src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}"/>
               </div>
               {{!-- Rank, Health & Focus --}}
               <div class="mm-rank-block">
@@ -93,7 +101,7 @@
           </div>
         </div>
 
-        <div class="flexcol -gap-sm -nowrap">
+        <div class="flexcol -gap-sm -nowrap mm-npc-action-panel">
           {{!-- Damage --}}
           <div class="mm-styled-container mm-damage-block">
             <h3>Damage</h3>
@@ -166,7 +174,39 @@
         </div>
       </div>
   </header>
-</form>
+
+  <div class="tab conditions" data-group="primary" data-tab="conditions">
+    <div class="flexcol -gap-sm -static-children">
+      <div class="mm-styled-container mm-statuses-block">
+        <h3>Concentration</h3>
+        <div class="mm-styled-container-body">
+          <div class="mm-status-summary">
+            <div class="mm-status-list">
+              {{#if statusDisplay.concentration.active}}
+                <span class="mm-status-pill -concentration">Concentrating: {{statusDisplay.concentration.itemName}}</span>
+              {{else if statusDisplay.concentration.itemName}}
+                <span class="mm-status-pill">Concentration available</span>
+              {{else}}
+                <span class="mm-status-placeholder">No concentration source.</span>
+              {{/if}}
+            </div>
+            {{#if editable}}
+              <button type="button" class="mm-action-button" data-action="{{#if statusDisplay.concentration.active}}endConcentration{{else}}startConcentration{{/if}}">{{#if statusDisplay.concentration.active}}End{{else}}Start{{/if}}</button>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+
+      <div class="mm-styled-container mm-conditions-block">
+        <h3>Conditions</h3>
+        <div class="mm-styled-container-body">
+          {{> "systems/marvel-multiverse/templates/actor/parts/actor-effects.hbs"}}
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+</div>
 
 {{log system}}
 

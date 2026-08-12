@@ -1,0 +1,291 @@
+{
+  "MARVEL_MULTIVERSE": {
+    "fantasticRoll": "Tirada fantástica",
+    "edgeMode": {
+      "trouble": "Problema",
+      "edge": "Ventaja",
+      "normal": "Normal"
+    },
+    "Size": {
+      "Microscopic": "Microscópico",
+      "Miniature": "Miniatura",
+      "Tiny": "Diminuto",
+      "Little": "Pequeño",
+      "Small": "Pequeño",
+      "Average": "Promedio",
+      "Big": "Grande",
+      "Huge": "Enorme",
+      "Gargantuan": "Gargantuesco",
+      "Titanic": "Titánico",
+      "Gigantic": "Gigantesco"
+    },
+    "Ability": {
+      "Mel": {
+        "long": "Cuerpo a cuerpo",
+        "abbr": "c.c."
+      },
+      "Agl": {
+        "long": "Agilidad",
+        "abbr": "agl"
+      },
+      "Res": {
+        "long": "Resistencia",
+        "abbr": "res"
+      },
+      "Vig": {
+        "long": "Vigilancia",
+        "abbr": "vig"
+      },
+      "Ego": {
+        "long": "Ego",
+        "abbr": "ego"
+      },
+      "Log": {
+        "long": "Lógica",
+        "abbr": "log"
+      }
+    },
+    "SheetLabels": {
+      "Actor": "Hoja de personaje MarvelMultiverse",
+      "ModernActor": "Hoja de personaje moderna MarvelMultiverse",
+      "Item": "Hoja de objeto MarvelMultiverse",
+      "NPC": "Hoja de PNJ MarvelMultiverse"
+    },
+    "Item": {
+      "Power": {
+        "PowerSET": "{set}",
+        "AddPWR": "Poder"
+      }
+    },
+    "Effect": {
+      "Source": "Fuente",
+      "Toggle": "Alternar efecto",
+      "Temporary": "Efectos temporales",
+      "Passive": "Efectos pasivos",
+      "Inactive": "Efectos inactivos"
+    },
+    "Movement": {
+      "Run": "Carrera",
+      "Jump": "Salto",
+      "Climb": "Escalada",
+      "Swim": "Natación",
+      "Flight": "Vuelo",
+      "Glide": "Planeo",
+      "Swingline": "Línea de balanceo",
+      "Levitation": "Levitación"
+    },
+    "Element": {
+      "Air": "Aire",
+      "Earth": "Tierra",
+      "Electricity": "Electricidad",
+      "Energy": "Energía",
+      "Fire": "Fuego",
+      "Force": "Fuerza",
+      "Hellfire": "Fuego infernal",
+      "Ice": "Hielo",
+      "Iron": "Hierro",
+      "Sound": "Sonido",
+      "Water": "Agua",
+      "Chemical": "Químico",
+      "Toxin": "Toxina",
+      "Swarm": "Enjambre"
+    },
+    "Formula": "Fórmula",
+    "AbilityModifier": "Modificador de capacidad",
+    "RollSituationalBonus": "¿Bonus situacional?",
+    "RollMode": "Modo de tirada",
+    "ApplyDamage": "DAÑO",
+    "ResolveAction": "Resolver acción",
+    "ActionResolved": "Acción resuelta",
+    "DamageApplyFailed": "Acción resuelta, pero no se pudo aplicar el daño.",
+    "DamagePartiallyApplied": "Acción resuelta, pero el daño falló para uno o más objetivos.",
+    "ApplyHalfDamage": "½",
+    "ApplyDoubleDamage": "×2",
+    "ApplyCustomDamage": "…",
+    "UndoDamage": "↺",
+    "CustomDamage": "Daño personalizado",
+    "EnterAmount": "Introduce la cantidad de daño",
+    "NoDamageToUndo": "No hay daño para deshacer.",
+    "UndoDamageRequested": "Deshacer solicitado.",
+    "UndoDamageFailed": "Falló deshacer.",
+    "SpendFocus": "Gastar enfoque",
+    "ChooseFocusCost": "Elegir coste de enfoque",
+    "SpendCustomFocus": "Gastar enfoque personalizado",
+    "RefundFocus": "Reembolsar enfoque",
+    "FocusSpent": "Enfoque gastado.",
+    "FocusSpendFailed": "Falló gastar enfoque.",
+    "FocusPaid": "Enfoque pagado",
+    "FocusRefunded": "Enfoque reembolsado",
+    "FocusRefundFailed": "Falló reembolsar enfoque.",
+    "FocusStatus": "Enfoque",
+    "RollEscape": "Tirada de escape",
+    "EnterRollTotal": "Introduce el total de la tirada",
+    "EscapeSucceeded": "Escapó",
+    "EscapeFailed": "Falló el escape",
+    "StartConcentration": "Iniciar concentración",
+    "EndConcentration": "Terminar concentración",
+    "ConcentrationStarted": "Concentración iniciada",
+    "ConcentrationEnded": "Concentración terminada",
+    "SetDifficulty": "Fijar dificultad",
+    "UpdateDifficulty": "Actualizar dificultad",
+    "DifficultyDialogTitle": "Marca tu objetivo",
+    "DifficultyDialogHint": "Introduce la dificultad indicada por el Narrador y contra qué se comprueba.",
+    "DifficultyLabel": "Dificultad",
+    "DifficultyAgainstLabel": "Contra",
+    "DifficultyAgainstNone": "—",
+    "DifficultyConfirm": "Confirmar",
+    "DifficultyInvalid": "Introduce una dificultad numérica válida.",
+    "DifficultySet": "Dificultad confirmada.",
+    "DifficultyBadge": "Dificultad {difficulty} contra {against}",
+    "DifficultyBadgeNoAgainst": "Dificultad {difficulty}",
+    "DifficultyDialogModeLabel": "Comparar contra",
+    "DifficultyDialogModeFixed": "Numero de dificultad fijo",
+    "DifficultyDialogModeOpposed": "Total de tirada opuesta",
+    "OpponentTotalLabel": "Total del oponente",
+    "OpponentFantasticLabel": "El oponente saco fantastico",
+    "OpponentLabelLabel": "Oponente (nombre/etiqueta)",
+    "OpposedBadge": "Enfrentamiento {opponentTotal} ({opponentLabel})",
+    "CheckOutcome": {
+      "Success": "Éxito",
+      "Failure": "Fracaso",
+      "FantasticSuccess": "Éxito fantástico",
+      "FantasticFailure": "Fracaso fantástico",
+      "OpposedWin": "Enfrentamiento ganado",
+      "OpposedLoss": "Enfrentamiento perdido",
+      "OpposedTie": "Empate"
+    },
+    "ActionRoll": {
+      "DialogTitle": "Configurar Tirada",
+      "Ability": "Habilidad",
+      "CheckModifier": "Modificador de Prueba",
+      "CheckSuffix": "Prueba",
+      "SituationalModifier": "Modificador Situacional",
+      "Target": "Objetivo",
+      "NoTarget": "No hay objetivo seleccionado",
+      "Defense": "Defensa",
+      "MultipleTargetsWarning": "Cada objetivo seleccionado se resolverá contra su propia defensa.",
+      "Targets": "Objetivos",
+      "MultiTargetDefenseHint": "Cada objetivo usa su propia defensa como número objetivo.",
+      "MultipleTargetsBlocked": "{action} solo admite un objetivo. Selecciona un único objetivo e inténtalo de nuevo.",
+      "TargetRequiredFor": "{action} requiere un objetivo. Selecciona un token e inténtalo de nuevo.",
+      "TargetHasNoActor": "El objetivo seleccionado no tiene datos de personaje y no se puede usar.",
+      "DefenseUnavailable": "Valor de defensa no disponible: introduce un Número Objetivo manualmente.",
+      "TargetNumberAuto": "Rellenado automáticamente desde la defensa del objetivo - aún editable.",
+      "TargetNumber": "Número Objetivo",
+      "TargetNumberPlaceholder": "Opcional",
+      "Edge": "Ventaja",
+      "Trouble": "Problema",
+      "BaseModifier": "Modificador Base",
+      "Roll": "Tirada",
+      "RollButton": "Tirar",
+      "Cancel": "Cancelar",
+      "ActorMissing": "Selecciona o posee un actor antes de tirar.",
+      "RollFailed": "No se pudo completar la tirada.",
+      "UnexpectedError": "Algo salió mal al configurar esta tirada.",
+      "Damage": "Daño",
+      "NoDamage": "Sin daño.",
+      "HealthLabel": "Salud",
+      "FocusLabel": "Concentración",
+      "DamagePendingGM": "Esperando a que el Narrador aplique este daño.",
+      "DamageNotApplied": "No se pudo aplicar el daño automáticamente."
+    },
+    "RollSummary": {
+      "AttackRollVs": "Tirada de ataque contra {ability}",
+      "EdgeApplied": "Ventaja aplicada",
+      "TroubleApplied": "Problema aplicado",
+      "FantasticSuccess": "Éxito fantástico",
+      "FantasticFailure": "Fracaso fantástico",
+      "DealsDamage": "Inflige {damageType} daño a {count}"
+    },
+    "GuidedPhase": {
+      "Configure": "Configurar",
+      "Roll": "Tirar",
+      "Resolve": "Resolver",
+      "Apply": "Aplicar",
+      "ManualRequired": "Resolución manual requerida"
+    },
+    "GuidedPhaseStatus": {
+      "Complete": "completado",
+      "Current": "paso actual",
+      "Upcoming": "pendiente",
+      "NotRequired": "no requerido",
+      "Manual": "resolución manual"
+    },
+    "GuidedPhaseProgress": "Progreso de la resolución guiada",
+    "Conditions": {
+      "restrained": "Restringido",
+      "grappled": "Agarrado",
+      "prone": "Derribado",
+      "stunned": "Aturdido",
+      "blinded": "Cegado",
+      "poisoned": "Envenenado",
+      "paralyzed": "Paralizado",
+      "frightened": "Asustado"
+    },
+    "ConditionAliases": {
+      "restrained": ["restrained", "restrain", "tied up", "tied-up", "bound", "restringido", "atado"],
+      "grappled": ["grappled", "grapple", "grabbed", "held", "agarrado"],
+      "prone": ["prone", "derribado"],
+      "stunned": ["stunned", "stun", "aturdido"],
+      "blinded": ["blinded", "blind", "cegado", "ciego"],
+      "poisoned": ["poisoned", "poison", "envenenado"],
+      "paralyzed": ["paralyzed", "paralyze", "paralysis", "paralizado"],
+      "frightened": ["frightened", "fright", "asustado"]
+    },
+    "CosmeticStatuses": {
+      "bleeding": "Sangrando",
+      "deafened": "Ensordecido",
+      "encumbered": "Sobrecargado",
+      "exhaustion": "Exhausto",
+      "flying": "Volando",
+      "incapacitated": "Incapacitado",
+      "invisible": "Invisible",
+      "petrified": "Petrificado",
+      "silenced": "Silenciado",
+      "surprised": "Sorprendido",
+      "unconscious": "Inconsciente"
+    },
+    "Settings": {
+      "GuidedResolutionEnabled": {
+        "Name": "Activar resolucion guiada",
+        "Hint": "Activa el flujo guiado Configurar -> Tirar -> Resolver -> Aplicar antes de lanzar acciones."
+      },
+      "AutoApplyDamageOnResolve": {
+        "Name": "Aplicar dano automaticamente al resolver",
+        "Hint": "Cuando esta activado (predeterminado), resolver un ataque aplica su dano automaticamente. Desactivalo para requerir el boton Aplicar Dano."
+      },
+      "AutoApplyDamageOnHit": {
+        "Name": "Aplicar dano automaticamente al impactar (requiere socketlib)",
+        "Hint": "Cuando esta activado, el dano se aplica automaticamente en el momento en que un ataque impacta, incluso entre clientes (mediante el modulo socketlib). Desactivado de forma predeterminada. Sin socketlib instalado y activo, solo funciona con ataques realizados mientras un GM esta conectado."
+      },
+      "EnableOpposedCheckAutomation": {
+        "Name": "Activar enfrentamientos opuestos (no verificado)",
+        "Hint": "Anade un modo de enfrentamiento opuesto al dialogo de resolucion: compara el total de una tirada directamente contra un total de oponente introducido manualmente (gana el mayor, un fantastico en solitario gana directamente, los empates son empates). Es una regla casera, no una regla oficial confirmada. Desactivado de forma predeterminada."
+      },
+      "EnableTurnBasedTriggers": {
+        "Name": "Activar disparadores por turno (no verificado)",
+        "Hint": "Permite que los eventos de poder se disparen al inicio/fin del turno del combatiente actuante y de cualquier objetivo. No hay procedimiento oficial confirmado. Desactivado de forma predeterminada."
+      },
+      "EnableExperimentalPowerOutcomes": {
+        "Name": "Activar resultados de poder experimentales (no verificado)",
+        "Hint": "Permite que los eventos de poder apliquen automaticamente dano/curacion/cambio de recurso, movimiento forzado y cambio de tamano. Estos tipos de resultado no tienen una regla oficial confirmada. Desactivado de forma predeterminada."
+      },
+      "EnableSequencerEffects": {
+        "Name": "Activar efectos visuales Sequencer/JB2A",
+        "Hint": "Permite que los eventos de poder reproduzcan una animacion de Sequencer (por ejemplo, un recurso JB2A) al resolverse. Puramente cosmetico, requiere el modulo Sequencer instalado y activo. Desactivado de forma predeterminada."
+      }
+    }
+  },
+  "InitiativeRoll": "Tirada de iniciativa",
+  "TYPES": {
+    "Actor": {
+      "character": "Personaje",
+      "npc": "PNJ"
+    },
+    "Item": {
+      "item": "Objeto",
+      "trait": "Rasgo",
+      "power": "Poder"
+    }
+  }
+}

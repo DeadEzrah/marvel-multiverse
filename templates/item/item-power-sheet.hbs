@@ -1,7 +1,7 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}">
   <header class="sheet-header">
     <div class="mm-styled-field -lg -img">
-      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+      <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
       <div class="mm-styled-input">
         <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
       </div>
@@ -20,6 +20,12 @@
     {{!-- Attributes Tab --}}
     <div class="tab flexcol -gap-sm" data-group="primary" data-tab="attributes">
       {{!-- As you add new fields, add them in here! --}}
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Elemental Power</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.isElemental" {{ checked system.isElemental }} />
+        </div>
+      </div>
       {{#if system.isElemental }}
         <div class="mm-styled-field -fill">
           <label class="mm-styled-label -align-left"><span>Element</span></label>
@@ -49,37 +55,37 @@
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>prerequisites</span></label>
+        <label class="mm-styled-label -align-left"><span>Prerequisites</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.prerequisites" value="{{system.prerequisites}}" data-dtype="String"/>
         </div>
       </div>
       <div class="resource">
-        <label class="mm-styled-label -align-left"><span>action</span></label>
+        <label class="mm-styled-label -align-left"><span>Action</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.action" value="{{system.action}}" data-dtype="String"/>
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>trigger</span></label>
+        <label class="mm-styled-label -align-left"><span>Trigger</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.trigger" value="{{system.trigger}}" data-dtype="String"/>
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>duration</span></label>
+        <label class="mm-styled-label -align-left"><span>Duration</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.duration" value="{{system.duration}}" data-dtype="String"/>
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>range</span></label>
+        <label class="mm-styled-label -align-left"><span>Range</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.range" value="{{system.range}}" data-dtype="String"/>
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>cost</span></label>
+        <label class="mm-styled-label -align-left"><span>Cost</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="String"/>
         </div>
@@ -93,7 +99,9 @@
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left"><span>Attack Target</span></label>
         <div class="mm-styled-input">
-          <input type="text" name="system.attackTarget" value="{{system.attackTarget}}" data-dtype="String"/>
+          <select name="system.attackTarget">
+            {{selectOptions abilities selected=system.attackTarget labelAttr="label" blank=""}}
+          </select>
         </div>
       </div>
       <div class="mm-styled-field -fill">
@@ -119,6 +127,14 @@
         </div>
       </div>
       <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Damage Type</span></label>
+        <div class="mm-styled-input">
+          <select name="system.damageType">
+            {{selectOptions damageTypes selected=system.damageType labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left"><span>Attack Edge Mode</span></label>
         <div class="mm-styled-input">
           <select name="system.attackEdgeMode">
@@ -126,9 +142,61 @@
           </select>
         </div>
       </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Area Shape</span></label>
+        <div class="mm-styled-input">
+          <select name="system.targeting.area.shape">
+            {{selectOptions areaShapes selected=system.targeting.area.shape labelAttr="label" blank="Manual targets"}}
+          </select>
+        </div>
+      </div>
+      {{#if system.targeting.area.shape}}
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Area Distance (spaces)</span></label>
+          <div class="mm-styled-input">
+            <input type="number" name="system.targeting.area.distance" value="{{system.targeting.area.distance}}" min="1" step="1" data-dtype="Number"/>
+          </div>
+        </div>
+        {{#if (eq system.targeting.area.shape "cone")}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Cone Angle</span></label>
+            <div class="mm-styled-input">
+              <input type="number" name="system.targeting.area.angle" value="{{system.targeting.area.angle}}" min="1" max="360" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+        {{/if}}
+        {{#if (eq system.targeting.area.shape "line")}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Line Width (spaces)</span></label>
+            <div class="mm-styled-input">
+              <input type="number" name="system.targeting.area.width" value="{{system.targeting.area.width}}" min="1" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+        {{/if}}
+        {{#if (eq system.targeting.area.shape "rectangle")}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Area Width (spaces)</span></label>
+            <div class="mm-styled-input">
+              <input type="number" name="system.targeting.area.width" value="{{system.targeting.area.width}}" min="1" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Area Height (spaces)</span></label>
+            <div class="mm-styled-input">
+              <input type="number" name="system.targeting.area.height" value="{{system.targeting.area.height}}" min="1" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+        {{/if}}
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Include Source</span></label>
+          <div class="mm-styled-input">
+            <input type="checkbox" name="system.targeting.area.includeSelf" {{checked system.targeting.area.includeSelf}} />
+          </div>
+        </div>
+      {{/if}}
     </div>
     <div class="tab power-effects" data-group="primary" data-tab="effects">
        {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}
     </div>
   </section>
-</form>
+</div>

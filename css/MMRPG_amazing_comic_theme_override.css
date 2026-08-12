@@ -1,0 +1,540 @@
+/* ==========================================================================
+   MMRPG — AMAZING COMIC BOOK THEME OVERRIDE
+   Foundry VTT v14 / Marvel Multiverse custom system
+
+   HOW TO USE
+   1. Load this AFTER the existing system stylesheet.
+   2. Keep the existing .theme-classic-comic class on character/NPC sheet roots.
+   3. This is intentionally an override layer: layout/data behavior remains intact.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto+Condensed:ital,wght@0,400;0,600;0,700;1,600&display=swap");
+
+/* --------------------------------------------------------------------------
+   1. COMIC DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic {
+  --comic-ink: #141414;
+  --comic-paper: #fff8df;
+  --comic-paper-2: #f5edcf;
+  --comic-red: #d52b2b;
+  --comic-red-dark: #8f1818;
+  --comic-blue: #3185c6;
+  --comic-blue-dark: #155684;
+  --comic-yellow: #f5d44b;
+  --comic-green: #78bf83;
+  --comic-purple: #b8a0d8;
+  --comic-peach: #eba98f;
+  --comic-cyan: #91cad0;
+  --comic-white: #fffdf4;
+  --comic-muted: #5a554d;
+
+  --comic-line: 3px solid var(--comic-ink);
+  --comic-line-thin: 2px solid var(--comic-ink);
+  --comic-shadow: 4px 4px 0 var(--comic-ink);
+  --comic-shadow-small: 2px 2px 0 var(--comic-ink);
+
+  --comic-display: "Bangers", "Arial Black", Impact, sans-serif;
+  --comic-body: "Roboto Condensed", Arial, sans-serif;
+
+  color: var(--comic-ink);
+  font-family: var(--comic-body);
+  gap: 8px;
+  padding: 9px;
+
+  /* warm four-color paper with subtle print dots */
+  background-color: var(--comic-paper);
+  background-image:
+    radial-gradient(circle, rgba(20,20,20,.075) 0 0.65px, transparent .8px),
+    linear-gradient(135deg, rgba(255,255,255,.35), rgba(245,212,75,.045));
+  background-size: 6px 6px, auto;
+}
+
+/* Stop the old muted theme from flattening typography. */
+.marvel-multiverse.sheet.actor .theme-classic-comic *,
+.marvel-multiverse.sheet.actor .theme-classic-comic *::before,
+.marvel-multiverse.sheet.actor .theme-classic-comic *::after {
+  letter-spacing: normal;
+}
+
+/* --------------------------------------------------------------------------
+   2. BIG COMIC PANELS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-npc-styled-container {
+  background: var(--comic-ink);
+  border: var(--comic-line);
+  border-radius: 2px;
+  box-shadow: var(--comic-shadow);
+  clip-path: none;
+  overflow: hidden;
+  padding: 0;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container > h3,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-npc-styled-container > h3 {
+  position: relative;
+  width: auto;
+  top: 0;
+  margin: 0;
+  padding: 4px 12px 3px;
+  color: var(--comic-ink);
+  background-color: var(--comic-yellow);
+  background-image: radial-gradient(circle, rgba(213,43,43,.22) 0 1px, transparent 1.15px);
+  background-size: 6px 6px;
+  border: 0;
+  border-bottom: var(--comic-line);
+  clip-path: none;
+  font-family: var(--comic-display);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: .045em;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.7);
+  text-transform: uppercase;
+}
+
+/* Little red corner slash makes headings feel printed rather than webby. */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container > h3::after,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-npc-styled-container > h3::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 0;
+  width: 54px;
+  height: 100%;
+  background: var(--comic-red);
+  border-left: var(--comic-line-thin);
+  transform: skewX(-20deg);
+  transform-origin: top;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container-body,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-npc-styled-container .mm-styled-container-body {
+  background-color: var(--comic-paper);
+  background-image:
+    radial-gradient(circle, rgba(49,133,198,.13) 0 0.75px, transparent .9px),
+    linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16));
+  background-size: 6px 6px, auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. PORTRAIT — COMIC PANEL
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-hero-portrait {
+  background: var(--comic-red);
+  border: var(--comic-line);
+  border-radius: 1px;
+  box-shadow: var(--comic-shadow);
+  clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 18% 100%, 0 82%);
+  padding: 4px;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-hero-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  z-index: 2;
+  background-image: radial-gradient(circle, rgba(245,212,75,.22) 0 1px, transparent 1.2px);
+  background-size: 7px 7px;
+  mix-blend-mode: multiply;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-hero-portrait img {
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  filter: contrast(1.08) saturate(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   4. TABS — COMIC CAPTION STRIPS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs {
+  overflow: visible;
+  padding: 3px;
+  background: var(--comic-ink);
+  border: var(--comic-line);
+  border-radius: 0;
+  box-shadow: var(--comic-shadow-small);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs .sheet-tabs-wrapper {
+  gap: 4px;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs .item {
+  position: relative;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--comic-red);
+  border: 0;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  color: var(--comic-white);
+  font-family: var(--comic-display);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-shadow: 2px 2px 0 var(--comic-red-dark);
+  transition: transform .08s ease, background-color .08s ease;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs .item:hover {
+  background: var(--comic-blue);
+  color: white;
+  transform: translateY(-2px);
+  text-shadow: 2px 2px 0 var(--comic-blue-dark);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs .item.active {
+  background: var(--comic-yellow);
+  color: var(--comic-ink);
+  transform: translateY(-2px);
+  text-shadow: 1px 1px 0 white;
+}
+
+/* --------------------------------------------------------------------------
+   5. RANK / KARMA — BURSTS & BADGES
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-rank-block {
+  background: var(--comic-yellow) !important;
+  border: var(--comic-line);
+  box-shadow: var(--comic-shadow-small);
+  border-radius: 0;
+  clip-path: polygon(50% 0%,60% 18%,76% 6%,79% 26%,98% 22%,86% 40%,100% 50%,84% 59%,96% 77%,77% 75%,71% 96%,57% 81%,50% 100%,42% 80%,25% 94%,23% 74%,3% 79%,17% 59%,0% 50%,18% 41%,4% 24%,24% 26%,29% 5%,42% 20%);
+  overflow: hidden;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-rank-block::before {
+  inset: 4px;
+  background: var(--comic-white);
+  clip-path: inherit;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-rank-block input {
+  position: relative;
+  z-index: 2;
+  font-family: var(--comic-display);
+  font-size: 27px !important;
+  text-shadow: 1px 1px 0 var(--comic-yellow);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-karma-block {
+  background: var(--comic-green) !important;
+  border: var(--comic-line);
+  border-radius: 50%;
+  box-shadow: var(--comic-shadow-small);
+  clip-path: none;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-karma-block::before {
+  inset: 4px;
+  background: var(--comic-white);
+  border-radius: 50%;
+  clip-path: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. HEALTH / FOCUS / SPEED — FOUR-COLOR STAT CARDS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-block {
+  border: var(--comic-line);
+  border-radius: 2px;
+  box-shadow: var(--comic-shadow-small);
+  clip-path: none;
+  background: var(--comic-peach);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-block.-focus {
+  background: var(--comic-purple);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-block::before {
+  inset: 4px;
+  background-color: var(--comic-white);
+  background-image: radial-gradient(circle, rgba(213,43,43,.12) 0 .7px, transparent .85px);
+  background-size: 5px 5px;
+  clip-path: none;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-block.-focus::before {
+  background-image: radial-gradient(circle, rgba(92,72,147,.13) 0 .7px, transparent .85px);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-corner-block {
+  background: var(--comic-red);
+  border: var(--comic-line-thin);
+  box-shadow: none;
+  clip-path: polygon(0 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-stat-corner-block::before {
+  background: var(--comic-white);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-speed-fields {
+  font-family: var(--comic-body);
+  font-weight: 700;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-speed-select {
+  background: var(--comic-green) !important;
+  border: var(--comic-line-thin) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--comic-shadow-small);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   7. ABILITIES — PURPLE COMIC STRIP
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-styled-container-body {
+  background-color: var(--comic-purple);
+  background-image: radial-gradient(circle, rgba(20,20,20,.12) 0 .75px, transparent .9px);
+  background-size: 6px 6px;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-ability-rows li:not(:first-child) {
+  border-bottom: 2px solid rgba(20,20,20,.6);
+  background: rgba(255,253,244,.22);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-ability-name,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-npc-ability-name {
+  color: var(--comic-ink) !important;
+  font-family: var(--comic-display);
+  font-size: 17px !important;
+  font-weight: 400;
+  letter-spacing: .03em;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.55);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-ability-rows li > div > div,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-ability-rows li > div > input {
+  background: var(--comic-white);
+  border: var(--comic-line-thin);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 var(--comic-ink);
+  font-family: var(--comic-body);
+  font-weight: 700;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-abilities-block .mm-ability-rows li > div > span {
+  background: var(--comic-yellow);
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  color: var(--comic-ink);
+  box-shadow: none;
+  font-family: var(--comic-body);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   8. DAMAGE MULTIPLIERS — MINI IMPACT CARDS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-damage-block .mm-styled-container-body {
+  background-color: var(--comic-cyan);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-damage-block .mm-damage-multiply,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-damage-block .mm-damage-addition {
+  background: var(--comic-white);
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--comic-ink);
+  color: var(--comic-ink);
+  font-family: var(--comic-display);
+  font-weight: 400;
+  letter-spacing: .03em;
+}
+
+/* --------------------------------------------------------------------------
+   9. POWER / ITEM ROWS — REAL COMIC CAPTION PANELS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--comic-ink);
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  box-shadow: 2px 2px 0 rgba(20,20,20,.7);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item::before {
+  background-color: var(--comic-white);
+  background-image: radial-gradient(circle, rgba(49,133,198,.17) 0 .75px, transparent .9px);
+  background-size: 5px 5px;
+  border-radius: 0;
+  clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item:hover {
+  transform: translate(-1px,-1px);
+  box-shadow: 4px 4px 0 var(--comic-ink);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item-name {
+  font-family: var(--comic-body);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item-header > span,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-item-header > div > span,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-status-pill {
+  background: var(--comic-yellow);
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  color: var(--comic-ink) !important;
+  font-family: var(--comic-display);
+  font-weight: 400;
+  letter-spacing: .035em;
+}
+
+/* --------------------------------------------------------------------------
+   10. INPUTS — PRINTED BOXES, NOT WEB FORM CONTROLS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-label {
+  bottom: -2px;
+  margin: 0 0 0 7px;
+  width: auto;
+  min-height: 18px;
+  padding: 2px 8px;
+  background: var(--comic-yellow);
+  border: var(--comic-line-thin);
+  border-bottom: 0;
+  border-radius: 0;
+  color: var(--comic-ink);
+  font-family: var(--comic-display);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .035em;
+  transform: rotate(-1deg);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-label::before,
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-label::after {
+  content: none;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-input {
+  background: var(--comic-ink) !important;
+  border: 0;
+  border-radius: 0;
+  padding: 2px;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-input::before {
+  background: var(--comic-white);
+  border-radius: 0;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic :is(input,select,textarea) {
+  background: transparent !important;
+  border-color: var(--comic-ink);
+  color: var(--comic-ink);
+  font-family: var(--comic-body);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic :is(input,select,textarea):focus {
+  box-shadow: none;
+  outline: 3px solid var(--comic-blue);
+  outline-offset: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   11. BUTTONS / CONTROLS — LITTLE ACTION BURSTS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-action-button,
+.marvel-multiverse.sheet.actor .theme-classic-comic .item-control {
+  background: var(--comic-yellow);
+  border: var(--comic-line-thin);
+  border-radius: 0;
+  box-shadow: 1px 1px 0 var(--comic-ink);
+  color: var(--comic-ink);
+  transition: transform .08s ease, background-color .08s ease;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-action-button:hover,
+.marvel-multiverse.sheet.actor .theme-classic-comic .item-control:hover {
+  background: var(--comic-red);
+  color: white;
+  transform: translate(-1px,-1px);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .rollable:active,
+.marvel-multiverse.sheet.actor .theme-classic-comic button:active,
+.marvel-multiverse.sheet.actor .theme-classic-comic .item-control:active {
+  transform: translate(2px,2px);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   12. CONDITIONS — BLUE-GRAY NEWSprint panel
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .tab.conditions .mm-styled-container.mm-conditions-block > .mm-styled-container-body,
+.marvel-multiverse.sheet.actor .theme-classic-comic .tab.conditions .mm-statuses-block .mm-styled-container-body {
+  background-color: #dce9e7;
+  background-image: radial-gradient(circle, rgba(20,20,20,.11) 0 .7px, transparent .85px);
+  background-size: 6px 6px;
+}
+
+/* --------------------------------------------------------------------------
+   13. SCROLLBARS
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container-body {
+  scrollbar-color: var(--comic-red) var(--comic-paper-2);
+  scrollbar-width: thin;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container-body::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container-body::-webkit-scrollbar-track {
+  background: var(--comic-paper-2);
+  border-left: 1px solid var(--comic-ink);
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic .mm-styled-container-body::-webkit-scrollbar-thumb {
+  background: var(--comic-red);
+  border: 2px solid var(--comic-ink);
+}
+
+/* --------------------------------------------------------------------------
+   14. NPC DIFFERENTIATION — SAME COMIC, DARKER ISSUE
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic.npc {
+  --comic-red: #b3262d;
+  --comic-blue: #4e768c;
+  --comic-yellow: #e4bd43;
+}
+
+.marvel-multiverse.sheet.actor .theme-classic-comic.npc .mm-npc-styled-container > h3 {
+  background-color: var(--comic-red);
+  color: var(--comic-white);
+  text-shadow: 2px 2px 0 var(--comic-red-dark);
+}
+
+/* --------------------------------------------------------------------------
+   15. OPTIONAL "INKED" MODE FOR PORTRAITS
+   Add class .comic-inked to theme root if desired.
+   -------------------------------------------------------------------------- */
+.marvel-multiverse.sheet.actor .theme-classic-comic.comic-inked .mm-hero-portrait img {
+  filter: contrast(1.22) saturate(1.12) brightness(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   16. REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .marvel-multiverse.sheet.actor .theme-classic-comic .mm-item,
+  .marvel-multiverse.sheet.actor .theme-classic-comic nav.mm-tabs .item,
+  .marvel-multiverse.sheet.actor .theme-classic-comic .mm-action-button,
+  .marvel-multiverse.sheet.actor .theme-classic-comic .item-control {
+    transition: none !important;
+  }
+}

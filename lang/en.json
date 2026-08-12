@@ -1,5 +1,9 @@
 {
   "MARVEL_MULTIVERSE": {
+    "Karma": "Karma",
+    "RecoverHealthWithKarma": "Spend 1 Karma to recover Health",
+    "RecoverFocusWithKarma": "Spend 1 Karma to recover Focus",
+    "KarmaRecoveryFailed": "Karma recovery failed.",
     "fantasticRoll": "Fantastic Roll",
     "edgeMode": {
       "trouble": "Trouble",
@@ -47,6 +51,7 @@
     },
     "SheetLabels": {
       "Actor": "MarvelMultiverse Actor Sheet",
+      "ModernActor": "MarvelMultiverse Modern Character Sheet",
       "Item": "MarvelMultiverse Item Sheet",
       "NPC": "MarvelMultiverse NPC Sheet"
     },
@@ -58,6 +63,7 @@
     },
     "Effect": {
       "Source": "Source",
+      "Duration": "Duration",
       "Toggle": "Toggle Effect",
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
@@ -92,7 +98,220 @@
     "Formula": "Formula",
     "AbilityModifier": "Ability Modifier",
     "RollSituationalBonus": "Situational Bonus?",
-    "RollMode": "Roll Mode"
+    "RollMode": "Roll Mode",
+    "ApplyDamage": "DMG",
+    "ResolveAction": "Resolve Action",
+    "ActionResolved": "Action Resolved",
+    "DamageApplyFailed": "Action resolved, but damage could not be applied.",
+    "DamagePartiallyApplied": "Action resolved, but damage failed for one or more targets.",
+    "ApplyHalfDamage": "½",
+    "ApplyDoubleDamage": "×2",
+    "ApplyCustomDamage": "…",
+    "UndoDamage": "↺",
+    "CustomDamage": "Custom Damage",
+    "EnterAmount": "Enter damage amount",
+    "NoDamageToUndo": "No damage to undo.",
+    "UndoDamageRequested": "Undo requested.",
+    "UndoDamageFailed": "Undo failed.",
+    "SpendFocus": "Spend Focus",
+    "ChooseFocusCost": "Choose Focus Cost",
+    "SpendCustomFocus": "Spend Custom Focus",
+    "RefundFocus": "Refund Focus",
+    "FocusSpent": "Spent Focus.",
+    "FocusSpendFailed": "Focus spend failed.",
+    "FocusPaid": "Focus Paid",
+    "FocusRefunded": "Focus Refunded",
+    "FocusRefundFailed": "Focus refund failed.",
+    "FocusStatus": "Focus",
+    "RollEscape": "Roll Escape",
+    "EnterRollTotal": "Enter roll total",
+    "EscapeSucceeded": "Escaped",
+    "EscapeFailed": "Escape failed",
+    "StartConcentration": "Start Concentration",
+    "EndConcentration": "End Concentration",
+    "ConcentrationStarted": "Concentration started",
+    "ConcentrationEnded": "Concentration ended",
+    "SetDifficulty": "Set Difficulty",
+    "UpdateDifficulty": "Update Difficulty",
+    "DifficultyDialogTitle": "Call Your Shot",
+    "DifficultyDialogHint": "Enter the difficulty the Narrator called out, and what it's checked against.",
+    "DifficultyLabel": "Difficulty",
+    "DifficultyAgainstLabel": "Against",
+    "DifficultyAgainstNone": "—",
+    "DifficultyConfirm": "Lock It In",
+    "DifficultyInvalid": "Enter a valid numeric difficulty.",
+    "DifficultySet": "Difficulty locked in.",
+    "DifficultyBadge": "Difficulty {difficulty} vs {against}",
+    "DifficultyBadgeNoAgainst": "Difficulty {difficulty}",
+    "DifficultyDialogModeLabel": "Compare Against",
+    "DifficultyDialogModeFixed": "Fixed Difficulty Number",
+    "DifficultyDialogModeOpposed": "Opposing Roll Total",
+    "OpponentTotalLabel": "Opponent's Total",
+    "OpponentFantasticLabel": "Opponent Rolled Fantastic",
+    "OpponentLabelLabel": "Opponent (name/label)",
+    "OpposedBadge": "Opposed {opponentTotal} ({opponentLabel})",
+    "CheckOutcome": {
+      "Success": "Success",
+      "Failure": "Failure",
+      "FantasticSuccess": "Fantastic Success",
+      "FantasticFailure": "Fantastic Failure",
+      "OpposedWin": "Won Contest",
+      "OpposedLoss": "Lost Contest",
+      "OpposedTie": "Tied"
+    },
+    "ActionRoll": {
+      "DialogTitle": "Configure Roll",
+      "Ability": "Ability",
+      "CheckModifier": "Check Modifier",
+      "CheckSuffix": "Check",
+      "SituationalModifier": "Situational Modifier",
+      "Target": "Target",
+      "NoTarget": "No target selected",
+      "Defense": "Defense",
+      "MultipleTargetsWarning": "Each selected target will be resolved against its own defense.",
+      "Targets": "Targets",
+      "MultiTargetDefenseHint": "Each target uses its own defense as the Target Number.",
+      "MultipleTargetsBlocked": "{action} supports only one target. Select a single target and try again.",
+      "TargetRequiredFor": "{action} requires a target. Target a token and try again.",
+      "TargetHasNoActor": "The selected target has no character data and cannot be used.",
+      "DefenseUnavailable": "Defense value unavailable - enter a Target Number manually.",
+      "TargetNumberAuto": "Auto-filled from the target's defense - still editable.",
+      "TargetNumber": "Target Number",
+      "TargetNumberPlaceholder": "Optional",
+      "Edge": "Edge",
+      "Trouble": "Trouble",
+      "BaseModifier": "Base Modifier",
+      "Roll": "Roll",
+      "RollButton": "Roll",
+      "Cancel": "Cancel",
+      "ActorMissing": "Select or own an actor before rolling.",
+      "RollFailed": "The roll could not be completed.",
+      "UnexpectedError": "Something went wrong configuring this roll.",
+      "Damage": "Damage",
+      "NoDamage": "No damage.",
+      "HealthLabel": "Health",
+      "FocusLabel": "Focus",
+      "DamagePendingGM": "Awaiting GM to apply this damage.",
+      "DamageNotApplied": "Damage could not be applied automatically."
+    },
+    "RollSummary": {
+      "AttackRollVs": "Attack roll vs {ability}",
+      "EdgeApplied": "Edge applied",
+      "TroubleApplied": "Trouble applied",
+      "FantasticSuccess": "Fantastic success",
+      "FantasticFailure": "Fantastic failure",
+      "DealsDamage": "Deals {damageType} damage to {count}"
+    },
+    "AttackOutcome": {
+      "Hit": "Hit",
+      "FantasticHit": "Fantastic Hit",
+      "Miss": "Miss",
+      "Unresolved": "Unresolved"
+    },
+    "GuidedPhase": {
+      "Configure": "Configure",
+      "Roll": "Roll",
+      "Resolve": "Resolve",
+      "Apply": "Apply",
+      "ManualRequired": "Manual Resolution Required"
+    },
+    "GuidedPhaseStatus": {
+      "Complete": "complete",
+      "Current": "current step",
+      "Upcoming": "upcoming",
+      "NotRequired": "not required",
+      "Manual": "manual resolution"
+    },
+    "GuidedPhaseProgress": "Guided resolution progress",
+    "Conditions": {
+      "restrained": "Restrained",
+      "grappled": "Grappled",
+      "prone": "Prone",
+      "stunned": "Stunned",
+      "blinded": "Blinded",
+      "poisoned": "Poisoned",
+      "paralyzed": "Paralyzed",
+      "frightened": "Frightened"
+    },
+    "ConditionAliases": {
+      "restrained": ["restrained", "restrain", "tied up", "tied-up", "bound"],
+      "grappled": ["grappled", "grapple", "grabbed", "held"],
+      "prone": ["prone"],
+      "stunned": ["stunned", "stun"],
+      "blinded": ["blinded", "blind"],
+      "poisoned": ["poisoned", "poison"],
+      "paralyzed": ["paralyzed", "paralyze", "paralysis"],
+      "frightened": ["frightened", "fright"]
+    },
+    "CosmeticStatuses": {
+      "bleeding": "Bleeding",
+      "deafened": "Deafened",
+      "encumbered": "Encumbered",
+      "exhaustion": "Exhausted",
+      "flying": "Flying",
+      "incapacitated": "Incapacitated",
+      "invisible": "Invisible",
+      "petrified": "Petrified",
+      "silenced": "Silenced",
+      "surprised": "Surprised",
+      "unconscious": "Unconscious"
+    },
+    "Settings": {
+      "Debug": {
+        "Name": "Enable Debug Logging",
+        "Hint": "Turns on additional Marvel Multiverse debug logging for diagnostics."
+      },
+      "RulesAuditDebugging": {
+        "Name": "Enable Rules Audit Debugging",
+        "Hint": "Exposes GM-only rules audit inspector helpers on game.marvelMultiverse.rulesAudit."
+      },
+      "ShowRuleSourceReferences": {
+        "Name": "Show Rule Source References",
+        "Hint": "Displays source-reference details when available in audit/debug outputs."
+      },
+      "WarnOnUnverifiedAutomation": {
+        "Name": "Warn on Unverified Automation",
+        "Hint": "Shows warnings when automation behavior is not yet verified against official rules sources."
+      },
+      "StrictValidationMode": {
+        "Name": "Strict Validation Mode",
+        "Hint": "Applies stricter validation checks for diagnostics without changing world data automatically."
+      },
+      "GuidedResolutionEnabled": {
+        "Name": "Enable Guided Resolution",
+        "Hint": "Enables the Configure -> Roll -> Resolve -> Apply guided workflow dialog before rolling actions."
+      },
+      "AutoApplyDamageOnResolve": {
+        "Name": "Auto-Apply Damage on Resolve",
+        "Hint": "When enabled (default), resolving an attack action automatically applies its damage. Disable to require an explicit Apply Damage button click."
+      },
+      "AutoApplyDamageOnHit": {
+        "Name": "Auto-Apply Damage on Hit (requires socketlib)",
+        "Hint": "When enabled, damage is applied automatically the moment an attack hits, even across clients (via the socketlib module) or before anyone opens the chat card. Off by default. Without socketlib installed/active, this only works for attacks made while a GM is logged in."
+      },
+      "EnableOpposedCheckAutomation": {
+        "Name": "Enable Opposed Check Automation (unverified)",
+        "Hint": "Adds an opposed-check mode to the check-resolution dialog: compares a roll's total directly against a manually entered opponent total (higher wins, a lone Fantastic wins outright, ties are ties). This is a house rule, not a confirmed official ruling - off by default."
+      },
+      "EnableTurnBasedTriggers": {
+        "Name": "Enable Turn-Based Power Triggers (unverified)",
+        "Hint": "Lets power events fire on start/end-of-turn triggers for the acting combatant and any actor they targeted. Whose-turn-triggers-whom has no confirmed official procedure - off by default."
+      },
+      "EnableExperimentalPowerOutcomes": {
+        "Name": "Enable Experimental Power Outcomes (unverified)",
+        "Hint": "Lets power events automatically apply damage/healing/resource-change, forced movement, and resize outcomes. These outcome types have no confirmed official ruling - off by default."
+      },
+      "EnableSequencerEffects": {
+        "Name": "Enable Sequencer/JB2A Visual Effects",
+        "Hint": "Lets power events play a Sequencer animation (e.g. a JB2A asset) when they resolve. Purely cosmetic, requires the Sequencer module to be installed and active - off by default."
+      },
+      "ActorSheetTheme": {
+        "Name": "Actor Sheet Theme",
+        "Hint": "Select the visual style used by Character and NPC sheets on this client.",
+        "Standard": "Standard",
+        "ClassicComic": "Classic Comic"
+      }
+    }
   },
   "InitiativeRoll": "Initiative Roll",
   "TYPES": {

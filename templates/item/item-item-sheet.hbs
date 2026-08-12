@@ -1,8 +1,8 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}">
   <header class="sheet-header">
     <div class="flexcol -gap-sm">
       <div class="mm-styled-field -lg -img -fill">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
         <div class="mm-styled-input">
           <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
         </div>
@@ -58,6 +58,4 @@
       </div>
     </div>
   </section>
-</form>
-
-{{log system}}
+</div>
