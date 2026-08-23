@@ -10,6 +10,8 @@
     "build:code": "rollup marvel-multiverse.mjs -f es -o marvel-multiverse-compiled.mjs -p node-resolve -m --sourcemapFile marvel-multiverse.mjs",
     "build:db": "node ./utils/packs.mjs package pack",
     "build:json": "node ./utils/packs.mjs package unpack",
+    "sync:foundry": "powershell -ExecutionPolicy Bypass -File .\\scripts\\sync-foundry-packs.ps1",
+    "build:sync": "npm run build:db && npm run sync:foundry",
     "lint": "eslint --ext .mjs --ignore-path .gitignore ./",
     "lint:fix": "eslint --ext .mjs --ignore-path .gitignore ./ --fix",
     "postinstall": "npm run build:css && npm run build:db"

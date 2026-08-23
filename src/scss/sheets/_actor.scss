@@ -21,9 +21,11 @@
   .window-content {
     min-width: 690px;
     overflow-x: auto;
+    overflow-y: auto;
 
     > form {
-      height: 100%;
+      height: auto;
+      min-height: calc(100% + 52px);
     }
   }
 
@@ -50,7 +52,9 @@
   }
 
   .sheet-body {
-    overflow: hidden;
+    min-height: calc(100% + 52px);
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .tab[data-tab],
     .tab[data-tab] > .flexrow {

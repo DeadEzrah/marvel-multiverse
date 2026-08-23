@@ -1861,10 +1861,12 @@
 .marvel-multiverse.sheet.actor .window-content {
   min-width: 690px;
   overflow-x: auto;
+  overflow-y: auto;
 }
 
 .marvel-multiverse.sheet.actor .window-content > form {
-  height: 100%;
+  height: auto;
+  min-height: calc(100% + 52px);
 }
 
 .marvel-multiverse.sheet.actor .sheet-header {
@@ -1887,7 +1889,9 @@
 }
 
 .marvel-multiverse.sheet.actor .sheet-body {
-  overflow: hidden;
+  min-height: calc(100% + 52px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .marvel-multiverse.sheet.actor .sheet-body .tab[data-tab],
