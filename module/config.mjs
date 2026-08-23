@@ -152,6 +152,7 @@ MARVEL_MULTIVERSE.elements = {
     label: "Air",
     fantasticEffect: "Target is knocked prone for one round.",
   },
+  cold: { label: "Cold", fantasticEffect: "Paralyzes target for one round." },
   earth: {
     label: "Earth",
     fantasticEffect: "Target moves at half speed for one round.",
@@ -172,6 +173,7 @@ MARVEL_MULTIVERSE.elements = {
   },
   ice: { label: "Ice", fantasticEffect: "Paralyzes target for one round." },
   iron: { label: "Iron", fantasticEffect: "Pins target for one round." },
+  light: { label: "Light", fantasticEffect: "Blinds target for one round." },
   sound: { label: "Sound", fantasticEffect: "Deafens target for one round." },
   water: {
     label: "Water",

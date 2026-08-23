@@ -19,7 +19,7 @@
 
     {{!-- Description Tab --}}
     <div class="tab" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+      <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
     </div>
 
     {{!-- Attributes Tab --}}

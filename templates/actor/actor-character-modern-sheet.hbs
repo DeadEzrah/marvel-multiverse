@@ -65,7 +65,7 @@
         <div class="mmrdp-ability">
           <button type="button" class="mmrdp-ability__roll rollable" data-formula="{1d6,1dm,1d6}+@abilities.{{ability.key}}.value" data-label="{{ability.key}}" title="Roll {{ability.label}}">
             <span class="mmrdp-ability__letter">{{ability.letter}}</span>
-            <span class="mmrdp-ability__name">{{ability.label}}</span>
+            <span class="mmrdp-ability__name">{{ability.labelSuffix}}</span>
           </button>
           <label class="mmrdp-ability__value">
             <input name="system.abilities.{{ability.key}}.value" type="number" value="{{ability.value}}" aria-label="{{ability.label}} score">

@@ -21,7 +21,7 @@
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
         <div class="mm-styled-input">
-          {{editor system.description target="system.description" button=false engine="prosemirror" collaborate=false}}
+          <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
         </div>
       </div>
     </div>

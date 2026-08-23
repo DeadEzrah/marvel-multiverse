@@ -20,7 +20,7 @@
     {{!-- Attributes Tab --}}
     <div class="tab flexcol -gap-sm" data-group="primary" data-tab="attributes">
       {{!-- As you add new fields, add them in here! --}}
-      <div class="mm-styled-field -fill">
+      <div class="mm-styled-field -fill -checkbox">
         <label class="mm-styled-label -align-left"><span>Elemental Power</span></label>
         <div class="mm-styled-input">
           <input type="checkbox" name="system.isElemental" {{ checked system.isElemental }} />
@@ -39,13 +39,13 @@
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
         <div class="mm-styled-input">
-          {{editor system.description target="system.description" button=false engine="prosemirror" collaborate=false}}
+          <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
         </div>
       </div>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left rollable" for="system.effect" data-label="effect"><span>Effect</span></label>
         <div class="mm-styled-input">
-          {{editor system.effect target="system.effect" button=false engine="prosemirror" collaborate=false}}
+          <prose-mirror name="system.effect" value="{{system.effect}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.effect}}}</prose-mirror>
         </div>
       </div>
       <div class="mm-styled-field -fill">
@@ -151,7 +151,7 @@
         </div>
       </div>
       {{#if system.targeting.area.shape}}
-        <div class="mm-styled-field -fill">
+        <div class="mm-styled-field -fill -checkbox">
           <label class="mm-styled-label -align-left"><span>Area Distance (spaces)</span></label>
           <div class="mm-styled-input">
             <input type="number" name="system.targeting.area.distance" value="{{system.targeting.area.distance}}" min="1" step="1" data-dtype="Number"/>

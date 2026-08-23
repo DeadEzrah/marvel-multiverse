@@ -1,4 +1,4 @@
-<form>
+<form class="mm-damage-roll-dialog">
     <div class="form-group">
         <div class="six-one-six-die">
             <img src="systems/marvel-multiverse/icons/6.svg" title="MARVEL_MULTIVERSE.MarvelResult.6" alt="6">
@@ -6,11 +6,10 @@
             <img src="systems/marvel-multiverse/icons/6.svg" title="MARVEL_MULTIVERSE.MarvelResult.6" alt="6">
         </div>
         <label>Damage Multiplier</label>
-        * <input type="number" name="damageMultiplier" value="{{damageMultiplier}}" data-dtype="Number"/>
-        + {{ability}} bonus
+        <span>&times;</span>
+        <input type="number" name="damageMultiplier" value="{{damageMultiplier}}" data-dtype="Number"/>
+        <span>+ {{ability}} bonus</span>
         <input type="text" name="ability" value="{{ability}}" hidden>
         <input type="number" name="abilityValue" value="{{abilityValue}}" hidden>
-        
-        </div>
     </div>
 </form>

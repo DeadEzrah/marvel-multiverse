@@ -1,0 +1,447 @@
+@use "../utils/variables" as *;
+
+$mmrdp-panel: rgba(20, 23, 30, 0.96);
+$mmrdp-panel-soft: rgba(255, 255, 255, 0.05);
+$mmrdp-border: rgba(255, 255, 255, 0.12);
+$mmrdp-text: #f7f3f1;
+$mmrdp-muted: rgba(247, 243, 241, 0.72);
+$mmrdp-red: #e41d18;
+$mmrdp-red-dark: #8b0502;
+
+// DialogV2 and legacy Dialog both preserve these content wrapper classes.
+.mm-action-roll-dialog,
+.mm-guided-resolution-dialog,
+.mm-roll-dialog,
+.mm-damage-roll-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: $mm-spacing-md;
+  padding: $mm-spacing-md;
+  color: $mmrdp-text;
+  background: $mmrdp-panel;
+  border: 1px solid $mmrdp-border;
+  border-radius: 8px;
+
+  h2,
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    letter-spacing: 0;
+  }
+
+  code {
+    padding: 2px 5px;
+    color: $mmrdp-text;
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid $mmrdp-border;
+    border-radius: 4px;
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: minmax(110px, 1fr) minmax(0, 1.25fr);
+    align-items: center;
+    gap: $mm-spacing-md;
+    margin: 0;
+    padding: $mm-spacing-sm 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    label {
+      color: $mmrdp-muted;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-width: 0;
+      color: $mmrdp-text;
+      color-scheme: dark;
+      background: #151820;
+      border: 1px solid $mmrdp-border;
+      border-radius: 4px;
+    }
+
+    option,
+    optgroup {
+      color: $mmrdp-text;
+      background-color: #151820;
+    }
+
+    option:checked {
+      color: white;
+      background-color: $mmrdp-red-dark;
+    }
+  }
+
+  .notification {
+    margin: 0;
+    border-radius: 6px;
+  }
+}
+
+.mm-damage-roll-dialog .form-group {
+  grid-template-columns: auto auto 64px minmax(0, 1fr);
+
+  .six-one-six-die {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: center;
+    gap: $mm-spacing-sm;
+
+    img {
+      width: 42px;
+      height: 42px;
+      border: 0;
+    }
+  }
+}
+
+.mm-action-roll-header {
+  padding-bottom: $mm-spacing-sm;
+  border-bottom: 2px solid $mmrdp-red;
+}
+
+.application.dialog:has(.mm-action-roll-dialog),
+.application.dialog:has(.mm-guided-resolution-dialog),
+.application.dialog:has(.mm-roll-dialog),
+.application.dialog:has(.mm-damage-roll-dialog) {
+  .window-content {
+    color: $mmrdp-text;
+    background: rgba(10, 12, 16, 0.96);
+  }
+
+  button[data-action="roll"],
+  button[data-action="ok"] {
+    color: white;
+    background: linear-gradient(180deg, $mmrdp-red, $mmrdp-red-dark);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+#chat-log .chat-message,
+.chat-log .chat-message {
+  color: $mmrdp-text;
+  background: rgba(16, 18, 24, 0.94);
+  border: 1px solid $mmrdp-border;
+  border-radius: 8px;
+  box-shadow: none;
+
+  .message-header {
+    color: $mmrdp-muted;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .message-content {
+    color: $mmrdp-text;
+  }
+
+  button {
+    color: $mmrdp-text;
+    background: $mmrdp-panel-soft;
+    border: 1px solid $mmrdp-border;
+    border-radius: 5px;
+
+    &:hover {
+      background: rgba(228, 29, 24, 0.22);
+      border-color: rgba(228, 29, 24, 0.55);
+    }
+  }
+}
+
+.marvel-multiverse.action-roll-card,
+.marvel-multiverse.chat-card,
+.marvel-multiverse.dice-roll {
+  color: $mmrdp-text;
+  background: $mmrdp-panel-soft;
+  border: 1px solid $mmrdp-border;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.marvel-multiverse.action-roll-card {
+  padding: $mm-spacing-md;
+
+  p {
+    margin: $mm-spacing-sm 0;
+  }
+}
+
+.action-roll-title,
+.marvel-multiverse .dice-formula,
+.marvel-multiverse .dice-total {
+  margin: 0;
+  padding: $mm-spacing-sm $mm-spacing-md;
+  color: $mmrdp-text;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid $mmrdp-border;
+  letter-spacing: 0;
+}
+
+.marvel-multiverse .dice-total {
+  color: white;
+  background: linear-gradient(180deg, rgba(228, 29, 24, 0.9), rgba(139, 5, 2, 0.9));
+  border: 0;
+}
+
+.marvel-multiverse.sheet.item {
+  .window-content {
+    color: $mmrdp-text;
+    background: rgba(10, 12, 16, 0.94);
+    overflow: hidden;
+
+    > form,
+    > [data-application-part="form"] {
+      display: flex;
+      flex-direction: column;
+      gap: $mm-spacing-md;
+      height: 100%;
+      min-height: 0;
+      padding: $mm-spacing-md;
+      overflow: hidden;
+    }
+  }
+
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    gap: $mm-spacing-md;
+    padding: $mm-spacing-md;
+    background: $mmrdp-panel-soft;
+    border: 1px solid $mmrdp-border;
+    border-radius: 8px;
+
+    .profile-img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border: 1px solid $mmrdp-border;
+      border-radius: 8px;
+    }
+
+    input {
+      color: $mmrdp-text;
+      background: transparent;
+      border: 0;
+      letter-spacing: 0;
+    }
+  }
+
+  .sheet-tabs {
+    display: flex;
+    gap: $mm-spacing-sm;
+    padding-bottom: $mm-spacing-sm;
+    border-bottom: 1px solid $mmrdp-border;
+
+    .item {
+      flex: 1;
+      padding: $mm-spacing-md;
+      color: $mmrdp-muted;
+      text-align: center;
+      background: $mmrdp-panel-soft;
+      border: 1px solid transparent;
+      border-radius: 6px;
+
+      &.active {
+        color: white;
+        background: linear-gradient(180deg, $mmrdp-red, $mmrdp-red-dark);
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+    }
+  }
+
+  .sheet-body {
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .tab.active {
+    height: 100%;
+    min-height: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: rgba(228, 29, 24, 0.78) rgba(255, 255, 255, 0.08);
+    scrollbar-width: thin;
+  }
+
+  .sheet-body > :not(.tab) {
+    height: 100%;
+    min-height: 0;
+    padding-right: $mm-spacing-sm;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: rgba(228, 29, 24, 0.78) rgba(255, 255, 255, 0.08);
+    scrollbar-width: thin;
+  }
+
+  .sheet-body {
+    position: relative;
+  }
+
+  .tab.active {
+    padding-right: $mm-spacing-sm;
+  }
+
+  .mm-styled-field,
+  .resource {
+    flex: 0 0 auto;
+  }
+
+  .mm-styled-field.-checkbox {
+    .mm-styled-input {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 38px;
+      padding: $mm-spacing-sm $mm-spacing-md;
+    }
+
+    input[type="checkbox"] {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .mm-styled-label {
+    color: white;
+    background: rgba(228, 29, 24, 0.94);
+    border-color: rgba(255, 255, 255, 0.18);
+
+    &::before,
+    &::after {
+      background: rgba(228, 29, 24, 0.94);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+  }
+
+  .mm-styled-input {
+    background: rgba(228, 29, 24, 0.72);
+    border: 1px solid rgba(228, 29, 24, 0.45);
+
+    &::before {
+      background: rgba(7, 9, 13, 0.92);
+    }
+
+    > input,
+    .plain-text {
+      color: $mmrdp-text;
+      background: transparent;
+      text-transform: none;
+    }
+
+    > select {
+      color: $mmrdp-text;
+      color-scheme: dark;
+      background: #151820;
+      text-transform: none;
+    }
+
+    .editor,
+    .editor-container,
+    .editor-content,
+    prose-mirror,
+    .prosemirror,
+    .ProseMirror {
+      position: relative;
+      z-index: 2;
+      color: #17191f;
+      background: #f7f3f1;
+    }
+
+    .editor-container {
+      min-height: 90px;
+      border: 1px solid $mmrdp-border;
+      border-radius: 4px;
+    }
+
+    .editor-content,
+    .ProseMirror {
+      min-height: 76px;
+      padding: $mm-spacing-md;
+
+      &,
+      * {
+        color: #17191f;
+      }
+    }
+
+    .editor-menu,
+    .prosemirror menu {
+      color: $mmrdp-text;
+      background: rgba(20, 23, 30, 0.98);
+      border-color: $mmrdp-border;
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    color: $mmrdp-text;
+    background: #151820;
+    border-color: $mmrdp-border;
+
+    &::placeholder {
+      color: rgba(247, 243, 241, 0.48);
+    }
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    box-sizing: border-box;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(247, 243, 241, 0.58);
+    border-radius: 4px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: none !important;
+    }
+
+    &:checked {
+      background: $mmrdp-red;
+      border-color: $mmrdp-red;
+
+      &::after {
+        content: "" !important;
+        display: block;
+        position: absolute;
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(247, 243, 241, 0.9);
+      outline-offset: 2px;
+    }
+  }
+
+  option {
+    color: $mmrdp-text;
+    background: #151820;
+  }
+}
