@@ -4,18 +4,18 @@ This document is the working list of known remaining tasks as of September 5, 20
 
 ## Next Session
 
-- [ ] Live-gate **Memory Blip** against a valid target.
-  - Confirm Logic versus Logic, one required target, and 5 Focus spent once.
-  - Confirm no damage copy or damage controls appear.
-  - Verify success, failure, and Fantastic-success reminders.
-  - Verify Refund Focus restores the exact previous value.
+- [x] Live-gate **Memory Blip** against a valid target.
+  - Confirmed Logic versus Logic, one required target, and 5 Focus spent once.
+  - Confirmed no damage copy or damage controls appear.
+  - Verified success, failure, and Fantastic-success reminders.
+  - Verified Refund Focus restores the exact previous value.
 - [ ] Live-gate **Orders** against a target with zero Focus.
   - Confirm Logic versus Logic, one required target, and 15 Focus spent once.
   - Verify the Telepathic Link, zero-Focus, conditional Trouble, and one-hour reminders.
   - Verify success, failure, Fantastic-success, and Refund Focus behavior.
 - [ ] Recast **Command** after the live profile cleanup and confirm there are no unknown `telepathy.*` effect warnings.
 - [ ] Restore Professor X's test Focus to its intended baseline after testing.
-- [ ] Remove temporary **Memory Blip** and **Orders** items from the unlinked Professor X automation token when their gates pass.
+- [ ] Remove the temporary **Orders** item from the unlinked Professor X automation token when its gate passes. **Memory Blip** has been removed.
 - [ ] Remove the temporary Professor X automation token `MTkMb9khHVRFpYgK` when Telepathy testing is complete.
 
 ## Elemental Barrier
