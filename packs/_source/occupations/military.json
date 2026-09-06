@@ -15,7 +15,37 @@
           "description": "The character is always mentally prepared for any sort of trouble to start. Add +30 Focus."
         },
         "flags": {},
-        "effects": [],
+        "effects": [
+          {
+            "name": "Extra Focus",
+            "img": "icons/svg/aura.svg",
+            "duration": {
+              "startTime": null,
+              "seconds": null,
+              "combat": null,
+              "rounds": null,
+              "turns": null,
+              "startRound": null,
+              "startTurn": null
+            },
+            "disabled": false,
+            "origin": "Item.J9DayS2OSDi76nK3",
+            "_id": "7fa811df7b674241",
+            "changes": [
+              {
+                "key": "system.focus.max",
+                "mode": 2,
+                "value": 30
+              }
+            ],
+            "description": "",
+            "transfer": true,
+            "statuses": [],
+            "flags": {},
+            "tint": null,
+            "_key": "!items.effects!J9DayS2OSDi76nK3.7fa811df7b674241"
+          }
+        ],
         "_key": "!items!J9DayS2OSDi76nK3"
       },
       {

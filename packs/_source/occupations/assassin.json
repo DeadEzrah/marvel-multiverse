@@ -21,8 +21,8 @@
         "_key": "!items!sTOkQnuofMc4Skgd"
       },
       {
-        "_id": "Yzb2fTZrEvGCJeXt",
-        "name": "Villianous",
+        "_id": "LZCJ07Iy5iHsZjpk",
+        "name": "Villainous",
         "type": "tag",
         "system": {
           "description": "The character is a villain, someone who cares little for the rights of others, up to and including their right to live.",
@@ -31,7 +31,7 @@
         },
         "flags": {},
         "effects": [],
-        "_key": "!items!Yzb2fTZrEvGCJeXt"
+        "_key": "!items!LZCJ07Iy5iHsZjpk"
       }
     ],
     "traits": [
