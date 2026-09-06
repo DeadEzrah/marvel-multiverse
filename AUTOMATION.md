@@ -283,6 +283,7 @@ Completed:
 - Free-JB2A arrow and thrown-dagger effects resolve and play through Sequencer. Action-roll damage now records normal undo transactions for single and multi-target attacks; chat apply, reapply, and undo requests route through socketlib's GM RPC. Live Shotgun cycles applied, undid, reapplied, and undid exact split damage, and explicit Player permission checks reject direct mutation while allowing the GM relay boundary.
 - Big and Small now apply their deterministic defense, Run Speed, and Reach adjustments from effective actor size. Battle Ready and Situational Awareness retain their existing transferred effects.
 - Occupation and origin grant snapshots were audited. Military now grants Battle Ready with its +30 Focus effect, Assassin and Alien: Brood use the canonical Villainous tag, and Spirit of Vengeance grants the migrated Hellfire Chains data.
+- Passive and granted-data live gates passed through the actor-sheet drop workflow. Big and Small applied exact defense, Run Speed, and Reach changes; Military granted Battle Ready and raised maximum Focus by 30; Assassin and Alien: Brood granted canonical Villainous data; and Spirit of Vengeance preserved Hellfire Chains targeting, damage, effects, and events. Forty-four stale embedded copies were refreshed across world actors and the unlinked Apocalypse token. Sasquatch retains his intentional Huge actor size with his actor-specific Big transfer disabled.
 
 Not completed:
 

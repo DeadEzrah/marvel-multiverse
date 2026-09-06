@@ -89,11 +89,11 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Passive And Granted Data
 
-- [ ] Live-gate Big and Small adjustments to defenses, Run Speed, and Reach.
-- [ ] Live-gate Military granting Battle Ready with its +30 Focus effect.
-- [ ] Verify Assassin and Alien: Brood resolve the canonical Villainous tag.
-- [ ] Verify Spirit of Vengeance grants the migrated Hellfire Chains item without losing structured automation data.
-- [ ] Audit embedded grant snapshots so future compendium updates do not leave stale copies on actors or unlinked tokens.
+- [x] Live-gate Big and Small adjustments to defenses, Run Speed, and Reach.
+- [x] Live-gate Military granting Battle Ready with its +30 Focus effect.
+- [x] Verify Assassin and Alien: Brood resolve the canonical Villainous tag.
+- [x] Verify Spirit of Vengeance grants the migrated Hellfire Chains item without losing structured automation data.
+- [x] Audit embedded grant snapshots so future compendium updates do not leave stale copies on actors or unlinked tokens.
 
 ## Rules Engine
 
