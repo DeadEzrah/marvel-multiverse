@@ -12,7 +12,26 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 20
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "rollModifiers": [
+      {
+        "mode": "trouble",
+        "count": 1,
+        "when": {
+          "maximumRange": 5
+        },
+        "label": "Rifle attack against a target within 5 spaces"
+      }
+    ]
   },
   "flags": {},
   "effects": [],

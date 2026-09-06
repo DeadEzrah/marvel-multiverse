@@ -12,7 +12,34 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 3,
+      "defense": "agl",
+      "range": 10,
+      "requiresLineOfSight": true,
+      "groupMaxSeparation": 1
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "type": "health",
+      "distributeAcrossTargets": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "rollModifiers": [
+      {
+        "mode": "trouble",
+        "count": 1,
+        "when": {
+          "maximumRange": 5
+        },
+        "label": "Submachine Gun attack against a target within 5 spaces"
+      }
+    ]
   },
   "flags": {},
   "effects": [],

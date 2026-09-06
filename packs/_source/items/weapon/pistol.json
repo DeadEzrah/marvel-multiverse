@@ -11,7 +11,16 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    }
   },
   "flags": {},
   "effects": [],

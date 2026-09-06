@@ -11,7 +11,19 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "effectProfiles": {
+      "attack": "weapon.blade.swing",
+      "hit": "weapon.blade.hit",
+      "miss": "melee.miss"
+    }
   },
   "flags": {},
   "effects": [],

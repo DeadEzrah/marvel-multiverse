@@ -12,7 +12,34 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "defense": "agl",
+      "range": 6,
+      "requiresLineOfSight": true,
+      "groupMaxSeparation": 1
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "type": "health",
+      "distributeAcrossTargets": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "rollModifiers": [
+      {
+        "mode": "trouble",
+        "count": 1,
+        "when": {
+          "maximumRange": 5
+        },
+        "label": "Shotgun attack against a target within 5 spaces"
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,70 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "placed",
+        "distance": 2,
+        "placementRange": 10,
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": true
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "multiplier": 2,
+      "doubleOnFantastic": false,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "destruction.explosion.medium"
+    },
+    "events": [
+      {
+        "id": "frag-grenade-fantastic-center-reminder",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "frag-grenade-double-center-damage",
+            "type": "manual",
+            "label": "Fantastic success: apply one additional regular grenade damage amount to the character in the grenade's center space."
+          }
+        ]
+      },
+      {
+        "id": "frag-grenade-obstruction-reminder",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "frag-grenade-review-obstructions",
+            "type": "manual",
+            "label": "Exclude characters the grenade cannot see past intervening obstacles."
+          }
+        ]
+      },
+      {
+        "id": "frag-grenade-scatter-reminder",
+        "trigger": "source-failure",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "frag-grenade-resolve-scatter",
+            "type": "manual",
+            "label": "Failed throw: roll 1d6 for scatter distance and let the Narrator choose the direction."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

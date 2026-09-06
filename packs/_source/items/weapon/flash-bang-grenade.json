@@ -9,10 +9,79 @@
     "damageMultiplierBonus": "-",
     "ability": "agl",
     "rule": "This works much like a frag grenade, but it does no Health damage, Instead, once you figure out where the grenade lands, compare the attack roll against the Vigilance defense of any character within 2 spaces of it. Those who are affected are blinded and stunned for one round.",
-    "attackTarget": "agl",
+    "attackTarget": "vig",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "targeting": {
+      "required": true,
+      "defense": "vig",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "placed",
+        "distance": 2,
+        "placementRange": 10,
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": true
+      }
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "impact": "power.light.flare"
+    },
+    "events": [
+      {
+        "id": "flash-bang-conditions",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "flash-bang-blinded",
+            "type": "status",
+            "statusId": "blinded",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          },
+          {
+            "id": "flash-bang-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      },
+      {
+        "id": "flash-bang-obstruction-reminder",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "flash-bang-review-obstructions",
+            "type": "manual",
+            "label": "Exclude characters the grenade cannot see past intervening obstacles."
+          }
+        ]
+      },
+      {
+        "id": "flash-bang-scatter-reminder",
+        "trigger": "source-failure",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "flash-bang-resolve-scatter",
+            "type": "manual",
+            "label": "Failed throw: roll 1d6 for scatter distance and let the Narrator choose the direction."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
