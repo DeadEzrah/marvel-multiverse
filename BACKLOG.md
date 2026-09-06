@@ -14,10 +14,10 @@ This document is the working list of known remaining tasks as of September 5, 20
   - Verified the Telepathic Link, zero-Focus, conditional Trouble, and one-hour reminders.
   - Verified success, failure, Fantastic-success, and Refund Focus behavior.
   - Fixed action-roll preflight so single-target presets reject multiple selected targets before opening the roll dialog.
-- [ ] Recast **Command** after the live profile cleanup and confirm there are no unknown `telepathy.*` effect warnings.
+- [x] Recast **Command** after refreshing all live copies to generic psychic profiles; no effect-profile warnings remain.
 - [x] Restore Professor X's test Focus to its intended baseline after testing.
 - [x] Remove temporary **Memory Blip** and **Orders** items from the unlinked Professor X automation token after their gates pass.
-- [ ] Remove the temporary Professor X automation token `MTkMb9khHVRFpYgK` when Telepathy testing is complete.
+- [x] Remove the temporary Professor X automation token `MTkMb9khHVRFpYgK` after Telepathy testing.
 
 ## Elemental Barrier
 
