@@ -12,7 +12,63 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character can communicate telepathically with one person at a time, and they must have met or seen the other person before. The communication can be verbal, visual or even more complex, such as imparting location information. There is no limit to the distance of the communication, as long as the character and the target are in the same dimension. If the other person does not wish to speak with the character, the target can automatically tune them out. To force a telepathic link, the character can make a Logic check against the target's Vigilance defense. On a failure, the character cannot attempt to communicate with the target in this way for the rest of the day. On a success, the character can communicate with the target for one round. On a Fantastic success, the target cannot shut the character out for the rest of the day."
+    "effect": "The character can communicate telepathically with one person at a time, and they must have met or seen the other person before. The communication can be verbal, visual or even more complex, such as imparting location information. There is no limit to the distance of the communication, as long as the character and the target are in the same dimension. If the other person does not wish to speak with the character, the target can automatically tune them out. To force a telepathic link, the character can make a Logic check against the target's Vigilance defense. On a failure, the character cannot attempt to communicate with the target in this way for the rest of the day. On a success, the character can communicate with the target for one round. On a Fantastic success, the target cannot shut the character out for the rest of the day.",
+    "automationPreset": "check.opposed.single",
+    "ability": "log",
+    "attackTarget": "vig",
+    "targeting": {
+      "defense": "vig"
+    },
+    "events": [
+      {
+        "id": "telepathic-link-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telepathic-link-requirements-reminder",
+            "type": "manual",
+            "label": "Choose one person the character has met or seen in the same dimension. A willing target can communicate without this check; roll only to force the link."
+          }
+        ]
+      },
+      {
+        "id": "telepathic-link-failure",
+        "trigger": "target-miss",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telepathic-link-lockout-reminder",
+            "type": "manual",
+            "label": "Failure: the character cannot attempt to communicate telepathically with this target again for the rest of the day."
+          }
+        ]
+      },
+      {
+        "id": "telepathic-link-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telepathic-link-round-reminder",
+            "type": "manual",
+            "label": "The forced telepathic link remains open for one round."
+          }
+        ]
+      },
+      {
+        "id": "telepathic-link-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telepathic-link-day-reminder",
+            "type": "manual",
+            "label": "Fantastic success: the target cannot shut the character out telepathically for the rest of the day."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

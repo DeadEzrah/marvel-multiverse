@@ -36,7 +36,7 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 
 ### Link And Communication
 
-- [ ] **Telepathic Link**: willing communication plus forced Logic-versus-Vigilance check, failure lockout, one-round success, and Fantastic day-long lockout prevention.
+- [x] **Telepathic Link**: willing communication plus forced Logic-versus-Vigilance check, failure lockout, one-round success, and Fantastic day-long lockout prevention.
 - [ ] **Telepathic Network**: willing linked targets, maximum five targets per rank, same-dimension reminder, 5 Focus, and concentration.
 - [ ] **Borrow Senses**: established link/bond requirement, one target, 5 Focus, and concentration.
 - [ ] **Animal Bond**: persistent chosen-animal restriction and same-dimension communication reminders.
