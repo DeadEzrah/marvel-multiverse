@@ -2206,17 +2206,27 @@ class ChatMessageMarvel extends ChatMessage {
     const actor = typeof globalThis.fromUuidSync === "function" ? globalThis.fromUuidSync(actorUuid) : null;
     const actorRecord = actor?.actor ?? actor;
     if (!actorRecord) return;
+    const sourceItem = rollContext?.itemUuid && typeof globalThis.fromUuidSync === "function"
+      ? globalThis.fromUuidSync(rollContext.itemUuid)
+      : null;
+    const focusCost = parseFocusCost(sourceItem?.system?.cost ?? rollContext?.source?.costText ?? null);
+    const eventTransactions = message.getFlag("marvel-multiverse", "resolution")?.eventTransactions ?? [];
     const result = await startConcentration(actorRecord, {
       message,
       itemName: rollContext?.source?.itemName ?? actorRecord.name,
       itemUuid: rollContext?.itemUuid ?? null,
       targetUuids: Array.isArray(rollContext?.targetUuids) ? rollContext.targetUuids : [],
-      statusTransactionIds: [],
+      statusTransactionIds: eventTransactions
+        .filter((transaction) => !transaction?.undone && transaction?.duration?.type === "concentration")
+        .map((transaction) => transaction.id),
       concentrationStatus: utilityActivation?.concentrationStatus ?? null,
       concentrationStatusActorUuids: Array.isArray(utilityActivation?.concentrationStatusActorUuids)
         ? utilityActivation.concentrationStatusActorUuids
         : [],
       regionUuids: Array.isArray(rollContext?.areaRegionUuids) ? rollContext.areaRegionUuids : [],
+      maintenance: focusCost?.valid && focusCost.cadence === "turn"
+        ? { resource: "focus", amount: focusCost.value, cadence: "turn", timing: "start-of-subsequent-turn" }
+        : null,
     });
     if (result?.success) {
       button.textContent = game.i18n.localize("MARVEL_MULTIVERSE.ConcentrationStarted") || "Concentration started";

@@ -12,7 +12,25 @@
     "duration": "The character's rank times 15 minutes",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character fills up to 5 spaces with sticky webs, and the affected spaces are considered difficult terrain.Any creature that starts its turn in or moves into an affected space must make an Agility check (target number 20) or be paralyzed by the webbing. Breaking free from webbing requires a Melee check (target number 20)."
+    "effect": "The character fills up to 5 spaces with sticky webs, and the affected spaces are considered difficult terrain.Any creature that starts its turn in or moves into an affected space must make an Agility check (target number 20) or be paralyzed by the webbing. Breaking free from webbing requires a Melee check (target number 20).",
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "area": {
+        "enabled": true,
+        "shape": "rectangle",
+        "origin": "placed",
+        "distance": 5,
+        "width": 5,
+        "height": 1,
+        "persistent": true,
+        "duration": "The character's rank times 15 minutes",
+        "targetFilter": "all",
+        "requiresLineOfSight": true,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    }
   },
   "flags": {},
   "effects": [],
