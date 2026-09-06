@@ -8,6 +8,8 @@ Please ensure there is an open issue about whatever contribution you are submitt
 
 Cloning this repository and either placing it in or symlinking it to your `Data/systems/marvel-multiverse` user data directory is all that is necessary to run this within Foundry VTT. However, if you want to make changes to either the LESS stylesheets or the compendia, there are some developer tools which will make your life easier.
 
+See [Power and Effect Automation](AUTOMATION.md) for the current Sequencer/JB2A architecture, semantic profile conventions, content migration order, and validation checklist.
+
 If your system supports `npm`, you can run the following commands from the root of the project to get set up:
 
 ### `npm install`
