@@ -16,10 +16,27 @@
     "isElemental": true,
     "ability": "agl",
     "attackTarget": "agl",
+    "attackRange": 10,
+    "attackMultiplier": 1,
     "attackEdgeMode": "edge",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10
+    },
+    "effectProfiles": {
+      "attack": "power.energy.blast",
+      "hit": "power.energy.impact"
+    },
+    "effectOverrides": {
+      "attack": {
+        "duration": 3000
+      }
+    }
   },
   "flags": {},
   "effects": [],

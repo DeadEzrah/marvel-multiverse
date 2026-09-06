@@ -14,10 +14,32 @@
     "cost": "15 Focus",
     "effect": "The character designates a space within their line of sight. The attack can affect every enemy within 10 spaces of that. The character makes a single Ego check and compares it to each target's Resilience defense. Affected enemies take half regular damage. On a Fantastic success, they take full regular damage and the elemental type's special effect.",
     "ability": "ego",
+    "attack": true,
     "attackTarget": "res",
     "isElemental": true,
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "targeting": {
+      "required": true,
+      "defense": "res",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "distance": 10,
+        "targetFilter": "enemies",
+        "includeSelf": false
+      }
+    },
+    "effectProfiles": {
+      "attack": "power.energy.blast",
+      "impact": "destruction.explosion.medium"
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "scale": 0.5,
+      "type": "health"
+    }
   },
   "flags": {},
   "effects": [],

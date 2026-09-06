@@ -14,10 +14,39 @@
     "cost": "15 or more Focus",
     "effect": " The character makes an Ego check and compares that against the Resilience defense of every enemy within 10 spaces. For these attacks, add +1 to the character's Ego damage bonus for every 2 points of Focus they spend. On a success, an affected target takes half that total damage. On a Fantastic success, an affected target takes full damage and suffers the elemental type's special effect.",
     "ability": "ego",
+    "attack": true,
     "attackTarget": "res",
     "isElemental": true,
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "targeting": {
+      "required": true,
+      "defense": "res",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 10,
+        "targetFilter": "all",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "scale": 0.5,
+      "includeFocusBonusInBase": true,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "destruction.explosion.medium"
+    }
   },
   "flags": {},
   "effects": [],

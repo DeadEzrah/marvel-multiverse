@@ -13,12 +13,11 @@
     "range": "10 spaces",
     "cost": "5 or more Focus",
     "effect": "The character makes a ranged attack against an enemy in line of sight. If the attack is a success, it inflicts regular damage. On a Fantastic success, the enemy takes double damage instead and the elemental type's special effect.",
+    "automationPreset": "attack.ranged.single-blast",
     "isElemental": true,
     "ability": "agl",
     "attackTarget": "agl",
-    "attackKind": "ranged",
-    "attack": true,
-    "damageType": "health"
+    "attackRange": 10
   },
   "flags": {},
   "effects": [],

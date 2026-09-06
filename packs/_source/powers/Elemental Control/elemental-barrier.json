@@ -15,6 +15,85 @@
     "effect": " The character forms a wall of their element within their line of sight and up to 10 spaces away per rank. This covers up to 2 spaces across (vertically/horizontally) per their rank. The character makes an Agility check and compares the results against the Agility defense of any target in the affected spaces. On a success, the character chooses which side of the barrier the target winds up on. On a failure, the target chooses. On a Fantastic success, the target suffers the element's special effect too. Attacks against the barrier are against the character's Ego defense. Any attacks against it that do 10 points of damage or less are instantly absorbed, and the barrier continues. If an attack does more than 10 points of damage, it destroys the barrier. Either way, the attack leaves those behind the barrier unharmed.",
     "ability": "agl",
     "attackTarget": "agl",
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "wall",
+        "origin": "placed",
+        "distance": 2,
+        "distanceScaling": "rank",
+        "width": 1,
+        "placementRange": 10,
+        "placementRangeScaling": "rank",
+        "persistent": true,
+        "duration": "concentration",
+        "targetFilter": "all",
+        "requiresLineOfSight": true,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "cast": "defense.elemental.wall"
+    },
+    "events": [
+      {
+        "id": "elemental-barrier-side-choice-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-barrier-source-chooses-side",
+            "type": "manual",
+            "label": "The barrier's creator chooses which side of the barrier the target occupies."
+          }
+        ]
+      },
+      {
+        "id": "elemental-barrier-side-choice-failure",
+        "trigger": "target-miss",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-barrier-target-chooses-side",
+            "type": "manual",
+            "label": "The target chooses which side of the barrier they occupy."
+          }
+        ]
+      },
+      {
+        "id": "elemental-barrier-fantastic-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-barrier-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the chosen element's special effect to the target."
+          }
+        ]
+      },
+      {
+        "id": "elemental-barrier-durability",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-barrier-track-durability",
+            "type": "manual",
+            "label": "Barrier reminder: attacks dealing 10 damage or less are absorbed; more than 10 destroys the barrier."
+          }
+        ]
+      }
+    ],
     "isElemental": true
   },
   "flags": {},
