@@ -17,10 +17,16 @@
     "ability": "log",
     "attackTarget": "log",
     "attackEdgeMode": "trouble",
-    "targeting": { "defense": "log", "maximumFocus": 0 },
+    "targeting": {
+      "defense": "log",
+      "prerequisites": [
+        { "type": "resource", "resource": "focus", "operator": "eq", "value": 0, "message": "Domination requires the target to have 0 Focus." },
+        { "type": "source-link", "itemName": "Telepathic Link", "message": "Domination requires an active Telepathic Link with the target." }
+      ]
+    },
     "events": [
       { "id": "domination-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
-        { "id": "domination-prerequisite-reminder", "type": "manual", "label": "Confirm an established Telepathic Link. This initial Logic check has Trouble and requires the target to have 0 Focus." }
+        { "id": "domination-prerequisite-reminder", "type": "manual", "label": "This initial Logic check has Trouble." }
       ] },
       { "id": "domination-success", "trigger": "target-hit", "recipient": "target", "outcomes": [
         { "id": "domination-resistance-reminder", "type": "manual", "label": "Record this roll result as the permanent domination's resistance TN. Harmful orders permit a Logic resistance check; self-harm grants Edge, or double Edge if Heroic." }

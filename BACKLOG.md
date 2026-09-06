@@ -102,7 +102,7 @@ The 13 weapon records are structured locally but still require complete live gat
 - [x] Add persistent lifecycle support for webs, auras, maintained effects, and other concentration powers.
 - [x] Define expiration and cleanup behavior for rounds, combat turns, concentration, sleep, day-long effects, and permanent effects.
 - [x] Decide how one-use future Edge benefits are stored, consumed, and undone.
-- [ ] Add safe prerequisites for target state, including zero Focus, existing links, statuses, tags, and active effects.
+- [x] Add safe prerequisites for target state, including zero Focus, existing links, statuses, tags, and active effects.
 - [ ] Continue treating manual reminders as valid partial automation for subjective or choice-heavy rules.
 
 ## Authoring And Data Models

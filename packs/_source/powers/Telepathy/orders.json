@@ -17,7 +17,21 @@
     "ability": "log",
     "attackTarget": "log",
     "targeting": {
-      "defense": "log"
+      "defense": "log",
+      "prerequisites": [
+        {
+          "type": "resource",
+          "resource": "focus",
+          "operator": "eq",
+          "value": 0,
+          "message": "Orders requires the target to have 0 Focus."
+        },
+        {
+          "type": "source-link",
+          "itemName": "Telepathic Link",
+          "message": "Orders requires an active Telepathic Link with the target."
+        }
+      ]
     },
     "events": [
       {
@@ -28,7 +42,7 @@
           {
             "id": "orders-requirements-reminder",
             "type": "manual",
-            "label": "Verify an established Telepathic Link and that the target has no Focus remaining. Apply trouble if the orders harm someone, or double trouble if they make the target harm themselves. The orders must be completed within one hour."
+            "label": "Apply trouble if the orders harm someone, or double trouble if they make the target harm themselves. The orders must be completed within one hour."
           }
         ]
       },

@@ -17,10 +17,16 @@
     "ability": "log",
     "attackTarget": "log",
     "attackEdgeMode": "trouble",
-    "targeting": { "defense": "log", "maximumFocus": 0 },
+    "targeting": {
+      "defense": "log",
+      "prerequisites": [
+        { "type": "resource", "resource": "focus", "operator": "eq", "value": 0, "message": "Telepathic Possession requires the target to have 0 Focus." },
+        { "type": "source-link", "itemName": "Telepathic Link", "message": "Telepathic Possession requires an active Telepathic Link with the target." }
+      ]
+    },
     "events": [
       { "id": "telepathic-possession-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
-        { "id": "telepathic-possession-prerequisite-reminder", "type": "manual", "label": "Confirm an established Telepathic Link. Contested possession has Trouble and requires 0 target Focus. An empty-minded body can receive a permanent transfer without this check; resolve that exception manually." }
+        { "id": "telepathic-possession-prerequisite-reminder", "type": "manual", "label": "Contested possession has Trouble. An empty-minded body can receive a permanent transfer without this check; resolve that exception manually." }
       ] },
       { "id": "telepathic-possession-success", "trigger": "target-hit", "recipient": "target", "outcomes": [
         { "id": "telepathic-possession-resistance-reminder", "type": "manual", "label": "Record this roll result as the possession resistance TN. Harm to others permits a Logic resistance check; harm to the possessed body grants Edge, or double Edge if Heroic." }
