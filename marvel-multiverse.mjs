@@ -2148,6 +2148,8 @@ class ChatMessageMarvel extends ChatMessage {
       content.appendChild(preview_);
     }
 
+    if (!automatedOutcomes.length) return;
+
     const container = document.createElement("div");
     container.classList.add("marvel-multiverse", "power-event-actions", "action-panel", "compact-inline");
     const applyLabel = game.i18n.localize("MARVEL_MULTIVERSE.ApplyPowerOutcomes") || "Apply Power Outcomes";
