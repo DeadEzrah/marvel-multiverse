@@ -55,10 +55,10 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 
 ### Control And Memory
 
-- [ ] **Edit Memory**: Narrator-defined complexity, Logic versus Logic, recovery checks, Fantastic Trouble, 15 Focus, and permanent duration.
-- [ ] **Domination**: established link, zero-Focus prerequisite, initial Trouble, resistance checks, Heroic modifiers, 20 Focus, and permanent duration.
-- [ ] **Telepathic Possession**: established link, zero-Focus prerequisite, initial Trouble, control/resistance rules, empty-mind transfer, 20 Focus, and concentration.
-- [ ] **Copy Psyche**: copy capacity, transfer/removal checks, daily Resilience check, unavailable Focus, takeover rules, and shattered-state cleanup. Keep complex branches manual unless a safe transaction model is designed.
+- [x] **Edit Memory**: Narrator-defined complexity, Logic versus Logic, recovery checks, Fantastic Trouble, 15 Focus, and permanent duration.
+- [x] **Domination**: established link, zero-Focus prerequisite, initial Trouble, resistance checks, Heroic modifiers, 20 Focus, and permanent duration.
+- [x] **Telepathic Possession**: established link, zero-Focus prerequisite, initial Trouble, control/resistance rules, empty-mind transfer, 20 Focus, and concentration.
+- [x] **Copy Psyche**: copy capacity, transfer/removal checks, daily Resilience check, unavailable Focus, takeover rules, and shattered-state cleanup. Complex branches remain explicit reminders until a safe transaction model is designed.
 
 ### Defensive And Transformative
 

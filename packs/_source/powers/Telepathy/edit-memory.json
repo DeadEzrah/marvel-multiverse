@@ -13,8 +13,21 @@
     "range": "",
     "cost": "15 Focus",
     "effect": "The character alters the memory of a target with whom they've established a Telepathic Link. This can be as simple as erasing a chunk of the target's memory or as complicated as implanting entirely new memories. The Narrator sets the target number based on how complex the new memory is and how hard it would be to integrate such memories into the character's other memories. The character makes a Logic check against the target's Logic defense. On a success, the memories are altered. On a Fantastic success, the target has trouble on checks to refute such memories in the future. Any time the target is given good reason to doubt the edited memory, they can make a Logic check to refute the new version of their memories and recover their original memories. If they succeed, they remember both the original memory and the edited one. On a Fantastic success, they know for sure who did this to them.",
+    "automationPreset": "check.opposed.single",
     "ability": "log",
-    "attackTarget": "log"
+    "attackTarget": "log",
+    "targeting": { "defense": "log" },
+    "events": [
+      { "id": "edit-memory-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
+        { "id": "edit-memory-complexity-reminder", "type": "manual", "label": "Confirm an established Telepathic Link and describe the edit. The Narrator may adjust the Logic target number for the memory's complexity and compatibility." }
+      ] },
+      { "id": "edit-memory-success", "trigger": "target-hit", "recipient": "target", "outcomes": [
+        { "id": "edit-memory-recovery-reminder", "type": "manual", "label": "The memory is altered permanently. When given good reason to doubt it, the target may make a Logic check to recover both versions." }
+      ] },
+      { "id": "edit-memory-fantastic", "trigger": "target-fantastic-hit", "recipient": "target", "outcomes": [
+        { "id": "edit-memory-fantastic-reminder", "type": "manual", "label": "Fantastic success: the target has Trouble on future checks to refute the edited memory. A Fantastic recovery identifies who altered it." }
+      ] }
+    ]
   },
   "flags": {},
   "effects": [],
