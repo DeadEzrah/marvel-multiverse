@@ -12,7 +12,27 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character extends their mental defenses to protect any chosen people within up to 5 spaces times their rank. The protected targets are granted Focus Damage Reduction equal to the character's Uncanny power."
+    "effect": "The character extends their mental defenses to protect any chosen people within up to 5 spaces times their rank. The protected targets are granted Focus Damage Reduction equal to the character's Uncanny power.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "rangePerRank": 5,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "mental-shelter-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mental-shelter-rules-reminder",
+            "type": "manual",
+            "label": "Confirm the selected people are chosen allies within 5 spaces per rank. While concentration lasts, each protected target has Focus Damage Reduction equal to the source's Uncanny power; apply that reduction manually."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

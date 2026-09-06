@@ -12,7 +12,27 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can project an avatar into the Astral Plane, leering their physical body in a deep trance in the teal world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in The Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their Fun Speed. Outside of combat, they can move 10 times as fast."
+    "effect": "The character can project an avatar into the Astral Plane, leering their physical body in a deep trance in the teal world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in The Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their Fun Speed. Outside of combat, they can move 10 times as fast.",
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "concentrationStatus": "astral-form",
+      "concentrationStatusIncludesSource": true
+    },
+    "events": [
+      {
+        "id": "astral-form-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "astral-form-rules-reminder",
+            "type": "manual",
+            "label": "Leave the physical body in a vulnerable deep trance. In Astral Form, the avatar is intangible and generally undetectable in the real world but can sense it; at Rank 4+, it may appear there transparently. Flight Speed is rank times Run Speed in combat and 10 times as fast outside combat."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

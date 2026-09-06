@@ -62,8 +62,8 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 
 ### Defensive And Transformative
 
-- [ ] **Mental Shelter**: rank-scaled area, chosen allies, Focus Damage Reduction based on Uncanny, 10 Focus, and concentration lifecycle.
-- [ ] **Astral Form**: physical-body vulnerability, Astral state, real-world visibility by rank, flight calculation, 5 Focus, and concentration lifecycle.
+- [x] **Mental Shelter**: rank-scaled area, chosen allies, Focus Damage Reduction based on Uncanny, 10 Focus, and concentration lifecycle.
+- [x] **Astral Form**: physical-body vulnerability, Astral state, real-world visibility by rank, flight calculation, 5 Focus, and concentration lifecycle.
 
 ## Utility Activation Workflow
 
