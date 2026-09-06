@@ -13,8 +13,53 @@
     "range": "",
     "cost": "",
     "effect": "The character can reach out with their mind to sense the presence of others within 100 spaces per rank. This tells them the person's location and general status. It can also identify if they have super-powers or not. If a target or targets wish to remain undetected, the character must make a Logic check and compare it against each target's Vigilance defense. If they succeed, they sense the target. On a Fantastic success, they can also identify the source of any powers the target has.",
+    "automationPreset": "check.opposed.single",
     "ability": "log",
-    "attackTarget": "log"
+    "attackTarget": "vig",
+    "targeting": {
+      "count": 999,
+      "defense": "vig",
+      "range": 100,
+      "rangeScaling": "rank"
+    },
+    "events": [
+      {
+        "id": "esp-resisting-targets-reminder",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "esp-remind-resisting-targets",
+            "type": "manual",
+            "label": "Only targets attempting to remain undetected require this opposed check; other presences are sensed automatically. Maintain concentration."
+          }
+        ]
+      },
+      {
+        "id": "esp-sensed-target",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "esp-remind-sensed-details",
+            "type": "manual",
+            "label": "Reveal this target's location, general status, and whether they have super-powers."
+          }
+        ]
+      },
+      {
+        "id": "esp-fantastic-power-source",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "esp-remind-power-source",
+            "type": "manual",
+            "label": "Fantastic success: also identify the source of this target's powers."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

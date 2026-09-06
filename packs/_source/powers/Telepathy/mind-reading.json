@@ -13,8 +13,50 @@
     "range": "",
     "cost": "",
     "effect": "The character can read the thoughts of a single person with whom they have established a Telepathic Link. This requires a Logic check against the target's Logic defense. On a success, the character can read the target's surface thoughts. On a Fantastic success, the character can ask a single simple question and get the answer from the target's mind.",
+    "automationPreset": "check.opposed.single",
     "ability": "log",
-    "attackTarget": "log"
+    "attackTarget": "log",
+    "targeting": {
+      "defense": "log"
+    },
+    "events": [
+      {
+        "id": "mind-reading-link-reminder",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mind-reading-remind-link",
+            "type": "manual",
+            "label": "Verify that the character has established a Telepathic Link with the target."
+          }
+        ]
+      },
+      {
+        "id": "mind-reading-surface-thoughts",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mind-reading-remind-surface-thoughts",
+            "type": "manual",
+            "label": "Reveal this target's surface thoughts."
+          }
+        ]
+      },
+      {
+        "id": "mind-reading-fantastic-question",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mind-reading-remind-question",
+            "type": "manual",
+            "label": "Fantastic success: answer one simple question from the target's mind."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

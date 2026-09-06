@@ -13,11 +13,32 @@
     "range": "",
     "cost": "",
     "effect": "The character makes a Melee attack against a target. If the attack is a success, it Inflicts regular Focus damage (instead of Health damage), On a Fantastic success, the target takes double damage instead and is stunned for one round",
+    "automationPreset": "attack.single-focus",
     "ability": "mle",
     "attackTarget": "mle",
     "attackKind": "close",
-    "attack": true,
-    "damageType": "focus"
+    "targeting": {
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "events": [
+      {
+        "id": "mental-punch-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mental-punch-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

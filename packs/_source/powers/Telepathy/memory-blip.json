@@ -13,8 +13,50 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character causes a target with whom they've established a Telepathic Link to forget something that's happened in the past hour. This gap can be up to an hour in length. The character makes a Logic check against the target's Logic defense. On a success, the memories are forgotten. On a Fantastic success, the target has trouble on checks to recover such memories in the future. Any time the target is given good reason to question the blank in their memory, they can make a Logic check to recover their memory, If they succeed, the original memory floods back. On a Fantastic success, they know for sure who did this to them.",
+    "automationPreset": "check.opposed.single",
     "ability": "log",
-    "attackTarget": "log"
+    "attackTarget": "log",
+    "targeting": {
+      "defense": "log"
+    },
+    "events": [
+      {
+        "id": "memory-blip-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "memory-blip-link-reminder",
+            "type": "manual",
+            "label": "Verify an established Telepathic Link and choose a memory gap of up to one hour from the past hour."
+          }
+        ]
+      },
+      {
+        "id": "memory-blip-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "memory-blip-forget-reminder",
+            "type": "manual",
+            "label": "The chosen memories are forgotten. A later Logic check prompted by good reason can recover them."
+          }
+        ]
+      },
+      {
+        "id": "memory-blip-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "memory-blip-trouble-reminder",
+            "type": "manual",
+            "label": "Fantastic success: apply trouble to future checks to recover these memories. A Fantastic recovery identifies who caused the memory loss."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

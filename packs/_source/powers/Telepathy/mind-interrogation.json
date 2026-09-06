@@ -13,8 +13,50 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character can delve into the mind of a single person with whom they have established a telepathic link. This requires a Logic check against the target's Logic defense. On a success, the character can ask a single simple question and get the answer from the target's mind. On a Fantastic success, the character can get more complex information.",
+    "automationPreset": "check.opposed.single",
     "ability": "log",
-    "attackTarget": "log"
+    "attackTarget": "log",
+    "targeting": {
+      "defense": "log"
+    },
+    "events": [
+      {
+        "id": "mind-interrogation-link-reminder",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mind-interrogation-remind-link",
+            "type": "manual",
+            "label": "Verify that the character has established a Telepathic Link with the target."
+          }
+        ]
+      },
+      {
+        "id": "mind-interrogation-simple-answer",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mind-interrogation-remind-simple-answer",
+            "type": "manual",
+            "label": "Answer one simple question from the target's mind."
+          }
+        ]
+      },
+      {
+        "id": "mind-interrogation-fantastic-information",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mind-interrogation-remind-complex-information",
+            "type": "manual",
+            "label": "Fantastic success: provide more complex information from the target's mind."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

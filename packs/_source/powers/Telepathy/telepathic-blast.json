@@ -13,11 +13,34 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character makes a Logic attack against a target in line of sight. If the attack is a success, it inflicts regular Focus damage. On a Fantastic success, the target takes double damage instead and is stunned for one round.",
+    "automationPreset": "attack.single-focus",
     "ability": "log",
     "attackTarget": "log",
     "attackKind": "ranged",
-    "attack": true,
-    "damageType": "focus"
+    "targeting": {
+      "defense": "log",
+      "requiresLineOfSight": true
+    },
+    "effectProfiles": {
+      "attack": "power.psychic.blast"
+    },
+    "events": [
+      {
+        "id": "telepathic-blast-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telepathic-blast-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
