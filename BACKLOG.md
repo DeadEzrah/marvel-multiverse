@@ -21,14 +21,14 @@ This document is the working list of known remaining tasks as of September 5, 20
 
 ## Elemental Barrier
 
-- [ ] Complete the deferred live gate for **Elemental Barrier**.
-- [ ] Verify wall placement range is 10 spaces per rank.
-- [ ] Verify wall length is 2 spaces per rank and width is 1 space.
-- [ ] Verify line-of-sight validation and all-target selection.
-- [ ] Verify the persistent concentration Region is created and removed correctly.
-- [ ] Verify success/failure side-choice reminders and the Fantastic elemental-effect reminder.
-- [ ] Verify the durability reminder: 10 damage or less is absorbed; more than 10 destroys the barrier.
-- [ ] Clean up all test Regions and effects after the gate.
+- [x] Complete the deferred live gate for **Elemental Barrier**.
+- [x] Verify wall placement range is 10 spaces per rank.
+- [x] Verify wall length is 2 spaces per rank and width is 1 space.
+- [x] Verify line-of-sight validation and all-target selection.
+- [x] Verify the persistent concentration Region and sustained wall animation are created and removed correctly.
+- [x] Verify success/failure side-choice reminders and the Fantastic elemental-effect reminder.
+- [x] Verify the durability reminder: 10 damage or less is absorbed; more than 10 destroys the barrier.
+- [x] Clean up all test Regions and effects after the gate.
 
 ## Remaining Telepathy Powers
 

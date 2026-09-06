@@ -2204,6 +2204,7 @@ class ChatMessageMarvel extends ChatMessage {
       itemUuid: rollContext?.itemUuid ?? null,
       targetUuids: Array.isArray(rollContext?.targetUuids) ? rollContext.targetUuids : [],
       statusTransactionIds: [],
+      regionUuids: Array.isArray(rollContext?.areaRegionUuids) ? rollContext.areaRegionUuids : [],
     });
     if (result?.success) {
       button.textContent = game.i18n.localize("MARVEL_MULTIVERSE.ConcentrationStarted") || "Concentration started";
