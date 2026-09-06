@@ -46,12 +46,12 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 
 ### Mirage And Concealment
 
-- [ ] **Cloak**: 20-spaces-per-rank mental concealment, Logic-defense detection target number, camera exception, 5 Focus, and concentration.
-- [ ] **Cloak Group**: protected group size, 10-space member placement, 20-spaces-per-rank observer range, 10 Focus, and concentration.
-- [ ] **Fool**: altered appearance, observer Logic check, known-person Edge, camera exception, 5 Focus, and concentration.
-- [ ] **Grand Fool**: rank-scaled group targeting, observer checks, known-person Edge, 10 Focus, and concentration.
-- [ ] **Mirage**: linked targets, full-sensory reminder, 10 Focus, and concentration.
-- [ ] **Grand Mirage**: active Telepathic Network requirement, same-locale restriction, 10 Focus, and concentration.
+- [x] **Cloak**: 20-spaces-per-rank mental concealment, Logic-defense detection target number, camera exception, 5 Focus, concentration, and a dedicated Mentally Concealed marker.
+- [x] **Cloak Group**: protected group size, 10-space member placement, 20-spaces-per-rank observer range, 10 Focus, concentration, and source/target Mentally Concealed markers.
+- [x] **Fool**: altered appearance, observer Logic check, known-person Edge, camera exception, 5 Focus, and concentration.
+- [x] **Grand Fool**: rank-scaled group targeting, observer checks, known-person Edge, 10 Focus, and concentration.
+- [x] **Mirage**: linked targets, full-sensory reminder, 10 Focus, and concentration.
+- [x] **Grand Mirage**: active Telepathic Network requirement, same-locale restriction, 10 Focus, and concentration.
 
 ### Control And Memory
 

@@ -12,7 +12,30 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "Using a mirage, the character blocks their presence-and the presence of up to one other person per rank, within 10 spaces-from the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see nothing there. The target number for anyone trying to detect the character or the others protected is the character's Logic defense."
+    "effect": "Using a mirage, the character blocks their presence-and the presence of up to one other person per rank, within 10 spaces-from the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see nothing there. The target number for anyone trying to detect the character or the others protected is the character's Logic defense.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargetsPerRank": 1,
+      "range": 10,
+      "willing": true,
+      "concentrationStatus": "mentally-concealed",
+      "concentrationStatusIncludesSource": true
+    },
+    "events": [
+      {
+        "id": "cloak-group-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "cloak-group-rules-reminder",
+            "type": "manual",
+            "label": "The source is protected automatically. Confirm selected people are willing and within 10 spaces. The cloak affects minds within 20 spaces per rank; detection uses the source's Logic defense, and cameras still record everyone normally."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

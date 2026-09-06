@@ -12,7 +12,27 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character creates a full-sensory mirage that affects everyone in a Telepathic Network they set up who is also in the same locale. The mirage can be of anything the character desires, and it can move freely."
+    "effect": "The character creates a full-sensory mirage that affects everyone in a Telepathic Network they set up who is also in the same locale. The mirage can be of anything the character desires, and it can move freely.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargetsPerRank": 5,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "grand-mirage-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "grand-mirage-rules-reminder",
+            "type": "manual",
+            "label": "Describe the full-sensory mirage and confirm every selected target belongs to the character's active Telepathic Network and is in the same locale."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

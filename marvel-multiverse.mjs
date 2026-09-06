@@ -2198,6 +2198,7 @@ class ChatMessageMarvel extends ChatMessage {
 
   async _handleStartConcentration(message, button) {
     const rollContext = message.getFlag("marvel-multiverse", "rollContext") ?? null;
+    const utilityActivation = message.getFlag("marvel-multiverse", "utilityActivation") ?? null;
     const actorUuid = rollContext?.actorUuid ?? null;
     if (!actorUuid) return;
     const actor = typeof globalThis.fromUuidSync === "function" ? globalThis.fromUuidSync(actorUuid) : null;
@@ -2209,6 +2210,10 @@ class ChatMessageMarvel extends ChatMessage {
       itemUuid: rollContext?.itemUuid ?? null,
       targetUuids: Array.isArray(rollContext?.targetUuids) ? rollContext.targetUuids : [],
       statusTransactionIds: [],
+      concentrationStatus: utilityActivation?.concentrationStatus ?? null,
+      concentrationStatusActorUuids: Array.isArray(utilityActivation?.concentrationStatusActorUuids)
+        ? utilityActivation.concentrationStatusActorUuids
+        : [],
       regionUuids: Array.isArray(rollContext?.areaRegionUuids) ? rollContext.areaRegionUuids : [],
     });
     if (result?.success) {

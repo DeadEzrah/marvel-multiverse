@@ -12,7 +12,26 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character creates a full-sensory mirage that affects any target with whom they have established a link. The mirage can be of anything the character desires, and it can move freely,"
+    "effect": "The character creates a full-sensory mirage that affects any target with whom they have established a link. The mirage can be of anything the character desires, and it can move freely,",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1
+    },
+    "events": [
+      {
+        "id": "mirage-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mirage-rules-reminder",
+            "type": "manual",
+            "label": "Describe the full-sensory mirage and confirm an established telepathic link with the selected target. The mirage can move freely while concentration continues."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

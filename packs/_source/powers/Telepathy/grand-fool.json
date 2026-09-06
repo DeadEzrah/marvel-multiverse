@@ -12,7 +12,28 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character uses a mirage to alter their appearance-and the appearance of up to one other person per rank, within 10 spaces-in the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see other people. The target number for anyone trying to see through the mirage is the characters Logic defense, if the affected characters are impersonating people known to the other person, that person has an edge."
+    "effect": "The character uses a mirage to alter their appearance-and the appearance of up to one other person per rank, within 10 spaces-in the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see other people. The target number for anyone trying to see through the mirage is the characters Logic defense, if the affected characters are impersonating people known to the other person, that person has an edge.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargetsPerRank": 1,
+      "range": 10,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "grand-fool-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "grand-fool-rules-reminder",
+            "type": "manual",
+            "label": "The source is affected automatically. Choose appearances for the selected people. Observers within 20 spaces per rank test against the source's Logic defense and gain Edge for identities they know; cameras record the real appearances."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
