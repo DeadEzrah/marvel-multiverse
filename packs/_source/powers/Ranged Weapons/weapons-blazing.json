@@ -2,7 +2,7 @@
   "_id": "4ngchITUUlOsBT09",
   "name": "Weapons Blazing",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/super-powers.svg",
+  "img": "systems/marvel-multiverse/icons/weapons-blazing.svg",
   "system": {
     "description": "The character blazes away at two foes at once.",
     "powerSet": "Ranged Weapons",
@@ -17,7 +17,35 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "scale": 0.5,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "events": [
+      {
+        "id": "weapons-blazing-bonus-attack",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "weapons-blazing-remind-bonus-attack",
+            "type": "manual",
+            "label": "Fantastic success: the character may make one bonus Weapons Blazing attack against any available target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

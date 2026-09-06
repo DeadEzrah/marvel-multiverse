@@ -2,7 +2,7 @@
   "_id": "Jmvdg1hkbsm4nmat",
   "name": "Vapors of Valtorr",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/magic.svg",
+  "img": "systems/marvel-multiverse/icons/vapors-of-valtorr.svg",
   "system": {
     "description": "The character weaves an inky mist that can attack those inside it.",
     "powerSet": "Magic",
@@ -12,12 +12,58 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character creates an inky mist for up to 25 spaces per rank around them that blocks all line of sight beyond 5 spaces. On later turns, the character can have the mist attacks one target at a time, Make an Egp check against the target's Vigilance defense. On a success, the attack does regular damage. On a Fantastic success, it does double damage and blinds the target for one turn.",
+    "effect": "The character creates an inky mist for up to 25 spaces per rank around them that blocks all line of sight beyond 5 spaces. On later turns, the character can have the mist attack one target at a time. Make an Ego check against the target's Vigilance defense. On a success, the attack does regular damage. On a Fantastic success, it does double damage and blinds the target for one turn.",
     "ability": "ego",
     "attackTarget": "vig",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 25,
+      "rangeScaling": "rank"
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "scale": 1,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "activation": "power.magic.vapors.activation",
+      "hit": "power.magic.vapors.strike"
+    },
+    "events": [
+      {
+        "id": "vapors-of-valtorr-reminder",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "vapors-of-valtorr-remind-mist",
+            "type": "manual",
+            "label": "This roll is a later-turn mist attack. Maintain concentration and block line of sight beyond 5 spaces inside the mist."
+          }
+        ]
+      },
+      {
+        "id": "vapors-of-valtorr-blinded",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "vapors-of-valtorr-apply-blinded",
+            "type": "status",
+            "statusId": "blinded",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

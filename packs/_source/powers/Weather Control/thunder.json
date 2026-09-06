@@ -2,7 +2,7 @@
   "_id": "GDF6EoLs3yPi1I6u",
   "name": "Thunder",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/super-powers.svg",
+  "img": "systems/marvel-multiverse/icons/thunder.svg",
   "system": {
     "description": "The character causes a deafening crack of thunder.",
     "powerSet": "Weather Control",
@@ -14,7 +14,61 @@
     "cost": "",
     "effect": "The character makes an Ego check and compares that against the Resilience defense of every character within 10 spaces. Any character the attack succeeds against is deafened. On a Fantastic success, the character is also stunned for one round.",
     "ability": "ego",
-    "attackTarget": "res"
+    "attackTarget": "res",
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "defense": "res",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 10,
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": true
+      }
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "impact": "power.electricity.arc"
+    },
+    "events": [
+      {
+        "id": "thunder-deafened",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "thunder-apply-deafened",
+            "type": "status",
+            "statusId": "deafened",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "manual" }
+          }
+        ]
+      },
+      {
+        "id": "thunder-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "thunder-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

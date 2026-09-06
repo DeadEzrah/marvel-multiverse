@@ -2,7 +2,7 @@
   "_id": "2aQHQOVeiUExVcAE",
   "name": "Flare",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/magic.svg",
+  "img": "systems/marvel-multiverse/icons/flare.svg",
   "system": {
     "description": "The character generates a dazzling fare of light.",
     "powerSet": "Magic",
@@ -16,7 +16,49 @@
     "ability": "ego",
     "attackTarget": "vig",
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "defense": "vig",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 5,
+        "targetFilter": "enemies",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "scale": 0.5,
+      "requiresFantastic": true,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "power.light.flare"
+    },
+    "events": [
+      {
+        "id": "magic-flare-blinded",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "magic-flare-apply-blinded",
+            "type": "status",
+            "statusId": "blinded",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

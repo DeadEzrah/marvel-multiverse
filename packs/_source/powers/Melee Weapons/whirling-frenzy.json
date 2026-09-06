@@ -2,7 +2,7 @@
   "_id": "3M1lf4tmhqJFOo9x",
   "name": "Whirling Frenzy",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/melee.svg",
+  "img": "systems/marvel-multiverse/icons/whirling-frenzy.svg",
   "system": {
     "description": "The character assalts a foe with a tornado of whirling attacks",
     "powerSet": "Melee Weapons",
@@ -13,11 +13,36 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character makes a Melee check and compares it against the Melee defense of every enemy within their reach. If an attack is a success, the enemy takes half regular damage. On a Fantastic success, the enemy takes full damage and suffers the weapon's special effect.",
-    "ability": "agl",
-    "attackTarget": "agl",
+    "ability": "mle",
+    "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "mle",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 1,
+        "distanceScaling": "reach",
+        "targetFilter": "enemies",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "scale": 0.5,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "melee.hit.light"
+    }
   },
   "flags": {},
   "effects": [],

@@ -2,7 +2,7 @@
   "_id": "AhaKZGaOmEqkh4G9",
   "name": "Hellfire Chains",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/magic.svg",
+  "img": "systems/marvel-multiverse/icons/hellfire-chains.svg",
   "system": {
     "description": "The character shoots out chains covered in hellfire.",
     "powerSet": "Magic",
@@ -12,7 +12,60 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character summons chains covered in hellfire and can use them to bind or smash targets. They can attack anyone within 10 spaces per rank and line of sight. Make an Ego attack. On a success, the target takes regular Health damage. On a Fantastic success, the target is grabbed and paralyzed too. If a target is grabbed by the hellfire chains, on each subsequent round, the character can make an Ego check against the target's Resilience Resilience defense to inflict regular Health damage and regular Focus damage. Breaking free from the hellfire chains requires a Melee check with a target number of 20."
+    "effect": "The character summons chains covered in hellfire and can use them to bind or smash targets. They can attack anyone within 10 spaces per rank and line of sight. Make an Ego attack. On a success, the target takes regular Health damage. On a Fantastic success, the target is grabbed and paralyzed too. If a target is grabbed by the hellfire chains, on each subsequent round, the character can make an Ego check against the target's Resilience defense to inflict regular Health damage and regular Focus damage. Breaking free from the hellfire chains requires a Melee check with a target number of 20.",
+    "ability": "ego",
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 10,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "scale": 1,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "attack": "power.hellfire.chains",
+      "fantasticHit": "power.hellfire.bind"
+    },
+    "events": [
+      {
+        "id": "hellfire-chains-bind",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "hellfire-chains-apply-grappled",
+            "type": "status",
+            "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "concentration" }
+          },
+          {
+            "id": "hellfire-chains-apply-paralyzed",
+            "type": "status",
+            "statusId": "paralyzed",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "concentration" }
+          },
+          {
+            "id": "hellfire-chains-follow-up",
+            "type": "manual",
+            "label": "Each subsequent round: Ego vs. Resilience for regular Health and Focus damage; escape is Melee TN 20."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

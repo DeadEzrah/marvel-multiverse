@@ -17,7 +17,51 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 5,
+        "targetFilter": "enemies",
+        "requiresLineOfSight": true,
+        "attackAnimation": "targets",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "scale": 0.5,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "movement": "movement.gambit.flourish",
+      "attack": "weapon.gambit.card-volley",
+      "hit": "power.kinetic.card-impact",
+      "fantasticHit": "destruction.kinetic.card-fantastic",
+      "miss": "weapon.gambit.card-miss"
+    },
+    "events": [
+      {
+        "id": "dance-of-death-bleeding",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "dance-of-death-apply-bleeding",
+            "type": "status",
+            "statusId": "bleeding",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "manual" }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

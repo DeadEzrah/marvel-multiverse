@@ -1,8 +1,8 @@
 {
   "_id": "KQxISBVt5QDnkh6C",
-  "name": "Venom Bash",
+  "name": "Venom Burst",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/super-powers.svg",
+  "img": "systems/marvel-multiverse/icons/venom-burst.svg",
   "system": {
     "description": "The character lets loose a massive bioelectric charge.",
     "powerSet": "Spider-Powers",
@@ -17,7 +17,48 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "defense": "mle",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 5,
+        "targetFilter": "enemies",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "scale": 0.25,
+      "requiresFantastic": true,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "power.electricity.ground-burst"
+    },
+    "events": [
+      {
+        "id": "venom-burst-prone",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "venom-burst-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "manual" }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

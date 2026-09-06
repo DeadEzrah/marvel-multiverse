@@ -2,7 +2,7 @@
   "_id": "x6SFDLzVRg3TuLvv",
   "name": "Ground-Shaking Stomp",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/super-powers.svg",
+  "img": "systems/marvel-multiverse/icons/ground-shaking-stomp.svg",
   "system": {
     "description": "The character smashes the ground so hard hte earth trembles.",
     "powerSet": "Super-Strength",
@@ -15,9 +15,51 @@
     "effect": "The character makes a Melee check and compares that against the Agility defense of every target within the character's reach plus their rank in spaces. Any targets the attack succeeds against take half regular damage. On a Fantastic success, the targets take full damage and are knocked prone.",
     "ability": "mle",
     "attackTarget": "agl",
-    "attackKind": "ranged",
+    "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 1,
+        "distanceScaling": "rank-plus-reach",
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "scale": 0.5,
+      "type": "health"
+    },
+    "effectProfiles": {
+      "impact": "melee.hit.heavy"
+    },
+    "events": [
+      {
+        "id": "ground-shaking-stomp-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "ground-shaking-stomp-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "manual" }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -2,7 +2,7 @@
   "_id": "QLLyXfcYEKDwxuzt",
   "name": "Telekinetic Barrier",
   "type": "power",
-  "img": "systems/marvel-multiverse/icons/super-powers.svg",
+  "img": "systems/marvel-multiverse/icons/telekinetic-barrier.svg",
   "system": {
     "description": "The character forms a protective barrier with their mind.",
     "powerSet": "Telekinesis",
@@ -14,7 +14,53 @@
     "cost": "5 Focus",
     "effect": "The character forms an invisible barrier in their line of sight and up to 10 spaces away per rank. This covers up to 2 spaces across (vertically/horizontally) per their rank. The character makes a Logic check and compares the results against the Agility defense of any target in the affected spaces. On a success, the character chooses which side of the barrier the target winds up on. On a failure, the target chooses. On a Fantastic success, the target is paralyzed for one round too. Attacks on the barrier are against the character's Logic defense. Any attacks on it that do 10 points of damage or less are instantly absorbed, and the barrier continues. It an attack does more than 10 points of damage, it destroys the barrier. Either way, the attack leaves those behind the barrier unharmed.",
     "ability": "log",
-    "attackTarget": "agl"
+    "attackTarget": "agl",
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "wall",
+        "origin": "placed",
+        "distance": 2,
+        "distanceScaling": "rank",
+        "width": 1,
+        "placementRange": 10,
+        "placementRangeScaling": "rank",
+        "persistent": true,
+        "duration": "concentration",
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "cast": "defense.telekinetic.wall"
+    },
+    "events": [
+      {
+        "id": "telekinetic-barrier-paralyzed",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-barrier-apply-paralyzed",
+            "type": "status",
+            "statusId": "paralyzed",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
