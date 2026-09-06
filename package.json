@@ -7,13 +7,13 @@
     "watch": "sass src/scss/marvel-multiverse.scss css/marvel-multiverse.css --style=expanded --source-map --watch",
     "build": "npm run build:code && npm run build:css && npm run build:db",
     "build:clean": "node ./utils/packs.mjs package clean",
-    "build:code": "rollup marvel-multiverse.mjs -f es -o marvel-multiverse-compiled.mjs -p node-resolve -m --sourcemapFile marvel-multiverse.mjs",
+    "build:code": "rollup marvel-multiverse.mjs -f es -o marvel-multiverse-compiled.mjs -p @rollup/plugin-node-resolve -m --sourcemapFile marvel-multiverse.mjs",
     "build:db": "node ./utils/packs.mjs package pack",
     "build:json": "node ./utils/packs.mjs package unpack",
     "sync:foundry": "powershell -ExecutionPolicy Bypass -File .\\scripts\\sync-foundry-packs.ps1",
-    "build:sync": "npm run build:db && npm run sync:foundry",
-    "lint": "eslint --ext .mjs --ignore-path .gitignore ./",
-    "lint:fix": "eslint --ext .mjs --ignore-path .gitignore ./ --fix",
+    "build:sync": "npm run build:code && npm run build:db && npm run sync:foundry",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "postinstall": "npm run build:css && npm run build:db"
   },
   "browserslist": [
@@ -25,10 +25,13 @@
   "private": true,
   "devDependencies": {
     "@babel/eslint-parser": "^7.24.1",
+    "@eslint/js": "^9.39.5",
     "@foundryvtt/foundryvtt-cli": "^1.1.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
+    "eslint": "^9.39.5",
     "eslint-plugin-jsdoc": "^48.11.0",
     "fancy-log": "^2.0.0",
+    "globals": "^16.5.0",
     "rollup": "^3.29.5",
     "sass": "^1.89.2",
     "yargs": "^17.7.2"
