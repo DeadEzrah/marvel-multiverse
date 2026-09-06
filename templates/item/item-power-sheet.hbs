@@ -19,8 +19,8 @@
   <section class="sheet-body">
 
     {{!-- Attributes Tab --}}
-    <div class="tab flexcol -gap-sm" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
+    <div class="tab power-attributes flexcol -gap-sm" data-group="primary" data-tab="attributes">
+      <h3 class="power-config-heading">Power Details</h3>
       <div class="mm-styled-field -fill -checkbox">
         <label class="mm-styled-label -align-left"><span>Elemental Power</span></label>
         <div class="mm-styled-input">
@@ -45,6 +45,8 @@
           </select>
         </div>
       </div>
+      <p class="power-config-note">Presets provide defaults. Values set below override the selected preset.</p>
+      <h3 class="power-config-heading">Rules Text</h3>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
         <div class="mm-styled-input">
@@ -82,7 +84,7 @@
         </div>
       </div>
       <div class="mm-styled-field -fill">
-        <label class="mm-styled-label -align-left"><span>Duration</span></label>
+        <label class="mm-styled-label -align-left"><span>Power Duration (rules text)</span></label>
         <div class="mm-styled-input">
           <input type="text" name="system.duration" value="{{system.duration}}" data-dtype="String"/>
         </div>
@@ -99,6 +101,7 @@
           <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="String"/>
         </div>
       </div>
+      <h3 class="power-config-heading">Focus Scaling</h3>
       <div class="mm-styled-field -fill -checkbox">
         <label class="mm-styled-label -align-left"><span>Extra Focus Scaling</span></label>
         <div class="mm-styled-input">
@@ -130,6 +133,13 @@
         <label class="mm-styled-label -align-left"><span>Max Extra Focus (blank is unlimited)</span></label>
         <div class="mm-styled-input">
           <input type="number" min="0" step="1" name="system.focusScaling.maxExtraFocus" value="{{system.focusScaling.maxExtraFocus}}"/>
+        </div>
+      </div>
+      <h3 class="power-config-heading">Attack &amp; Damage</h3>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Attack Roll</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.attack" {{checked system.attack}} />
         </div>
       </div>
       <div class="mm-styled-field -fill">
@@ -176,6 +186,38 @@
           </select>
         </div>
       </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Apply Damage</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.damage.enabled" {{checked system.damage.enabled}} />
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Applied Damage Type</span></label>
+        <div class="mm-styled-input">
+          <select name="system.damage.type">
+            {{selectOptions damageTypes selected=system.damage.type labelAttr="label" blank="Use Damage Type"}}
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Damage Scale</span></label>
+        <div class="mm-styled-input">
+          <input type="number" name="system.damage.scale" value="{{system.damage.scale}}" min="0" step="0.25" data-dtype="Number"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Double on Fantastic Success</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.damage.doubleOnFantastic" {{checked system.damage.doubleOnFantastic}} />
+        </div>
+      </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Damage Only on Fantastic Success</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.damage.requiresFantastic" {{checked system.damage.requiresFantastic}} />
+        </div>
+      </div>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left"><span>Attack Edge Mode</span></label>
         <div class="mm-styled-input">
@@ -184,6 +226,7 @@
           </select>
         </div>
       </div>
+      <h3 class="power-config-heading">Targeting</h3>
       <div class="mm-styled-field -fill -checkbox">
         <label class="mm-styled-label -align-left"><span>Require Target</span></label>
         <div class="mm-styled-input">
@@ -194,6 +237,12 @@
         <label class="mm-styled-label -align-left"><span>Target Range (spaces)</span></label>
         <div class="mm-styled-input">
           <input type="number" name="system.targeting.range" value="{{system.targeting.range}}" min="1" step="1" data-dtype="Number"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Maximum Targets</span></label>
+        <div class="mm-styled-input">
+          <input type="number" name="system.targeting.count" value="{{system.targeting.count}}" min="1" step="1" data-dtype="Number"/>
         </div>
       </div>
       <div class="mm-styled-field -fill">
@@ -237,6 +286,7 @@
         </div>
       </div>
       {{#if system.targeting.area.shape}}
+        <h3 class="power-config-heading">Area</h3>
         <div class="mm-styled-field -fill">
           <label class="mm-styled-label -align-left"><span>Area Origin</span></label>
           <div class="mm-styled-input">
@@ -300,6 +350,8 @@
             <select name="system.targeting.area.placementRangeScaling">
               <option value="" {{#unless system.targeting.area.placementRangeScaling}}selected{{/unless}}>Fixed spaces</option>
               <option value="rank" {{#if (eq system.targeting.area.placementRangeScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+              <option value="reach" {{#if (eq system.targeting.area.placementRangeScaling "reach")}}selected{{/if}}>Spaces per Reach</option>
+              <option value="rank-plus-reach" {{#if (eq system.targeting.area.placementRangeScaling "rank-plus-reach")}}selected{{/if}}>Spaces per Rank + Reach</option>
             </select>
           </div>
         </div>
@@ -326,12 +378,6 @@
               <input type="number" name="system.targeting.area.width" value="{{system.targeting.area.width}}" min="1" step="1" data-dtype="Number"/>
             </div>
           </div>
-          <div class="mm-styled-field -fill -checkbox">
-            <label class="mm-styled-label -align-left"><span>Persistent Area</span></label>
-            <div class="mm-styled-input">
-              <input type="checkbox" name="system.targeting.area.persistent" {{checked system.targeting.area.persistent}} />
-            </div>
-          </div>
         {{/if}}
         {{#if (eq system.targeting.area.shape "rectangle")}}
           <div class="mm-styled-field -fill">
@@ -347,6 +393,44 @@
             </div>
           </div>
         {{/if}}
+        {{#if (or (eq system.targeting.area.shape "line") (eq system.targeting.area.shape "wall") (eq system.targeting.area.shape "rectangle"))}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Width Scaling</span></label>
+            <div class="mm-styled-input">
+              <select name="system.targeting.area.widthScaling">
+                <option value="" {{#unless system.targeting.area.widthScaling}}selected{{/unless}}>Fixed spaces</option>
+                <option value="rank" {{#if (eq system.targeting.area.widthScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+                <option value="reach" {{#if (eq system.targeting.area.widthScaling "reach")}}selected{{/if}}>Spaces per Reach</option>
+                <option value="rank-plus-reach" {{#if (eq system.targeting.area.widthScaling "rank-plus-reach")}}selected{{/if}}>Spaces per Rank + Reach</option>
+              </select>
+            </div>
+          </div>
+        {{/if}}
+        {{#if (eq system.targeting.area.shape "rectangle")}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Height Scaling</span></label>
+            <div class="mm-styled-input">
+              <select name="system.targeting.area.heightScaling">
+                <option value="" {{#unless system.targeting.area.heightScaling}}selected{{/unless}}>Fixed spaces</option>
+                <option value="rank" {{#if (eq system.targeting.area.heightScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+                <option value="reach" {{#if (eq system.targeting.area.heightScaling "reach")}}selected{{/if}}>Spaces per Reach</option>
+                <option value="rank-plus-reach" {{#if (eq system.targeting.area.heightScaling "rank-plus-reach")}}selected{{/if}}>Spaces per Rank + Reach</option>
+              </select>
+            </div>
+          </div>
+        {{/if}}
+        <div class="mm-styled-field -fill -checkbox">
+          <label class="mm-styled-label -align-left"><span>Persistent Area</span></label>
+          <div class="mm-styled-input">
+            <input type="checkbox" name="system.targeting.area.persistent" {{checked system.targeting.area.persistent}} />
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Structured Area Duration</span></label>
+          <div class="mm-styled-input">
+            <input type="text" name="system.targeting.area.duration" value="{{system.targeting.area.duration}}" placeholder="Use power duration; e.g. concentration" data-dtype="String"/>
+          </div>
+        </div>
         <div class="mm-styled-field -fill">
           <label class="mm-styled-label -align-left"><span>Include Source</span></label>
           <div class="mm-styled-input">

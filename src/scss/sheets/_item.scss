@@ -15,6 +15,40 @@
     padding: $mm-spacing-md;
   }
 
+  .power-attributes {
+    overflow-y: auto;
+    padding: $mm-spacing-md;
+
+    .mm-styled-input,
+    prose-mirror {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .editor-menu {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+  }
+
+  .power-config-heading {
+    border-block-end: 1px solid rgba($mm-secondary-red, 0.35);
+    color: $mm-secondary-red;
+    font-size: var(--font-size-16);
+    margin: $mm-spacing-md 0 $mm-spacing-xs;
+    padding-block-end: $mm-spacing-xs;
+
+    &:first-child {
+      margin-block-start: 0;
+    }
+  }
+
+  .power-config-note {
+    color: $mm-subtext-color;
+    font-size: var(--font-size-12);
+    margin: 0 0 $mm-spacing-sm;
+  }
+
   .power-authoring-section {
     border-block-end: 1px solid rgba($mm-secondary-red, 0.35);
     display: grid;

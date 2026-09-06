@@ -4761,6 +4761,40 @@
   padding: 8px;
 }
 
+.marvel-multiverse.sheet.item .power-attributes {
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.marvel-multiverse.sheet.item .power-attributes .mm-styled-input,
+.marvel-multiverse.sheet.item .power-attributes prose-mirror {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.marvel-multiverse.sheet.item .power-attributes .editor-menu {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.marvel-multiverse.sheet.item .power-config-heading {
+  border-block-end: 1px solid rgba(139, 5, 2, 0.35);
+  color: #8b0502;
+  font-size: var(--font-size-16);
+  margin: 8px 0 2px;
+  padding-block-end: 2px;
+}
+
+.marvel-multiverse.sheet.item .power-config-heading:first-child {
+  margin-block-start: 0;
+}
+
+.marvel-multiverse.sheet.item .power-config-note {
+  color: #575757;
+  font-size: var(--font-size-12);
+  margin: 0 0 4px;
+}
+
 .marvel-multiverse.sheet.item .power-authoring-section {
   border-block-end: 1px solid rgba(139, 5, 2, 0.35);
   display: grid;
