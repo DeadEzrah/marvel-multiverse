@@ -1,8 +1,124 @@
+@use "../utils/colors" as *;
+@use "../utils/variables" as *;
+
 .marvel-multiverse.sheet.item {
   .window-content {
     > form {
       display: flex;
       flex-direction: column;
     }
+  }
+
+  .power-automation {
+    gap: $mm-spacing-lg;
+    overflow-y: auto;
+    padding: $mm-spacing-md;
+  }
+
+  .power-authoring-section {
+    border-block-end: 1px solid rgba($mm-secondary-red, 0.35);
+    display: grid;
+    gap: $mm-spacing-md;
+    padding-block-end: $mm-spacing-lg;
+  }
+
+  .power-authoring-header,
+  .power-event-card > header,
+  .power-outcome-heading,
+  .power-profile-row {
+    align-items: center;
+    display: flex;
+    gap: $mm-spacing-md;
+    justify-content: space-between;
+  }
+
+  .power-authoring-header {
+    h3,
+    p {
+      margin: 0;
+    }
+
+    p {
+      color: $mm-subtext-color;
+      font-size: var(--font-size-12);
+    }
+  }
+
+  .power-profile-list,
+  .power-event-list,
+  .power-outcome-list {
+    display: grid;
+    gap: $mm-spacing-md;
+  }
+
+  .power-profile-row {
+    display: grid;
+    grid-template-columns: minmax(90px, 0.6fr) minmax(0, 1.6fr) 32px 32px;
+
+    label {
+      font-weight: 600;
+    }
+  }
+
+  .power-event-card {
+    background: rgba(255, 242, 236, 0.72);
+    border: 1px solid rgba($mm-secondary-red, 0.45);
+    border-radius: 4px;
+    display: grid;
+    gap: $mm-spacing-md;
+    padding: $mm-spacing-md;
+  }
+
+  .power-authoring-actions {
+    display: flex;
+    gap: $mm-spacing-sm;
+  }
+
+  .power-authoring-grid {
+    display: grid;
+    gap: $mm-spacing-md;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    label {
+      display: grid;
+      font-size: var(--font-size-12);
+      font-weight: 600;
+      gap: $mm-spacing-xs;
+      min-width: 0;
+
+      &.-wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    input,
+    select {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  .power-outcome-row {
+    border-block-start: 1px solid rgba($mm-secondary-red, 0.2);
+    display: grid;
+    gap: $mm-spacing-sm;
+    padding-block-start: $mm-spacing-md;
+  }
+
+  .icon-button {
+    flex: 0 0 32px;
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .power-add-outcome {
+    justify-self: start;
+  }
+
+  .power-authoring-empty {
+    color: $mm-subtext-color;
+    font-style: italic;
+    margin: 0;
   }
 }

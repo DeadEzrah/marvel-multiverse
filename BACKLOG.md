@@ -107,7 +107,7 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Authoring And Data Models
 
-- [ ] Add Power-sheet controls for structured events and effect profiles.
+- [x] Add Power-sheet controls for structured events and effect profiles.
 - [ ] Add a manifest-backed effect-profile selector instead of requiring profile IDs to be typed manually.
 - [ ] Add clear controls for targeting, area shape, range scaling, damage, duration, and automation preset selection.
 - [ ] Resolve parity between the active models in `lib/documents.mjs` and the legacy models under `module/data/`.

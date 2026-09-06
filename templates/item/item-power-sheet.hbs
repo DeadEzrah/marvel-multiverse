@@ -9,8 +9,9 @@
   </header>
 
   {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs mm-tabs -two" data-group="primary">
+  <nav class="sheet-tabs tabs mm-tabs -three" data-group="primary">
     <a class="item" data-tab="attributes">Attributes</a>
+    <a class="item" data-tab="automation">Automation</a>
     <a class="item" data-tab="effects">Effects</a>
   </nav>
 
@@ -353,10 +354,110 @@
           </div>
         </div>
       {{/if}}
-      <button type="button" data-action="animationDesigner">
-        <i class="fas fa-wand-magic-sparkles"></i>
-        Animation Designer
-      </button>
+    </div>
+    <div class="tab power-automation flexcol -gap-sm" data-group="primary" data-tab="automation">
+      <section class="power-authoring-section">
+        <header class="power-authoring-header">
+          <div>
+            <h3>Effect Profiles</h3>
+            <p>Assign a semantic profile to each playback phase.</p>
+          </div>
+        </header>
+        <div class="power-profile-list">
+          {{#each effectProfileRows as |row|}}
+            <div class="power-profile-row">
+              <label for="effect-profile-{{row.phase}}">{{row.label}}</label>
+              <input id="effect-profile-{{row.phase}}" type="text" value="{{row.profile}}" placeholder="No profile assigned" {{#unless @root.editable}}disabled{{/unless}} />
+              {{#if @root.editable}}
+                <button type="button" class="icon-button" data-action="saveEffectProfile" data-phase="{{row.phase}}" title="Save {{row.label}} profile" aria-label="Save {{row.label}} profile">
+                  <i class="fas fa-floppy-disk"></i>
+                </button>
+                <button type="button" class="icon-button" data-action="animationDesigner" data-phase="{{row.phase}}" title="Edit {{row.label}} animation" aria-label="Edit {{row.label}} animation">
+                  <i class="fas fa-wand-magic-sparkles"></i>
+                </button>
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+      </section>
+
+      <section class="power-authoring-section power-event-editor">
+        <header class="power-authoring-header">
+          <div>
+            <h3>Power Events</h3>
+            <p>Define when outcomes occur and who receives them.</p>
+          </div>
+          {{#if editable}}
+            <button type="button" data-action="addPowerEvent">
+              <i class="fas fa-plus"></i>
+              <span>Add Event</span>
+            </button>
+          {{/if}}
+        </header>
+
+        {{#unless powerEvents.length}}
+          <p class="power-authoring-empty">No structured events.</p>
+        {{/unless}}
+
+        <div class="power-event-list">
+          {{#each powerEvents as |event|}}
+            <article class="power-event-card" data-event-index="{{event.eventIndex}}">
+              <header>
+                <strong>{{event.id}}</strong>
+                {{#if @root.editable}}
+                  <div class="power-authoring-actions">
+                    <button type="button" class="icon-button" data-action="savePowerEvent" title="Save event" aria-label="Save event"><i class="fas fa-floppy-disk"></i></button>
+                    <button type="button" class="icon-button" data-action="deletePowerEvent" title="Delete event" aria-label="Delete event"><i class="fas fa-trash"></i></button>
+                  </div>
+                {{/if}}
+              </header>
+              <div class="power-authoring-grid">
+                <label>Event ID<input type="text" value="{{event.id}}" data-authoring-field="event.id" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                <label>Trigger<select data-authoring-field="event.trigger" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.powerEventTriggers selected=event.trigger}}</select></label>
+                <label>Recipient<select data-authoring-field="event.recipient" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.powerEventRecipients selected=event.recipient}}</select></label>
+              </div>
+
+              <div class="power-outcome-list">
+                {{#each event.outcomes as |outcome|}}
+                  <div class="power-outcome-row" data-outcome-index="{{outcome.outcomeIndex}}">
+                    <div class="power-outcome-heading">
+                      <strong>{{outcome.type}}</strong>
+                      {{#if @root.editable}}
+                        <button type="button" class="icon-button" data-action="deletePowerOutcome" title="Delete outcome" aria-label="Delete outcome"><i class="fas fa-trash"></i></button>
+                      {{/if}}
+                    </div>
+                    <div class="power-authoring-grid">
+                      <label>Outcome ID<input type="text" value="{{outcome.id}}" data-authoring-field="outcome.id" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                      <label>Type<select data-authoring-field="outcome.type" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.powerOutcomeTypes selected=outcome.type labelAttr="label"}}</select></label>
+                      {{#if (eq outcome.type "manual")}}
+                        <label class="-wide">Reminder<input type="text" value="{{outcome.label}}" data-authoring-field="outcome.label" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                      {{/if}}
+                      {{#if (eq outcome.type "status")}}
+                        <label>Status ID<input type="text" value="{{outcome.statusId}}" data-authoring-field="outcome.statusId" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                        <label>Mode<select data-authoring-field="outcome.mode" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.powerStatusModes selected=outcome.mode}}</select></label>
+                        <label>Stacking<select data-authoring-field="outcome.stacking" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.powerStackingModes selected=outcome.stacking}}</select></label>
+                        <label>Duration<select data-authoring-field="outcome.duration.type" {{#unless @root.editable}}disabled{{/unless}}><option value="">None</option>{{selectOptions @root.powerDurationTypes selected=outcome.duration.type}}</select></label>
+                        <label>Duration Value<input type="number" min="1" step="1" value="{{outcome.duration.value}}" data-authoring-field="outcome.duration.value" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                      {{/if}}
+                      {{#if (eq outcome.type "healing")}}
+                        <label>Amount<input type="number" step="1" value="{{outcome.amount}}" data-authoring-field="outcome.amount" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                      {{/if}}
+                      {{#if (eq outcome.type "future-roll-modifier")}}
+                        <label>Mode<select data-authoring-field="outcome.mode" {{#unless @root.editable}}disabled{{/unless}}><option value="edge" {{#if (eq outcome.mode "edge")}}selected{{/if}}>Edge</option><option value="trouble" {{#if (eq outcome.mode "trouble")}}selected{{/if}}>Trouble</option></select></label>
+                        <label>Count<input type="number" min="1" step="1" value="{{outcome.count}}" data-authoring-field="outcome.count" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                        <label class="-wide">Label<input type="text" value="{{outcome.label}}" data-authoring-field="outcome.label" {{#unless @root.editable}}disabled{{/unless}} /></label>
+                      {{/if}}
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+              {{#if @root.editable}}
+                <button type="button" class="power-add-outcome" data-action="addPowerOutcome"><i class="fas fa-plus"></i><span>Add Outcome</span></button>
+              {{/if}}
+            </article>
+          {{/each}}
+        </div>
+      </section>
     </div>
     <div class="tab power-effects" data-group="primary" data-tab="effects">
        {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}

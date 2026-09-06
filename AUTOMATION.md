@@ -319,10 +319,10 @@ Completed:
 - The universal roll dialog now resolves structured `rollModifiers` from actor traits and presents matching circumstances as checkboxes. Objective rules may be preselected, while subjective rules remain explicit player or Narrator choices; changing the final roll ability revalidates selected rules. Selected reasons persist in action-roll state and appear on the chat card. Live gates cover Combat Expert's automatic Rank 1 Melee Edge, Signature Attack's optional Edge, and Abrasive's optional Ego Edge or Trouble.
 - Dice and utility actions may declare `system.targeting.prerequisites`. Supported checks are target `resource` (`focus` or `health`, with `eq`, `lte`, or `gte`), source concentration `source-link` by item UUID or name, and target `status`, `tag`, or `active-effect` presence/absence. Every selected target must pass before a dialog opens, Focus is spent, effects play, or a chat message is created. Orders, Domination, and contested Telepathic Possession require both 0 target Focus and an active Telepathic Link to that exact target; choice-heavy exceptions remain manual.
 - `manual` event outcomes are intentional partial automation for subjective choices, Narrator rulings, follow-up bookkeeping, and unsupported exceptions. They require a non-empty label, always appear in the power-event preview, never mutate documents or create undo transactions, and do not render Apply/Undo controls unless the same preview also contains an automated outcome. All 50 manual outcomes in the source powers pass this contract; Copy Psyche is the live-gated manual-only example.
+- Power sheets now include an Automation tab for semantic effect-profile assignments and structured events. Authors can save or clear each phase profile, open the Animation Designer directly on that phase, and add, edit, or delete events and the currently used `manual`, `status`, `healing`, and `future-roll-modifier` outcomes. Event changes validate atomically and preserve fields the editor does not expose; changing an outcome type seeds a valid editable shape before rerendering.
 
 Not completed:
 
-- Power-sheet controls for events and effect profiles.
 - Migration of the remaining prose-only compendium powers.
 - A circumstance selector and actor-trait modifier resolver for contextual Edge/Trouble benefits.
 - Automated manifest/database compatibility audit.

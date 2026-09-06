@@ -4754,3 +4754,114 @@
   display: flex;
   flex-direction: column;
 }
+
+.marvel-multiverse.sheet.item .power-automation {
+  gap: 16px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-section {
+  border-block-end: 1px solid rgba(139, 5, 2, 0.35);
+  display: grid;
+  gap: 8px;
+  padding-block-end: 16px;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-header,
+.marvel-multiverse.sheet.item .power-event-card > header,
+.marvel-multiverse.sheet.item .power-outcome-heading,
+.marvel-multiverse.sheet.item .power-profile-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-header h3,
+.marvel-multiverse.sheet.item .power-authoring-header p {
+  margin: 0;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-header p {
+  color: #575757;
+  font-size: var(--font-size-12);
+}
+
+.marvel-multiverse.sheet.item .power-profile-list,
+.marvel-multiverse.sheet.item .power-event-list,
+.marvel-multiverse.sheet.item .power-outcome-list {
+  display: grid;
+  gap: 8px;
+}
+
+.marvel-multiverse.sheet.item .power-profile-row {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.6fr) minmax(0, 1.6fr) 32px 32px;
+}
+
+.marvel-multiverse.sheet.item .power-profile-row label {
+  font-weight: 600;
+}
+
+.marvel-multiverse.sheet.item .power-event-card {
+  background: rgba(255, 242, 236, 0.72);
+  border: 1px solid rgba(139, 5, 2, 0.45);
+  border-radius: 4px;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.marvel-multiverse.sheet.item .power-authoring-grid label {
+  display: grid;
+  font-size: var(--font-size-12);
+  font-weight: 600;
+  gap: 2px;
+  min-width: 0;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-grid label.-wide {
+  grid-column: 1/-1;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-grid input,
+.marvel-multiverse.sheet.item .power-authoring-grid select {
+  min-width: 0;
+  width: 100%;
+}
+
+.marvel-multiverse.sheet.item .power-outcome-row {
+  border-block-start: 1px solid rgba(139, 5, 2, 0.2);
+  display: grid;
+  gap: 4px;
+  padding-block-start: 8px;
+}
+
+.marvel-multiverse.sheet.item .icon-button {
+  flex: 0 0 32px;
+  height: 32px;
+  padding: 0;
+  width: 32px;
+}
+
+.marvel-multiverse.sheet.item .power-add-outcome {
+  justify-self: start;
+}
+
+.marvel-multiverse.sheet.item .power-authoring-empty {
+  color: #575757;
+  font-style: italic;
+  margin: 0;
+}
