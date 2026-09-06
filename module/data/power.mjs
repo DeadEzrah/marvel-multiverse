@@ -11,13 +11,19 @@ export default class MarvelMultiversePower extends MarvelMultiverseItemBase {
       required: true,
       initial: "Basic",
     });
-    schema.prerequisites = new fields.StringField({ blank: true });
-    schema.action = new fields.StringField({ blank: true });
-    schema.trigger = new fields.StringField({ blank: true });
-    schema.duration = new fields.StringField({ blank: true });
-    schema.range = new fields.StringField({ blank: true });
-    schema.cost = new fields.StringField({ blank: true });
-    schema.effect = new fields.StringField({ blank: true });
+    schema.prerequisites = new fields.StringField({ initial: "", blank: true });
+    schema.action = new fields.StringField({ initial: "", blank: true });
+    schema.trigger = new fields.StringField({ initial: "", blank: true });
+    schema.duration = new fields.StringField({ initial: "", blank: true });
+    schema.range = new fields.StringField({ initial: "", blank: true });
+    schema.cost = new fields.StringField({ initial: "", blank: true });
+    schema.focusScaling = new fields.SchemaField({
+      enabled: new fields.BooleanField({ required: true, initial: false }),
+      mode: new fields.StringField({ required: true, initial: "damage", choices: ["damage", "healing"] }),
+      benefitPerFocus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      maxExtraFocus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+    });
+    schema.effect = new fields.StringField({ initial: "", blank: true });
     schema.modifiers = new fields.ArrayField(new fields.ObjectField());
     schema.numbered = new fields.NumberField({
       ...requiredInteger,

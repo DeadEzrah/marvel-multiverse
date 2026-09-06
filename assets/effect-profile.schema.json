@@ -26,6 +26,25 @@
         "failure": { "$ref": "#/$defs/profileId" }
       },
       "additionalProperties": { "$ref": "#/$defs/profileId" }
+    },
+    "effectOverrides": {
+      "type": "object",
+      "description": "Optional per-phase Sequencer asset and presentation overrides configured by the Animation Designer.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "animation": { "type": "string" },
+          "sound": { "type": "string" },
+          "scale": { "type": "number", "exclusiveMinimum": 0 },
+          "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+          "playbackRate": { "type": "number", "exclusiveMinimum": 0 },
+          "duration": { "type": "number", "exclusiveMinimum": 0 },
+          "volume": { "type": "number", "minimum": 0, "maximum": 1 },
+          "fitArea": { "type": "boolean" },
+          "tint": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": true,

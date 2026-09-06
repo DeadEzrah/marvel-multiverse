@@ -173,7 +173,6 @@ export class MarvelMultiverseRoll extends Roll {
           r.active = false;
         }
       });
-      this.dice[1].total = 6;
     }
 
     // Mark configuration as complete

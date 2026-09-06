@@ -123,8 +123,9 @@ export class ChatMessageMarvel extends ChatMessage {
     const anchor = document.createElement("a");
     anchor.setAttribute(
       "aria-label",
-      game.i18n.localize("MARVEL_MULTIVERSE.AdditionalControls")
+      this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls")
     );
+    anchor.setAttribute("title", this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls"));
     anchor.classList.add("chat-control");
     anchor.dataset.contextMenu = "";
     anchor.innerHTML = '<i class="fas fa-ellipsis-vertical fa-fw"></i>';

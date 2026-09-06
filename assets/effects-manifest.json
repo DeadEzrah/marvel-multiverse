@@ -9,6 +9,8 @@
     "energy.beam": "power.energy.beam",
     "energy.impact": "power.energy.impact",
     "magic.cast": "power.magic.cast",
+    "healing": "power.healing.target",
+    "power.healing": "power.healing.target",
     "teleport": "movement.teleport",
     "superspeed": "movement.superspeed",
     "landing.light": "movement.landing.light",
@@ -119,6 +121,86 @@
       ]
     },
     {
+      "id": "weapon.projectile.arrow",
+      "category": "weapon",
+      "type": "projectile",
+      "tags": ["weapon", "ranged", "arrow", "physical"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.arrow.physical.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weapon.projectile.thrown-blade",
+      "category": "weapon",
+      "type": "projectile",
+      "tags": ["weapon", "ranged", "thrown", "blade", "physical"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.dagger.throw.01.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "movement.gambit.flourish",
+      "category": "movement",
+      "type": "source",
+      "tags": ["movement", "gambit", "cards", "flourish"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": []
+    },
+    {
+      "id": "weapon.gambit.card-volley",
+      "category": "weapon",
+      "type": "projectile",
+      "tags": ["weapon", "ranged", "gambit", "card", "volley"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.ranged.card.01.projectile.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.kinetic.card-impact",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "kinetic", "gambit", "card", "impact"],
+      "sounds": [
+        { "file": "psfx.impacts.magicaleffects.generic.002.001.0", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "destruction.kinetic.card-fantastic",
+      "category": "destruction",
+      "type": "impact",
+      "tags": ["destruction", "kinetic", "gambit", "card", "fantastic"],
+      "sounds": [
+        { "file": "psfx.impacts.magicaleffects.generic.002.001.0", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.012.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weapon.gambit.card-miss",
+      "category": "weapon",
+      "type": "miss",
+      "tags": ["weapon", "ranged", "gambit", "card", "miss"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.ranged.card.01.projectile.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "power.energy.blast",
       "category": "power",
       "type": "projectile",
@@ -167,6 +249,30 @@
       ]
     },
     {
+      "id": "power.electricity.ground-burst",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "electricity", "bioelectric", "ground", "burst"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.lightning.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.light.flare",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "light", "flare", "blinding", "impact"],
+      "sounds": [
+        { "file": "psfx.impacts.magicaleffects.generic.002.001.0", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.006.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "power.fire.impact",
       "category": "power",
       "type": "impact",
@@ -176,6 +282,64 @@
       ],
       "animations": [
         { "file": "jb2a.impact.fire", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.hellfire.chains",
+      "category": "power",
+      "type": "projectile",
+      "tags": ["power", "magic", "fire", "hellfire", "chains"],
+      "sounds": [
+        { "file": "psfx.cantrips.fire-bolt.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.fireball.beam.orange", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.hellfire.bind",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "magic", "hellfire", "chains", "bind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.markers.chain.standard.complete.02.red", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.magic.vapors.activation",
+      "category": "power",
+      "type": "cast",
+      "tags": ["power", "magic", "mist", "fog", "valtorr"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.fog_cloud.01.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.magic.vapors.strike",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "magic", "mist", "smoke", "valtorr", "impact"],
+      "sounds": [
+        { "file": "psfx.impacts.magicaleffects.necrotic.0", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.markers.smoke.ring.loop.bluepurple", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.psychic.blast",
+      "category": "power",
+      "type": "attack",
+      "tags": ["power", "psychic", "blast", "beam"],
+      "sounds": [
+        { "file": "psfx.cantrips.mind-sliver.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.energy_beam.normal.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
     },
     {
@@ -222,6 +386,18 @@
       ],
       "animations": [
         { "file": "jb2a.magic_signs.circle", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.healing.target",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "beneficial", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.green", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
     },
     {
@@ -280,6 +456,30 @@
       ],
       "animations": [
         { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "defense.elemental.wall",
+      "category": "defense",
+      "type": "shield",
+      "tags": ["defense", "elemental", "wall", "barrier"],
+      "sounds": [
+        { "file": "psfx.1st-level-spells.shield-spell.intro.v1.003", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.wall_of_force.horizontal.grey", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "defense.telekinetic.wall",
+      "category": "defense",
+      "type": "shield",
+      "tags": ["defense", "telekinetic", "force", "wall", "barrier"],
+      "sounds": [
+        { "file": "psfx.1st-level-spells.shield-spell.intro.v1.003", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.wall_of_force.horizontal.grey", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
     }
   ]

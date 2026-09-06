@@ -1,9 +1,42 @@
 @use "../utils/mixins" as *;
 @use "../utils/variables" as *;
 @use "../utils/colors" as *;
+@use "../utils/typography" as *;
 
+.dice-tray,
+.dice-calculator {
+  color: #fff;
+  font-family: $font-tertiary;
+}
+
+#chat .dice-tray .dice-tray__button,
+#chat .dice-calculator button {
+  font-family: $font-tertiary;
+  border-color: #ed1c24 !important;
+  border-radius: 0 !important;
+  background: #191b1e !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+#chat .dice-tray .dice-tray__button:hover,
+#chat .dice-calculator button:hover {
+  background: #9d1015 !important;
+  border-color: #ed1c24 !important;
+}
+
+#chat .dice-tray input,
+#chat .dice-calculator input {
+  border: 1px solid #4b4e54;
+  border-radius: 0;
+  background: #f5f3ef;
+  color: #111214;
+  font-family: $font-primary;
+}
 
 .marvel-roll {
+  font-family: $font-tertiary;
+
   .dice-formula,
   .dice-total,
   .damage {
@@ -23,6 +56,7 @@
     display: flex;
     font-size: 12px;
     font-weight: 600;
+    font-family: $font-primary;
     gap: $mm-spacing-md;
     justify-content: center;
     line-height: 1;

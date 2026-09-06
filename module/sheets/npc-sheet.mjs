@@ -19,7 +19,7 @@ export class MarvelMultiverseNPCSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "traits",
+          initial: "abilities",
         },
       ],
     });
@@ -182,9 +182,96 @@ export class MarvelMultiverseNPCSheet extends ActorSheet {
 
   /* -------------------------------------------- */
 
+  _getCurrentTab() {
+    const persisted = this.actor?.getFlag?.("marvel-multiverse", "currentTab");
+    const current = this._tabs?.[0]?.active ?? this._lastActiveTab ?? persisted;
+    const active = this.element?.find?.(".sheet-tabs .item.active");
+    const resolved = current || active?.data("tab") || this.options.tabs?.[0]?.initial || "abilities";
+    console.debug("[MM legacy npc trace] _getCurrentTab", {
+      actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+      tabsActive: this._tabs?.[0]?.active,
+      lastActiveTab: this._lastActiveTab,
+      persistedTab: persisted,
+      domActiveTab: active?.data("tab"),
+      resolvedTab: resolved,
+    });
+    return resolved;
+  }
+
+  async _rememberTab(tabName) {
+    if (!tabName) return;
+    console.debug("[MM legacy npc trace] _rememberTab", {
+      actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+      tabName,
+      previous: this._lastActiveTab,
+    });
+    this._lastActiveTab = tabName;
+    if (this.actor?.isOwner && typeof this.actor.setFlag === "function") {
+      await this.actor.setFlag("marvel-multiverse", "currentTab", tabName);
+    }
+  }
+
+  _restoreTab(tabName) {
+    if (!tabName) return;
+    console.debug("[MM legacy npc trace] _restoreTab", {
+      actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+      tabName,
+      currentLastActiveTab: this._lastActiveTab,
+    });
+    this._lastActiveTab = tabName;
+
+    const tab = this._tabs?.[0];
+    if (tab) {
+      tab.activate(tabName);
+      return;
+    }
+
+    const tabLink = this.element?.find?.(`.sheet-tabs .item[data-tab="${tabName}"]`);
+    const tabContent = this.element?.find?.(`.sheet-body .tab[data-tab="${tabName}"]`);
+    if (tabLink?.length) {
+      tabLink.addClass("active").siblings().removeClass("active");
+    }
+    if (tabContent?.length) {
+      tabContent.addClass("active").siblings().removeClass("active");
+    }
+  }
+
+  _onRender(...args) {
+    console.debug("[MM legacy npc trace] _onRender start", {
+      actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+      args: args?.length ?? 0,
+      lastActiveTab: this._lastActiveTab,
+      persistedTab: this.actor?.getFlag?.("marvel-multiverse", "currentTab"),
+    });
+    super._onRender?.(...args);
+    const active = this._getCurrentTab();
+    const persisted = this.actor?.getFlag?.("marvel-multiverse", "currentTab");
+    if (persisted) {
+      console.debug("[MM legacy npc trace] _onRender restoring persisted tab", { persisted });
+      this._restoreTab(persisted);
+      return;
+    }
+    if (active && this._lastActiveTab && active !== this._lastActiveTab) {
+      console.debug("[MM legacy npc trace] _onRender restoring lastActiveTab", {
+        active,
+        lastActiveTab: this._lastActiveTab,
+      });
+      this._restoreTab(this._lastActiveTab);
+    }
+  }
+
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+
+    html.on("click", ".sheet-tabs .item", async (ev) => {
+      const tabName = $(ev.currentTarget).data("tab");
+      console.debug("[MM legacy npc trace] click tab", {
+        actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+        tabName,
+      });
+      if (tabName) await this._rememberTab(tabName);
+    });
 
     // Render the item sheet for viewing/editing prior to the editable check.
     html.on("click", ".item-edit", (ev) => {
@@ -201,11 +288,20 @@ export class MarvelMultiverseNPCSheet extends ActorSheet {
     html.on("click", ".item-create", this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.on("click", ".item-delete", (ev) => {
+    html.on("click", ".item-delete", async (ev) => {
       const li = $(ev.currentTarget).parents(".item");
+      const currentTab = this._getCurrentTab();
+      console.debug("[MM legacy npc trace] delete item start", {
+        actor: this.actor?.name ?? this.actor?.id ?? "unknown",
+        itemId: li.data("itemId"),
+        currentTab,
+      });
+      await this._rememberTab(currentTab);
       const item = this.actor.items.get(li.data("itemId"));
       this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
-      li.slideUp(200, () => this.render(false));
+      li.slideUp(200, () => {
+        this.render(false).then(() => this._restoreTab(this._lastActiveTab));
+      });
     });
 
     // Active Effect management

@@ -1,0 +1,240 @@
+<div class="{{cssClass}} character mmcomic-sheet flexcol">
+  <section class="mmcomic-dashboard">
+    <aside class="mmcomic-portrait-panel">
+      <img class="mmcomic-portrait" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}" alt="">
+      <div class="mmcomic-status-strip">
+        <div class="mmcomic-status mmcomic-status--team">
+          <strong>Team Maneuvers</strong>
+          <div class="mmcomic-team-controls">
+            <select name="system.teamManeuver.maneuverType" aria-label="Team Maneuver">{{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank="None"}}</select>
+            <select name="system.teamManeuver.level" aria-label="Team Maneuver Level">{{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}</select>
+          </div>
+        </div>
+        <span class="mmcomic-status"><strong>Conditions</strong>{{#if statusDisplay.concentration.active}}Concentrating{{else}}None active{{/if}}</span>
+      </div>
+    </aside>
+
+    <div class="mmcomic-overview">
+      <header class="mmcomic-hero">
+        <div class="mmcomic-identity">
+          <input class="mmcomic-name" name="name" type="text" value="{{actor.name}}" aria-label="Codename">
+          <div class="mmcomic-subtitle">
+            {{#if system.realname}}<span class="mmcomic-subtitle__realname">{{system.realname}}</span>{{/if}}
+            {{#if system.teams}}<span class="mmcomic-subtitle__meta"><b>Team</b>{{system.teams}}</span>{{/if}}
+            {{#if system.base}}<span class="mmcomic-subtitle__meta"><b>Base</b>{{system.base}}</span>{{/if}}
+          </div>
+        </div>
+      </header>
+
+      <section class="mmcomic-stats">
+        <label class="mmcomic-rankbox">
+          <span class="mmcomic-rankbox__label">Rank</span>
+          <input class="mmcomic-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}">
+        </label>
+        <label class="mmcomic-resource mmcomic-resource--karma">
+          <span class="mmcomic-resource__name">Karma</span>
+          <span class="mmcomic-resource__numbers"><input name="system.karma.value" type="number" value="{{modernResources.karma.value}}" aria-label="Current Karma"><span>/</span><input name="system.karma.max" type="number" value="{{modernResources.karma.max}}" aria-label="Maximum Karma"></span>
+          <span class="mmcomic-resource__controls" aria-label="Karma controls">
+            <button type="button" class="mmcomic-resource__restore" data-action="adjustResource" data-resource="karma" data-adjust="full"><span>Restore</span><span>Full</span></button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--decrease" data-action="adjustResource" data-resource="karma" data-adjust="decrement" aria-label="Decrease Karma">−</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--set" data-action="adjustResource" data-resource="karma" data-adjust="set" aria-label="Set Karma">#</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--increase" data-action="adjustResource" data-resource="karma" data-adjust="increment" aria-label="Increase Karma">+</button>
+          </span>
+          <span class="mmcomic-resource__bar"><span style="--pct: {{modernResources.karma.percent}}%"></span></span>
+        </label>
+        <div class="mmcomic-resource mmcomic-resource--health">
+          <span class="mmcomic-resource__name">Health</span>
+          <span class="mmcomic-resource__numbers"><input name="system.health.value" type="number" value="{{modernResources.health.value}}" aria-label="Current Health"><span>/</span><input name="system.health.max" type="number" value="{{modernResources.health.max}}" aria-label="Maximum Health"></span>
+          <div class="mmcomic-resource__controls" aria-label="Health controls">
+            <button type="button" class="mmcomic-resource__restore" data-action="adjustResource" data-resource="health" data-adjust="full"><span>Restore</span><span>Full</span></button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--decrease" data-action="adjustResource" data-resource="health" data-adjust="decrement" aria-label="Decrease Health">−</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--set" data-action="adjustResource" data-resource="health" data-adjust="set" aria-label="Set Health">#</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--increase" data-action="adjustResource" data-resource="health" data-adjust="increment" aria-label="Increase Health">+</button>
+          </div>
+          <span class="mmcomic-resource__meta"><b>Damage Reduction</b><strong>{{system.healthDamageReduction}}</strong></span>
+          <span class="mmcomic-resource__bar"><span style="--pct: {{modernResources.health.percent}}%"></span></span>
+        </div>
+        <div class="mmcomic-resource mmcomic-resource--focus">
+          <span class="mmcomic-resource__name">Focus</span>
+          <span class="mmcomic-resource__numbers"><input name="system.focus.value" type="number" value="{{modernResources.focus.value}}" aria-label="Current Focus"><span>/</span><input name="system.focus.max" type="number" value="{{modernResources.focus.max}}" aria-label="Maximum Focus"></span>
+          <div class="mmcomic-resource__controls" aria-label="Focus controls">
+            <button type="button" class="mmcomic-resource__restore" data-action="adjustResource" data-resource="focus" data-adjust="full"><span>Restore</span><span>Full</span></button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--decrease" data-action="adjustResource" data-resource="focus" data-adjust="decrement" aria-label="Decrease Focus">−</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--set" data-action="adjustResource" data-resource="focus" data-adjust="set" aria-label="Set Focus">#</button>
+            <button type="button" class="mmcomic-resource__adjust mmcomic-resource__adjust--increase" data-action="adjustResource" data-resource="focus" data-adjust="increment" aria-label="Increase Focus">+</button>
+          </div>
+          <span class="mmcomic-resource__meta"><b>Damage Reduction</b><strong>{{system.focusDamageReduction}}</strong></span>
+          <span class="mmcomic-resource__bar"><span style="--pct: {{modernResources.focus.percent}}%"></span></span>
+        </div>
+        <div class="mmcomic-movement">
+          <span class="mmcomic-movement__title">Speed</span>
+          <span class="mmcomic-movement__list">{{#each modernMovement as |movement|}}<span class="mmcomic-movement__stat"><strong>{{movement.value}}</strong>{{localize movement.label}}</span>{{/each}}</span>
+        </div>
+        <button type="button" class="mmcomic-initiative rollable roll-initiative" data-action="rollInitiative"><span>Initiative Modifier</span><strong>{{numberFormat system.attributes.init.value decimals=0 sign=true}}</strong></button>
+      </section>
+
+      <section class="mmcomic-core">
+        <div class="mmcomic-sidebar">
+          <h2 class="mmcomic-section-title">Abilities</h2>
+          <div class="mmcomic-ability mmcomic-ability--head"><span aria-hidden="true"></span><span>Ability</span><span>Defense</span><span>Non-Combat</span></div>
+          {{#each modernAbilities as |ability|}}
+            <div class="mmcomic-ability">
+              <button type="button" class="mmcomic-ability__roll rollable" data-formula="{1d6,1dm,1d6}+@abilities.{{ability.key}}.value" data-label="{{ability.key}}" title="Roll {{ability.label}}"><span class="mmcomic-ability__name">{{ability.label}}</span></button>
+              <label class="mmcomic-ability__value"><input name="system.abilities.{{ability.key}}.value" type="number" value="{{ability.value}}" aria-label="{{ability.label}} score"></label>
+              <span class="mmcomic-ability__def"><strong>{{ability.defense}}</strong></span>
+              <button type="button" class="mmcomic-ability__noncom rollable" data-formula="{1d6,1dm,1d6}+@abilities.{{ability.key}}.noncom" data-label="{{ability.key}} non-combat">{{numberFormat ability.noncom decimals=0 sign=true}}</button>
+            </div>
+          {{/each}}
+        </div>
+
+        <div class="mmcomic-damage">
+          <h2 class="mmcomic-section-title">Damage</h2>
+          <div class="mmcomic-damage-grid">
+            {{#each comicDamageAbilities as |ability|}}
+              {{#if ability.damageMultiplier}}
+                <div class="mmcomic-damage-chip" data-ability-key="{{ability.key}}">
+                  <span>{{ability.label}}</span>
+                  <strong>
+                    <img class="mmcomic-damage-chip__die" src="systems/marvel-multiverse/ui/official/marvel-special-die-with-logo.png" alt="Marvel die">
+                    <span class="mmcomic-damage-chip__operator">×</span>
+                    <span class="mmcomic-damage-chip__term"><span class="mmcomic-damage-chip__multiplier">{{ability.damageMultiplier}}</span><small>Multiplier</small></span>
+                    <span class="mmcomic-damage-chip__operator">+</span>
+                    <span class="mmcomic-damage-chip__term"><output class="mmcomic-damage-chip__bonus">{{ability.value}}</output><small>Ability</small></span>
+                  </strong>
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <main class="mmcomic-main">
+    <nav class="sheet-tabs tabs mmcomic-tabs" data-group="primary">
+      <a class="item mmcomic-tab active" data-tab="abilities">Powers &amp; Actions</a>
+      <a class="item mmcomic-tab" data-tab="traits">Traits &amp; Tags</a>
+      <a class="item mmcomic-tab" data-tab="gear">Equipment</a>
+      <a class="item mmcomic-tab" data-tab="biography">Biography</a>
+      <a class="item mmcomic-tab" data-tab="conditions">Conditions</a>
+    </nav>
+
+    <section class="sheet-body mmcomic-content">
+      <div class="tab mmcomic-page active" data-group="primary" data-tab="abilities">
+        <div class="mmcomic-layout-2">
+          <section class="mmcomic-card mmcomic-powers-card">
+            <h2 class="mmcomic-card__title"><span>Powers</span><a class="item-control item-create mmcomic-title-add" title="{{localize 'DOCUMENT.Create' type='Power'}}" data-type="power" aria-label="Add Power"><i class="fas fa-plus"></i></a></h2>
+            <div class="mmcomic-card__body">
+              <div class="mmcomic-content-head"><span>Name</span><span>Description</span><span>Focus</span><span aria-hidden="true"></span></div>
+              {{#each comicPowerGroups as |group|}}
+                <ol class="mm-item-list mmcomic-rich-list">
+                  <li class="mmcomic-power-set mm-item-header"><span>{{group.label}}</span><hr><div class="item-controls"><a class="item-control item-create" title="{{localize 'DOCUMENT.Create' type='Power'}}" data-type="power" data-power-set="{{group.label}}"><i class="fas fa-plus"></i></a></div></li>
+                  {{#each group.items as |item|}}
+                    <li class="item mm-item mmcomic-rich-item" data-item-id="{{item._id}}">
+                      <a class="rollable mmcomic-rich-item__name" title="{{item.name}}" {{#if item.system.ability}}data-formula="{1d6,1dm,1d6}+@abilities.{{item.system.ability}}.value" data-label="{{item.system.ability}}" data-damagetype="{{item.system.damageType}}" data-item-id="{{item._id}}"{{else}}data-roll-type="item" data-item-id="{{item._id}}"{{/if}}>{{item.name}}{{#if item.comicPowerActionLabel}}<small>{{item.comicPowerActionLabel}}</small>{{/if}}</a>
+                      <div class="mmcomic-rich-item__content">
+                        <span class="mmcomic-rich-item__description" title="{{item.comicSummary}}">{{item.comicSummary}}</span>
+                        {{#if item.comicRequiresConcentration}}<button type="button" class="mmcomic-concentration-toggle{{#if item.comicConcentrationActive}} active{{/if}}" data-action="{{#if item.comicConcentrationActive}}endConcentration{{else}}startConcentration{{/if}}" data-item-id="{{item._id}}" aria-pressed="{{item.comicConcentrationActive}}"><span aria-hidden="true"></span>{{#if item.comicConcentrationActive}}Concentrating{{else}}Concentrate{{/if}}</button>{{/if}}
+                      </div>
+                      <strong class="mmcomic-rich-item__focus">{{item.comicFocusCost}}</strong>
+                      <div class="item-controls"><a class="item-control item-edit" title="{{localize 'DOCUMENT.Edit' type='power'}}"><i class="fas fa-edit"></i></a><a class="item-control item-delete" title="{{localize 'DOCUMENT.Delete' type='power'}}"><i class="fas fa-trash"></i></a></div>
+                    </li>
+                  {{/each}}
+                </ol>
+              {{/each}}
+            </div>
+          </section>
+          <section class="mmcomic-card mmcomic-actions-card">
+            <h2 class="mmcomic-card__title"><span>Actions</span></h2>
+            <div class="mmcomic-card__body">
+              <div class="mmcomic-action-filter" role="group" aria-label="Filter actions">
+                <button type="button" class="active" data-action-filter="all" aria-pressed="true">All</button>
+                <button type="button" data-action-filter="standard" aria-pressed="false">Standard</button>
+                <button type="button" data-action-filter="reaction" aria-pressed="false">Reaction</button>
+                <button type="button" data-action-filter="movement" aria-pressed="false">Movement</button>
+              </div>
+              <div class="mmcomic-content-head"><span>Name</span><span>Description</span><span>Focus</span><span aria-hidden="true"></span></div>
+              <ol class="mm-item-list mmcomic-action-list">
+                {{#each comicActions as |item|}}
+                  <li class="item mm-item mmcomic-rich-item mmcomic-action-item" data-item-id="{{item._id}}" data-action-category="{{item.comicActionCategory}}">
+                      <a class="rollable mmcomic-rich-item__name" title="{{item.name}}"
+                        {{#if item.system.ability}}
+                          data-formula="{1d6,1dm,1d6}+@abilities.{{item.system.ability}}.value"
+                          data-label="{{item.system.ability}}"
+                          data-damagetype="{{item.system.damageType}}"
+                          data-item-id="{{item._id}}"
+                        {{else}}
+                          data-roll-type="item" data-item-id="{{item._id}}"
+                        {{/if}}>{{item.name}}<small>{{item.comicActionLabel}}</small></a>
+                    <div class="mmcomic-rich-item__content">
+                      <span class="mmcomic-rich-item__description" title="{{item.comicSummary}}">{{item.comicSummary}}</span>
+                      <span class="mmcomic-action-details">
+                        {{#if item.comicAbilityLabel}}<span class="mmcomic-action-chip mmcomic-action-chip--ability">{{#if item.comicAbilityScore}}<strong>{{item.comicAbilityScore}}</strong>{{/if}}{{item.comicAbilityLabel}}</span>{{/if}}
+                        {{#if item.system.range}}<span class="mmcomic-action-chip mmcomic-action-chip--range">{{item.system.range}}</span>{{/if}}
+                        {{#if item.system.duration}}<span class="mmcomic-action-chip mmcomic-action-chip--duration">{{item.system.duration}}</span>{{/if}}
+                        {{#if item.system.trigger}}<span class="mmcomic-action-chip mmcomic-action-chip--trigger" title="{{item.system.trigger}}">Trigger</span>{{/if}}
+                      </span>
+                    </div>
+                    <strong class="mmcomic-rich-item__focus">{{item.comicFocusCost}}</strong>
+                    <div class="item-controls"><a class="item-control item-edit" title="{{localize 'DOCUMENT.Edit' type='power'}}"><i class="fas fa-edit"></i></a><a class="item-control item-delete" title="{{localize 'DOCUMENT.Delete' type='power'}}"><i class="fas fa-trash"></i></a></div>
+                  </li>
+                {{/each}}
+              </ol>
+              <p class="mmcomic-action-empty" hidden>No actions in this category.</p>
+              <div class="mmcomic-action-setup">
+                <label><span>Default Element</span><select name="system.defaultElement">{{selectOptions elements selected=system.defaultElement labelAttr="label" blank=""}}</select></label>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="tab mmcomic-page" data-group="primary" data-tab="traits"><div class="mmcomic-layout-2"><section class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Traits</span></h2><div class="mmcomic-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-traits.hbs"}}</div></section><section class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Tags</span></h2><div class="mmcomic-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-tags.hbs"}}</div></section></div></div>
+      <div class="tab mmcomic-page" data-group="primary" data-tab="gear"><div class="mmcomic-layout-2"><section class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Weapons</span></h2><div class="mmcomic-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-weapons.hbs"}}</div></section><section class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Gear</span></h2><div class="mmcomic-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-items.hbs"}}</div></section></div></div>
+      <div class="tab mmcomic-page" data-group="primary" data-tab="biography">
+        <section class="mmcomic-card mmcomic-identity-card">
+          <h2 class="mmcomic-card__title"><span>Identity</span></h2>
+          <div class="mmcomic-card__body mmcomic-identity-grid">
+            <div class="mmcomic-detail mmcomic-detail--wide">
+              <span class="mmcomic-detail__label">Occupation</span>
+              <div class="mmcomic-detail__items">
+                {{#each occupations as |item|}}
+                  <div class="item mmcomic-detail__item" data-item-id="{{item._id}}">
+                    <a class="rollable" data-roll-type="item">{{item.name}}</a>
+                    <a class="item-control item-delete" title="{{localize 'DOCUMENT.Delete' type='occupation'}}"><i class="fas fa-trash"></i></a>
+                  </div>
+                {{else}}
+                  <span class="mmcomic-detail__empty">None</span>
+                {{/each}}
+              </div>
+            </div>
+            <div class="mmcomic-detail mmcomic-detail--wide">
+              <span class="mmcomic-detail__label">Origin</span>
+              <div class="mmcomic-detail__items">
+                {{#each origins as |item|}}
+                  <div class="item mmcomic-detail__item" data-item-id="{{item._id}}">
+                    <a class="rollable" data-roll-type="item">{{item.name}}</a>
+                    <a class="item-control item-delete" title="{{localize 'DOCUMENT.Delete' type='origin'}}"><i class="fas fa-trash"></i></a>
+                  </div>
+                {{else}}
+                  <span class="mmcomic-detail__empty">None</span>
+                {{/each}}
+              </div>
+            </div>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Real Name</span><input type="text" name="system.realname" value="{{system.realname}}"></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Gender</span><input type="text" name="system.gender" value="{{system.gender}}"></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Size</span><select name="system.size">{{selectOptions sizeSelection labelAttr="label" selected=system.size blank=""}}</select></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Height</span><input type="text" name="system.height" value="{{system.height}}"></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Weight</span><input type="text" name="system.weight" value="{{system.weight}}"></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Eyes</span><input type="text" name="system.eyes" value="{{system.eyes}}"></label>
+            <label class="mmcomic-detail"><span class="mmcomic-detail__label">Hair</span><input type="text" name="system.hair" value="{{system.hair}}"></label>
+            <label class="mmcomic-detail mmcomic-detail--wide"><span class="mmcomic-detail__label">Teams</span><input type="text" name="system.teams" value="{{system.teams}}"></label>
+            <label class="mmcomic-detail mmcomic-detail--wide"><span class="mmcomic-detail__label">Base</span><input type="text" name="system.base" value="{{system.base}}"></label>
+          </div>
+        </section>
+        <div class="mmcomic-biography">{{> "systems/marvel-multiverse/templates/actor/parts/actor-biography.hbs"}}</div>
+      </div>
+      <div class="tab mmcomic-page" data-group="primary" data-tab="conditions"><div class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Concentration</span></h2><div class="mmcomic-card__body mmcomic-status-summary">{{#if statusDisplay.concentration.active}}<span>Concentrating: {{statusDisplay.concentration.itemName}}</span>{{else}}<span>No active concentration.</span>{{/if}}{{#if editable}}<button type="button" class="mmcomic-mini-btn" data-action="{{#if statusDisplay.concentration.active}}endConcentration{{else}}startConcentration{{/if}}">{{#if statusDisplay.concentration.active}}End{{else}}Start{{/if}}</button>{{/if}}</div></div><div class="mmcomic-card"><h2 class="mmcomic-card__title"><span>Conditions &amp; Effects</span></h2><div class="mmcomic-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-effects.hbs"}}</div></div></div>
+    </section>
+  </main>
+</div>

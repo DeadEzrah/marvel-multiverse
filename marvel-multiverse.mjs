@@ -115,7 +115,7 @@ import {
   resolveChatActionContainer,
 } from "./lib/chat-card.mjs";
 import { initializeSystem } from "./lib/bootstrap.mjs";
-import { MarvelMultiverseCharacterSheet, MarvelMultiverseModernCharacterSheet, MarvelMultiverseNPCSheet, MarvelMultiverseItemSheet } from "./lib/sheets.mjs";
+import { MarvelMultiverseCharacterSheet, MarvelMultiverseModernCharacterSheet, MarvelMultiverseComicCharacterSheet, MarvelMultiverseNPCSheet, MarvelMultiverseItemSheet } from "./lib/sheets.mjs";
 import { registerSystemHooks } from "./lib/hooks.mjs";
 import {
   getGuidedResolutionState,
@@ -937,8 +937,9 @@ class ChatMessageMarvel extends ChatMessage {
     const anchor = document.createElement("a");
     anchor.setAttribute(
       "aria-label",
-      game.i18n.localize("MARVEL_MULTIVERSE.AdditionalControls")
+      this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls")
     );
+    anchor.setAttribute("title", this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls"));
     anchor.classList.add("chat-control");
     anchor.dataset.contextMenu = "";
     anchor.innerHTML = '<i class="fas fa-ellipsis-vertical fa-fw"></i>';
@@ -963,7 +964,8 @@ class ChatMessageMarvel extends ChatMessage {
           initiativeRoll: isInitiativeRoll,
         });
         const attackResolution = this.getFlag("marvel-multiverse", "attackResolution") ?? null;
-        const damageContext = this.getFlag("marvel-multiverse", "damageContext") ?? null;
+        const actionDamage = this.getFlag("marvel-multiverse", "actionDamage") ?? null;
+        const damageContext = actionDamage?.damage ?? this.getFlag("marvel-multiverse", "damageContext") ?? null;
         const summary = buildRollSummary(rollContext, attackResolution, damageContext);
         const meta = buildRollCardMeta(rollContext, attackResolution, damageContext);
         const cardBadge = compactCard
@@ -1184,6 +1186,16 @@ class ChatMessageMarvel extends ChatMessage {
       return localized;
     }
     return fallback;
+  }
+
+  _prepareActionButtons(container) {
+    for (const button of container.querySelectorAll("button.action-button")) {
+      const label = button.querySelector("span")?.textContent?.trim();
+      if (!label) continue;
+      button.setAttribute("aria-label", label);
+      button.dataset.tooltip = label;
+      button.setAttribute("title", label);
+    }
   }
 
   /**
@@ -1489,6 +1501,7 @@ class ChatMessageMarvel extends ChatMessage {
     const focusTransactions = getFocusTransactions(message) ?? [];
     const hasUnrefundedSpend = focusTransactions.some((entry) => entry?.type === "spend" && !entry?.refunded);
     const actionFocus = message.getFlag("marvel-multiverse", "actionFocus") ?? null;
+    const hasPaidActionFocus = Boolean(actionFocus && actionFocus.refunded !== true);
 
     if (rollContext?.rollType === "attack") {
       const hasTargets = Array.isArray(rollContext?.targetUuids) && rollContext.targetUuids.length > 0;
@@ -1498,7 +1511,7 @@ class ChatMessageMarvel extends ChatMessage {
       }
     }
 
-    if (costContext && !hasUnrefundedSpend && !actionFocus) {
+    if (costContext && !hasUnrefundedSpend && !hasPaidActionFocus) {
       let focusOptions = { quiet: true };
       if (costContext?.type === "variable") {
         const minimum = typeof costContext.minimum === "number" ? costContext.minimum : 0;
@@ -1595,7 +1608,8 @@ class ChatMessageMarvel extends ChatMessage {
     const hasStoredTargets = Array.isArray(rollContext?.targetUuids) && rollContext.targetUuids.length > 0;
     const hasLegacyDamageHint = /damagetype\s*:/i.test(String(message?.flavor ?? ""))
       || /damagetype\s*:/i.test(String(message?.content ?? ""));
-    const hasDamage = Boolean(
+    const explicitlyNoDamage = rollContext?.dealsDamage === false || damageContext?.dealsDamage === false;
+    const hasDamage = !explicitlyNoDamage && Boolean(
       rollContext?.dealsDamage
       || damageContext?.dealsDamage
       || (rollContext?.damageType || damageContext?.damageType)
@@ -1651,6 +1665,7 @@ class ChatMessageMarvel extends ChatMessage {
       const tone = action === "undoDamage" ? "secondary" : mode === "custom" ? "secondary" : mode === "half" ? "secondary" : mode === "double" ? "accent" : "primary";
       return `<button type="button" class="action-button ${tone}" data-action="${action}" data-damage-mode="${mode}"><i class="fas ${icon}" aria-hidden="true"></i><span>${label}</span></button>`;
     }).join("");
+    this._prepareActionButtons(container);
     buttonGroup.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -1673,6 +1688,7 @@ class ChatMessageMarvel extends ChatMessage {
     const actor = typeof globalThis.fromUuidSync === "function" ? globalThis.fromUuidSync(actorUuid) : null;
     const transactions = getFocusTransactions(message) ?? [];
     const lastTransaction = [...transactions].reverse().find((entry) => entry?.type === "spend");
+    const actionFocus = message.getFlag("marvel-multiverse", "actionFocus") ?? null;
     const content = html.querySelector(".message-content");
     if (!content) return;
 
@@ -1686,10 +1702,17 @@ class ChatMessageMarvel extends ChatMessage {
       : costContext?.type === "variable"
         ? `${costContext.minimum ?? 0}+`
         : "?";
-    const amountText = lastTransaction?.appliedAmount != null
-      ? `${lastTransaction.appliedAmount}`
+    const displayedSpend = lastTransaction ?? actionFocus;
+    const amountText = displayedSpend?.appliedAmount != null
+      ? `${displayedSpend.appliedAmount}`
+      : displayedSpend?.amount != null
+        ? `${displayedSpend.amount}`
       : costDisplay;
-    const statusText = lastTransaction?.refunded ? refundedLabel : lastTransaction ? `${paidLabel}: ${amountText}` : `${focusLabel}: ${actor?.system?.focus?.value ?? "—"}`;
+    const statusText = displayedSpend?.refunded
+      ? refundedLabel
+      : displayedSpend
+        ? `${paidLabel}: ${amountText}`
+        : `${focusLabel}: ${actor?.system?.focus?.value ?? "—"}`;
     state.innerHTML = `<div class="focus-summary">${statusText}</div>`;
     content.appendChild(state);
   }
@@ -1714,16 +1737,20 @@ class ChatMessageMarvel extends ChatMessage {
     if (!canSpend) return;
 
     const transactions = getFocusTransactions(message) ?? [];
-    const hasSpend = transactions.some((entry) => entry?.type === "spend" && !entry?.refunded);
+    const actionFocus = message.getFlag("marvel-multiverse", "actionFocus") ?? null;
+    const hasSpend = transactions.some((entry) => entry?.type === "spend" && !entry?.refunded)
+      || Boolean(actionFocus && actionFocus.refunded !== true);
     const actions = [];
-    if (costContext?.type === "fixed") {
-      actions.push({ action: "spendFocus", label: `${game.i18n.localize("MARVEL_MULTIVERSE.SpendFocus") || "Spend Focus"} ${costContext.value}` });
-    } else if (costContext?.type === "variable") {
-      actions.push({ action: "chooseFocusCost", label: game.i18n.localize("MARVEL_MULTIVERSE.ChooseFocusCost") || "Choose Focus Cost" });
-    } else if (costContext?.type === "choice") {
-      actions.push({ action: "chooseFocusCost", label: game.i18n.localize("MARVEL_MULTIVERSE.ChooseFocusCost") || "Choose Focus Cost" });
-    } else if (game.user?.isGM) {
-      actions.push({ action: "customFocus", label: game.i18n.localize("MARVEL_MULTIVERSE.SpendCustomFocus") || "Spend Custom Focus" });
+    if (!hasSpend) {
+      if (costContext?.type === "fixed") {
+        actions.push({ action: "spendFocus", label: `${game.i18n.localize("MARVEL_MULTIVERSE.SpendFocus") || "Spend Focus"} ${costContext.value}` });
+      } else if (costContext?.type === "variable") {
+        actions.push({ action: "chooseFocusCost", label: game.i18n.localize("MARVEL_MULTIVERSE.ChooseFocusCost") || "Choose Focus Cost" });
+      } else if (costContext?.type === "choice") {
+        actions.push({ action: "chooseFocusCost", label: game.i18n.localize("MARVEL_MULTIVERSE.ChooseFocusCost") || "Choose Focus Cost" });
+      } else if (game.user?.isGM) {
+        actions.push({ action: "customFocus", label: game.i18n.localize("MARVEL_MULTIVERSE.SpendCustomFocus") || "Spend Custom Focus" });
+      }
     }
     if (hasSpend) {
       actions.push({ action: "refundFocus", label: game.i18n.localize("MARVEL_MULTIVERSE.RefundFocus") || "Refund Focus" });
@@ -1738,6 +1765,7 @@ class ChatMessageMarvel extends ChatMessage {
       const tone = action === "refundFocus" ? "secondary" : "primary";
       return `<button type="button" class="action-button ${tone}" data-action="${action}"><i class="fas ${icon}"></i><span>${label}</span></button>`;
     }).join("");
+    this._prepareActionButtons(container);
     buttonGroup.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -1771,10 +1799,13 @@ class ChatMessageMarvel extends ChatMessage {
 
     const container = document.createElement("div");
     container.classList.add("marvel-multiverse", "concentration-actions", "action-panel", "compact-inline");
+    const startLabel = this._localizeOrFallback("MARVEL_MULTIVERSE.StartConcentration", "Start Concentration");
+    const endLabel = this._localizeOrFallback("MARVEL_MULTIVERSE.EndConcentration", "End Concentration");
     container.innerHTML = `
-      <button type="button" class="action-button primary" data-action="startConcentration"><i class="fas fa-circle-dot"></i><span>${game.i18n.localize("MARVEL_MULTIVERSE.StartConcentration") || "Start Concentration"}</span></button>
-      <button type="button" class="action-button secondary" data-action="endConcentration"><i class="fas fa-circle-stop"></i><span>${game.i18n.localize("MARVEL_MULTIVERSE.EndConcentration") || "End Concentration"}</span></button>
+      <button type="button" class="action-button primary" data-action="startConcentration"><i class="fas fa-circle-dot"></i><span>${startLabel}</span></button>
+      <button type="button" class="action-button secondary" data-action="endConcentration"><i class="fas fa-circle-stop"></i><span>${endLabel}</span></button>
     `;
+    this._prepareActionButtons(container);
     content.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -1821,16 +1852,20 @@ class ChatMessageMarvel extends ChatMessage {
     const attackConfirmedNoHit = rollContext?.rollType === "attack" && resolvedTargets.length > 0 && !hasEligibleHitTarget;
     const targetConditionsUsable = conditions.length > 0 && !attackConfirmedNoHit;
     if (!targetConditionsUsable && !sourceConditions.length) return;
+    const canUndo = getConditionApplications(message).some((entry) => !entry?.undone);
 
     const canAct = Boolean(game.user?.isGM || message?.isOwner || message?.author?.isOwner || message?.user?.isOwner);
     if (!canAct) return;
 
     const container = document.createElement("div");
     container.classList.add("marvel-multiverse", "condition-actions", "action-panel", "compact-inline");
+    const applyLabel = this._localizeOrFallback("MARVEL_MULTIVERSE.ApplyConditions", "Apply Conditions");
+    const undoLabel = this._localizeOrFallback("MARVEL_MULTIVERSE.UndoConditions", "Undo Conditions");
     container.innerHTML = `
-      <button type="button" class="action-button primary" data-action="applyConditions"><i class="fas fa-plus"></i><span>${game.i18n.localize("MARVEL_MULTIVERSE.ApplyConditions") || "Apply Conditions"}</span></button>
-      <button type="button" class="action-button secondary" data-action="undoConditions"><i class="fas fa-rotate-left"></i><span>${game.i18n.localize("MARVEL_MULTIVERSE.UndoConditions") || "Undo Conditions"}</span></button>
+      <button type="button" class="action-button primary" data-action="applyConditions"><i class="fas fa-plus"></i><span>${applyLabel}</span></button>
+      ${canUndo ? `<button type="button" class="action-button secondary" data-action="undoConditions"><i class="fas fa-rotate-left"></i><span>${undoLabel}</span></button>` : ""}
     `;
+    this._prepareActionButtons(container);
     buttonGroup.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -1904,7 +1939,7 @@ class ChatMessageMarvel extends ChatMessage {
     const hasTargets = Array.isArray(rollContext.targetUuids) && rollContext.targetUuids.length > 0;
     if (hasTargets) return;
 
-    const existing = getCheckResolution(message);
+    const existing = getCheckResolution(message) ?? this._getConfiguredCheckDifficulty(message, rollContext);
     const label = existing
       ? (game.i18n.localize("MARVEL_MULTIVERSE.UpdateDifficulty") || "Update Difficulty")
       : (game.i18n.localize("MARVEL_MULTIVERSE.SetDifficulty") || "Set Difficulty");
@@ -1912,10 +1947,19 @@ class ChatMessageMarvel extends ChatMessage {
     const container = document.createElement("div");
     container.classList.add("marvel-multiverse", "check-resolution-actions", "action-panel", "compact-inline");
     container.innerHTML = `<button type="button" class="action-button primary" data-action="setDifficulty"><i class="fas fa-bullseye" aria-hidden="true"></i><span>${label}</span></button>`;
+    this._prepareActionButtons(container);
     buttonGroup.appendChild(container);
 
     container.querySelector("button[data-action='setDifficulty']")
       ?.addEventListener("click", (event) => this._onCheckResolutionActionButton(event, message));
+  }
+
+  _getConfiguredCheckDifficulty(message, rollContext = null) {
+    const context = rollContext ?? message.getFlag("marvel-multiverse", "rollContext") ?? null;
+    if (context?.targetNumber === null || context?.targetNumber === undefined || context?.targetNumber === "") return null;
+    const difficulty = Number(context.targetNumber);
+    if (!Number.isFinite(difficulty)) return null;
+    return { mode: "difficulty", difficulty, against: context.ability ?? null };
   }
 
   async _onCheckResolutionActionButton(event, message) {
@@ -1930,7 +1974,7 @@ class ChatMessageMarvel extends ChatMessage {
   }
 
   async _handleSetCheckDifficulty(message, button) {
-    const existing = getCheckResolution(message);
+    const existing = getCheckResolution(message) ?? this._getConfiguredCheckDifficulty(message);
     const selection = await this._promptCheckDifficultyDialog(existing);
     if (!selection) return;
 
@@ -2103,6 +2147,7 @@ class ChatMessageMarvel extends ChatMessage {
       <button type="button" class="action-button primary" data-action="applyPowerOutcomes"><i class="fas fa-bolt-lightning"></i><span>${applyLabel}</span></button>
       <button type="button" class="action-button secondary" data-action="undoPowerOutcomes"><i class="fas fa-rotate-left"></i><span>${undoLabel}</span></button>
     `;
+    this._prepareActionButtons(container);
     buttonGroup.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -2225,6 +2270,7 @@ class ChatMessageMarvel extends ChatMessage {
     const container = document.createElement("div");
     container.classList.add("marvel-multiverse", "escape-actions", "action-panel");
     container.innerHTML = actions.map(({ action, label, transactionId, targetUuid }) => `<button type="button" class="action-button primary" data-action="${action}" data-status-transaction-id="${transactionId}" data-target-uuid="${targetUuid}"><i class="fas fa-unlock"></i><span>${label}</span></button>`).join("");
+    this._prepareActionButtons(container);
     summary.appendChild(container);
 
     for (const button of container.querySelectorAll("button[data-action]")) {
@@ -2708,6 +2754,7 @@ registerSystemHooks({
   DocumentMarvelMultiverseCombatant,
   DocumentMarvelMultiverseActor,
   DocumentMarvelMultiverseItem,
+  DocumentMarvelMultiverseGear: documentModels.MarvelMultiverseItem,
   DocumentMarvelMultiverseCharacter,
   DocumentMarvelMultiverseNPC,
   DocumentMarvelMultiverseWeapon,
@@ -2719,6 +2766,7 @@ registerSystemHooks({
   DocumentMarvelDie,
   CharacterSheetClass: MarvelMultiverseCharacterSheet,
   ModernCharacterSheetClass: MarvelMultiverseModernCharacterSheet,
+  ComicCharacterSheetClass: MarvelMultiverseComicCharacterSheet,
   NPCSheetClass: MarvelMultiverseNPCSheet,
   ItemSheetClass: MarvelMultiverseItemSheet,
   version: MarvelMultiverse.version,

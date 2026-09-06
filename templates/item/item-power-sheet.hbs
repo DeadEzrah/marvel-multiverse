@@ -1,4 +1,4 @@
-<div class="{{cssClass}}">
+<form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <div class="mm-styled-field -lg -img">
       <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
@@ -36,6 +36,14 @@
           </div>
         </div>
       {{/if}}
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Automation Preset</span></label>
+        <div class="mm-styled-input">
+          <select name="system.automationPreset">
+            {{selectOptions automationPresets selected=system.automationPreset labelAttr="label" blank="Custom"}}
+          </select>
+        </div>
+      </div>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left rollable" for="system.description" data-label="description"><span>Description</span></label>
         <div class="mm-styled-input">
@@ -90,6 +98,39 @@
           <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="String"/>
         </div>
       </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Extra Focus Scaling</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.focusScaling.enabled" {{checked system.focusScaling.enabled}}/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Scaling Outcome</span></label>
+        <div class="mm-styled-input">
+          <select name="system.focusScaling.mode">
+            <option value="damage" {{#if (eq system.focusScaling.mode "damage")}}selected{{/if}}>Damage</option>
+            <option value="healing" {{#if (eq system.focusScaling.mode "healing")}}selected{{/if}}>Healing</option>
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Benefit per Extra Focus</span></label>
+        <div class="mm-styled-input">
+          <input type="number" min="0" step="1" name="system.focusScaling.benefitPerFocus" value="{{system.focusScaling.benefitPerFocus}}" data-dtype="Number"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Focus per Benefit</span></label>
+        <div class="mm-styled-input">
+          <input type="number" min="1" step="1" name="system.focusScaling.focusPerBenefit" value="{{#if system.focusScaling.focusPerBenefit}}{{system.focusScaling.focusPerBenefit}}{{else}}1{{/if}}" data-dtype="Number"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Max Extra Focus (blank is unlimited)</span></label>
+        <div class="mm-styled-input">
+          <input type="number" min="0" step="1" name="system.focusScaling.maxExtraFocus" value="{{system.focusScaling.maxExtraFocus}}"/>
+        </div>
+      </div>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left"><span>Attack Range</span></label>
         <div class="mm-styled-input">
@@ -142,6 +183,50 @@
           </select>
         </div>
       </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Require Target</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.targeting.required" {{checked system.targeting.required}} />
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Target Range (spaces)</span></label>
+        <div class="mm-styled-input">
+          <input type="number" name="system.targeting.range" value="{{system.targeting.range}}" min="1" step="1" data-dtype="Number"/>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Target Range Scaling</span></label>
+        <div class="mm-styled-input">
+          <select name="system.targeting.rangeScaling">
+            <option value="" {{#unless system.targeting.rangeScaling}}selected{{/unless}}>Fixed spaces</option>
+            <option value="rank" {{#if (eq system.targeting.rangeScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+            <option value="reach" {{#if (eq system.targeting.rangeScaling "reach")}}selected{{/if}}>Spaces per Reach</option>
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Require Line of Sight</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.targeting.requiresLineOfSight" {{checked system.targeting.requiresLineOfSight}} />
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Target Filter</span></label>
+        <div class="mm-styled-input">
+          <select name="system.targeting.targetFilter">
+            <option value="all" {{#if (eq system.targeting.targetFilter "all")}}selected{{/if}}>All tokens</option>
+            <option value="enemies" {{#if (eq system.targeting.targetFilter "enemies")}}selected{{/if}}>Enemies</option>
+            <option value="allies" {{#if (eq system.targeting.targetFilter "allies")}}selected{{/if}}>Allies</option>
+          </select>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill -checkbox">
+        <label class="mm-styled-label -align-left"><span>Allow Self</span></label>
+        <div class="mm-styled-input">
+          <input type="checkbox" name="system.targeting.includeSelf" {{checked system.targeting.includeSelf}} />
+        </div>
+      </div>
       <div class="mm-styled-field -fill">
         <label class="mm-styled-label -align-left"><span>Area Shape</span></label>
         <div class="mm-styled-input">
@@ -151,10 +236,70 @@
         </div>
       </div>
       {{#if system.targeting.area.shape}}
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Area Origin</span></label>
+          <div class="mm-styled-input">
+            <select name="system.targeting.area.origin">
+              <option value="placed" {{#unless (eq system.targeting.area.origin "source")}}selected{{/unless}}>Placed point</option>
+              <option value="source" {{#if (eq system.targeting.area.origin "source")}}selected{{/if}}>Source token</option>
+            </select>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Area Targets</span></label>
+          <div class="mm-styled-input">
+            <select name="system.targeting.area.targetFilter">
+              <option value="all" {{#if (eq system.targeting.area.targetFilter "all")}}selected{{/if}}>All tokens</option>
+              <option value="enemies" {{#if (eq system.targeting.area.targetFilter "enemies")}}selected{{/if}}>Enemies</option>
+              <option value="allies" {{#if (eq system.targeting.area.targetFilter "allies")}}selected{{/if}}>Allies</option>
+            </select>
+          </div>
+        </div>
         <div class="mm-styled-field -fill -checkbox">
-          <label class="mm-styled-label -align-left"><span>Area Distance (spaces)</span></label>
+          <label class="mm-styled-label -align-left"><span>Require Line of Sight</span></label>
+          <div class="mm-styled-input">
+            <input type="checkbox" name="system.targeting.area.requiresLineOfSight" {{checked system.targeting.area.requiresLineOfSight}} />
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Attack Animation Destination</span></label>
+          <div class="mm-styled-input">
+            <select name="system.targeting.area.attackAnimation">
+              <option value="center" {{#unless (eq system.targeting.area.attackAnimation "targets")}}selected{{/unless}}>Area center</option>
+              <option value="targets" {{#if (eq system.targeting.area.attackAnimation "targets")}}selected{{/if}}>Each target</option>
+            </select>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill -checkbox">
+          <label class="mm-styled-label -align-left"><span>{{#if (eq system.targeting.area.shape "wall")}}Wall Length{{else}}Area Distance{{/if}} (spaces)</span></label>
           <div class="mm-styled-input">
             <input type="number" name="system.targeting.area.distance" value="{{system.targeting.area.distance}}" min="1" step="1" data-dtype="Number"/>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Area Scaling</span></label>
+          <div class="mm-styled-input">
+            <select name="system.targeting.area.distanceScaling">
+              <option value="" {{#unless system.targeting.area.distanceScaling}}selected{{/unless}}>Fixed spaces</option>
+              <option value="rank" {{#if (eq system.targeting.area.distanceScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+              <option value="reach" {{#if (eq system.targeting.area.distanceScaling "reach")}}selected{{/if}}>Spaces per Reach</option>
+              <option value="rank-plus-reach" {{#if (eq system.targeting.area.distanceScaling "rank-plus-reach")}}selected{{/if}}>Spaces per Rank + Reach</option>
+            </select>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Placement Range (spaces)</span></label>
+          <div class="mm-styled-input">
+            <input type="number" name="system.targeting.area.placementRange" value="{{system.targeting.area.placementRange}}" min="1" step="1" data-dtype="Number"/>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Range Scaling</span></label>
+          <div class="mm-styled-input">
+            <select name="system.targeting.area.placementRangeScaling">
+              <option value="" {{#unless system.targeting.area.placementRangeScaling}}selected{{/unless}}>Fixed spaces</option>
+              <option value="rank" {{#if (eq system.targeting.area.placementRangeScaling "rank")}}selected{{/if}}>Spaces per Rank</option>
+            </select>
           </div>
         </div>
         {{#if (eq system.targeting.area.shape "cone")}}
@@ -170,6 +315,20 @@
             <label class="mm-styled-label -align-left"><span>Line Width (spaces)</span></label>
             <div class="mm-styled-input">
               <input type="number" name="system.targeting.area.width" value="{{system.targeting.area.width}}" min="1" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+        {{/if}}
+        {{#if (eq system.targeting.area.shape "wall")}}
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Wall Width (spaces)</span></label>
+            <div class="mm-styled-input">
+              <input type="number" name="system.targeting.area.width" value="{{system.targeting.area.width}}" min="1" step="1" data-dtype="Number"/>
+            </div>
+          </div>
+          <div class="mm-styled-field -fill -checkbox">
+            <label class="mm-styled-label -align-left"><span>Persistent Area</span></label>
+            <div class="mm-styled-input">
+              <input type="checkbox" name="system.targeting.area.persistent" {{checked system.targeting.area.persistent}} />
             </div>
           </div>
         {{/if}}
@@ -194,9 +353,13 @@
           </div>
         </div>
       {{/if}}
+      <button type="button" data-action="animationDesigner">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        Animation Designer
+      </button>
     </div>
     <div class="tab power-effects" data-group="primary" data-tab="effects">
        {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}
     </div>
   </section>
-</div>
+</form>

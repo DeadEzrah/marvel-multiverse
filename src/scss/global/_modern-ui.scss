@@ -1,12 +1,14 @@
 @use "../utils/variables" as *;
+@use "../utils/typography" as *;
 
-$mmrdp-panel: rgba(20, 23, 30, 0.96);
-$mmrdp-panel-soft: rgba(255, 255, 255, 0.05);
-$mmrdp-border: rgba(255, 255, 255, 0.12);
-$mmrdp-text: #f7f3f1;
-$mmrdp-muted: rgba(247, 243, 241, 0.72);
-$mmrdp-red: #e41d18;
-$mmrdp-red-dark: #8b0502;
+$mmrdp-panel: #111214;
+$mmrdp-panel-soft: #191b1e;
+$mmrdp-border: #4b4e54;
+$mmrdp-paper: #f5f3ef;
+$mmrdp-text: #fff;
+$mmrdp-muted: #b7b9bd;
+$mmrdp-red: #ed1c24;
+$mmrdp-red-dark: #9d1015;
 
 // DialogV2 and legacy Dialog both preserve these content wrapper classes.
 .mm-action-roll-dialog,
@@ -19,8 +21,9 @@ $mmrdp-red-dark: #8b0502;
   padding: $mm-spacing-md;
   color: $mmrdp-text;
   background: $mmrdp-panel;
-  border: 1px solid $mmrdp-border;
-  border-radius: 8px;
+  border: 2px solid $mmrdp-red;
+  border-radius: 0;
+  font-family: $font-tertiary;
 
   h2,
   p {
@@ -28,8 +31,10 @@ $mmrdp-red-dark: #8b0502;
   }
 
   h2 {
+    font-family: $font-primary;
     font-size: 1.15rem;
     letter-spacing: 0;
+    text-transform: uppercase;
   }
 
   code {
@@ -37,7 +42,7 @@ $mmrdp-red-dark: #8b0502;
     color: $mmrdp-text;
     background: rgba(0, 0, 0, 0.28);
     border: 1px solid $mmrdp-border;
-    border-radius: 4px;
+    border-radius: 0;
   }
 
   .form-group {
@@ -50,7 +55,7 @@ $mmrdp-red-dark: #8b0502;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
     label {
-      color: $mmrdp-muted;
+      color: $mmrdp-text;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -61,17 +66,17 @@ $mmrdp-red-dark: #8b0502;
     select {
       width: 100%;
       min-width: 0;
-      color: $mmrdp-text;
-      color-scheme: dark;
-      background: #151820;
+      color: #111214;
+      color-scheme: light;
+      background: $mmrdp-paper;
       border: 1px solid $mmrdp-border;
-      border-radius: 4px;
+      border-radius: 0;
     }
 
     option,
     optgroup {
-      color: $mmrdp-text;
-      background-color: #151820;
+      color: #111214;
+      background-color: $mmrdp-paper;
     }
 
     option:checked {
@@ -82,7 +87,7 @@ $mmrdp-red-dark: #8b0502;
 
   .notification {
     margin: 0;
-    border-radius: 6px;
+    border-radius: 0;
   }
 }
 
@@ -114,28 +119,40 @@ $mmrdp-red-dark: #8b0502;
 .application.dialog:has(.mm-damage-roll-dialog) {
   .window-content {
     color: $mmrdp-text;
-    background: rgba(10, 12, 16, 0.96);
+    background-color: $mmrdp-panel;
+    background-image:
+      linear-gradient(30deg, rgba(255, 255, 255, 0.035) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.035) 87.5%),
+      linear-gradient(150deg, rgba(0, 0, 0, 0.08) 12%, transparent 12.5%, transparent 87%, rgba(0, 0, 0, 0.08) 87.5%);
+    font-family: $font-tertiary;
   }
 
   button[data-action="roll"],
   button[data-action="ok"] {
     color: white;
-    background: linear-gradient(180deg, $mmrdp-red, $mmrdp-red-dark);
-    border-color: rgba(255, 255, 255, 0.16);
+    background: $mmrdp-red-dark;
+    border: 1px solid $mmrdp-red;
+    border-radius: 0;
   }
 }
 
 #chat-log .chat-message,
 .chat-log .chat-message {
   color: $mmrdp-text;
-  background: rgba(16, 18, 24, 0.94);
+  background: $mmrdp-panel;
   border: 1px solid $mmrdp-border;
-  border-radius: 8px;
+  border-left: 3px solid $mmrdp-red;
+  border-radius: 0;
   box-shadow: none;
+  font-family: $font-tertiary;
 
   .message-header {
     color: $mmrdp-muted;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid $mmrdp-border;
+
+    .message-sender {
+      color: $mmrdp-text;
+      font-family: $font-primary;
+    }
   }
 
   .message-content {
@@ -146,7 +163,7 @@ $mmrdp-red-dark: #8b0502;
     color: $mmrdp-text;
     background: $mmrdp-panel-soft;
     border: 1px solid $mmrdp-border;
-    border-radius: 5px;
+    border-radius: 0;
 
     &:hover {
       background: rgba(228, 29, 24, 0.22);
@@ -159,10 +176,11 @@ $mmrdp-red-dark: #8b0502;
 .marvel-multiverse.chat-card,
 .marvel-multiverse.dice-roll {
   color: $mmrdp-text;
-  background: $mmrdp-panel-soft;
-  border: 1px solid $mmrdp-border;
-  border-radius: 7px;
+  background: $mmrdp-red-dark;
+  border: 2px solid $mmrdp-red;
+  border-radius: 0;
   overflow: hidden;
+  font-family: $font-tertiary;
 }
 
 .marvel-multiverse.action-roll-card {
@@ -181,6 +199,7 @@ $mmrdp-red-dark: #8b0502;
   color: $mmrdp-text;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid $mmrdp-border;
+  font-family: $font-primary;
   letter-spacing: 0;
 }
 
