@@ -12,7 +12,28 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can communicate telepathically with a group of willing, linked people, each of whom they have met or seen before. The communication can be verbal, visual or even more complex, such as imparting location information. The group can number up to five people per rank. There is no limit to the distance of the communication, as long as everyone involved is in the same dimension."
+    "effect": "The character can communicate telepathically with a group of willing, linked people, each of whom they have met or seen before. The communication can be verbal, visual or even more complex, such as imparting location information. The group can number up to five people per rank. There is no limit to the distance of the communication, as long as everyone involved is in the same dimension.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsPerRank": 5,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "telepathic-network-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telepathic-network-requirements-reminder",
+            "type": "manual",
+            "label": "Confirm every selected target is willing, linked, previously met or seen, and in the same dimension."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

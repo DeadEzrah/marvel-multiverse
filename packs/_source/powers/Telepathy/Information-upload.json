@@ -12,7 +12,26 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character transmits a knowledge-based label (a trait or tag) of their own to a target with whom they have established a telepathic link-willing or not. The label lasts until the target sleeps. The character can also impart any other kind of knowledge they have to a target this way. The process is almost instantaneous."
+    "effect": "The character transmits a knowledge-based label (a trait or tag) of their own to a target with whom they have established a telepathic link-willing or not. The label lasts until the target sleeps. The character can also impart any other kind of knowledge they have to a target this way. The process is almost instantaneous.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1
+    },
+    "events": [
+      {
+        "id": "information-upload-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "information-upload-reminder",
+            "type": "manual",
+            "label": "Choose knowledge or one knowledge-based trait or tag the character possesses. Confirm an existing telepathic link; the shared label expires when the target sleeps."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

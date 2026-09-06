@@ -37,12 +37,12 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 ### Link And Communication
 
 - [x] **Telepathic Link**: willing communication plus forced Logic-versus-Vigilance check, failure lockout, one-round success, and Fantastic day-long lockout prevention.
-- [ ] **Telepathic Network**: willing linked targets, maximum five targets per rank, same-dimension reminder, 5 Focus, and concentration.
-- [ ] **Borrow Senses**: established link/bond requirement, one target, 5 Focus, and concentration.
-- [ ] **Animal Bond**: persistent chosen-animal restriction and same-dimension communication reminders.
-- [ ] **Animal Communication**: selected taxonomic order, 500-spaces-per-rank call range, and disposition limitations.
-- [ ] **Machine Telepathy**: machine targeting plus Narrator-defined security difficulty for secured machines.
-- [ ] **Information Upload**: established link, willing or unwilling target, transferred label/knowledge, sleep expiration, 5 Focus, and concentration.
+- [x] **Telepathic Network**: willing linked targets, maximum five targets per rank, same-dimension reminder, 5 Focus, and concentration.
+- [x] **Borrow Senses**: established link/bond requirement, one target, 5 Focus, and concentration.
+- [x] **Animal Bond**: persistent chosen-animal restriction and same-dimension communication reminders.
+- [x] **Animal Communication**: selected taxonomic order, 500-spaces-per-rank call range, and disposition limitations.
+- [x] **Machine Telepathy**: machine targeting plus Narrator-defined security difficulty for secured machines.
+- [x] **Information Upload**: established link, willing or unwilling target, transferred label/knowledge, sleep expiration, 5 Focus, and concentration.
 
 ### Mirage And Concealment
 
@@ -69,11 +69,11 @@ Migrate in small related batches, running local, build, deployment, live, and cl
 
 Several powers activate without an attack or opposed check. They should not be forced through a fake roll.
 
-- [ ] Design a structured utility-power activation path with targeting, Focus spending, concentration, chat reminders, effects, and undo where applicable.
-- [ ] Support willing-target selection without requiring a defense or target number.
-- [ ] Support no-target/self activations such as Astral Form.
-- [ ] Support Narrator-entered difficulty where rules call for one, such as Machine Telepathy security.
-- [ ] Ensure utility activations use the same compact chat controls and Focus transaction model as action rolls.
+- [x] Design a structured utility-power activation path with targeting, Focus spending, concentration, chat reminders, effects, and undo where applicable.
+- [x] Support willing-target selection without requiring a defense or target number.
+- [x] Support no-target/self activations such as Astral Form.
+- [x] Support Narrator-entered difficulty where rules call for one, such as Machine Telepathy security.
+- [x] Ensure utility activations use the same compact chat controls and Focus transaction model as action rolls.
 
 ## Weapons And Equipment
 

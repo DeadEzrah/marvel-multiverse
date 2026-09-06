@@ -952,8 +952,9 @@ class ChatMessageMarvel extends ChatMessage {
       el.replaceWith(icon);
     }
 
-    // Roll-specific enrichment must never be added to descriptive item or ordinary chat cards.
-    if (!hasDiceRoll(this)) return;
+    // Structured utility activations reuse the roll-context controls without manufacturing dice.
+    const utilityActivation = this.getFlag("marvel-multiverse", "utilityActivation") ?? null;
+    if (!hasDiceRoll(this) && !utilityActivation) return;
 
     if (this.isContentVisible) {
       const content = html.querySelector(".message-content");
@@ -968,7 +969,9 @@ class ChatMessageMarvel extends ChatMessage {
         const damageContext = actionDamage?.damage ?? this.getFlag("marvel-multiverse", "damageContext") ?? null;
         const summary = buildRollSummary(rollContext, attackResolution, damageContext);
         const meta = buildRollCardMeta(rollContext, attackResolution, damageContext);
-        const cardBadge = compactCard
+        const cardBadge = utilityActivation
+          ? "Utility"
+          : compactCard
           ? (isInitiativeRoll || rollContext?.actionType === "initiative" ? "Initiative" : "Roll")
           : rollContext?.rollType === "attack"
           ? "Attack"
@@ -1591,6 +1594,7 @@ class ChatMessageMarvel extends ChatMessage {
 
     const message = game.messages.get(messageId);
     if (!message) return;
+    if (message.getFlag("marvel-multiverse", "utilityActivation")) return;
 
     const rollContext = message.getFlag("marvel-multiverse", "rollContext") ?? null;
     const attackResolution = message.getFlag("marvel-multiverse", "attackResolution") ?? null;
@@ -1931,6 +1935,7 @@ class ChatMessageMarvel extends ChatMessage {
 
     const message = game.messages.get(messageId);
     if (!message) return;
+    if (message.getFlag("marvel-multiverse", "utilityActivation")) return;
 
     const rollContext = message.getFlag("marvel-multiverse", "rollContext") ?? null;
     if (!rollContext || rollContext.rollType === "attack" || isCompactRollCard(rollContext, {

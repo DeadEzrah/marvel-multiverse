@@ -12,7 +12,27 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character can communicate telepathically with one animal of their choice, and they must have befriended the animal before. They cannot switch to another animal unless the animal dies, but they can select this power multiple times if desired. The communication can be verbal, visual or even more complex, such as imparting location information. There is no limit to the distance of the communication, as long as the character and the animal are in the same dimension. Animals with a telepathic bond are generally willing to communicate, even if they aren't friendly. Bonded animals often do whatever the character asks, even if it might put them in danger."
+    "effect": "The character can communicate telepathically with one animal of their choice, and they must have befriended the animal before. They cannot switch to another animal unless the animal dies, but they can select this power multiple times if desired. The communication can be verbal, visual or even more complex, such as imparting location information. There is no limit to the distance of the communication, as long as the character and the animal are in the same dimension. Animals with a telepathic bond are generally willing to communicate, even if they aren't friendly. Bonded animals often do whatever the character asks, even if it might put them in danger.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "animal-bond-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "animal-bond-target-reminder",
+            "type": "manual",
+            "label": "Confirm this is the animal chosen for this instance of Animal Bond, it was befriended beforehand, and it is in the same dimension."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,27 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can use the full senses of someone or something with whom they have established a telepathic link or bond. While they do, they retain the use of their own senses too."
+    "effect": "The character can use the full senses of someone or something with whom they have established a telepathic link or bond. While they do, they retain the use of their own senses too.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "willing": true
+    },
+    "events": [
+      {
+        "id": "borrow-senses-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "borrow-senses-link-reminder",
+            "type": "manual",
+            "label": "Confirm the selected target already has a telepathic link or bond with the character."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
