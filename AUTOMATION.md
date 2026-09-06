@@ -242,9 +242,9 @@ Bulk migration should begin only after the first healing and ranged examples pas
 
 ## Model Parity
 
-`lib/documents.mjs` remains the active runtime model source. The legacy models under `module/data/` now match its schema metadata and actor derivation behavior, including open structured fields used by automation. The parity contract covers `automationPreset`, `effectProfile`, `effectProfiles`, `effectOverrides`, `targeting`, `damage`, `events`, `rollModifiers`, `options`, `activation`, and `focusScaling`.
+`lib/documents.mjs` is the single source for active data models. The legacy paths under `module/data/` are compatibility re-exports of those same classes, so consumers of either path receive identical schema metadata and actor derivation behavior. The shared contract covers `automationPreset`, `effectProfile`, `effectProfiles`, `effectOverrides`, `targeting`, `damage`, `events`, `rollModifiers`, `options`, `activation`, and `focusScaling`.
 
-Before consolidating models or changing the build entry point, verify this contract again so structured automation data is not narrowed or discarded.
+When changing model schemas or the build entry point, keep the compatibility exports pointed at the active classes so structured automation data is not narrowed or discarded.
 
 ## Validation Checklist
 
