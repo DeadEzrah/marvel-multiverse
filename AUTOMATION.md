@@ -194,6 +194,21 @@ Existing profiles cover common presentation:
 
 Add new profiles by semantic behavior, not by hero or power name. For example, prefer `power.web.projectile` over `spider-man.web-shot`.
 
+## Effect Durations
+
+Power-event status and Active Effect outcomes use structured `duration` objects. Supported automatic cleanup profiles are:
+
+- `{ "type": "rounds", "value": 1 }`: expires after the declared number of combat rounds.
+- `{ "type": "start-of-source-turn" }` or `{ "type": "end-of-target-turn" }`: expires at the next matching actor boundary. Source/target and start/end variants are supported.
+- `{ "type": "end-of-source-next-turn" }` or `{ "type": "end-of-target-next-turn" }`: expires at the matching boundary in a later round.
+- `{ "type": "concentration" }`: owned and removed by the source actor's concentration lifecycle.
+- `{ "type": "days", "value": 1 }`: expires after that many 24-hour world-time periods.
+- `{ "type": "until-sleep", "actor": "target" }`: expires when `Hooks.callAll("marvel-multiverse.actorSlept", actor)` is emitted. Use `actor: "source"` when the source's sleep ends the effect.
+- `{ "type": "permanent" }`: never expires automatically; removal must be explicit.
+- `{ "type": "manual" }`: intentionally requires Narrator cleanup.
+
+Turn and round durations require an active combat when the outcome is applied. Sleep is an integration hook because the system does not currently own a rest workflow.
+
 ## Content Migration Order
 
 Use a narrow vertical slice before bulk changes:
@@ -292,4 +307,4 @@ Not completed:
 - Migration of the remaining prose-only compendium powers.
 - A circumstance selector and actor-trait modifier resolver for contextual Edge/Trouble benefits.
 - Automated manifest/database compatibility audit.
-- Persistent web, aura, and maintained-effect lifecycle profiles.
+- Migration of remaining persistent web, aura, and maintained-effect power data.

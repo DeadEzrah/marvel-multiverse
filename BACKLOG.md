@@ -100,7 +100,7 @@ The 13 weapon records are structured locally but still require complete live gat
 - [x] Add the circumstance selector and actor-trait modifier resolver for contextual Edge and Trouble.
 - [x] Keep subjective circumstances as explicit player or Narrator choices.
 - [x] Add persistent lifecycle support for webs, auras, maintained effects, and other concentration powers.
-- [ ] Define expiration and cleanup behavior for rounds, combat turns, concentration, sleep, day-long effects, and permanent effects.
+- [x] Define expiration and cleanup behavior for rounds, combat turns, concentration, sleep, day-long effects, and permanent effects.
 - [ ] Decide how one-use future Edge benefits are stored, consumed, and undone.
 - [ ] Add safe prerequisites for target state, including zero Focus, existing links, statuses, tags, and active effects.
 - [ ] Continue treating manual reminders as valid partial automation for subjective or choice-heavy rules.
