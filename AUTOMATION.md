@@ -284,6 +284,7 @@ Completed:
 - Big and Small now apply their deterministic defense, Run Speed, and Reach adjustments from effective actor size. Battle Ready and Situational Awareness retain their existing transferred effects.
 - Occupation and origin grant snapshots were audited. Military now grants Battle Ready with its +30 Focus effect, Assassin and Alien: Brood use the canonical Villainous tag, and Spirit of Vengeance grants the migrated Hellfire Chains data.
 - Passive and granted-data live gates passed through the actor-sheet drop workflow. Big and Small applied exact defense, Run Speed, and Reach changes; Military granted Battle Ready and raised maximum Focus by 30; Assassin and Alien: Brood granted canonical Villainous data; and Spirit of Vengeance preserved Hellfire Chains targeting, damage, effects, and events. Forty-four stale embedded copies were refreshed across world actors and the unlinked Apocalypse token. Sasquatch retains his intentional Huge actor size with his actor-specific Big transfer disabled.
+- The universal roll dialog now resolves structured `rollModifiers` from actor traits and presents matching circumstances as checkboxes. Objective rules may be preselected, while subjective rules remain explicit player or Narrator choices; changing the final roll ability revalidates selected rules. Selected reasons persist in action-roll state and appear on the chat card. Live gates cover Combat Expert's automatic Rank 1 Melee Edge, Signature Attack's optional Edge, and Abrasive's optional Ego Edge or Trouble.
 
 Not completed:
 
