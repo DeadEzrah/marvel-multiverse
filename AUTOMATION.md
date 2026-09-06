@@ -242,15 +242,9 @@ Bulk migration should begin only after the first healing and ranged examples pas
 
 ## Model Parity
 
-The active runtime model in `lib/documents.mjs` defines:
+`lib/documents.mjs` remains the active runtime model source. The legacy models under `module/data/` now match its schema metadata and actor derivation behavior, including open structured fields used by automation. The parity contract covers `automationPreset`, `effectProfile`, `effectProfiles`, `effectOverrides`, `targeting`, `damage`, `events`, `rollModifiers`, `options`, `activation`, and `focusScaling`.
 
-- `effectProfile`
-- `effectProfiles`
-- `targeting`
-- `events`
-- `options`
-
-The legacy source model in `module/data/item-base.mjs` does not currently define those fields. `module/data/power.mjs` does define `focusScaling`. Before consolidating models or changing the build entry point, preserve all fields in the active runtime schema. This mismatch must be resolved before treating the legacy model tree as authoritative.
+Before consolidating models or changing the build entry point, verify this contract again so structured automation data is not narrowed or discarded.
 
 ## Validation Checklist
 

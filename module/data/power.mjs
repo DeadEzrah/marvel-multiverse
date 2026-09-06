@@ -17,12 +17,19 @@ export default class MarvelMultiversePower extends MarvelMultiverseItemBase {
     schema.duration = new fields.StringField({ initial: "", blank: true });
     schema.range = new fields.StringField({ initial: "", blank: true });
     schema.cost = new fields.StringField({ initial: "", blank: true });
-    schema.focusScaling = new fields.SchemaField({
-      enabled: new fields.BooleanField({ required: true, initial: false }),
-      mode: new fields.StringField({ required: true, initial: "damage", choices: ["damage", "healing"] }),
-      benefitPerFocus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-      maxExtraFocus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+    schema.activation = new fields.SchemaField({
+      mode: new fields.StringField({ initial: "", blank: true }),
+      target: new fields.StringField({ initial: "", blank: true }),
+      minTargets: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      maxTargets: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      maxTargetsPerRank: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      range: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      rangePerRank: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      willing: new fields.BooleanField({ required: true, initial: false }),
+      concentrationStatus: new fields.StringField({ initial: "", blank: true }),
+      concentrationStatusIncludesSource: new fields.BooleanField({ required: true, initial: false }),
     });
+    schema.focusScaling = new fields.ObjectField();
     schema.effect = new fields.StringField({ initial: "", blank: true });
     schema.modifiers = new fields.ArrayField(new fields.ObjectField());
     schema.numbered = new fields.NumberField({

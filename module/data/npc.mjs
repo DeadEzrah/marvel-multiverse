@@ -1,7 +1,17 @@
-import MarvelMultiverseActorBase from "./actor-base.mjs";
+import MarvelMultiverseActorBase, { applySizeModifiers } from "./actor-base.mjs";
 
 export default class MarvelMultiverseNPC extends MarvelMultiverseActorBase {
   prepareDerivedData() {
+    for (const key in this.abilities) {
+      this.abilities[key].defense = 0;
+      this.abilities[key].damageMultiplier = 0;
+      this.abilities[key].noncom = 0;
+    }
+    this.attributes.init.value = 0;
+    for (const key in this.movement) {
+      this.movement[key].value = 5;
+    }
+
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (const key in this.abilities) {
       // Caclulate the defense score using mmrpg rules.
@@ -48,5 +58,6 @@ export default class MarvelMultiverseNPC extends MarvelMultiverseActorBase {
         }
       }
     }
+    applySizeModifiers(this);
   }
 }

@@ -1,3 +1,18 @@
+export function applySizeModifiers(system) {
+  if (!system?.abilities || !system?.movement) return system;
+  if (system.size === "big") {
+    system.abilities.mle.defense -= 1;
+    system.abilities.agl.defense -= 1;
+    system.movement.run.value += 1;
+    system.reach = Math.max(system.reach, 2);
+  } else if (system.size === "small") {
+    system.abilities.mle.defense += 1;
+    system.abilities.agl.defense += 1;
+    system.movement.run.value = Math.max(0, system.movement.run.value - 1);
+  }
+  return system;
+}
+
 export default class MarvelMultiverseActorBase extends foundry.abstract
   .TypeDataModel {
   static defineSchema() {
@@ -190,7 +205,21 @@ export default class MarvelMultiverseActorBase extends foundry.abstract
     return schema;
   }
 
+  prepareBaseData() {}
+
   prepareDerivedData() {
+    // Keep reset + recompute together so extra prepareBaseData-only passes for
+    // unlinked token actors cannot leave derived values at zero.
+    for (const key in this.abilities) {
+      this.abilities[key].defense = 0;
+      this.abilities[key].damageMultiplier = 0;
+      this.abilities[key].noncom = 0;
+    }
+    this.attributes.init.value = 0;
+    for (const key in this.movement) {
+      this.movement[key].value = 5;
+    }
+
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (const key in this.abilities) {
       // Caclulate the defense score using mmrpg rules.
@@ -237,5 +266,6 @@ export default class MarvelMultiverseActorBase extends foundry.abstract
         }
       }
     }
+    applySizeModifiers(this);
   }
 }
