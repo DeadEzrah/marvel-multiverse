@@ -51,8 +51,10 @@
         "outcomes": [
           {
             "id": "orders-edge-reminder",
-            "type": "manual",
-            "label": "Fantastic success: gain an edge the next time Orders is used against this target."
+            "type": "future-roll-modifier",
+            "mode": "edge",
+            "count": 1,
+            "label": "Fantastic Orders: Edge against this target"
           }
         ]
       }

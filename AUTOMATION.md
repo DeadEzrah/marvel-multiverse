@@ -209,6 +209,23 @@ Power-event status and Active Effect outcomes use structured `duration` objects.
 
 Turn and round durations require an active combat when the outcome is applied. Sleep is an integration hook because the system does not currently own a rest workflow.
 
+## One-Use Roll Modifiers
+
+Use a `future-roll-modifier` outcome for a benefit or penalty that applies to one later roll:
+
+```json
+{
+  "type": "future-roll-modifier",
+  "mode": "edge",
+  "count": 1,
+  "label": "Fantastic Command: Edge against this target"
+}
+```
+
+The grant is stored as an owned Active Effect on the recipient and participates in the normal power-event transaction undo. By default it matches only the same source item UUID and the target actor from the triggering event. Set `matchTarget` to `false` only when the rule is not target-specific.
+
+A matching benefit is automatic and is consumed only after the later roll creates its chat message successfully. The consuming message stores a sanitized effect snapshot and offers **Restore Used Modifier** so an accidental or reverted roll can restore the benefit once.
+
 ## Content Migration Order
 
 Use a narrow vertical slice before bulk changes:

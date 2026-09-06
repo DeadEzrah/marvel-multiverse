@@ -51,8 +51,10 @@
         "outcomes": [
           {
             "id": "command-edge-reminder",
-            "type": "manual",
-            "label": "Fantastic success: gain an edge the next time Command is used against this target."
+            "type": "future-roll-modifier",
+            "mode": "edge",
+            "count": 1,
+            "label": "Fantastic Command: Edge against this target"
           }
         ]
       }

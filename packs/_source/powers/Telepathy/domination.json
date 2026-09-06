@@ -26,7 +26,7 @@
         { "id": "domination-resistance-reminder", "type": "manual", "label": "Record this roll result as the permanent domination's resistance TN. Harmful orders permit a Logic resistance check; self-harm grants Edge, or double Edge if Heroic." }
       ] },
       { "id": "domination-fantastic", "trigger": "target-fantastic-hit", "recipient": "source", "outcomes": [
-        { "id": "domination-fantastic-reminder", "type": "manual", "label": "Fantastic success: gain Edge the next time Domination is used against this target." }
+        { "id": "domination-fantastic-reminder", "type": "future-roll-modifier", "mode": "edge", "count": 1, "label": "Fantastic Domination: Edge against this target" }
       ] }
     ]
   },

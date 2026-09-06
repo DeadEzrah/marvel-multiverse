@@ -126,6 +126,7 @@ import {
   markGuidedResolutionUndone,
 } from "./lib/services/guided-resolution.mjs";
 import { promptDialog } from "./lib/services/dialog-compat.mjs";
+import { restoreConsumedFutureRollModifiers } from "./lib/services/future-roll-modifiers.mjs";
 
 const MARVEL_MULTIVERSE = {};
 /**
@@ -1072,6 +1073,7 @@ class ChatMessageMarvel extends ChatMessage {
       this._renderConcentrationActionButtons(html);
       this._renderConditionActionButtons(html);
       this._renderPowerEventActionButtons(html);
+      this._renderConsumedFutureRollModifierActions(html);
       this._renderCheckResolutionActionButtons(html);
     }
   }
@@ -2196,6 +2198,35 @@ class ChatMessageMarvel extends ChatMessage {
       return;
     }
     ui.notifications.warn(result?.issues?.[0]?.message || game.i18n.localize("MARVEL_MULTIVERSE.PowerOutcomesUndoFailed") || "Nothing to undo.");
+  }
+
+  _renderConsumedFutureRollModifierActions(html) {
+    const buttonGroup = resolveChatActionContainer(html);
+    if (!buttonGroup) return;
+    const messageId = html.closest("[data-message-id]")?.dataset?.messageId;
+    const message = messageId ? game.messages.get(messageId) : null;
+    const consumed = message?.getFlag?.("marvel-multiverse", "consumedFutureRollModifiers") ?? [];
+    if (!Array.isArray(consumed) || !consumed.some((entry) => !entry?.restored)) return;
+    if (!game.user?.isGM && !message?.isOwner) return;
+
+    const container = document.createElement("div");
+    container.classList.add("marvel-multiverse", "future-roll-modifier-actions", "action-panel", "compact-inline");
+    container.innerHTML = '<button type="button" class="action-button secondary" data-action="restoreFutureRollModifier"><i class="fas fa-rotate-left"></i><span>Restore Used Modifier</span></button>';
+    this._prepareActionButtons(container);
+    buttonGroup.appendChild(container);
+    container.querySelector("button").addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const button = event.currentTarget;
+      button.disabled = true;
+      const result = await restoreConsumedFutureRollModifiers(message);
+      if (result.success) {
+        button.remove();
+        ui.notifications.info("The one-use roll modifier was restored.");
+      } else {
+        button.disabled = false;
+        ui.notifications.warn("The one-use roll modifier could not be restored.");
+      }
+    });
   }
 
   async _handleStartConcentration(message, button) {
