@@ -112,7 +112,7 @@ The 13 weapon records are structured locally but still require complete live gat
 - [x] Add clear controls for targeting, area shape, range scaling, damage, duration, and automation preset selection.
 - [x] Resolve parity between the active models in `lib/documents.mjs` and the legacy models under `module/data/`.
 - [x] Preserve `effectProfile`, `effectProfiles`, `effectOverrides`, `targeting`, `events`, `options`, `focusScaling`, and `automationPreset` during model consolidation.
-- [ ] Audit all embedded and compendium item update paths for schema-backed fields that cannot be removed by deleting a parent object.
+- [x] Audit all embedded and compendium item update paths for schema-backed fields that cannot be removed by deleting a parent object.
 
 ## Effects And Assets
 

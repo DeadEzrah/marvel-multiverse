@@ -246,6 +246,12 @@ Bulk migration should begin only after the first healing and ranged examples pas
 
 When changing model schemas or the build entry point, keep the compatibility exports pointed at the active classes so structured automation data is not narrowed or discarded.
 
+## Structured Item Updates
+
+Schema-backed object fields must not be cleared by deleting the parent field. Foundry can remove the raw source parent, reject the prepared model as undefined, and leave stale prepared values in memory. Delete descendants with `foundry.data.operators.ForcedDeletion` instead.
+
+Power-sheet edits already update or delete individual leaves. Compendium JSON upserts use `buildItemUpdateData` to replace descendants of each explicitly supplied object, while dotted CSV columns remain leaf patches and leave omitted siblings untouched. CSV paths cannot address array indexes; import complete arrays through JSON instead. These rules apply equally to world, embedded, and compendium Item update payloads.
+
 ## Validation Checklist
 
 For each migrated power:
