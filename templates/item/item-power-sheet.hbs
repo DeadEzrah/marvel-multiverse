@@ -367,7 +367,10 @@
           {{#each effectProfileRows as |row|}}
             <div class="power-profile-row">
               <label for="effect-profile-{{row.phase}}">{{row.label}}</label>
-              <input id="effect-profile-{{row.phase}}" type="text" value="{{row.profile}}" placeholder="No profile assigned" {{#unless @root.editable}}disabled{{/unless}} />
+              <select id="effect-profile-{{row.phase}}" {{#unless @root.editable}}disabled{{/unless}}>
+                <option value="">No profile assigned</option>
+                {{selectOptions row.options selected=row.profile}}
+              </select>
               {{#if @root.editable}}
                 <button type="button" class="icon-button" data-action="saveEffectProfile" data-phase="{{row.phase}}" title="Save {{row.label}} profile" aria-label="Save {{row.label}} profile">
                   <i class="fas fa-floppy-disk"></i>
