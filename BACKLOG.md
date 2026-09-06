@@ -79,13 +79,13 @@ Several powers activate without an attack or opposed check. They should not be f
 
 The 13 weapon records are structured locally but still require complete live gates.
 
-- [ ] Validate melee, thrown, firearm, bow, and grenade examples in Foundry.
-- [ ] Verify Rifle, Shotgun, and Submachine Gun distance-based Trouble.
-- [ ] Verify connected adjacent-target groups and split multi-target damage.
-- [ ] Verify Fantastic doubling configuration for each relevant weapon.
-- [ ] Verify arrow and thrown-blade JB2A profiles in external Edge.
-- [ ] Verify grenade center/scatter exceptions produce clear manual reminders.
-- [ ] Verify damage application and undo as both GM and player through socket relay.
+- [x] Validate melee, thrown, firearm, bow, and grenade examples in Foundry.
+- [x] Verify Rifle, Shotgun, and Submachine Gun distance-based Trouble.
+- [x] Verify connected adjacent-target groups and split multi-target damage.
+- [x] Verify Fantastic doubling configuration for each relevant weapon.
+- [x] Verify arrow and thrown-blade JB2A profiles in external Edge.
+- [x] Verify grenade center/scatter exceptions produce clear manual reminders.
+- [x] Verify damage application and undo as both GM and player through socket relay.
 
 ## Passive And Granted Data
 

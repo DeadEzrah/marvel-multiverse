@@ -58,11 +58,13 @@ import {
   refreshAttackResolution,
 } from "./lib/attack-resolution.mjs";
 import {
-  applyMessageDamage,
   getDamageApplications,
   hasAppliedMessageDamage,
-  undoMessageDamage,
 } from "./lib/damage-application.mjs";
+import {
+  requestApplyMessageDamage,
+  requestUndoMessageDamage,
+} from "./lib/services/socket-relay.mjs";
 import {
   buildDamageContext,
   calculateMarvelDamage,
@@ -1552,7 +1554,7 @@ class ChatMessageMarvel extends ChatMessage {
     // socketlib feature already handled it) so resolving the action doesn't double-apply damage.
     const alreadyApplied = hasAppliedMessageDamage(message);
     if (autoApplyDamage && !alreadyApplied && (rollContext?.dealsDamage || rollContext?.damageType)) {
-      damageResult = await applyMessageDamage(message, { mode: "full", quiet: true });
+      damageResult = await requestApplyMessageDamage(message.id, { mode: "full" });
     }
 
     await this._applyIntegratedConditions(message);
@@ -2431,13 +2433,13 @@ class ChatMessageMarvel extends ChatMessage {
         callback: (root) => Number(root.querySelector("input").value),
       });
       if (amount === null || Number.isNaN(amount) || !Number.isInteger(amount) || amount < 0) return;
-      const customResult = await applyMessageDamage(message, { mode: "custom", amount });
+      const customResult = await requestApplyMessageDamage(message.id, { mode: "custom", amount });
       if (customResult?.success && customResult?.transactionId && getGuidedResolutionState(message)) {
         await markGuidedResolutionApplied(message, { transactionId: customResult.transactionId });
       }
       return;
     }
-    const damageResult = await applyMessageDamage(message, { mode });
+    const damageResult = await requestApplyMessageDamage(message.id, { mode });
     if (damageResult?.success && damageResult?.transactionId && getGuidedResolutionState(message)) {
       await markGuidedResolutionApplied(message, { transactionId: damageResult.transactionId });
     }
@@ -2450,7 +2452,7 @@ class ChatMessageMarvel extends ChatMessage {
       ui.notifications.warn(game.i18n.localize("MARVEL_MULTIVERSE.NoDamageToUndo") || "No damage to undo.");
       return;
     }
-    const result = await undoMessageDamage(message);
+    const result = await requestUndoMessageDamage(message.id);
     if (result?.success) {
       if (getGuidedResolutionState(message)) {
         await markGuidedResolutionUndone(message, { transactionId: result.transactionId ?? transaction.id });
@@ -2485,7 +2487,7 @@ class ChatMessageMarvel extends ChatMessage {
       callback: (root) => Number(root.querySelector("input").value),
     });
     if (amount === null || Number.isNaN(amount) || !Number.isInteger(amount) || amount < 0) return;
-    const customResult = await applyMessageDamage(message, { mode: "custom", amount });
+    const customResult = await requestApplyMessageDamage(message.id, { mode: "custom", amount });
     if (customResult?.success && customResult?.transactionId && getGuidedResolutionState(message)) {
       await markGuidedResolutionApplied(message, { transactionId: customResult.transactionId });
     }
