@@ -1,6 +1,6 @@
 # Changelog
 
-- Added native Basic, Darkvision, Light Amplification, Monochromatic, and Tremorsense token vision controls, plus five-foot personal vision and Torch/Flashlight lighting in the Token HUD.
+- Added native Basic, Darkvision, Light Amplification, Monochromatic, and Tremorsense/Radar Sense token vision controls, plus five-foot personal vision and Torch/Flashlight lighting in the Token HUD. Nonvisual tremorsense remains active while Blinded, does not emit personal light, and is inferred for characters with Vision Issues and Heightened Senses 2.
 
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
 
