@@ -1,5 +1,7 @@
 # Changelog
 
+- Added native Basic, Darkvision, Light Amplification, Monochromatic, and Tremorsense token vision controls, plus five-foot personal vision and Torch/Flashlight lighting in the Token HUD.
+
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
 
 ## [3.0.0] - 2026-08-02
