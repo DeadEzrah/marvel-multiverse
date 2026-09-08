@@ -189,6 +189,83 @@ $mmrdp-red-dark: #9d1015;
   p {
     margin: $mm-spacing-sm 0;
   }
+
+  .difficulty-banner {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    min-height: 56px;
+    margin: $mm-spacing-md 0 0;
+    border: 2px solid currentcolor;
+    border-left-width: 7px;
+    background: #25282e;
+    color: #f7f7f5;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  .difficulty-banner__icon {
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    font-size: 24px;
+  }
+
+  .difficulty-banner__label {
+    align-self: end;
+    padding-top: 7px;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .difficulty-banner__text {
+    align-self: start;
+    padding: 2px 8px 7px 0;
+    font-family: $font-primary;
+    font-size: 20px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .difficulty-banner.is-success {
+    border-color: #35b768;
+    background: #123c25;
+
+    .difficulty-banner__icon {
+      background: #208747;
+    }
+  }
+
+  .difficulty-banner.is-failure {
+    border-color: #ff5d61;
+    background: #4b1418;
+
+    .difficulty-banner__icon {
+      background: #b21f29;
+    }
+  }
+
+  .difficulty-banner.is-fantastic {
+    border-color: #f0c84b;
+    background: #493910;
+
+    .difficulty-banner__icon {
+      background: #9b7414;
+    }
+  }
+
+  .difficulty-banner.is-pending {
+    border-color: #8e939b;
+    color: #d9dadd;
+
+    .difficulty-banner__icon {
+      background: #4a4e56;
+    }
+  }
 }
 
 .action-roll-title,
