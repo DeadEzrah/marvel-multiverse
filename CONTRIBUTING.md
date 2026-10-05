@@ -158,18 +158,19 @@ Please understand that large and sprawling PRs are exceptionally difficult to re
 
 ## Releases
 
-This repository includes a GitHub Actions configuration which automates the compilation and bundling required for a release when a Tag is pushed or created with the name `release-x.x.x`.
+This repository includes a GitLab CI configuration which validates branches and publishes a package when a tag named `release-x.x.x` is pushed.
 
 ### Prerequisites
 
 If either of these conditions are not met on the commit that tag points at, the workflow will error out and release assets will not be created.
 
 - The `system.json` file's `version` must match the `x.x.x` part of the tag name.
-- The `system.json` file's `download` url must match the expected outcome of the release CI artifact. This should simply be changing version numbers in the url to match the release version.
+- The versions in `system.json`, `package.json`, and `package-lock.json` must match.
+- The `system.json` download URL must use the same version and filename as the GitLab generic package.
 
 ```text
-https://github.com/mjording/marvel-multiverse/releases/download/release-2.2.0/marvel-multiverse-2.2.0.zip
-                                                     └─ Tag Name ──┘     └─ V ─┘ (version)
+https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.0.0/marvel-multiverse-3.0.0.zip
+                                                                                                         └─ version ─┘     └─ version ─┘
 ```
 
 ### Process for Release
@@ -177,7 +178,8 @@ https://github.com/mjording/marvel-multiverse/releases/download/release-2.2.0/ma
 `master` is to be kept as the "most recently released" version of the system. All work is done on development branches matching the milestone the work is a part of. Once the work on a milestone is complete, the following steps will create a system release:
 
 0. [ ] Verify the `NEEDS_MIGRATION_VERSION` is correct.
-1. [ ] `system.json` `version` and `download` fields are updated on the development branch (e.g. `1.5.x`).
-2. [ ] A tag is created at the tip of the development branch with the format `release-x.x.x`, triggering the CI workflow (which takes ~2 mins to complete).
-3. [ ] Development Branch is merged to `master` after the workflow is completed.
-4. [ ] The foundryvtt.com admin listing is updated with the `manifest` url pointing to the `system.json` attached to the workflow-created release.
+1. [ ] Update the version in `system.json`, `package.json`, and `package-lock.json`, plus the version segments in `system.json` `download`.
+2. [ ] Run `npm run validate:release` and `npm run build`.
+3. [ ] Merge the development branch to `main` so the public manifest describes the release.
+4. [ ] Create and push a tag at that commit with the format `release-x.x.x`; GitLab CI publishes the ZIP to the generic package registry.
+5. [ ] Verify the manifest and download URLs without authentication before submitting the manifest to Foundry or a hosting provider.

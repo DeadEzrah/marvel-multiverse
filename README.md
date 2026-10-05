@@ -1,4 +1,4 @@
-# MarvelMultiverse RPG System![](https://github.com/mjording/marvel-multiverse/blob/master/ui/official/mmrpg-repo.jpg?raw=true)
+# MarvelMultiverse RPG System![](ui/official/mmrpg-repo.jpg)
 
 ## The __Unofficial__ Marvel Multiverse Role Playing Game System for Foundry VTT
 
@@ -23,20 +23,19 @@ Support this and other projects via these platforms.
 
 ## Installation Instructions
 
-To install and use the  Marvel Multiverse Role Playing Game system for Foundry Virtual Tabletop you will need a licensed copy of currently supported versions of [Foundry VTT](https://foundryvtt.com/purchase/) 
-![Foundry v12](https://img.shields.io/badge/foundry-v12-green) ![Foundry v13](https://img.shields.io/badge/foundry-v13-green).
+To install and use the Marvel Multiverse Role Playing Game system for Foundry Virtual Tabletop you will need a licensed copy of a supported version of [Foundry VTT](https://foundryvtt.com/purchase/). This fork supports Foundry VTT v12 through v14 and is verified on v14 build 365.
 
 ### Easy Install ###
-In your foundry setup page copy and paste the following Link into the **Install System** dialog on the Setup menu of the application.
+In your Foundry Setup page, copy and paste the following link into the **Install System** dialog:
 
-[system file](https://raw.githubusercontent.com/mjording/marvel-multiverse/master/system.json)
+[system manifest](https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json)
 
 Updates are released often, if you upgrade and discover an issue please submit it 
 
 ### 
 If you wish to manually install the system, you must clone or extract it into the `Data/systems/marvel-multiverse` folder. You
 may do this by cloning the repository or downloading a zip archive from the
-[Releases Page](https://github.com/mjording/marvel-multiverse/releases).
+[package registry](https://gitlab.com/wboyea63-group/marvel-multiverse/-/packages).
 
 ## Community Contribution
 
