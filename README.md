@@ -41,13 +41,14 @@ Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missin
 
 ## Documentation
 
+- [Documentation home](docs/DOCUMENTATION-HOME.md)
 - [Installation and updates](docs/INSTALLATION.md)
 - [Automation architecture](AUTOMATION.md)
 - [Current backlog](BACKLOG.md)
 - [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md)
 
-Repository documentation is the source of truth because it is versioned with each code change. The GitHub Wiki can hold collaborative notes and tutorials; stable installation and API documentation should link back to these versioned files.
+Repository documentation is the source of truth because it is versioned with each code change. Add tutorials, examples, and FAQs under `docs/` so the complete documentation remains in the canonical GitHub repository.
 
 ## Development
 
