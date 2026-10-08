@@ -1,43 +1,91 @@
-# MarvelMultiverse RPG System![](ui/official/mmrpg-repo.jpg)
+# Marvel Multiverse for Foundry VTT
 
-## The __Unofficial__ Marvel Multiverse Role Playing Game System for Foundry VTT
+![Marvel Multiverse system artwork](ui/official/mmrpg-repo.jpg)
 
-This is an unoffical implementation of the [Marvel Multiverse Role Playing Game](https://www.marvel.com/rpg) table top role playing game for [Foundry VTT](http://foundryvtt.com). Providing character sheet, dice and game system support.
+An unofficial Foundry Virtual Tabletop system for the Marvel Multiverse Role-Playing Game.
 
-This system is a fan made work, and is not associated with Marvel Entertainment, LLC, The Walt Disney Company, or their partners in any way.
+This maintained fork provides character and item sheets, Marvel dice, action workflows, damage and condition automation, semantic visual-effect integration, and public APIs used by the companion encounter modules.
 
-The system for Foundry VTT contains no rules or proprietary content from the various official RPG sourcebooks by Marvel Entertainment. It is intended to make the process of enjoying the Marvel Multivese RolePlaying system via an online tabletop experience as easy as possible but you will still need to purchase any and all official sourcebooks you desire in order to enjoy this system as intended.
+## Project Status
 
-This system provides character sheet support for Actors and Items, mechanical support for dice and rules support necessary to
-play games of MMRPG. It is not a substitute for or contain rules or proprietary content from any Marvel Multiverse RPG publications. It is intended to enable game play on Foundry Virtual TableTop software. You will still need to purchase any and all official sourcebooks you desire in order to enjoy this system as intended.
+| Component | Current target |
+|---|---|
+| Marvel Multiverse system | 3.2.0 |
+| Foundry VTT | 12-14; verified on 14.365 |
+| Primary branch | [`main`](https://gitlab.com/wboyea63-group/marvel-multiverse/-/tree/main) |
+| Issue tracker | [GitLab issues](https://gitlab.com/wboyea63-group/marvel-multiverse/-/issues) |
 
-The software component of this system is distributed under the MIT license.
+The GitLab repository above is the canonical home for this fork. Installation and development documentation in this repository describes this branch, not an upstream release.
 
+## Install
 
+For the current development build and the complete optional encounter suite, follow the [installation guide](docs/INSTALLATION.md).
 
-Support this and other projects via these platforms.
+The system manifest is:
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/mjording)
+```text
+https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json
+```
 
-[Rollbones on Patreon](https://patreon.com/rollbones?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink)
+The manifest tracks this fork, but the 3.2.0 downloadable release archive has not been published yet. Until that package is available, install from a clone or source archive as described in the guide rather than using Foundry's manifest installer.
 
-## Installation Instructions
+## Companion Projects
 
-To install and use the Marvel Multiverse Role Playing Game system for Foundry Virtual Tabletop you will need a licensed copy of a supported version of [Foundry VTT](https://foundryvtt.com/purchase/). This fork supports Foundry VTT v12 through v14 and is verified on v14 build 365.
+The system works on its own. These optional companion projects add encounter orchestration and reusable encounter content:
 
-### Easy Install ###
-In your Foundry Setup page, copy and paste the following link into the **Install System** dialog:
+| Project | Purpose | Repository |
+|---|---|---|
+| Marvel Encounter Framework | Clocks, objectives, phases, scene orchestration, damage/status actions, and optional VFX | [GitHub](https://github.com/DeadEzrah/marvel-encounter-framework) |
+| Marvel Encounter Packs | Reusable encounters for the framework | [GitHub](https://github.com/DeadEzrah/marvel-encounter-packs) |
+| Marvel Character Library | Actor compendiums used by reinforcement-enabled encounter packs | Not yet published separately |
 
-[system manifest](https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json)
+Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missing visual modules never prevent rules or encounter progression.
 
-Updates are released often, if you upgrade and discover an issue please submit it 
+## Documentation
 
-### 
-If you wish to manually install the system, you must clone or extract it into the `Data/systems/marvel-multiverse` folder. You
-may do this by cloning the repository or downloading a zip archive from the
-[package registry](https://gitlab.com/wboyea63-group/marvel-multiverse/-/packages).
+- [Installation and updates](docs/INSTALLATION.md)
+- [Automation architecture](AUTOMATION.md)
+- [Current backlog](BACKLOG.md)
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
 
-## Community Contribution
+Repository documentation is the source of truth because it is versioned with each code change. A GitLab Wiki can still be enabled for collaborative notes and tutorials; stable installation and API documentation should link back to these versioned files.
 
-See the [CONTRIBUTING](/CONTRIBUTING.md) file for information about how you can help this project.
+## Development
 
+Requirements:
+
+- Node.js and npm
+- A licensed Foundry VTT installation
+
+Common commands:
+
+```powershell
+npm install
+npm run build
+npm run validate:effects
+npm run validate:release
+```
+
+Focused native Node regression tests live in `tests/`:
+
+```powershell
+node --test tests\*.test.mjs
+```
+
+Do not commit licensed rules text or proprietary sourcebook content. Compendium and automation data must contain only content the contributor is authorized to distribute.
+
+## Legal Notice
+
+This is a fan-made software project and is not associated with Marvel Entertainment, LLC, The Walt Disney Company, or their partners.
+
+The system contains no official RPG rules text and is not a substitute for the Marvel Multiverse Role-Playing Game books. You must purchase the official publications needed for your game.
+
+The software component is distributed under the [MIT License](LICENSE.txt).
+
+## Original Project Support
+
+Support the original system creator:
+
+- [Ko-fi](https://ko-fi.com/mjording)
+- [Rollbones on Patreon](https://patreon.com/rollbones)
