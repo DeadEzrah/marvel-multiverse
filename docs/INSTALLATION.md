@@ -13,6 +13,18 @@ Install only the system for normal Marvel Multiverse play. Add the modules in th
 
 Sequencer, JB2A, PSFX, and FXMaster are optional visual providers.
 
+## Install from Package Manifests
+
+In Foundry Setup, open **Add-on Modules**, select **Install Module**, and install these manifests in order:
+
+```text
+https://raw.githubusercontent.com/DeadEzrah/marvel-encounter-framework/main/module.json
+https://raw.githubusercontent.com/DeadEzrah/marvel-character-library/main/module.json
+https://raw.githubusercontent.com/DeadEzrah/marvel-encounter-packs/main/module.json
+```
+
+The framework and character library must be available before Foundry can enable the encounter packs.
+
 ## Find the Foundry User Data Folder
 
 Open Foundry Setup, select **Configure**, and inspect **User Data Path**.
@@ -137,7 +149,7 @@ Data\modules\marvel-encounter-framework\module.json
 
 ### The manifest installer reports a download error
 
-The branch manifest may be newer than the latest published release archive. Use the Git installation steps above until the matching package is published.
+Verify that the manifest URL uses `raw.githubusercontent.com/DeadEzrah` and that the version's GitHub release is published. If a newly updated branch manifest temporarily precedes its matching release archive, use the Git installation steps above until publishing completes.
 
 ### Encounter actors do not spawn
 

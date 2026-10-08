@@ -39,6 +39,14 @@ The system works on its own. These optional companion projects add encounter orc
 | Marvel Encounter Packs | Reusable encounters for the framework | [GitHub](https://github.com/DeadEzrah/marvel-encounter-packs) |
 | Marvel Character Library | Actor compendiums used by reinforcement-enabled encounter packs | [GitHub](https://github.com/DeadEzrah/marvel-character-library) |
 
+The companion module manifests are:
+
+```text
+https://raw.githubusercontent.com/DeadEzrah/marvel-encounter-framework/main/module.json
+https://raw.githubusercontent.com/DeadEzrah/marvel-character-library/main/module.json
+https://raw.githubusercontent.com/DeadEzrah/marvel-encounter-packs/main/module.json
+```
+
 Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missing visual modules never prevent rules or encounter progression.
 
 The public Character Library contains only original, generic, or redistribution-approved content. Recognizable or uncertain personal campaign conversions should remain in a separate private/local vault; public suite packages must never require or reference that vault.
