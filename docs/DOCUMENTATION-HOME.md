@@ -2,6 +2,8 @@
 
 Welcome to the documentation hub for the maintained Marvel Multiverse Foundry VTT system.
 
+The canonical suite is hosted exclusively under [`DeadEzrah` on GitHub](https://github.com/DeadEzrah). The former GitLab project is a retired migration redirect and must not be used for development, installation, issues, or releases.
+
 ## Start Here
 
 - [Repository README](../README.md)

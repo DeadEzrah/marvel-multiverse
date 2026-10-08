@@ -17,6 +17,8 @@ This maintained fork provides character and item sheets, Marvel dice, action wor
 
 The GitHub repository above is the canonical home for this fork. Installation and development documentation in this repository describes this branch, not an upstream release.
 
+> **Canonical host:** Use only `github.com/DeadEzrah` for active suite repositories, issues, manifests, releases, and documentation. The former `wboyea63-group` GitLab project is retired and exists only as a migration redirect; do not clone, publish, or install from it.
+
 ## Install
 
 For the current development build and the complete optional encounter suite, follow the [installation guide](docs/INSTALLATION.md).

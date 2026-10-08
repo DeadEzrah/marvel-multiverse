@@ -1,8 +1,10 @@
-# Contributing to marvel-multiverse on foundry
+# Contributing to Marvel Multiverse for Foundry VTT
 
-Code and content contributions are accepted. Please feel free to submit issues to the issue tracker or submit merge requests for code/content changes. Approval for such requests involves code and (if necessary) design review by the Maintainers of this repo. 
+Code and content contributions are accepted through issues and pull requests in the canonical [`DeadEzrah/marvel-multiverse`](https://github.com/DeadEzrah/marvel-multiverse) GitHub repository.
 
-Please ensure there is an open issue about whatever contribution you are submitting. Please also ensure your contribution does not duplicate an existing one.
+The former `wboyea63-group` GitLab project is a retired migration redirect. Do not create branches, issues, releases, manifests, or documentation there, and do not use it as a Git remote.
+
+Please ensure there is an open issue for the contribution and that it does not duplicate an existing one. Approval involves code and, when necessary, design review by this repository's maintainers.
 
 ## Developer Tooling
 
@@ -87,7 +89,7 @@ Any feature request should be considered from the lens of "Does this belong in t
 
 - Do the Rules as Written (RAW) support this feature? If so, provide some examples.
 - Is the missing feature in the System Reference Document? If not, it might still be supportable, but it is worth mentioning in the request.
-- Does this feature help a GM run a fifth edition game in Foundry VTT?
+- Does this feature help a GM run a Marvel Multiverse game in Foundry VTT?
 
 ## Content
 
@@ -126,7 +128,7 @@ When you open an PR it is recommended to [link it to an open issue](https://docs
 Closes #32
 ```
 
-### Priority of ReviewF
+### Priority of Review
 
 Please appreciate that reviewing contributions constitutes a substantial amount of effort and our resources are limited. As a result of this, Pull Requests are reviewed with a priority that roughly follows this:
 
@@ -149,8 +151,8 @@ Please appreciate that reviewing contributions constitutes a substantial amount 
 PRs have a few phases:
 
 0. **Prioritization.** If the PR relates to the current milestone, it is assigned to that milestone.
-1. **Initial Review from the 5e contributor team.** This lets us spread out the review work and catch some of the more obvious things that need to be fixed before final review. Generally this talks about code style and some methodology.
-2. **Final Review from the Maintainers.** Atropos and Kim have final review and are the only ones with merge permission.
+1. **Initial review.** Maintainers check scope, test coverage, code style, and implementation approach.
+2. **Final review.** A maintainer confirms required changes and validation are complete before merge.
 
 #### PR Size
 
@@ -162,7 +164,7 @@ This repository includes a release script which validates the system, builds its
 
 ### Prerequisites
 
-If either of these conditions are not met on the commit that tag points at, the workflow will error out and release assets will not be created.
+If any of these conditions are not met on the commit that tag points at, release validation fails and assets are not created.
 
 - The `system.json` file's `version` must match the `x.x.x` part of the tag name.
 - The versions in `system.json`, `package.json`, and `package-lock.json` must match.
@@ -175,7 +177,7 @@ https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.2.1/m
 
 ### Process for Release
 
-`master` is to be kept as the "most recently released" version of the system. All work is done on development branches matching the milestone the work is a part of. Once the work on a milestone is complete, the following steps will create a system release:
+`main` is the canonical integration and release branch. Feature branches may be used for work that benefits from pull-request review. Once a release is ready:
 
 0. [ ] Verify the `NEEDS_MIGRATION_VERSION` is correct.
 1. [ ] Update the version in `system.json`, `package.json`, and `package-lock.json`, plus the version segments in `system.json` `download`.
