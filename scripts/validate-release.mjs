@@ -1,15 +1,17 @@
 import fs from "node:fs";
 
-const PROJECT_URL = "https://gitlab.com/wboyea63-group/marvel-multiverse";
-const EXPECTED_MANIFEST = `${PROJECT_URL}/-/raw/main/system.json`;
+const PROJECT_URL = "https://github.com/DeadEzrah/marvel-multiverse";
+const EXPECTED_MANIFEST = "https://raw.githubusercontent.com/DeadEzrah/marvel-multiverse/main/system.json";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(path, "utf8"));
 const system = readJson("system.json");
 const packageJson = readJson("package.json");
 const packageLock = readJson("package-lock.json");
-const releaseTag = process.env.CI_COMMIT_TAG;
+const releaseTag = process.env.GITHUB_REF_TYPE === "tag"
+  ? process.env.GITHUB_REF_NAME
+  : process.env.CI_COMMIT_TAG;
 const version = system.version;
-const expectedDownload = `https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/${version}/marvel-multiverse-${version}.zip`;
+const expectedDownload = `${PROJECT_URL}/releases/download/release-${version}/marvel-multiverse-${version}.zip`;
 
 const failures = [];
 const assertEqual = (label, actual, expected) => {

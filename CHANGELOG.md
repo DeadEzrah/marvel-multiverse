@@ -2,6 +2,12 @@
 
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
 
+## [3.2.1] - 2026-10-08
+
+### Changed
+- Consolidated the canonical system repository, issue tracker, manifest, releases, and Wiki under `DeadEzrah` on GitHub.
+- Replaced GitLab package publishing with GitHub Actions and GitHub Releases.
+
 ## [3.2.0] - 2026-10-08
 
 ### Added

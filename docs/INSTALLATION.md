@@ -31,7 +31,7 @@ Close Foundry before replacing or updating system files.
 
 ```powershell
 $data = Join-Path $env:LOCALAPPDATA "FoundryVTT\Data"
-git clone https://gitlab.com/wboyea63-group/marvel-multiverse.git `
+git clone https://github.com/DeadEzrah/marvel-multiverse.git `
   (Join-Path $data "systems\marvel-multiverse")
 Set-Location (Join-Path $data "systems\marvel-multiverse")
 npm install

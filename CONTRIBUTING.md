@@ -158,7 +158,7 @@ Please understand that large and sprawling PRs are exceptionally difficult to re
 
 ## Releases
 
-This repository includes a GitLab CI configuration which validates branches and publishes a package when a tag named `release-x.x.x` is pushed.
+This repository includes a GitHub Actions workflow which validates branches and publishes a GitHub Release when a tag named `release-x.x.x` is pushed.
 
 ### Prerequisites
 
@@ -166,11 +166,11 @@ If either of these conditions are not met on the commit that tag points at, the 
 
 - The `system.json` file's `version` must match the `x.x.x` part of the tag name.
 - The versions in `system.json`, `package.json`, and `package-lock.json` must match.
-- The `system.json` download URL must use the same version and filename as the GitLab generic package.
+- The `system.json` download URL must use the same version, tag, and filename as the GitHub Release.
 
 ```text
-https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.1.0/marvel-multiverse-3.1.0.zip
-                                                                                                         └─ version ─┘     └─ version ─┘
+https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.2.1/marvel-multiverse-3.2.1.zip
+                                                                          └─ version ─┘     └─ version ─┘
 ```
 
 ### Process for Release
@@ -181,5 +181,5 @@ https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/g
 1. [ ] Update the version in `system.json`, `package.json`, and `package-lock.json`, plus the version segments in `system.json` `download`.
 2. [ ] Run `npm run validate:release` and `npm run build`.
 3. [ ] Merge the development branch to `main` so the public manifest describes the release.
-4. [ ] Create and push a tag at that commit with the format `release-x.x.x`; GitLab CI publishes the ZIP to the generic package registry.
+4. [ ] Create and push a tag at that commit with the format `release-x.x.x`; GitHub Actions publishes the ZIP and manifest as release assets.
 5. [ ] Verify the manifest and download URLs without authentication before submitting the manifest to Foundry or a hosting provider.

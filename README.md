@@ -10,12 +10,12 @@ This maintained fork provides character and item sheets, Marvel dice, action wor
 
 | Component | Current target |
 |---|---|
-| Marvel Multiverse system | 3.2.0 |
+| Marvel Multiverse system | 3.2.1 |
 | Foundry VTT | 12-14; verified on 14.365 |
-| Primary branch | [`main`](https://gitlab.com/wboyea63-group/marvel-multiverse/-/tree/main) |
-| Issue tracker | [GitLab issues](https://gitlab.com/wboyea63-group/marvel-multiverse/-/issues) |
+| Primary branch | [`main`](https://github.com/DeadEzrah/marvel-multiverse/tree/main) |
+| Issue tracker | [GitHub issues](https://github.com/DeadEzrah/marvel-multiverse/issues) |
 
-The GitLab repository above is the canonical home for this fork. Installation and development documentation in this repository describes this branch, not an upstream release.
+The GitHub repository above is the canonical home for this fork. Installation and development documentation in this repository describes this branch, not an upstream release.
 
 ## Install
 
@@ -24,10 +24,8 @@ For the current development build and the complete optional encounter suite, fol
 The system manifest is:
 
 ```text
-https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json
+https://raw.githubusercontent.com/DeadEzrah/marvel-multiverse/main/system.json
 ```
-
-The manifest tracks this fork, but the 3.2.0 downloadable release archive has not been published yet. Until that package is available, install from a clone or source archive as described in the guide rather than using Foundry's manifest installer.
 
 ## Companion Projects
 
@@ -49,7 +47,7 @@ Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missin
 - [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md)
 
-Repository documentation is the source of truth because it is versioned with each code change. A GitLab Wiki can still be enabled for collaborative notes and tutorials; stable installation and API documentation should link back to these versioned files.
+Repository documentation is the source of truth because it is versioned with each code change. The GitHub Wiki can hold collaborative notes and tutorials; stable installation and API documentation should link back to these versioned files.
 
 ## Development
 

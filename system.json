@@ -8,10 +8,10 @@
             "discord": "mjording"
         }
     ],
-    "url": "https://gitlab.com/wboyea63-group/marvel-multiverse",
+    "url": "https://github.com/DeadEzrah/marvel-multiverse",
     "license": "LICENSE.txt",
     "readme": "README.md",
-    "bugs": "https://gitlab.com/wboyea63-group/marvel-multiverse/-/issues",
+    "bugs": "https://github.com/DeadEzrah/marvel-multiverse/issues",
     "changelog": "CHANGELOG.md",
     "media": [
         {
@@ -25,7 +25,7 @@
             "thumbnail": "systems/marvel-multiverse/ui/official/mmrpg-setup-thumbnail.png"
         }
     ],
-    "version": "3.2.0",
+    "version": "3.2.1",
     "compatibility": {
         "minimum": 12,
         "verified": "14.365"
@@ -140,8 +140,8 @@
         }
     ],
     "socket": true,
-    "manifest": "https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json",
-    "download": "https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.2.0/marvel-multiverse-3.2.0.zip",
+    "manifest": "https://raw.githubusercontent.com/DeadEzrah/marvel-multiverse/main/system.json",
+    "download": "https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.2.1/marvel-multiverse-3.2.1.zip",
     "background": "systems/marvel-multiverse/ui/official/mmrpg-background.webp",
     "grid": {
         "distance": 5,
