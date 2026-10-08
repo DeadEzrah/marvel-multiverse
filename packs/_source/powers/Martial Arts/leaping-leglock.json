@@ -17,7 +17,61 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "leaping-leglock-grappled",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "leaping-leglock-apply-grappled",
+            "type": "status",
+            "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      },
+      {
+        "id": "leaping-leglock-prone",
+        "trigger": "target-hit",
+        "recipient": "self-and-target",
+        "outcomes": [
+          {
+            "id": "leaping-leglock-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      },
+      {
+        "id": "leaping-leglock-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "leaping-leglock-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

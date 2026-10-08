@@ -15,6 +15,7 @@
     "superspeed": "movement.superspeed",
     "landing.light": "movement.landing.light",
     "landing.heavy": "movement.landing.heavy",
+    "environment.structure.collapse": "destruction.explosion.medium",
     "power.energy.plasma": "power.energy.blast",
     "power.energy": "power.energy.blast",
     "melee.punch": "melee.hit.light",

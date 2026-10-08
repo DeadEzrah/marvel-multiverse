@@ -169,7 +169,7 @@ If either of these conditions are not met on the commit that tag points at, the 
 - The `system.json` download URL must use the same version and filename as the GitLab generic package.
 
 ```text
-https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.0.0/marvel-multiverse-3.0.0.zip
+https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.1.0/marvel-multiverse-3.1.0.zip
                                                                                                          └─ version ─┘     └─ version ─┘
 ```
 

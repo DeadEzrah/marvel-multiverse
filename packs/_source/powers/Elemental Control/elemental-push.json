@@ -16,7 +16,26 @@
     "ability": "ego",
     "attackTarget": "agl",
     "isElemental": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "elemental-push-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-push-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

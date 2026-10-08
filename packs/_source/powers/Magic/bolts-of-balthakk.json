@@ -19,7 +19,27 @@
     "damageType": "health",
     "attackKind": "close",
     "attack": true,
-    "attackEdgeMode": "edge"
+    "attackEdgeMode": "edge",
+    "events": [
+      {
+        "id": "bolts-of-balthakk-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "bolts-of-balthakk-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

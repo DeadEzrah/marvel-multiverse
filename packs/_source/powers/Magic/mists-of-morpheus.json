@@ -14,7 +14,26 @@
     "cost": "10 Focus",
     "effect": "The character makes an Ego check against the target's Vigilance defense, On a success, the target is stunned and remains that way while the character concentrates. On a Fantastic success, the target falls asleep instead.",
     "ability": "ego",
-    "attackTarget": "vig"
+    "attackTarget": "vig",
+    "events": [
+      {
+        "id": "mists-of-morpheus-stunned",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "mists-of-morpheus-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

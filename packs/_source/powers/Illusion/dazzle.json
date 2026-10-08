@@ -16,7 +16,27 @@
     "ability": "ego",
     "attackTarget": "vig",
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "events": [
+      {
+        "id": "dazzle-blinded",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "dazzle-apply-blinded",
+            "type": "status",
+            "statusId": "blinded",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

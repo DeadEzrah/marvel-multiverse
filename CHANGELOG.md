@@ -1,8 +1,22 @@
 # Changelog
 
-- Added native Basic, Darkvision, Light Amplification, Monochromatic, and Tremorsense/Radar Sense token vision controls, plus five-foot personal vision and Torch/Flashlight lighting in the Token HUD. Nonvisual tremorsense remains active while Blinded, does not emit personal light, and is inferred for characters with Vision Issues and Heightened Senses 2.
-
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
+
+## [3.1.0] - 2026-10-08
+
+### Added
+- Native Basic, Darkvision, Light Amplification, Monochromatic, and Tremorsense/Radar Sense token vision controls, plus five-foot personal vision and Torch/Flashlight lighting in the Token HUD.
+- CI validation for semantic effect profiles declared by compendium sources, embedded granted items, and automation presets.
+- Structured condition outcomes for 22 additional powers, including target, source, and self-and-target recipients.
+- Recipient regression coverage for source deduplication and self-and-target condition application.
+
+### Changed
+- Source outcomes now apply once per event regardless of selected target count.
+- Self-and-target outcomes now create separate source and target applications.
+
+### Fixed
+- Corrected the setup artwork filename used by the Foundry system manifest.
+- Preserved the structure-collapse effect-profile fallback during semantic validation.
 
 ## [3.0.0] - 2026-08-02
 

@@ -116,7 +116,7 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Effects And Assets
 
-- [ ] Add an automated audit that validates every semantic profile against `assets/effects-manifest.json`.
+- [x] Add an automated audit that validates every semantic profile against `assets/effects-manifest.json`.
 - [ ] Check declared Sequencer database keys against supported JB2A tiers.
 - [ ] Report unknown live `effectProfiles` before they reach gameplay.
 - [ ] Add or select profiles for remaining power families without using hero-specific IDs.
@@ -133,6 +133,7 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Validation And Test Coverage
 
+- [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
 - [ ] Add automated tests for automation-preset merging and explicit-field precedence.
 - [ ] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
 - [ ] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.

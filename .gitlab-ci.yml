@@ -19,6 +19,7 @@ validate:
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run validate:release
+    - npm run validate:effects
     - npm run build
 
 release:
@@ -32,6 +33,7 @@ release:
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run validate:release
+    - npm run validate:effects
     - npm run build
     - cp --force marvel-multiverse-compiled.mjs marvel-multiverse.mjs
     - export VERSION="$(node -p "require('./system.json').version")"

@@ -15,7 +15,44 @@
     "effect": "The character makes a ranged attack. If it succeeds, the target is stunned for one round. On a Fantastic success, the character is knocked prone too.",
     "ability": "agl",
     "attackTarget": "agl",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "events": [
+      {
+        "id": "speed-blast-stunned",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "speed-blast-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "speed-blast-source-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "speed-blast-apply-source-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

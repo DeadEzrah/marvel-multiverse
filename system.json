@@ -25,7 +25,7 @@
             "thumbnail": "systems/marvel-multiverse/ui/official/mmrpg-setup-thumbnail.png"
         }
     ],
-    "version": "3.0.0",
+    "version": "3.1.0",
     "compatibility": {
         "minimum": 12,
         "verified": "14.365"
@@ -141,7 +141,7 @@
     ],
     "socket": true,
     "manifest": "https://gitlab.com/wboyea63-group/marvel-multiverse/-/raw/main/system.json",
-    "download": "https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.0.0/marvel-multiverse-3.0.0.zip",
+    "download": "https://gitlab.com/api/v4/projects/wboyea63-group%2Fmarvel-multiverse/packages/generic/marvel-multiverse/3.1.0/marvel-multiverse-3.1.0.zip",
     "background": "systems/marvel-multiverse/ui/official/mmrpg-background.webp",
     "grid": {
         "distance": 5,
