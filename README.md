@@ -37,7 +37,7 @@ The system works on its own. These optional companion projects add encounter orc
 |---|---|---|
 | Marvel Encounter Framework | Clocks, objectives, phases, scene orchestration, damage/status actions, and optional VFX | [GitHub](https://github.com/DeadEzrah/marvel-encounter-framework) |
 | Marvel Encounter Packs | Reusable encounters for the framework | [GitHub](https://github.com/DeadEzrah/marvel-encounter-packs) |
-| Marvel Character Library | Actor compendiums used by reinforcement-enabled encounter packs | Not yet published separately |
+| Marvel Character Library | Actor compendiums used by reinforcement-enabled encounter packs | [GitHub](https://github.com/DeadEzrah/marvel-character-library) |
 
 Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missing visual modules never prevent rules or encounter progression.
 

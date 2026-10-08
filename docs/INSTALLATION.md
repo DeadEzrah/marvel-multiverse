@@ -58,10 +58,15 @@ git clone https://github.com/DeadEzrah/marvel-encounter-packs.git `
   (Join-Path $data "modules\marvel-encounter-packs")
 ```
 
-Some packs reference Actor UUIDs from **Marvel Character Library**. That library is not yet published as a separate public repository, so actor-spawning packs require a local copy in:
+Some packs reference Actor UUIDs from **Marvel Character Library**. Install and build the library before enabling actor-spawning packs:
 
-```text
-Data\modules\marvel-character-library
+```powershell
+$data = Join-Path $env:LOCALAPPDATA "FoundryVTT\Data"
+git clone https://github.com/DeadEzrah/marvel-character-library.git `
+  (Join-Path $data "modules\marvel-character-library")
+Set-Location (Join-Path $data "modules\marvel-character-library")
+npm install
+npm run build
 ```
 
 Enable the modules in this order:
@@ -94,6 +99,11 @@ npm run build
 
 Set-Location "$env:LOCALAPPDATA\FoundryVTT\Data\modules\marvel-encounter-framework"
 git pull --ff-only
+
+Set-Location "$env:LOCALAPPDATA\FoundryVTT\Data\modules\marvel-character-library"
+git pull --ff-only
+npm install
+npm run build
 
 Set-Location "$env:LOCALAPPDATA\FoundryVTT\Data\modules\marvel-encounter-packs"
 git pull --ff-only
