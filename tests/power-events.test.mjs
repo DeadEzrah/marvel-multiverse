@@ -9,7 +9,7 @@ globalThis.game = {
 
 const { previewPowerOutcomes } = await import("../lib/services/power-events.mjs");
 
-function createMessage({ targets }) {
+function createMessage({ targets, damageContext = { targets: [] } }) {
   const flags = {
     rollContext: {
       actorUuid: "Actor.source",
@@ -18,9 +18,7 @@ function createMessage({ targets }) {
     attackResolution: {
       targets
     },
-    damageContext: {
-      targets: []
-    }
+    damageContext
   };
 
   return {
@@ -95,4 +93,74 @@ test("self-and-target outcomes include source and the hit target", () => {
   );
   assert.equal(preview.targets[0].outcomes[0].recipientRole, "self-and-target");
   assert.equal(preview.targets[1].outcomes[0].recipientRole, "self-and-target");
+});
+
+test("damage-gated conditions require positive matching damage and any declared hit requirement", () => {
+  const fantasticDamageItem = {
+    system: {
+      events: [{
+        id: "fantastic-health-stun",
+        trigger: "health-damage-applied",
+        recipient: "target",
+        requirements: [{
+          type: "target-fantastic-hit"
+        }],
+        outcomes: [{
+          id: "apply-stunned",
+          type: "status",
+          statusId: "stunned"
+        }]
+      }]
+    }
+  };
+  const anyDamageItem = {
+    system: {
+      events: [{
+        id: "health-stun",
+        trigger: "health-damage-applied",
+        recipient: "target",
+        outcomes: [{
+          id: "apply-stunned",
+          type: "status",
+          statusId: "stunned"
+        }]
+      }]
+    }
+  };
+  const createDamageMessage = ({ outcome, finalDamage }) => createMessage({
+    targets: [{
+      uuid: "Token.target",
+      actor: { uuid: "Actor.target", name: "Target" },
+      outcome
+    }],
+    damageContext: {
+      damageType: "health",
+      targets: [{
+        targetUuid: "Token.target",
+        finalDamage
+      }]
+    }
+  });
+
+  const fantasticDamage = previewPowerOutcomes(
+    createDamageMessage({ outcome: "fantastic-hit", finalDamage: 1 }),
+    { item: fantasticDamageItem, triggers: ["health-damage-applied"] }
+  );
+  const zeroDamage = previewPowerOutcomes(
+    createDamageMessage({ outcome: "fantastic-hit", finalDamage: 0 }),
+    { item: fantasticDamageItem, triggers: ["health-damage-applied"] }
+  );
+  const ordinaryDamage = previewPowerOutcomes(
+    createDamageMessage({ outcome: "hit", finalDamage: 1 }),
+    { item: fantasticDamageItem, triggers: ["health-damage-applied"] }
+  );
+  const headshotDamage = previewPowerOutcomes(
+    createDamageMessage({ outcome: "hit", finalDamage: 1 }),
+    { item: anyDamageItem, triggers: ["health-damage-applied"] }
+  );
+
+  assert.equal(fantasticDamage.targets.length, 1);
+  assert.equal(zeroDamage.targets.length, 0);
+  assert.equal(ordinaryDamage.targets.length, 0);
+  assert.equal(headshotDamage.targets.length, 1);
 });

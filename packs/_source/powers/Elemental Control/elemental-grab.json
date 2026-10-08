@@ -16,7 +16,27 @@
     "ability": "ego",
     "attackTarget": "mle",
     "isElemental": true,
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "events": [
+      {
+        "id": "elemental-grab-grappled",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-grab-apply-grappled",
+            "type": "status",
+            "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

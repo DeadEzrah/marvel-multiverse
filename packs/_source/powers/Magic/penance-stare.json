@@ -16,7 +16,28 @@
     "ability": "ego",
     "attackTarget": "ego",
     "damageType": "focus",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "events": [
+      {
+        "id": "penance-stare-paralyzed",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "penance-stare-apply-paralyzed",
+            "type": "status",
+            "statusId": "paralyzed",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

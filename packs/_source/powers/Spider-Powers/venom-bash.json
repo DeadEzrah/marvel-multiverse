@@ -17,7 +17,32 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "venom-bash-stunned",
+        "trigger": "health-damage-applied",
+        "recipient": "target",
+        "requirements": [
+          {
+            "type": "target-fantastic-hit"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "venom-bash-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

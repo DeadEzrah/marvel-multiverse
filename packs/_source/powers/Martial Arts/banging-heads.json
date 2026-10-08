@@ -16,7 +16,27 @@
     "ability": "mle",
     "attackTarget": "mle",
     "damageType": "health",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "events": [
+      {
+        "id": "banging-heads-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "banging-heads-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

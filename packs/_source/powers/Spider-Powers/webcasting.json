@@ -15,7 +15,27 @@
     "effect": "The character makes a ranged attack on an enemy. If the attack is a success, the web paralyzes the enemy. On a Fantastic success, the enemy is also pinned. Breaking free from webbing requires a Melee check (target number 20).",
     "ability": "agl",
     "attackTarget": "agl",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "events": [
+      {
+        "id": "webcasting-paralyzed",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "webcasting-apply-paralyzed",
+            "type": "status",
+            "statusId": "paralyzed",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

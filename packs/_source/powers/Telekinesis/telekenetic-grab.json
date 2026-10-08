@@ -17,7 +17,26 @@
     "attackTarget": "mle",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "telekinetic-grab-grappled",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-grab-apply-grappled",
+            "type": "status",
+            "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

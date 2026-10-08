@@ -17,7 +17,26 @@
     "attackTarget": "agl",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "telekinetic-toss-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-toss-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

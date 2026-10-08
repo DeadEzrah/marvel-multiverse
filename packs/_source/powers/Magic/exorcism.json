@@ -14,7 +14,29 @@
     "cost": "15 Focus",
     "effect": "The character attempts to remove the possessor from a possessed target. The character makes an Ego check against the possessor's Ego defense. On a success, the possessor's concentration is broken, ending the possession. On a Fantastic success, all of the possessor's concentrations are broken, and the possessor is stunned for one round too.",
     "ability": "ego",
-    "attackTarget": "ego"
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "events": [
+      {
+        "id": "exorcism-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "exorcism-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

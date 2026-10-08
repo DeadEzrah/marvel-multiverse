@@ -2,6 +2,12 @@
 
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
 
+## Unreleased
+
+### Added
+- Condition automation for 18 additional power records, including escape-based grabs and webs, damage-gated stuns, and previously incomplete attack metadata.
+- Regression coverage proving damage-gated conditions require positive matching damage and preserve Fantastic-hit requirements.
+
 ## [3.1.0] - 2026-10-08
 
 ### Added

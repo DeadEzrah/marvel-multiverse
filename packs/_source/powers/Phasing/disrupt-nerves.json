@@ -12,7 +12,48 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "When phasing through a person, the character can attempt to scramble their nervous system. The character makes an Ego check against the target's Resilience defense. On a success, the target is stunned for one round. On a Fantastic success, the target also falls prone."
+    "effect": "When phasing through a person, the character can attempt to scramble their nervous system. The character makes an Ego check against the target's Resilience defense. On a success, the target is stunned for one round. On a Fantastic success, the target also falls prone.",
+    "ability": "ego",
+    "attackTarget": "res",
+    "attackKind": "close",
+    "attack": true,
+    "events": [
+      {
+        "id": "disrupt-nerves-stunned",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "disrupt-nerves-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "disrupt-nerves-prone",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "disrupt-nerves-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

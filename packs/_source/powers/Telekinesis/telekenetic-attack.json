@@ -17,7 +17,27 @@
     "attackTarget": "mle",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "events": [
+      {
+        "id": "telekinetic-attack-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-attack-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,32 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character cracks a joke at the enemy's expense. Make an Ego attack, On a success, It does regular Focus damage, On a Fantastic success, the damage is doubled and the target is stunned for one round"
+    "effect": "The character cracks a joke at the enemy's expense. Make an Ego attack, On a success, It does regular Focus damage, On a Fantastic success, the damage is doubled and the target is stunned for one round",
+    "ability": "ego",
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "focus",
+    "events": [
+      {
+        "id": "wisecracker-stunned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "wisecracker-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "folder": "bbe663a787c7ec04",
   "_key": "!items!EeGxUE2qC2D2xw4W",

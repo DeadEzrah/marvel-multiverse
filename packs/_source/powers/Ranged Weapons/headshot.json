@@ -16,7 +16,29 @@
     "ability": "agl",
     "attackTarget": "agl",
     "attackEdgeMode": "trouble",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "health",
+    "events": [
+      {
+        "id": "headshot-stunned",
+        "trigger": "health-damage-applied",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "headshot-apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

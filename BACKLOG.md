@@ -134,6 +134,8 @@ The 13 weapon records are structured locally but still require complete live gat
 ## Validation And Test Coverage
 
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
+  - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 40 records.
+  - Remaining applications require optional-choice controls, third-party recipients, delayed movement/reaction triggers, area-entry checks, hybrid Health-reduction/Focus-damage support, or a canonical ruling for `pinned`.
 - [ ] Add automated tests for automation-preset merging and explicit-field precedence.
 - [ ] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
 - [ ] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.

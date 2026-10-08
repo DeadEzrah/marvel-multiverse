@@ -15,7 +15,27 @@
     "effect": "The character makes a ranged attack on an enemy. If the attack is a success, the character grabs the target with a web. On a Fantastic success, the target can also be pinned. Breaking free from webbing requires a Melee check (target number 20).",
     "ability": "agl",
     "attackTarget": "agl",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "events": [
+      {
+        "id": "webgrabbing-grappled",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "webgrabbing-apply-grappled",
+            "type": "status",
+            "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
