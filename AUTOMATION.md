@@ -114,6 +114,26 @@ Do not infer healing formulas from description text at runtime. Encode them as s
 
 Rules mutation and animation are intentionally independent. The `healing` event outcome is gated by `enableExperimentalPowerOutcomes`; the cosmetic profile is gated by `enableSequencerEffects`.
 
+## Public Actor Mutation API
+
+Encounter modules and macros can apply direct consequences through the system API without editing actor data themselves:
+
+```js
+await game.marvelMultiverse.applyDamage({
+  actor,
+  kind: "health",
+  amount: 10
+});
+
+await game.marvelMultiverse.applyStatus({
+  actor,
+  status: "stunned",
+  mode: "apply"
+});
+```
+
+`applyDamage` accepts `health` or `focus`, applies the corresponding actor Damage Reduction by default, floors the resource at zero, and supports `ignoreReduction: true` for mechanics that explicitly bypass reduction. `applyStatus` supports `apply`, `remove`, and `toggle`, normalizes condition aliases, prevents duplicate effects, and uses the system's condition icons and ActiveEffect markers. Both methods also accept `actorUuid` or `tokenUuid`, enforce actor ownership/GM permission, and return structured success or failure results.
+
 ## Areas and Walls
 
 Power targeting distances are stored in Marvel rules **spaces**, not feet or meters. At runtime, one rules-space maps to one Foundry grid cell, regardless of the scene's displayed distance unit.
