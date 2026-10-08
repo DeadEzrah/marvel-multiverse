@@ -69,6 +69,8 @@ npm install
 npm run build
 ```
 
+The public library is limited to original, generic, or redistribution-approved Actors. A private/local character vault may be used for personal campaign conversions, but it is not part of the public installation and public encounter packs must not depend on it.
+
 Enable the modules in this order:
 
 1. Marvel Encounter Framework

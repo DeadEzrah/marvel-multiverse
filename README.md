@@ -39,6 +39,8 @@ The system works on its own. These optional companion projects add encounter orc
 
 Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missing visual modules never prevent rules or encounter progression.
 
+The public Character Library contains only original, generic, or redistribution-approved content. Recognizable or uncertain personal campaign conversions should remain in a separate private/local vault; public suite packages must never require or reference that vault.
+
 ## Documentation
 
 - [Documentation home](docs/DOCUMENTATION-HOME.md)
