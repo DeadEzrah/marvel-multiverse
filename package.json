@@ -14,6 +14,7 @@
     "build:sync": "npm run build:code && npm run build:db && npm run sync:foundry",
     "validate:effects": "node ./scripts/validate-effect-profiles.mjs",
     "validate:release": "node ./scripts/validate-release.mjs",
+    "release:github": "powershell -ExecutionPolicy Bypass -File .\\scripts\\publish-github-release.ps1 -Publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "npm run build:css && npm run build:db"

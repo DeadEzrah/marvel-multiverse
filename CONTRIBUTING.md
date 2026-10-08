@@ -158,7 +158,7 @@ Please understand that large and sprawling PRs are exceptionally difficult to re
 
 ## Releases
 
-This repository includes a GitHub Actions workflow which validates branches and publishes a GitHub Release when a tag named `release-x.x.x` is pushed.
+This repository includes a release script which validates the system, builds its distributable files, and publishes a GitHub Release for a tag named `release-x.x.x`.
 
 ### Prerequisites
 
@@ -181,5 +181,6 @@ https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.2.1/m
 1. [ ] Update the version in `system.json`, `package.json`, and `package-lock.json`, plus the version segments in `system.json` `download`.
 2. [ ] Run `npm run validate:release` and `npm run build`.
 3. [ ] Merge the development branch to `main` so the public manifest describes the release.
-4. [ ] Create and push a tag at that commit with the format `release-x.x.x`; GitHub Actions publishes the ZIP and manifest as release assets.
-5. [ ] Verify the manifest and download URLs without authentication before submitting the manifest to Foundry or a hosting provider.
+4. [ ] Create and push a tag at that commit with the format `release-x.x.x`.
+5. [ ] Run `npm run release:github` to publish the ZIP and manifest as GitHub Release assets.
+6. [ ] Verify the manifest and download URLs without authentication before submitting the manifest to Foundry or a hosting provider.
