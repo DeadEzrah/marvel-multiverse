@@ -74,6 +74,110 @@
       ]
     },
     {
+      "id": "melee.flurry",
+      "category": "melee",
+      "type": "attack",
+      "tags": ["melee", "physical", "flurry", "unarmed", "multi-hit"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1.group02", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.flurry_of_blows.physical.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.stance.attack",
+      "category": "martial",
+      "type": "activation",
+      "tags": ["martial", "stance", "attack", "empower"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.cast_generic.01.yellow.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.stance.defense",
+      "category": "martial",
+      "type": "activation",
+      "tags": ["martial", "stance", "defense", "shield"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.brace",
+      "category": "martial",
+      "type": "reaction",
+      "tags": ["martial", "reaction", "defense", "impact"],
+      "sounds": [
+        { "file": "psfx.impacts.bludgeoning.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.counterstrike",
+      "category": "martial",
+      "type": "reaction",
+      "tags": ["martial", "reaction", "counterstrike", "unarmed"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1.group02", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.unarmed_strike.physical", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.reverse-momentum",
+      "category": "martial",
+      "type": "reaction",
+      "tags": ["martial", "reaction", "throw", "prone", "impact"],
+      "sounds": [
+        { "file": "psfx.impacts.bludgeoning.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.ground_crack", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "martial.untouchable",
+      "category": "martial",
+      "type": "reaction",
+      "tags": ["martial", "passive", "defense", "dodge"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weapon.melee.swing",
+      "category": "weapon",
+      "type": "attack",
+      "tags": ["weapon", "melee", "physical", "swing"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.melee_attack.01.shortsword", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weapon.melee.whirlwind",
+      "category": "weapon",
+      "type": "area",
+      "tags": ["weapon", "melee", "physical", "whirlwind", "area"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.heavy.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.whirlwind.bluegrey", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "weapon.blade.hit",
       "category": "weapon",
       "type": "impact",

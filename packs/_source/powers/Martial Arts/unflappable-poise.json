@@ -15,7 +15,32 @@
     "effect": "Any close attacks against the character have trouble. While they use Defense Stance, such attacks have double trouble."
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "_id": "UnflapPoise00001",
+      "_key": "!items.effects!TAhre265tkdXG3fu.UnflapPoise00001",
+      "name": "Unflappable Poise",
+      "img": "systems/marvel-multiverse/icons/martial-arts.svg",
+      "origin": "Item.TAhre265tkdXG3fu",
+      "changes": [],
+      "disabled": false,
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "defensiveRollModifier": {
+            "mode": "trouble",
+            "count": 1,
+            "label": "Unflappable Poise",
+            "attackKinds": [
+              "close"
+            ],
+            "endConcentrationOnSuccessfulAttack": false
+          }
+        }
+      }
+    }
+  ],
   "folder": "9a200a2684a8be54",
   "_key": "!items!TAhre265tkdXG3fu"
 }

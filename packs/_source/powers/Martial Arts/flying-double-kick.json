@@ -18,6 +18,25 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "minCount": 2,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.flurry",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "flying-double-kick-prone",

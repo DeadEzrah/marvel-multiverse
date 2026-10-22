@@ -18,7 +18,47 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
-    "attackEdgeMode": "edge"
+    "attackEdgeMode": "edge",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "modifier": 2,
+      "includeFocusBonusInBase": true,
+      "doubleOnFantastic": true
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "effectProfiles": {
+      "attack": "weapon.melee.swing",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "focused-fury-weapon-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "focused-fury-resolve-weapon-effect",
+            "type": "manual",
+            "label": "Apply the attacking weapon's special effect to this target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

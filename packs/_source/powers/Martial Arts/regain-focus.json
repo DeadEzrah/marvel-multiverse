@@ -12,7 +12,26 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character recovers Focus equal to their Vigilance."
+    "effect": "The character recovers Focus equal to their Vigilance.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "events": [
+      {
+        "id": "regain-focus-recovery",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "regain-focus-restore-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "@vig.value"
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

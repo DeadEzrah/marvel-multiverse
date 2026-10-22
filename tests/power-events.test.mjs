@@ -7,7 +7,58 @@ globalThis.game = {
   }
 };
 
-const { previewPowerOutcomes } = await import("../lib/services/power-events.mjs");
+const {
+  previewPowerOutcomes,
+  sweepActorTurnDefensiveEffects,
+  undoPowerOutcomes,
+  validatePowerEvents
+} = await import("../lib/services/power-events.mjs");
+
+test("Untouchable Position expires at the start of the defender's next turn", async () => {
+  const deleted = [];
+  const effect = {
+    id: "untouchable-effect",
+    flags: {
+      "marvel-multiverse": {
+        untouchablePosition: {
+          active: true,
+          combatId: "combat",
+          combatantId: "defender-combatant"
+        }
+      }
+    }
+  };
+  const actor = {
+    effects: [effect],
+    async deleteEmbeddedDocuments(_type, ids) {
+      deleted.push(...ids);
+    }
+  };
+  const previousGame = globalThis.game;
+  globalThis.game = {
+    ...previousGame,
+    actors: [actor],
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } }
+  };
+
+  try {
+    const wrongTurn = await sweepActorTurnDefensiveEffects(
+      { id: "combat" },
+      { boundary: "start", combatantId: "other-combatant" }
+    );
+    const nextTurn = await sweepActorTurnDefensiveEffects(
+      { id: "combat" },
+      { boundary: "start", combatantId: "defender-combatant" }
+    );
+
+    assert.equal(wrongTurn.sweptCount, 0);
+    assert.equal(nextTurn.sweptCount, 1);
+    assert.deepEqual(deleted, ["untouchable-effect"]);
+  } finally {
+    globalThis.game = previousGame;
+  }
+});
 
 function createMessage({ targets, damageContext = { targets: [] } }) {
   const flags = {
@@ -58,6 +109,45 @@ test("source outcomes appear once regardless of target count", () => {
   assert.equal(preview.targets[0].targetUuid, null);
   assert.equal(preview.targets[0].name, "Source");
   assert.equal(preview.targets[0].outcomes.length, 1);
+});
+
+test("target utility outcomes resolve actors from roll-context target UUIDs", () => {
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  globalThis.fromUuidSync = (uuid) => uuid === "Actor.target"
+    ? { uuid, name: "Reaction Target", documentName: "Actor" }
+    : null;
+  const item = {
+    system: {
+      events: [{
+        id: "utility-target-damage",
+        trigger: "action-declared",
+        recipient: "target",
+        outcomes: [{
+          id: "damage-target",
+          type: "damage",
+          amount: 5
+        }]
+      }]
+    }
+  };
+  const message = {
+    getFlag: (_scope, key) => key === "rollContext"
+      ? { actorUuid: "Actor.source", itemUuid: "Item.power", targetUuids: ["Actor.target"] }
+      : null
+  };
+
+  try {
+    const preview = previewPowerOutcomes(message, {
+      item,
+      triggers: ["action-declared"]
+    });
+
+    assert.equal(preview.targets.length, 1);
+    assert.equal(preview.targets[0].targetUuid, "Actor.target");
+    assert.equal(preview.targets[0].name, "Reaction Target");
+  } finally {
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
 });
 
 test("self-and-target outcomes include source and the hit target", () => {
@@ -163,4 +253,66 @@ test("damage-gated conditions require positive matching damage and any declared 
   assert.equal(zeroDamage.targets.length, 0);
   assert.equal(ordinaryDamage.targets.length, 0);
   assert.equal(headshotDamage.targets.length, 1);
+});
+
+test("resource changes accept actor-data formulas", () => {
+  const validation = validatePowerEvents([{
+    id: "regain-focus",
+    trigger: "action-declared",
+    recipient: "source",
+    outcomes: [{
+      id: "restore-focus",
+      type: "resource-change",
+      resource: "focus",
+      formula: "@vig.value"
+    }]
+  }]);
+
+  assert.equal(validation.valid, true);
+  assert.deepEqual(validation.issues, []);
+});
+
+test("undo without a transaction id reverses every applied target outcome", async () => {
+  const transactions = [
+    {
+      id: "target-a",
+      targetActorUuid: "Actor.target-a",
+      createdEffectIds: ["effect-a"],
+      undone: false
+    },
+    {
+      id: "target-b",
+      targetActorUuid: "Actor.target-b",
+      createdEffectIds: ["effect-b"],
+      undone: false
+    }
+  ];
+  const deleted = [];
+  const actors = new Map([
+    ["Actor.target-a", {
+      documentName: "Actor",
+      deleteEmbeddedDocuments: async (_type, ids) => deleted.push(...ids)
+    }],
+    ["Actor.target-b", {
+      documentName: "Actor",
+      deleteEmbeddedDocuments: async (_type, ids) => deleted.push(...ids)
+    }]
+  ]);
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  globalThis.fromUuidSync = (uuid) => actors.get(uuid) ?? null;
+  const message = {
+    getFlag: (_scope, key) => key === "resolution" ? { eventTransactions: transactions } : null,
+    update: async () => {}
+  };
+
+  try {
+    const result = await undoPowerOutcomes(message);
+
+    assert.equal(result.success, true);
+    assert.equal(result.transactions.length, 2);
+    assert.deepEqual(deleted.sort(), ["effect-a", "effect-b"]);
+    assert.equal(transactions.every((entry) => entry.undone), true);
+  } finally {
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
 });

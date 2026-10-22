@@ -12,7 +12,39 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The attacker is knocked prone and takes half the damage their attack would have inflicted if it had succeeded."
+    "effect": "The attacker is knocked prone and takes half the damage their attack would have inflicted if it had succeeded.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "reactionType": "incoming-close-miss",
+      "requiredStance": "defense"
+    },
+    "effectProfiles": {
+      "activation": "martial.reverse-momentum"
+    },
+    "events": [
+      {
+        "id": "reverse-momentum-throw-response",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "reverse-momentum-throw-damage",
+            "type": "damage",
+            "amount": 0
+          },
+          {
+            "id": "reverse-momentum-throw-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none"
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -18,7 +18,27 @@
     "attackMultiplier": 2,
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "minCount": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "scale": 0.5,
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.flurry",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    }
   },
   "flags": {},
   "effects": [],

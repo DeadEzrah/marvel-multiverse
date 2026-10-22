@@ -18,6 +18,24 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "leaping-leglock-grappled",

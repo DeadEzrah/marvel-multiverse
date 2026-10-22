@@ -15,9 +15,52 @@
     "effect": "The character splits their attack to make two close attacks against separate targets within reach (or they can focus a single attack on a single target). Make a single Melee check and compare it to the targets' Melee defenses. For these attacks, add 1+ to the character's Melee damage bonus for every 2 points of Focus they spend. On a success, an affected target takes half that total damage. On a Fantastic success, an affected target takes full damage and suffers the weapon's special effect.",
     "ability": "mle",
     "attackTarget": "mle",
+    "attackMultiplier": 2,
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "minCount": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "modifier": 5,
+      "includeFocusBonusInBase": true,
+      "scale": 0.5,
+      "doubleOnFantastic": true
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "effectProfiles": {
+      "attack": "weapon.melee.swing",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "furious-attacks-weapon-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "furious-attacks-resolve-weapon-effect",
+            "type": "manual",
+            "label": "Apply the attacking weapon's special effect to this target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

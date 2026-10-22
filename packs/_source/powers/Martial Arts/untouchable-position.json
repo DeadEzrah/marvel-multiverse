@@ -12,9 +12,16 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "If the character is attacked, all other close attacks against them have trouble until the start of their next turn."
+    "effect": "If the character is attacked, all other close attacks against them have trouble until the start of their next turn.",
+    "effectProfiles": {
+      "activation": "martial.untouchable"
+    }
   },
-  "flags": {},
+  "flags": {
+    "marvel-multiverse": {
+      "passiveAutomation": "untouchable-position"
+    }
+  },
   "effects": [],
   "folder": "9a200a2684a8be54",
   "_key": "!items!owsgvdOSYAkIY3Ip"

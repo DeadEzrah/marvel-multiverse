@@ -38,11 +38,29 @@
       "enabled": true,
       "ability": "mle",
       "scale": 0.5,
-      "type": "health"
+      "type": "health",
+      "doubleOnFantastic": true
     },
     "effectProfiles": {
-      "impact": "melee.hit.light"
-    }
+      "attack": "weapon.melee.whirlwind",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "whirling-frenzy-weapon-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "whirling-frenzy-resolve-weapon-effect",
+            "type": "manual",
+            "label": "Apply the attacking weapon's special effect to this target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

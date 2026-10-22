@@ -18,6 +18,31 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Spin & Throw requires a grabbed target."
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "spin-n-throw-prone",
@@ -51,6 +76,30 @@
               "type": "rounds",
               "value": 1
             }
+          }
+        ]
+      },
+      {
+        "id": "spin-n-throw-movement-and-pinned",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "spin-n-throw-move-target",
+            "type": "manual",
+            "label": "Move the target to any open space within the source's reach."
+          }
+        ]
+      },
+      {
+        "id": "spin-n-throw-pinned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "spin-n-throw-resolve-pinned",
+            "type": "manual",
+            "label": "The target is pinned. Resolve pinned using the table's current canonical ruling."
           }
         ]
       }

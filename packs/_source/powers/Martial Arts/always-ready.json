@@ -6,15 +6,20 @@
   "system": {
     "description": "The character is prepared to fight.",
     "powerSet": "Martial Arts",
-    "prerequisites": "Do This Al Day, Rank 3",
+    "prerequisites": "Do This All Day, Rank 3",
     "action": "",
     "trigger": "",
     "duration": "",
     "range": "",
     "cost": "",
-    "effect": ""
+    "effect": "Homebrew: Once per round, the character can take one additional reaction, but only to activate a Martial Arts power."
   },
-  "flags": {},
+  "flags": {
+    "marvel-multiverse": {
+      "homebrew": true,
+      "manualRule": "Track one additional Martial Arts reaction per round."
+    }
+  },
   "effects": [],
   "folder": "9a200a2684a8be54",
   "_key": "!items!8MaB6fHzANxJzpbq"

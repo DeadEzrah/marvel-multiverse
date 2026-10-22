@@ -12,7 +12,50 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "Any close attacks made against the character have trouble until they are successfully attacked in this combat."
+    "effect": "Any close attacks made against the character have trouble until they are successfully attacked in this combat.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "martial.stance.defense"
+    },
+    "events": [
+      {
+        "id": "defense-stance-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "apply-defense-stance",
+            "type": "active-effect",
+            "effect": {
+              "name": "Defense Stance",
+              "img": "systems/marvel-multiverse/icons/martial-arts.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerStance": "defense",
+                  "defensiveRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Defense Stance",
+                    "attackKinds": [
+                      "close"
+                    ],
+                    "endConcentrationOnSuccessfulAttack": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -18,6 +18,32 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "modifier": 5,
+      "includeFocusBonusInBase": true,
+      "doubleOnFantastic": true
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "focused-strike-stunned",

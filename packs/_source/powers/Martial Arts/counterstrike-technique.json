@@ -12,7 +12,32 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character deals half the attacker's regular damage to the attacker."
+    "effect": "The character deals half the attacker's regular damage to the attacker.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "reactionType": "incoming-close-damage",
+      "requiredStance": "attack"
+    },
+    "effectProfiles": {
+      "activation": "martial.counterstrike"
+    },
+    "events": [
+      {
+        "id": "counterstrike-technique-damage",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "counterstrike-technique-reflect-damage",
+            "type": "damage",
+            "amount": 0
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

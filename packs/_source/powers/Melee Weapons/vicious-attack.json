@@ -17,7 +17,39 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.melee.swing",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "vicious-attack-weapon-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "vicious-attack-resolve-weapon-effect",
+            "type": "manual",
+            "label": "Apply the attacking weapon's special effect to this target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

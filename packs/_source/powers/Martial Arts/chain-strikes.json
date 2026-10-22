@@ -18,7 +18,39 @@
     "attack": true,
     "attackTarget": "mle",
     "attackEdgeMode": "edge",
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.flurry",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "chain-strikes-fantastic-follow-up",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "chain-strikes-additional-attack",
+            "type": "manual",
+            "label": "You can make an additional Chain Strike."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

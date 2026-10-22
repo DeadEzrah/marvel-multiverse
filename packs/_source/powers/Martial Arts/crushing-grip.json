@@ -17,7 +17,46 @@
     "attackTarget": "res",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "res",
+      "range": 1,
+      "rangeScaling": "reach",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Crushing Grip requires a grabbed target."
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "crushing-grip-pinned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "crushing-grip-resolve-pinned",
+            "type": "manual",
+            "label": "The target is pinned. Resolve pinned using the table's current canonical ruling."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

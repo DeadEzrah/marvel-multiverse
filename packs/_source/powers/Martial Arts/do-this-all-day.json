@@ -12,7 +12,34 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 or more Focus",
-    "effect": "The character heals 2 points of Health for every point of Focus they spend."
+    "effect": "The character heals 2 points of Health for every point of Focus they spend.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "healing",
+      "benefitPerFocus": 2,
+      "focusPerBenefit": 1
+    },
+    "effectProfiles": {
+      "activation": "healing"
+    },
+    "events": [
+      {
+        "id": "do-this-all-day-healing",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "do-this-all-day-restore-health",
+            "type": "healing",
+            "amount": 10
+          }
+        ]
+      }
+    ]
   },
   "folder": "9a200a2684a8be54",
   "_key": "!items!Ppt16p6K3tw1hz9e",

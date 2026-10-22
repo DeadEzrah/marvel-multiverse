@@ -12,7 +12,45 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character doubles their Melee ability bonus to damage."
+    "effect": "The character doubles their Melee ability bonus to damage.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "martial.stance.attack"
+    },
+    "events": [
+      {
+        "id": "attack-stance-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "apply-attack-stance",
+            "type": "active-effect",
+            "effect": {
+              "name": "Attack Stance",
+              "img": "systems/marvel-multiverse/icons/martial-arts.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerStance": "attack",
+                  "damageModifier": {
+                    "ability": "mle",
+                    "abilityValueMultiplier": 1
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

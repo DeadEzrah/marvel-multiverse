@@ -12,7 +12,35 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 or more Focus",
-    "effect": "For every point of Focus spent, the character can ignore 1 point of Health damage dealt by the attack."
+    "effect": "For every point of Focus spent, the character can ignore 1 point of Health damage dealt by the attack.",
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "reactionType": "incoming-physical-damage"
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "healing",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 1
+    },
+    "effectProfiles": {
+      "activation": "martial.brace"
+    },
+    "events": [
+      {
+        "id": "brace-for-impact-mitigation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "brace-for-impact-restore-health",
+            "type": "healing",
+            "amount": 5
+          }
+        ]
+      }
+    ]
   },
   "folder": "9a200a2684a8be54",
   "_key": "!items!0Q2XBi8YlDhDtZFu",
