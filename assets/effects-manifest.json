@@ -774,6 +774,26 @@
       "animations": [
         { "file": "jb2a.condition.curse.01.001.red", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "translation.comprehend",
+      "category": "translation",
+      "type": "activation",
+      "tags": ["translation", "language", "comprehension", "divination"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "translation.detect-lie",
+      "category": "translation",
+      "type": "impact",
+      "tags": ["translation", "insight", "detect-lie", "eyes"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.eyes.01.dark_green.single", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "_id": "0vQFCyPuXbDXZB3w",
-  "name": "Understand Unusual Communication",
+  "name": "Understand Written Language",
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character can get what someone is saying.",
+    "description": "The character can understand any written language.",
     "powerSet": "Translation",
     "prerequisites": "",
     "action": "Standard",
@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "When the character encounters an unknown written language for the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the language. they have an edge. On a success, they can read and write the language On a Fantastic success, they can permanently read and write it and never need to make a check for it again."
+    "effect": "When the character encounters an unknown written language for the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the language. they have an edge. On a success, they can read and write the language On a Fantastic success, they can permanently read and write it and never need to make a check for it again.",
+    "ability": "log",
+    "targetNumber": 13,
+    "attack": false,
+    "damage": { "enabled": false },
+    "translation": { "kind": "written-language", "permanentOnFantastic": true },
+    "rollModifiers": [
+      {
+        "id": "related-language",
+        "mode": "edge",
+        "count": 1,
+        "selection": "optional",
+        "label": "Edge: knows another version of this written language"
+      }
+    ],
+    "effectProfiles": { "activation": "translation.comprehend" },
+    "events": [
+      {
+        "id": "written-language-understood",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "written-language-record", "type": "manual", "label": "Record the written language understood for this use." }
+        ]
+      },
+      {
+        "id": "written-language-permanent",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "written-language-record-permanent", "type": "manual", "label": "Fantastic success: record permanent reading and writing of this language." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -17,7 +17,15 @@
     "ability": "log",
     "attackTarget": "log",
     "targeting": {
-      "defense": "log"
+      "defense": "log",
+      "prerequisites": [
+        {
+          "type": "effect-flag",
+          "value": "telepathicLanguageImmunity",
+          "present": false,
+          "message": "Mind Reading cannot understand this target's Indecipherable internal language."
+        }
+      ]
     },
     "events": [
       {

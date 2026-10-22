@@ -210,6 +210,14 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Rank-scaled utility targeting enforces ally/enemy filters, line of sight, Reach or five-spaces-per-Rank range, and one-target-per-Rank caps before Focus is spent.
   - [x] `luck.good` and `luck.jinx` resolve to verified Free JB2A Bless and Curse animations.
   - The installed-runtime matrix passed 10/10 gates for invalid-target rejection, Focus spending, universal Edge/Trouble, concentration cleanup, paid and unpaid upkeep, once-per-round usage, attack-only defense, Fantastic-only damage, and profile resolution. All nine compendium powers were refreshed; no world actors owned embedded Luck copies, and temporary actors, tokens, messages, and staging data were removed.
+- [x] Complete the Translation family migration.
+  - [x] Understand Body Language, Code, Sign Language, Spoken Language, Unusual Communication, and Written Language use Logic vs. TN 13 with an explicit optional related-language Edge and ordinary/Fantastic record reminders.
+  - [x] The duplicate-mislabeled Understand Written Language source record was restored to its correct identity while retaining its canonical item ID.
+  - [x] Detect Lie spends exactly 5 Focus, attacks a communicator's Ego defense without damage, and distinguishes knowing-lie detection from the Fantastic motive reveal.
+  - [x] Indecipherable uses a permanent transferred immunity flag that blocks Mind Reading and Mind Interrogation before Focus is spent.
+  - [x] Fixed target numbers are now declared in the Foundry Power data schema, and source-only non-attack checks emit success/Fantastic events without requiring a target. The same schema repair restored live TN 12/20/10 persistence for Cure-All, Restore, and Resurrect.
+  - [x] `translation.comprehend` and `translation.detect-lie` resolve to verified Free JB2A Divination and Eyes animations.
+  - The installed-runtime matrix passed 8/8 gates for all six fixed-TN checks, optional Edge presentation, ordinary/Fantastic outcomes, corrected identity, Detect Lie, both telepathic immunities, and profile resolution. All eight Translation and two coupled Telepathy compendium documents were refreshed; no world actors owned embedded Translation copies, and temporary actors, messages, and staging data were removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

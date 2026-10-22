@@ -206,6 +206,33 @@ test("fixed-TN action results drive source success events", () => {
   }
 });
 
+test("source-only fixed-TN checks drive success events without a target", () => {
+  const item = {
+    system: {
+      events: [{
+        id: "translation-understood",
+        trigger: "source-success",
+        recipient: "source",
+        outcomes: [{ id: "record-language", type: "manual", label: "Record the language." }],
+      }],
+    },
+  };
+  const message = {
+    getFlag: (_scope, key) => ({
+      rollContext: { actorUuid: "Actor.translator", itemUuid: "Item.translation" },
+      actionRoll: {
+        request: { targets: [] },
+        result: { outcome: "success", targetResults: [] },
+      },
+    })[key] ?? null,
+  };
+
+  const result = previewPowerOutcomes(message, { item, triggers: ["source-success"] });
+
+  assert.equal(result.targets.length, 1);
+  assert.equal(result.targets[0].outcomes[0].eventId, "translation-understood");
+});
+
 test("resource formulas can use the activation Focus spend", async () => {
   const originalGame = globalThis.game;
   const originalFoundry = globalThis.foundry;

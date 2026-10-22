@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "When the character encounters an unknown code for the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the language the code is based on, they have an edge. On a success, they understand and can communicate in the code. On a Fantastic success, they permanently understand and can use it and never need to make a check for it again. Digital data communication is considered a form of code, and the character can use this power to understand such data too."
+    "effect": "When the character encounters an unknown code for the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the language the code is based on, they have an edge. On a success, they understand and can communicate in the code. On a Fantastic success, they permanently understand and can use it and never need to make a check for it again. Digital data communication is considered a form of code, and the character can use this power to understand such data too.",
+    "ability": "log",
+    "targetNumber": 13,
+    "attack": false,
+    "damage": { "enabled": false },
+    "translation": { "kind": "code", "permanentOnFantastic": true },
+    "rollModifiers": [
+      {
+        "id": "related-language",
+        "mode": "edge",
+        "count": 1,
+        "selection": "optional",
+        "label": "Edge: knows another version of the code's base language"
+      }
+    ],
+    "effectProfiles": { "activation": "translation.comprehend" },
+    "events": [
+      {
+        "id": "code-understood",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "code-record", "type": "manual", "label": "Record the code understood for this use." }
+        ]
+      },
+      {
+        "id": "code-permanent",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "code-record-permanent", "type": "manual", "label": "Fantastic success: record permanent understanding and use of this code." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

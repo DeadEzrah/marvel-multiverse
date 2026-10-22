@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "When the character encounters an unknown spoken languuge ftir the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version the language, they have an edge. On a success they understand and can speak the language. On a Fantastic success, they permanently understand and can speak it and never need to make a check for it again."
+    "effect": "When the character encounters an unknown spoken languuge ftir the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version the language, they have an edge. On a success they understand and can speak the language. On a Fantastic success, they permanently understand and can speak it and never need to make a check for it again.",
+    "ability": "log",
+    "targetNumber": 13,
+    "attack": false,
+    "damage": { "enabled": false },
+    "translation": { "kind": "spoken-language", "permanentOnFantastic": true },
+    "rollModifiers": [
+      {
+        "id": "related-language",
+        "mode": "edge",
+        "count": 1,
+        "selection": "optional",
+        "label": "Edge: knows another version of this spoken language"
+      }
+    ],
+    "effectProfiles": { "activation": "translation.comprehend" },
+    "events": [
+      {
+        "id": "spoken-language-understood",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "spoken-language-record", "type": "manual", "label": "Record the spoken language understood for this use." }
+        ]
+      },
+      {
+        "id": "spoken-language-permanent",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "spoken-language-record-permanent", "type": "manual", "label": "Fantastic success: record permanent understanding and use of this spoken language." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

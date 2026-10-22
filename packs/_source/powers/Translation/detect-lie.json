@@ -12,7 +12,41 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "When someone communicates in an active form the character can understand-verbally, telepathically. using sign language and so on-the character can make an Ego check against the communicator's Ego defense. On a success, the character knows if the communicator is lying. On a Fantastic success, they also know (if possible) why the communicator is lying This power does not allow the character to know the truth, although they may be able to figure it out by detecting lies. Also, It only works on communicators who know they are lying. If they believe what they are saying-even if it is wrong-no lie can be detected."
+    "effect": "When someone communicates in an active form the character can understand-verbally, telepathically. using sign language and so on-the character can make an Ego check against the communicator's Ego defense. On a success, the character knows if the communicator is lying. On a Fantastic success, they also know (if possible) why the communicator is lying This power does not allow the character to know the truth, although they may be able to figure it out by detecting lies. Also, It only works on communicators who know they are lying. If they believe what they are saying-even if it is wrong-no lie can be detected.",
+    "ability": "ego",
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damage": { "enabled": false },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "minCount": 1,
+      "defense": "ego"
+    },
+    "effectProfiles": {
+      "attack": "translation.detect-lie",
+      "hit": "translation.detect-lie",
+      "fantasticHit": "translation.detect-lie"
+    },
+    "events": [
+      {
+        "id": "detect-lie-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          { "id": "detect-lie-reveal", "type": "manual", "label": "Reveal whether this communicator knowingly lied. This does not reveal the truth." }
+        ]
+      },
+      {
+        "id": "detect-lie-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          { "id": "detect-lie-reveal-motive", "type": "manual", "label": "Fantastic success: if possible, also reveal why this communicator knowingly lied." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

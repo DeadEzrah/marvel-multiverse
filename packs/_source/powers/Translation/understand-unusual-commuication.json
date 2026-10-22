@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "When the character encounters an unknown form of communication for the first time-one that doesn't depend on hearing, vision or code-they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the communication, they have an edge. On a success, they understand and can use that form of communication. On a Fantastic success, they permanently understand and can use it and never need to make a check for it again. This works with forms of communication that incluude other senses, like scent. touch, taste and so on."
+    "effect": "When the character encounters an unknown form of communication for the first time-one that doesn't depend on hearing, vision or code-they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the communication, they have an edge. On a success, they understand and can use that form of communication. On a Fantastic success, they permanently understand and can use it and never need to make a check for it again. This works with forms of communication that incluude other senses, like scent. touch, taste and so on.",
+    "ability": "log",
+    "targetNumber": 13,
+    "attack": false,
+    "damage": { "enabled": false },
+    "translation": { "kind": "unusual-communication", "permanentOnFantastic": true },
+    "rollModifiers": [
+      {
+        "id": "related-language",
+        "mode": "edge",
+        "count": 1,
+        "selection": "optional",
+        "label": "Edge: knows another version of this communication"
+      }
+    ],
+    "effectProfiles": { "activation": "translation.comprehend" },
+    "events": [
+      {
+        "id": "unusual-communication-understood",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "unusual-communication-record", "type": "manual", "label": "Record the unusual communication understood for this use." }
+        ]
+      },
+      {
+        "id": "unusual-communication-permanent",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "unusual-communication-record-permanent", "type": "manual", "label": "Fantastic success: record permanent understanding and use of this communication." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

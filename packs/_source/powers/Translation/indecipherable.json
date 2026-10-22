@@ -15,7 +15,24 @@
     "effect": "The character has constructed an internal language that only they can understand. They think in this language entirely, and when they communicate with others, they are transtating from that language. This effectively renders them immune to telepathic powers like Mind Reading or Mind Interrogation, as anyone trying to read their mind cannot understand this unique language."
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "_id": "Indecipherable01",
+      "_key": "!items.effects!2bWg8lf2ZwkyiKiB.Indecipherable01",
+      "name": "Indecipherable",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "origin": "Item.2bWg8lf2ZwkyiKiB",
+      "changes": [],
+      "disabled": false,
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "telepathicLanguageImmunity": true
+        }
+      }
+    }
+  ],
   "folder": "eb65a36e3f0c46fd",
   "_key": "!items!2bWg8lf2ZwkyiKiB"
 }

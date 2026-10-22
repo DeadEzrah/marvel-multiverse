@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "When the character encounters an unknown sign langange for the first time, they can make a Logic vs. TN action check to puzzle it out. If they already know any other version of the language, they have an edge. On a success they understand and can sign in the language. On a Fantastic success. they permanently understand and can sign it and never need to make a check for it again."
+    "effect": "When the character encounters an unknown sign langange for the first time, they can make a Logic vs. TN 13 action check to puzzle it out. If they already know any other version of the language, they have an edge. On a success they understand and can sign in the language. On a Fantastic success. they permanently understand and can sign it and never need to make a check for it again.",
+    "ability": "log",
+    "targetNumber": 13,
+    "attack": false,
+    "damage": { "enabled": false },
+    "translation": { "kind": "sign-language", "permanentOnFantastic": true },
+    "rollModifiers": [
+      {
+        "id": "related-language",
+        "mode": "edge",
+        "count": 1,
+        "selection": "optional",
+        "label": "Edge: knows another version of this sign language"
+      }
+    ],
+    "effectProfiles": { "activation": "translation.comprehend" },
+    "events": [
+      {
+        "id": "sign-language-understood",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "sign-language-record", "type": "manual", "label": "Record the sign language understood for this use." }
+        ]
+      },
+      {
+        "id": "sign-language-permanent",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          { "id": "sign-language-record-permanent", "type": "manual", "label": "Fantastic success: record permanent understanding and use of this sign language." }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
