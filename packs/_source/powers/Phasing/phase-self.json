@@ -12,7 +12,49 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character (and their clothing) becomes intangible and can move through anything as if it wasn't there. Nothing can physically affect them, nor can they affect anything else that is not phasing along with them."
+    "effect": "The character (and their clothing) becomes intangible and can move through anything as if it wasn't there. Nothing can physically affect them, nor can they affect anything else that is not phasing along with them.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "phasing.shift"
+    },
+    "events": [
+      {
+        "id": "phase-self-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "phase-self-intangible",
+            "type": "active-effect",
+            "effect": {
+              "name": "Phase Self",
+              "img": "systems/marvel-multiverse/icons/phasing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "phasing": {
+                    "state": "intangible",
+                    "scope": "self"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "phase-self-reminder",
+            "type": "manual",
+            "label": "The character can pass through physical material. Physical actions across the phased/unphased boundary are blocked automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

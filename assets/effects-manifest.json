@@ -794,6 +794,76 @@
       "animations": [
         { "file": "jb2a.eyes.01.dark_green.single", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "phasing.shift",
+      "category": "phasing",
+      "type": "activation",
+      "tags": ["phasing", "intangible", "ghost", "shift"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.aura",
+      "category": "phasing",
+      "type": "persistent",
+      "tags": ["phasing", "intangible", "ghost", "aura", "persistent"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.markers.smoke.ring.loop.bluepurple", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.other",
+      "category": "phasing",
+      "type": "activation",
+      "tags": ["phasing", "intangible", "target"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.object",
+      "category": "phasing",
+      "type": "activation",
+      "tags": ["phasing", "intangible", "object"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.conjuration", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.walk",
+      "category": "phasing",
+      "type": "movement",
+      "tags": ["phasing", "intangible", "movement"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.disrupt",
+      "category": "phasing",
+      "type": "attack",
+      "tags": ["phasing", "disrupt", "electricity"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "phasing.impact",
+      "category": "phasing",
+      "type": "impact",
+      "tags": ["phasing", "impact", "internal"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

@@ -12,7 +12,28 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character has greater control over their phasing ability. They can make any portion of their body and clothing tangible or intangible, as they like."
+    "effect": "The character has greater control over their phasing ability. They can make any portion of their body and clothing tangible or intangible, as they like.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "phasing.shift"
+    },
+    "events": [
+      {
+        "id": "partial-phase-control",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "partial-phase-reminder",
+            "type": "manual",
+            "label": "Choose which portions of the character's body and clothing are tangible or intangible for this use."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

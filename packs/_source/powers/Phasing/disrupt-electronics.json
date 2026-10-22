@@ -12,7 +12,55 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "When phasing through electronics, the Character can scramble them, causing them to either shut down or crash. In the case of powers that are Tech Reliant (and feature electronics), they are unusable for one turn while they reboot."
+    "effect": "When phasing through electronics, the Character can scramble them, causing them to either shut down or crash. In the case of powers that are Tech Reliant (and feature electronics), they are unusable for one turn while they reboot.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "effectProfiles": {
+      "activation": "phasing.disrupt"
+    },
+    "events": [
+      {
+        "id": "disrupt-electronics-reboot",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "disrupt-electronics-disabled",
+            "type": "active-effect",
+            "effect": {
+              "name": "Electronics Disrupted",
+              "img": "systems/marvel-multiverse/icons/phasing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "techReliantElectronicsDisabled": true
+                }
+              }
+            },
+            "duration": {
+              "type": "end-of-target-next-turn"
+            }
+          },
+          {
+            "id": "disrupt-electronics-reminder",
+            "type": "manual",
+            "label": "Ordinary electronics shut down or crash. Electronic Tech Reliant powers are unusable until this target completes its next turn."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

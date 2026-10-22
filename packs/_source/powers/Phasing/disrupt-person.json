@@ -18,6 +18,30 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "type": "health",
+      "ignoreDamageReduction": true,
+      "doubleOnFantastic": true
+    },
+    "phasing": {
+      "physical": true,
+      "canCrossBoundary": true
+    },
+    "effectProfiles": {
+      "attack": "phasing.disrupt",
+      "hit": "phasing.impact",
+      "fantasticHit": "phasing.impact"
+    },
     "events": [
       {
         "id": "disrupt-person-stunned",

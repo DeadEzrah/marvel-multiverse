@@ -12,7 +12,50 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can make any object they are touching intangible. The object (and things attached to or inside of it) can be up to their rank in sizes bigger than them. For example, if they are Rank 5, the object can be 5 sizes bigger than them. For an average person, this would be Gargantuan."
+    "effect": "The character can make any object they are touching intangible. The object (and things attached to or inside of it) can be up to their rank in sizes bigger than them. For example, if they are Rank 5, the object can be 5 sizes bigger than them. For an average person, this would be Gargantuan.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "phasing.object"
+    },
+    "events": [
+      {
+        "id": "phase-object-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "phase-object-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Phase Object",
+              "img": "systems/marvel-multiverse/icons/phasing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "phasingObject": {
+                    "touchRequired": true,
+                    "maximumSizesAboveCharacterPerRank": 1,
+                    "includesContentsAndAttachments": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "phase-object-reminder",
+            "type": "manual",
+            "label": "Choose a touched object no more than Rank sizes larger than the character. Its contents and attachments phase with it."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

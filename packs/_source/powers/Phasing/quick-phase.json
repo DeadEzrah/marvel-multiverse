@@ -12,7 +12,45 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character and their clothing can instantly become intangible."
+    "effect": "The character and their clothing can instantly become intangible.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "phasing.shift"
+    },
+    "events": [
+      {
+        "id": "quick-phase-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "quick-phase-intangible",
+            "type": "active-effect",
+            "effect": {
+              "name": "Quick Phase",
+              "img": "systems/marvel-multiverse/icons/phasing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "phasing": {
+                    "state": "intangible",
+                    "scope": "self",
+                    "reaction": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

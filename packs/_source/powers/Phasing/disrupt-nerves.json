@@ -17,6 +17,25 @@
     "attackTarget": "res",
     "attackKind": "close",
     "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "res",
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "damage": {
+      "enabled": false
+    },
+    "phasing": {
+      "physical": true,
+      "canCrossBoundary": true
+    },
+    "effectProfiles": {
+      "attack": "phasing.disrupt",
+      "fantasticHit": "phasing.disrupt"
+    },
     "events": [
       {
         "id": "disrupt-nerves-stunned",
