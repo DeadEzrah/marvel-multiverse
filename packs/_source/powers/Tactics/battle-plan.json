@@ -12,7 +12,70 @@
     "duration": "1 round",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character inspires one or more allies of their choice in earshot, up to the character's Vigilance. Inspired allies gain an edge on all action checks until the start of the character's next turn."
+    "effect": "The character inspires one or more allies of their choice in earshot, up to the character's Vigilance. Inspired allies gain an edge on all action checks until the start of the character's next turn.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsAbility": "vig.value",
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.command"
+    },
+    "events": [
+      {
+        "id": "battle-plan-edge",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "battle-plan-edge-effect",
+            "type": "active-effect",
+            "effect": {
+              "name": "Battle Plan",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Battle Plan",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "start-of-source-turn"
+            }
+          }
+        ]
+      },
+      {
+        "id": "battle-plan-earshot",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "battle-plan-earshot-reminder",
+            "type": "manual",
+            "label": "Confirm every selected ally is in earshot."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

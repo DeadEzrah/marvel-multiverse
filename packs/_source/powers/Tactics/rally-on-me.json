@@ -11,8 +11,45 @@
     "trigger": "",
     "duration": "Instant",
     "range": "",
-    "cost": "10 focus",
-    "effect": "Any allies in earshot can be affected, up to a number equal to the character's Vigilance. Each affected ally can move toward the character at half speed. If they are within the character's reach at the end of this mowve, they recover lost Focus equal to 5 times the character's rank. The character can use this power once per battle."
+    "cost": "10 Focus",
+    "effect": "Any allies in earshot can be affected, up to a number equal to the character's Vigilance. Each affected ally can move toward the character at half Speed. If they are within the character's reach at the end of this move, they recover lost Focus equal to 5 times the character's rank. The character can use this power once per battle.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsAbility": "vig.value",
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "oncePerBattle": true,
+      "movementDirection": "toward-source",
+      "movementSpeedMultiplier": 0.5,
+      "focusRecoveryPerSourceRank": 5,
+      "recoveryRequiresEndingWithinReach": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.rally"
+    },
+    "events": [
+      {
+        "id": "rally-on-me-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "rally-on-me-reminder",
+            "type": "manual",
+            "label": "Confirm earshot and once-per-battle availability. Each selected ally may move toward you at half Speed; allies ending within your Reach recover Focus equal to 5 times your Rank."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

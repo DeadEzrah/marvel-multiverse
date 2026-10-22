@@ -241,6 +241,14 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Molecular Destabilization spends 15 Focus and records its object-size limit, two-space source-excluding blast, regular/double damage, and Fantastic Health DR bypass without unsafe object or area mutation.
   - [x] Six semantic profiles resolve to live-verified Free JB2A static-electricity, gust, wind-stream, and explosion entries.
   - The installed matrix verified Rank 3 Run 15/noncombat 50, Swim 9/noncombat 3, exact Blur Focus/effect/undo, Fantastic Speed Blast target-only conditions/undo, Catch Bullets TN 17 binding, and every semantic profile. All ten compendium powers and four embedded copies on Aurora, Northstar, and Quicksilver were refreshed; temporary data was removed.
+- [x] Complete the Tactics family migration.
+  - [x] Add exact source-ability target caps: Vigilance for Battle Plan and Rally on Me, Ego defense for Advance, Vigilance defense for Operations Center, and Rank for Scatter.
+  - [x] Battle Plan grants selected allies non-stacking Edge until the source's next turn. Change of Plans grants a selected ally one universal Edge that is consumed by the triggering check.
+  - [x] Keep Moving removes `demoralized` and `stunned`; On Your Feet removes `prone`; Hit the Dirt and Scatter apply `prone` only to the selected willing allies.
+  - [x] Focus Fire creates a concentration-owned source marker. Operations Center grants concentration-owned non-stacking Edge to selected allies.
+  - [x] Preserve earshot, once-per-battle use, optional movement, attack invalidation, Combat Support's forced Marvel die, Operations Center's movement-action break, and Rally on Me's post-movement Focus recovery as explicit structured boundaries where the system cannot safely adjudicate them.
+  - [x] Eight semantic profiles resolve to live-verified Free JB2A blessing, wind, healing, eyes, and divination entries.
+  - Focused gates pass 31/31 and the full repository passes 127/127. The installed matrix verified over-cap rejection before Focus spend, exact spend/refund, Edge and condition outcomes, concentration creation/cleanup, and every profile. All eleven compendium powers and 27 embedded copies were refreshed; temporary data was removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

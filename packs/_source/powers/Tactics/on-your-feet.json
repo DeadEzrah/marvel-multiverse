@@ -11,8 +11,60 @@
     "trigger": "An ally in line of sight and earshot is knocked prone.",
     "duration": "Instant",
     "range": "",
-    "cost": "5 focus",
-    "effect": "All prone allies within earshot, who are able to, can immediately stand up for free. Allies currently unable to stand up for any reason are not affected."
+    "cost": "5 Focus",
+    "effect": "All prone allies within earshot who are able to can immediately stand up for free. Allies currently unable to stand up for any reason are not affected.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "prone",
+          "message": "On Your Feet requires prone allies."
+        }
+      ]
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "trigger": "visible-ally-knocked-prone"
+    },
+    "effectProfiles": {
+      "activation": "tactics.recover"
+    },
+    "events": [
+      {
+        "id": "on-your-feet-stand",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "on-your-feet-remove-prone",
+            "type": "remove-status",
+            "statusId": "prone",
+            "mode": "remove"
+          }
+        ]
+      },
+      {
+        "id": "on-your-feet-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "on-your-feet-requirements-reminder",
+            "type": "manual",
+            "label": "Confirm the trigger, earshot, and that each selected prone ally is currently able to stand."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

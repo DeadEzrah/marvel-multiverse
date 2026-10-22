@@ -11,8 +11,58 @@
     "trigger": "An enemy in line of sight declares an attack on an ally within earshot.",
     "duration": "Instant",
     "range": "",
-    "cost": "10 focus",
-    "effect": "Any allies in earshot can be affected, up to a number equal to the character's rank. Each affected ally can move away from you at half Speed and then fall prone. If this makes the ally an ineligible target for the initial attack, that attack automatically fails."
+    "cost": "10 Focus",
+    "effect": "Any allies in earshot can be affected, up to a number equal to the character's rank. Each affected ally can move away from the character at half Speed and then fall prone. If this makes an ally an ineligible target for the initial attack, that attack automatically fails.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsPerRank": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "trigger": "visible-enemy-declares-attack-on-ally-in-earshot",
+      "movementDirection": "away-from-source",
+      "movementSpeedMultiplier": 0.5,
+      "attackFailsIfTargetBecomesIneligible": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.evade"
+    },
+    "events": [
+      {
+        "id": "scatter-prone",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "scatter-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none"
+          }
+        ]
+      },
+      {
+        "id": "scatter-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "scatter-reminder",
+            "type": "manual",
+            "label": "Confirm the trigger and earshot. Each selected ally moves away from you at half Speed before falling prone. If that makes a target ineligible, the triggering attack fails."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

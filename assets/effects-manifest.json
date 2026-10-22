@@ -928,6 +928,86 @@
       "animations": [
         { "file": "jb2a.explosion.01.orange", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "tactics.command",
+      "category": "tactics",
+      "type": "activation",
+      "tags": ["tactics", "command", "inspiration", "edge"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.advance",
+      "category": "tactics",
+      "type": "movement",
+      "tags": ["tactics", "advance", "movement", "wind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.gust_of_wind.veryfast", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.support",
+      "category": "tactics",
+      "type": "activation",
+      "tags": ["tactics", "support", "marvel-die"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.focus-fire",
+      "category": "tactics",
+      "type": "target",
+      "tags": ["tactics", "focus-fire", "target", "callout"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.eyes.01.dark_green.single", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.evade",
+      "category": "tactics",
+      "type": "movement",
+      "tags": ["tactics", "evade", "scatter", "prone"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.wind_stream.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.recover",
+      "category": "tactics",
+      "type": "activation",
+      "tags": ["tactics", "recover", "stand", "condition"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.cure_wounds.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.operations",
+      "category": "tactics",
+      "type": "persistent",
+      "tags": ["tactics", "operations", "plan", "concentration"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "tactics.rally",
+      "category": "tactics",
+      "type": "activation",
+      "tags": ["tactics", "rally", "focus", "inspiration"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

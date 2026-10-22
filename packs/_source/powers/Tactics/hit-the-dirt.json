@@ -12,7 +12,54 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "All allies within earshot can fall prone if they wish and are able to. If falling prone makes the ally an ineligible target for the initial attack, the attack automatically fails."
+    "effect": "All allies within earshot can fall prone if they wish and are able to. If falling prone makes an ally an ineligible target for the initial attack, the attack automatically fails.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "trigger": "visible-enemy-attacks-ally-in-earshot",
+      "attackFailsIfTargetBecomesIneligible": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.evade"
+    },
+    "events": [
+      {
+        "id": "hit-the-dirt-prone",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "hit-the-dirt-apply-prone",
+            "type": "status",
+            "statusId": "prone",
+            "mode": "apply",
+            "stacking": "none"
+          }
+        ]
+      },
+      {
+        "id": "hit-the-dirt-trigger",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "hit-the-dirt-trigger-reminder",
+            "type": "manual",
+            "label": "Confirm the triggering enemy is in line of sight and each selected ally is willing, able to fall prone, and in earshot. If prone makes a target ineligible, the triggering attack fails."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

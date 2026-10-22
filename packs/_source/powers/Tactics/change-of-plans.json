@@ -9,10 +9,58 @@
     "prerequisites": "Inspiration, Rank 2",
     "action": "Reaction",
     "trigger": "An ally has trouble on an action check.",
-    "duration": " 1 round",
+    "duration": "1 round",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The ally gains an edge on that action check."
+    "effect": "The ally gains an edge on that action check.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresTriggeringCheckTrouble": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.command"
+    },
+    "events": [
+      {
+        "id": "change-of-plans-edge",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "change-of-plans-next-check-edge",
+            "type": "future-roll-modifier",
+            "mode": "edge",
+            "count": 1,
+            "label": "Change of Plans: Edge on the triggering check",
+            "matchSource": false,
+            "matchTarget": false
+          }
+        ]
+      },
+      {
+        "id": "change-of-plans-trigger",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "change-of-plans-trigger-reminder",
+            "type": "manual",
+            "label": "Use this immediately before the selected ally resolves the action check that has Trouble."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

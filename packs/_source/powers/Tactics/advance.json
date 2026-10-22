@@ -12,7 +12,42 @@
     "duration": "1 round",
     "range": "",
     "cost": "15 Focus",
-    "effect": "Any allies ni earshot can be affected, up ot a number equal to the character's Ego defense. Each affected ally can immediately use a free movement action to move toward the enemy that triggered the reaction."
+    "effect": "Any allies in earshot can be affected, up to a number equal to the character's Ego defense. Each affected ally can immediately use a free movement action to move toward the enemy that triggered the reaction.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsAbility": "ego.defense",
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "trigger": "source-or-visible-ally-stuns-or-defeats-enemy",
+      "movementDirection": "toward-triggering-enemy",
+      "movementAction": "free"
+    },
+    "effectProfiles": {
+      "activation": "tactics.advance"
+    },
+    "events": [
+      {
+        "id": "advance-movement",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "advance-movement-reminder",
+            "type": "manual",
+            "label": "Confirm the trigger and earshot. Each selected ally may immediately take a free movement action toward the enemy that was stunned or defeated."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

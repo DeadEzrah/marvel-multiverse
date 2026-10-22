@@ -12,7 +12,68 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character calls out an enemy in line of sight and inspires one or more allies of their choice in earshot, up to the character's Vigilance. They gain an edge on all action checks against that enemy."
+    "effect": "The character calls out an enemy in line of sight and inspires one or more allies of their choice in earshot, up to the character's Vigilance. They gain an edge on all action checks against that enemy.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "allyCapAbility": "vig.value",
+      "edgeAgainstSelectedEnemy": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.focus-fire"
+    },
+    "events": [
+      {
+        "id": "focus-fire-concentration",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "focus-fire-concentration-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Focus Fire",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "tactics": {
+                    "focusFire": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "focus-fire-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "focus-fire-reminder",
+            "type": "manual",
+            "label": "Choose up to your Vigilance in allies who are in earshot. While you concentrate, those allies have Edge on action checks against the selected enemy."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

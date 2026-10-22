@@ -6,13 +6,48 @@
   "system": {
     "description": "The character gives a friend a hand.",
     "powerSet": "Tactics",
-    "prerequisites": "Change of Plans. Rank 3",
+    "prerequisites": "Change of Plans, Rank 3",
     "action": "Standard",
     "trigger": "",
     "duration": "1 round",
     "range": "",
     "cost": "10 Focus",
-    "effect": "Once per battle, the character chooses an ally in earshot. If the ally makes an action check before the start of the character's next turn, the ally automatically rolls a l on their Marvel die, and that die cannot be affected by trouble."
+    "effect": "Once per battle, the character chooses an ally in earshot. If the ally makes an action check before the start of the character's next turn, the ally automatically rolls a 1 on their Marvel die, and that die cannot be affected by trouble.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "oncePerBattle": true,
+      "nextCheckMarvelDie": 1,
+      "marvelDieIgnoresTrouble": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.support"
+    },
+    "events": [
+      {
+        "id": "combat-support-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "combat-support-reminder",
+            "type": "manual",
+            "label": "Confirm earshot and once-per-battle availability. On the selected ally's next check before the start of your next turn, set the Marvel die to 1 and do not let Trouble alter it."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

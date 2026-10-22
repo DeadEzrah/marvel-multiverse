@@ -11,8 +11,72 @@
     "trigger": "",
     "duration": "Concentration",
     "range": "",
-    "cost": "15 focus",
-    "effect": "The character inspires one or more allies of their choice in earshot, up to the character's Vigilance defense. Affected allies gain an edge on all action checks until the start of the character's next turn. The character breaks concentration on this power if they use a movement action."
+    "cost": "15 Focus",
+    "effect": "The character inspires one or more allies of their choice in earshot, up to the character's Vigilance defense. Affected allies gain an edge on all action checks until the start of the character's next turn. The character breaks concentration on this power if they use a movement action.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsAbility": "vig.defense",
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "breakConcentrationOnMovementAction": true
+    },
+    "effectProfiles": {
+      "activation": "tactics.operations"
+    },
+    "events": [
+      {
+        "id": "operations-center-edge",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "operations-center-edge-effect",
+            "type": "active-effect",
+            "effect": {
+              "name": "Operations Center",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Operations Center",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "operations-center-requirements",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "operations-center-requirements-reminder",
+            "type": "manual",
+            "label": "Confirm every selected ally is in earshot. End concentration if the character uses a movement action."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

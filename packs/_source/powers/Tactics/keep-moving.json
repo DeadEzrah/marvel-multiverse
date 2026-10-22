@@ -12,7 +12,63 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The demoralized or stunned condition ends."
+    "effect": "The demoralized or stunned condition ends.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "requiresLineOfSight": true,
+      "targetFilter": "allies"
+    },
+    "tactics": {
+      "requiresEarshot": true,
+      "requiredStatusesAny": [
+        "demoralized",
+        "stunned"
+      ]
+    },
+    "effectProfiles": {
+      "activation": "tactics.recover"
+    },
+    "events": [
+      {
+        "id": "keep-moving-recovery",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "keep-moving-remove-demoralized",
+            "type": "remove-status",
+            "statusId": "demoralized",
+            "mode": "remove"
+          },
+          {
+            "id": "keep-moving-remove-stunned",
+            "type": "remove-status",
+            "statusId": "stunned",
+            "mode": "remove"
+          }
+        ]
+      },
+      {
+        "id": "keep-moving-earshot",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "keep-moving-earshot-reminder",
+            "type": "manual",
+            "label": "Confirm the selected ally is in earshot and was just demoralized or stunned."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
