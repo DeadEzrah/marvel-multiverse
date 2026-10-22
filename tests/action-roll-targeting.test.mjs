@@ -155,6 +155,29 @@ test("Defense Stance adds Trouble only to close attacks", () => {
   assert.equal(ranged.length, 0);
 });
 
+test("Slow-Motion Shoot-Dodge adds Trouble only to attacks against Agility defense", () => {
+  const targetActor = {
+    uuid: "Actor.defender",
+    effects: [{
+      id: "slow-motion",
+      flags: {
+        "marvel-multiverse": {
+          defensiveRollModifier: {
+            mode: "trouble",
+            count: 1,
+            defenses: ["agl"]
+          }
+        }
+      }
+    }],
+    items: []
+  };
+  const targets = [{ actor: targetActor, actorUuid: targetActor.uuid }];
+
+  assert.equal(resolveTargetDefensiveRollModifiers(targets, { attackTarget: "agl" }).length, 1);
+  assert.equal(resolveTargetDefensiveRollModifiers(targets, { attackTarget: "mle" }).length, 0);
+});
+
 test("Unflappable Poise stacks with Defense Stance for double Trouble", () => {
   const targetActor = {
     uuid: "Actor.defender",

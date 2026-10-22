@@ -14,8 +14,33 @@
     "cost": "",
     "effect": "The character gains one additional reaction per round. This reaction can be used only to trigger a Ranged Weapons power."
   },
-  "flags": {},
-  "effects": [],
+  "flags": {
+    "marvel-multiverse": {
+      "passiveAutomation": "fast-hands"
+    }
+  },
+  "effects": [
+    {
+      "_id": "FastHandsReact01",
+      "_key": "!items.effects!Qm24O1PO8Lyd8eB9.FastHandsReact01",
+      "name": "Fast Hands",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "origin": "Item.Qm24O1PO8Lyd8eB9",
+      "changes": [],
+      "disabled": false,
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "reactionAllowance": {
+            "count": 1,
+            "powerSet": "Ranged Weapons",
+            "label": "Fast Hands"
+          }
+        }
+      }
+    }
+  ],
   "folder": "82ef84dfce4c7abf",
   "_key": "!items!Qm24O1PO8Lyd8eB9"
 }

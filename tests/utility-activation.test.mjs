@@ -5,6 +5,7 @@ const {
   resolveLatestDamageReactionContext,
   resolveUtilityFocusAmount
 } = await import("../lib/services/utility-activation.mjs");
+const { resolveReactionAllowance } = await import("../lib/services/reaction-context.mjs");
 
 test("variable utility Focus accepts a selected amount within actor limits", async () => {
   const source = {
@@ -49,6 +50,35 @@ test("variable utility Focus rejects values outside the allowed range", async ()
   assert.deepEqual(
     await resolveUtilityFocusAmount(source, actor, 13),
     { success: false, reason: "invalid-focus-amount" }
+  );
+});
+
+test("Fast Hands grants one additional Ranged Weapons reaction", () => {
+  const effect = {
+    id: "fast-hands",
+    origin: "Item.fast-hands",
+    transfer: true,
+    flags: {
+      "marvel-multiverse": {
+        reactionAllowance: {
+          count: 1,
+          powerSet: "Ranged Weapons"
+        }
+      }
+    }
+  };
+  const actor = {
+    effects: [effect],
+    items: [{ effects: [effect] }]
+  };
+
+  assert.deepEqual(
+    resolveReactionAllowance(actor, "Ranged Weapons"),
+    { base: 1, additional: 1, total: 2, powerSet: "Ranged Weapons" }
+  );
+  assert.deepEqual(
+    resolveReactionAllowance(actor, "Martial Arts"),
+    { base: 1, additional: 0, total: 1, powerSet: "Martial Arts" }
   );
 });
 
