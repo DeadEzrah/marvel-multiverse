@@ -864,6 +864,70 @@
       "animations": [
         { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "superspeed.blur",
+      "category": "superspeed",
+      "type": "activation",
+      "tags": ["superspeed", "blur", "defense", "electricity"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.static_electricity.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "superspeed.catch",
+      "category": "superspeed",
+      "type": "reaction",
+      "tags": ["superspeed", "reaction", "projectile", "catch"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.light.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.static_electricity.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "superspeed.wind",
+      "category": "superspeed",
+      "type": "attack",
+      "tags": ["superspeed", "wind", "gust", "ranged"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.gust_of_wind.veryfast", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "superspeed.wind-impact",
+      "category": "superspeed",
+      "type": "impact",
+      "tags": ["superspeed", "wind", "impact"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.wind_stream.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "superspeed.destabilize",
+      "category": "superspeed",
+      "type": "impact",
+      "tags": ["superspeed", "molecular", "destabilize", "object"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "superspeed.destabilize-fantastic",
+      "category": "superspeed",
+      "type": "impact",
+      "tags": ["superspeed", "molecular", "destabilize", "explosion"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.explosion.01.orange", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

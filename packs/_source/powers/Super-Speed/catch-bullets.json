@@ -14,7 +14,54 @@
     "cost": "10 Focus",
     "effect": "The character makes an Agility check, using the attacker's attack result as the target number. If the character's check succeeds, the attack is nullified. On a Fantastic success, the character gets their reaction back.",
     "ability": "agl",
-    "attackTarget": "agl"
+    "attack": false,
+    "damage": {
+      "enabled": false
+    },
+    "activation": {
+      "reactionType": "incoming-physical-projectile-attack"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "includeSelf": false
+    },
+    "superSpeed": {
+      "usesIncomingAttackResultAsTargetNumber": true,
+      "nullifiesIncomingAttackOnSuccess": true,
+      "refundsReactionOnFantasticSuccess": true,
+      "canProtectAllyWithinReach": true
+    },
+    "effectProfiles": {
+      "success": "superspeed.catch",
+      "fantasticHit": "superspeed.catch"
+    },
+    "events": [
+      {
+        "id": "catch-bullets-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "catch-bullets-nullify",
+            "type": "manual",
+            "label": "Nullify the triggering physical projectile attack."
+          }
+        ]
+      },
+      {
+        "id": "catch-bullets-fantastic",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "catch-bullets-refund-reaction",
+            "type": "manual",
+            "label": "The character gets the reaction spent on Catch Bullets back."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,10 +12,47 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can run so that their feet skip across the surface of water. As long as they keep running (even in place), they do not sink."
+    "effect": "The character can run so that their feet skip across the surface of water. As long as they keep running (even in place), they do not sink.",
+    "superSpeed": {
+      "runOnWater": true,
+      "requiresContinuousRunning": true,
+      "runningInPlaceAllowed": true
+    }
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "name": "Run on Water",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "origin": "Item.POmZq28ocIhnO6Hn",
+      "_id": "f6b97dcf34c1426b",
+      "changes": [],
+      "description": "The character does not sink while continuously running across water, including running in place.",
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "superSpeed": {
+            "runOnWater": true,
+            "requiresContinuousRunning": true,
+            "runningInPlaceAllowed": true
+          }
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!POmZq28ocIhnO6Hn.f6b97dcf34c1426b"
+    }
+  ],
   "folder": "b670a4a72be89d71",
   "_key": "!items!POmZq28ocIhnO6Hn"
 }

@@ -6,13 +6,13 @@
   "system": {
     "description": "The character runs as fast as a jet!",
     "powerSet": "Super-Speed",
-    "prerequisites": "Speed Run 1, Rank 2",
+    "prerequisites": "Speed Run 1, Rank 3",
     "action": "",
     "trigger": "",
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "Multiply the character's regular Run Speed by their rank to get their new Run Speed. Outside of combat, they can move three times as fast.",
+    "effect": "Outside of combat, the character can move up to 50 times as fast as their increased Run Speed from Speed Run 1.",
     "numbered": 2
   },
   "flags": {},
@@ -34,14 +34,10 @@
       "_id": "dfbfa6c746da4fd9",
       "changes": [
         {
-          "key": "system.movement.run.calc",
-          "mode": 5,
-          "value": "rank"
-        },
-        {
           "key": "system.movement.run.noncom",
-          "mode": 1,
-          "value": 3
+          "mode": 5,
+          "value": 50,
+          "priority": 20
         }
       ],
       "description": "",

@@ -14,10 +14,48 @@
     "cost": "15 Focus",
     "effect": "The character makes a close attack against an object their size or smaller. If the attack is a success, the object explodes. All targets within 2 spaces of the object— other than the character-take regular damage. On a Fantastic success, double the damage and ignore any Health Damage Reduction.",
     "ability": "mle",
-    "attackTarget": "mle",
-    "attackKind": "close",
-    "attack": true,
-    "damageType": "health"
+    "attack": false,
+    "damage": {
+      "enabled": false
+    },
+    "superSpeed": {
+      "objectMaximumRelativeSize": 0,
+      "explosionRadius": 2,
+      "excludeSource": true,
+      "regularDamageOnSuccess": true,
+      "doubleDamageOnFantasticSuccess": true,
+      "ignoreHealthDamageReductionOnFantasticSuccess": true
+    },
+    "effectProfiles": {
+      "success": "superspeed.destabilize",
+      "fantasticHit": "superspeed.destabilize-fantastic"
+    },
+    "events": [
+      {
+        "id": "molecular-destabilization-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "molecular-destabilization-explosion",
+            "type": "manual",
+            "label": "Destroy the selected object and deal regular damage to every target within 2 spaces of it other than the character."
+          }
+        ]
+      },
+      {
+        "id": "molecular-destabilization-fantastic",
+        "trigger": "source-fantastic-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "molecular-destabilization-fantastic-explosion",
+            "type": "manual",
+            "label": "Double the explosion damage and ignore each target's Health Damage Reduction."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

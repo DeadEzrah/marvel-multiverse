@@ -16,6 +16,24 @@
     "ability": "agl",
     "attackTarget": "agl",
     "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10,
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "includeSelf": false
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "attack": "superspeed.wind",
+      "hit": "superspeed.wind-impact",
+      "fantasticHit": "superspeed.wind-impact"
+    },
     "events": [
       {
         "id": "speed-blast-stunned",
@@ -36,12 +54,12 @@
         ]
       },
       {
-        "id": "speed-blast-source-prone",
+        "id": "speed-blast-target-prone",
         "trigger": "target-fantastic-hit",
-        "recipient": "source",
+        "recipient": "target",
         "outcomes": [
           {
-            "id": "speed-blast-apply-source-prone",
+            "id": "speed-blast-apply-target-prone",
             "type": "status",
             "statusId": "prone",
             "mode": "apply",

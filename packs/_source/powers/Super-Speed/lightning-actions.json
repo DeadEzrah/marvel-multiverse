@@ -12,10 +12,51 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character has one extra standard action and one extra reaction each turn. Additionally, they can turn their Marvel die to a Fantastic success when making an initiative check."
+    "effect": "Once per round, the character can substitute a standard action for a reaction, or a reaction for a standard action. Additionally, they can turn their Marvel die to a Fantastic success when making an initiative check.",
+    "superSpeed": {
+      "actionExchange": {
+        "standardForReaction": true,
+        "reactionForStandard": true,
+        "oncePerRound": true
+      },
+      "initiativeMarvelDieFantastic": true
+    }
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "name": "Lightning Actions",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "origin": "Item.udQL9oQ3jtyI2Ypc",
+      "_id": "d2ddac26e2434a41",
+      "changes": [],
+      "description": "Once per round, exchange a standard action and reaction in either direction. The Marvel die on an initiative check can be turned to a Fantastic success.",
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "lightningActions": {
+            "standardForReaction": true,
+            "reactionForStandard": true,
+            "oncePerRound": true,
+            "initiativeMarvelDieFantastic": true
+          }
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!udQL9oQ3jtyI2Ypc.d2ddac26e2434a41"
+    }
+  ],
   "folder": "b670a4a72be89d71",
   "_key": "!items!udQL9oQ3jtyI2Ypc"
 }

@@ -32,16 +32,23 @@
       "origin": "Item.aJk0RuuAOQjkSWW7",
       "_id": "a6c22c4d01b95c70",
       "changes": [
-        {
-          "key": "system.abilities.mle.edge",
-          "mode": 2,
-          "value": 1
-        }
       ],
+      "flags": {
+        "marvel-multiverse": {
+          "actionRollModifier": {
+            "mode": "edge",
+            "count": 1,
+            "label": "Blazing Fast Fists",
+            "selection": "automatic",
+            "requiresAttack": true,
+            "ability": "mle",
+            "nonStacking": false
+          }
+        }
+      },
       "description": "",
       "transfer": true,
       "statuses": [],
-      "flags": {},
       "tint": null,
       "_key": "!items.effects!aJk0RuuAOQjkSWW7.a6c22c4d01b95c70"
     }

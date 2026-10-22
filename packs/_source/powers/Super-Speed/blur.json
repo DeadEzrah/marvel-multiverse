@@ -12,7 +12,49 @@
     "duration": "1 round",
     "range": "",
     "cost": "5 Focus",
-    "effect": "Any attacks against the character have trouble."
+    "effect": "Any attacks against the character have trouble.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "superspeed.blur"
+    },
+    "events": [
+      {
+        "id": "blur-defense",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "blur-attack-trouble",
+            "type": "active-effect",
+            "effect": {
+              "name": "Blur",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "defensiveRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Blur",
+                    "requiresAttack": true,
+                    "nonStacking": true,
+                    "endConcentrationOnSuccessfulAttack": false
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

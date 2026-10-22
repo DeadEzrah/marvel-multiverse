@@ -5,7 +5,20 @@ const {
   resolveLatestDamageReactionContext,
   resolveUtilityFocusAmount
 } = await import("../lib/services/utility-activation.mjs");
-const { resolveReactionAllowance } = await import("../lib/services/reaction-context.mjs");
+const { resolveReactionAllowance, resolveReactionTarget } = await import("../lib/services/reaction-context.mjs");
+
+test("actor-only reaction targets are wrapped for action targeting", () => {
+  const previousFromUuidSync = globalThis.fromUuidSync;
+  const actor = { uuid: "Actor.attacker", name: "Attacker", documentName: "Actor" };
+  globalThis.fromUuidSync = () => actor;
+  try {
+    const target = resolveReactionTarget({ targetActorUuid: actor.uuid });
+    assert.equal(target.actor, actor);
+    assert.equal(target.raw.actor, actor);
+  } finally {
+    globalThis.fromUuidSync = previousFromUuidSync;
+  }
+});
 
 test("variable utility Focus accepts a selected amount within actor limits", async () => {
   const source = {
