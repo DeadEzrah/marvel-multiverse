@@ -12,7 +12,56 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The attacker has trouble on the attack."
+    "effect": "The attacker has trouble on the attack.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "enemies"
+    },
+    "resize": {
+      "mode": "shrinking-dodge",
+      "requiresIncomingAttack": true
+    },
+    "effectProfiles": {
+      "activation": "resize.shrink"
+    },
+    "events": [
+      {
+        "id": "shrinking-dodge-trouble",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "shrinking-dodge-next-attack-trouble",
+            "type": "future-roll-modifier",
+            "mode": "trouble",
+            "count": 1,
+            "label": "Shrinking Dodge: Trouble on the triggering attack",
+            "matchSource": false,
+            "matchTarget": false
+          }
+        ]
+      },
+      {
+        "id": "shrinking-dodge-trigger",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shrinking-dodge-trigger-reminder",
+            "type": "manual",
+            "label": "Use this after the selected attacker declares the attack and before that attack is rolled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

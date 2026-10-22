@@ -12,7 +12,34 @@
     "duration": "Instant",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character can grow enough to travel into the Macroverse, the Overspace or other dimensions of enlarged space. They can return to their normal size at will. Note that this is something that most characters would rarely want to do, as it removes them entirely from their regular universe and places them in a dimension in which the rules of time and space work differently. An hour in the Macroverse, for example, is roughly equivalent to a month in a regular universe. A trip to the Overspace is too overwhelming for most minds to handle."
+    "effect": "The character can grow enough to travel into the Macroverse, the Overspace or other dimensions of enlarged space. They can return to their normal size at will. Note that this is something that most characters would rarely want to do, as it removes them entirely from their regular universe and places them in a dimension in which the rules of time and space work differently. An hour in the Macroverse, for example, is roughly equivalent to a month in a regular universe. A trip to the Overspace is too overwhelming for most minds to handle.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "dimension-travel",
+      "direction": "macro",
+      "returnAtWill": true,
+      "destinationManual": true
+    },
+    "effectProfiles": {
+      "activation": "resize.dimension-travel"
+    },
+    "events": [
+      {
+        "id": "macrodimensional-travel",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "macrodimensional-travel-reminder",
+            "type": "manual",
+            "label": "The Narrator determines the enlarged-space destination and its altered rules of time and space. The character leaves the current universe and may return to normal size at will."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

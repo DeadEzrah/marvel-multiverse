@@ -6,13 +6,48 @@
   "system": {
     "description": "The character can resize someone they are touching.",
     "powerSet": "Resize",
-    "prerequisites": "Grow & or Shrink, Rank 3",
-    "action": "Standard or reaction",
+    "prerequisites": "Grow 2 or Shrink 2, Rank 3",
+    "action": "Standard or Reaction",
     "trigger": "",
     "duration": "Permanent",
-    "range": "",
+    "range": "Reach",
     "cost": "10 Focus",
-    "effect": "The character can resize any person (and their clothing) they are touching. The character can resize the object as much as their own Grow or Shrink power would allow them to, If the target does not wish to be resized, the character must grab them first."
+    "effect": "The character can resize any person (and their clothing) they are touching. The character can resize the target as much as their own Grow or Shrink power would allow. If the target does not wish to be resized, the character must grab them first.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1
+    },
+    "resize": {
+      "mode": "other",
+      "range": "reach",
+      "maximumFromOwnedPowers": true,
+      "unwillingTargetRequiresStatus": "grappled",
+      "sizeChoiceManual": true
+    },
+    "effectProfiles": {
+      "activation": "resize.other"
+    },
+    "events": [
+      {
+        "id": "resize-other-manual",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "resize-other-selection",
+            "type": "manual",
+            "label": "Confirm the selected target is within Reach. An unwilling target must already be grappled. Apply a size no farther than the character's owned Grow or Shrink tier permits."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

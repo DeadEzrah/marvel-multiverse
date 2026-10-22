@@ -7,13 +7,62 @@
     "description": "The character is so small that they're hard to see.",
     "powerSet": "Resize",
     "prerequisites": "Shrink 3",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can shrink down to microscopic size. They can return to their normal size at will.",
-    "numbered": 4
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "shrink",
+      "minimumSize": "microscopic",
+      "defenseModifier": 5,
+      "damageMultiplier": 0
+    },
+    "effectProfiles": {
+      "activation": "resize.shrink"
+    },
+    "events": [
+      {
+        "id": "shrink-4-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shrink-4-microscopic",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shrink 4: Microscopic",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "microscopic"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "shrink",
+                    "size": "microscopic"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

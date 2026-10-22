@@ -7,13 +7,62 @@
     "description": "The character thinks small.",
     "powerSet": "Resize",
     "prerequisites": "",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can shrink down to little size. They can return to their normal size at will.",
-    "numbered": 1
+    "numbered": 1,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "shrink",
+      "minimumSize": "little",
+      "defenseModifier": 2,
+      "damageMultiplier": 0.25
+    },
+    "effectProfiles": {
+      "activation": "resize.shrink"
+    },
+    "events": [
+      {
+        "id": "shrink-1-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shrink-1-little",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shrink 1: Little",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "little"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "shrink",
+                    "size": "little"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

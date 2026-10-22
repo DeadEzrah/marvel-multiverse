@@ -6,13 +6,40 @@
   "system": {
     "description": "The character can change the size of an object within reach.",
     "powerSet": "Resize",
-    "prerequisites": "Grow & or Shrink, Rank 3",
+    "prerequisites": "Grow 2 or Shrink 2, Rank 3",
     "action": "Standard",
     "trigger": "",
     "duration": "Permanent",
-    "range": "",
+    "range": "Reach",
     "cost": "10 Focus",
-    "effect": "The character can make an object within reach grow or shrink. The character can resize the object as much as their own Grow or Shrink power would allow them to."
+    "effect": "The character can make an object within reach grow or shrink. The character can resize the object as much as their own Grow or Shrink power would allow them to.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "object",
+      "range": "reach",
+      "maximumFromOwnedPowers": true,
+      "objectSelectionManual": true
+    },
+    "effectProfiles": {
+      "activation": "resize.other"
+    },
+    "events": [
+      {
+        "id": "resize-object-manual",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "resize-object-selection",
+            "type": "manual",
+            "label": "Select an object within Reach and resize it only as far as the character's owned Grow or Shrink tier permits."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

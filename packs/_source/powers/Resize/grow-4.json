@@ -7,13 +7,64 @@
     "description": "The character can tackle kaiju!",
     "powerSet": "Resize",
     "prerequisites": "Grow 3",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can grow up to gargantuan size. They can return to their normal size at will.",
-    "numbered": 4
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "grow",
+      "maximumSize": "gargantuan",
+      "defenseModifier": -5,
+      "runSpeedMultiplier": 320,
+      "reach": 320,
+      "meleeDamageMultiplierBonus": 8
+    },
+    "effectProfiles": {
+      "activation": "resize.grow"
+    },
+    "events": [
+      {
+        "id": "grow-4-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "grow-4-gargantuan",
+            "type": "active-effect",
+            "effect": {
+              "name": "Grow 4: Gargantuan",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "gargantuan"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "grow",
+                    "size": "gargantuan"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

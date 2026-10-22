@@ -264,6 +264,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Correct Precognition 2 to Rank 3 and encode every Reach, 1-mile, 100-mile, and 1,000-mile future horizon without fabricating Narrator answers.
   - [x] Six semantic profiles resolve to live-verified Free JB2A divination, eyes, blessing, static-energy, and misty-vision entries.
   - Focused gates pass 31/31 and the full repository passes 142/142. The installed matrix verified exact Focus, concentration, permanent metadata, optional subject caps/storage, tier horizons, and every profile. All thirteen compendium powers were refreshed; no embedded world copies existed and temporary data was removed.
+- [x] Complete the Resize family migration.
+  - [x] Grow 1-4 and Shrink 1-4 create reversible source-owned size effects while preserving each actor's base size. Full Little-through-Gargantuan defense, growing Run/Reach, and growing melee-damage modifiers derive from the active size.
+  - [x] Correct Grow 2 to require Grow 1 and reach Gigantic. Correct Resize Object and Resize Other to require Grow 2 or Shrink 2 and Rank 3.
+  - [x] Growing Attack uses destination-size damage and Fantastic `stunned`. Shrinking Dodge gives one source-independent Trouble to the selected triggering attacker.
+  - [x] Resize Other enforces one target and records the Reach/grapple boundary. Object choice, target size choice, owned-tier limits, and dimensional destinations remain explicit where Foundry cannot safely adjudicate them.
+  - [x] Five semantic profiles resolve to live-verified Free JB2A healing, misty-step, impact, and static-electricity entries.
+  - Focused gates pass 31/31 and the full repository passes 148/148. The installed matrix verified reversible sizes, derived combat modifiers, one-use Trouble, target caps, exact Focus, and every profile. All fourteen compendium powers and nine embedded copies were refreshed with IDs preserved; temporary data was removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

@@ -7,13 +7,62 @@
     "description": "The character is smaller than an action figure.",
     "powerSet": "Resize",
     "prerequisites": "Shrink 2",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can shrink down to miniature size. They can return to their normal size at will.",
-    "numbered": 3
+    "numbered": 3,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "shrink",
+      "minimumSize": "miniature",
+      "defenseModifier": 4,
+      "damageMultiplier": 0
+    },
+    "effectProfiles": {
+      "activation": "resize.shrink"
+    },
+    "events": [
+      {
+        "id": "shrink-3-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shrink-3-miniature",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shrink 3: Miniature",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "miniature"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "shrink",
+                    "size": "miniature"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

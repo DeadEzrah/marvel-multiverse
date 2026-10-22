@@ -1158,6 +1158,56 @@
       "animations": [
         { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "resize.grow",
+      "category": "resize",
+      "type": "transformation",
+      "tags": ["resize", "grow", "transformation", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "resize.shrink",
+      "category": "resize",
+      "type": "transformation",
+      "tags": ["resize", "shrink", "transformation", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "resize.growing-attack",
+      "category": "resize",
+      "type": "impact",
+      "tags": ["resize", "grow", "attack", "impact"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "resize.other",
+      "category": "resize",
+      "type": "transformation",
+      "tags": ["resize", "other", "object", "transformation"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "resize.dimension-travel",
+      "category": "resize",
+      "type": "teleport",
+      "tags": ["resize", "dimension", "travel", "teleport"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

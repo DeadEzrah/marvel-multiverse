@@ -6,14 +6,65 @@
   "system": {
     "description": "The character becomes even bigger!",
     "powerSet": "Resize",
-    "prerequisites": "",
-    "action": "Standard or reaction",
+    "prerequisites": "Grow 1",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can grow up to huge size. They can return to their normal size at will.",
-    "numbered": 2
+    "effect": "The character can grow up to gigantic size. They can return to their normal size at will.",
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "grow",
+      "maximumSize": "gigantic",
+      "defenseModifier": -3,
+      "runSpeedMultiplier": 20,
+      "reach": 20,
+      "meleeDamageMultiplierBonus": 4
+    },
+    "effectProfiles": {
+      "activation": "resize.grow"
+    },
+    "events": [
+      {
+        "id": "grow-2-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "grow-2-gigantic",
+            "type": "active-effect",
+            "effect": {
+              "name": "Grow 2: Gigantic",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "gigantic"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "grow",
+                    "size": "gigantic"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character shrinks out of the universal",
+    "description": "The character shrinks out of the universe.",
     "powerSet": "Resize",
     "prerequisites": "Shrink 4, Rank 4",
     "action": "Standard",
@@ -12,7 +12,34 @@
     "duration": "Instant",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character can shrink enough to travel into subatomic realms. They can return to their normal size at will. Note that this is something that most characters would rarely want to do, as it removes them entirely from their regular universe and places them in a dimension in which the rules of time and space work differently, The Underspace, for example, might make a fine place to hide, but there's little else of interest there."
+    "effect": "The character can shrink enough to travel into subatomic realms. They can return to their normal size at will. Note that this is something that most characters would rarely want to do, as it removes them entirely from their regular universe and places them in a dimension in which the rules of time and space work differently. The Underspace, for example, might make a fine place to hide, but there's little else of interest there.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "dimension-travel",
+      "direction": "micro",
+      "returnAtWill": true,
+      "destinationManual": true
+    },
+    "effectProfiles": {
+      "activation": "resize.dimension-travel"
+    },
+    "events": [
+      {
+        "id": "microdimensional-travel",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "microdimensional-travel-reminder",
+            "type": "manual",
+            "label": "The Narrator determines the subatomic destination and its altered rules of time and space. The character leaves the current universe and may return to normal size at will."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -7,13 +7,64 @@
     "description": "The character can be the size of a house!",
     "powerSet": "Resize",
     "prerequisites": "Grow 2",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can grow up to titanic size. They can return to their normal size at will.",
-    "numbered": 3
+    "numbered": 3,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "grow",
+      "maximumSize": "titanic",
+      "defenseModifier": -4,
+      "runSpeedMultiplier": 80,
+      "reach": 80,
+      "meleeDamageMultiplierBonus": 6
+    },
+    "effectProfiles": {
+      "activation": "resize.grow"
+    },
+    "events": [
+      {
+        "id": "grow-3-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "grow-3-titanic",
+            "type": "active-effect",
+            "effect": {
+              "name": "Grow 3: Titanic",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "titanic"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "grow",
+                    "size": "titanic"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -19,6 +19,20 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "enemies"
+    },
+    "resize": {
+      "mode": "growing-attack",
+      "requiresGrowth": true,
+      "damageUsesDestinationSize": true,
+      "fantasticDamageMultiplier": 2
+    },
+    "effectProfiles": {
+      "attack": "resize.growing-attack"
+    },
     "events": [
       {
         "id": "growing-attack-stunned",
@@ -34,6 +48,18 @@
             "duration": {
               "type": "manual"
             }
+          }
+        ]
+      },
+      {
+        "id": "growing-attack-size",
+        "trigger": "target-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "growing-attack-size-reminder",
+            "type": "manual",
+            "label": "Apply the Grow power for the destination size before resolving damage so the attack uses that size's damage multiplier."
           }
         ]
       }

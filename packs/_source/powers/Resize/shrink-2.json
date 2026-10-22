@@ -7,13 +7,62 @@
     "description": "The character becomes even smaller!",
     "powerSet": "Resize",
     "prerequisites": "Shrink 1",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character can shrink down to tiny size. They can return to their normal size at will.",
-    "numbered": 2
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "resize": {
+      "mode": "shrink",
+      "minimumSize": "tiny",
+      "defenseModifier": 3,
+      "damageMultiplier": 0
+    },
+    "effectProfiles": {
+      "activation": "resize.shrink"
+    },
+    "events": [
+      {
+        "id": "shrink-2-size",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shrink-2-tiny",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shrink 2: Tiny",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.size",
+                  "mode": 5,
+                  "value": "tiny"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "resize": {
+                    "mode": "shrink",
+                    "size": "tiny"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
