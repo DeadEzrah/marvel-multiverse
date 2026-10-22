@@ -19,6 +19,21 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "scale": 2,
+      "fantasticScale": 3
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
     "events": [
       {
         "id": "headshot-stunned",

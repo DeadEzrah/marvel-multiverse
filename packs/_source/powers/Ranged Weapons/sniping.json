@@ -17,7 +17,36 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "minimumRange": 20,
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "fantasticScale": 3
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "events": [
+      {
+        "id": "sniping-movement-reminder",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "sniping-no-movement",
+            "type": "manual",
+            "label": "Sniping used both the standard and movement actions. The character cannot move this turn."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
