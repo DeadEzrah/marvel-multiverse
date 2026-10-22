@@ -17,7 +17,63 @@
     "attackTarget": "mle",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "mle",
+      "oncePerRound": true,
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 1,
+        "distanceScaling": "reach",
+        "targetFilter": "enemies",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "scale": 0.5,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.melee.whirlwind",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "unstoppable-assault-continue",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "unstoppable-assault-move-and-repeat",
+            "type": "manual",
+            "label": "You may move up to half your Speed using the movement remaining from your normal movement action, then pay 15 Focus to activate Unstoppable Assault again. Each target can only be affected once per round."
+          }
+        ]
+      },
+      {
+        "id": "unstoppable-assault-weapon-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "unstoppable-assault-resolve-weapon-effect",
+            "type": "manual",
+            "label": "Apply the attacking weapon's special effect to this target."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

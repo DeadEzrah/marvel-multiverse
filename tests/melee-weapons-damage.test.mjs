@@ -256,3 +256,38 @@ test("Exploit ignores Health Damage Reduction", () => {
   assert.equal(result.damageReduction, 0);
   assert.equal(result.finalDamage, 10);
 });
+
+test("Unstoppable Assault deals half regular damage and full Fantastic damage", () => {
+  const source = {
+    system: {
+      ability: "mle",
+      damage: {
+        enabled: true,
+        type: "health",
+        scale: 0.5,
+        doubleOnFantastic: true
+      }
+    }
+  };
+  const config = resolveDamageConfig(source);
+
+  const regular = resolveDamage({
+    attacker,
+    target,
+    source,
+    rollContext: { ability: "mle" },
+    rollResult: { isSuccess: true, isFantastic: false, marvelDie: 3 },
+    config
+  });
+  const fantastic = resolveDamage({
+    attacker,
+    target,
+    source,
+    rollContext: { ability: "mle" },
+    rollResult: { isSuccess: true, isFantastic: true, marvelDie: 3 },
+    config
+  });
+
+  assert.equal(regular.finalDamage, 5);
+  assert.equal(fantastic.finalDamage, 10);
+});
