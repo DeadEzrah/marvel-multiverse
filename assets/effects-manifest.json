@@ -1298,6 +1298,126 @@
       "animations": [
         { "file": "jb2a.shield_attack.ranged.return.01.white.01", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "spider.web-attack",
+      "category": "spider-powers",
+      "type": "projectile",
+      "tags": ["spider", "web", "attack", "white"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.web.01", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.web-impact",
+      "category": "spider-powers",
+      "type": "web",
+      "tags": ["spider", "web", "impact", "white"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.web.complete.002.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.web-area",
+      "category": "spider-powers",
+      "type": "persistent",
+      "tags": ["spider", "web", "area", "persistent"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.web.loop.002.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.strike",
+      "category": "spider-powers",
+      "type": "melee",
+      "tags": ["spider", "strike", "melee", "fast"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.venom-melee",
+      "category": "spider-powers",
+      "type": "melee",
+      "tags": ["spider", "venom", "bioelectric", "melee"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.venom-ranged",
+      "category": "spider-powers",
+      "type": "projectile",
+      "tags": ["spider", "venom", "bioelectric", "ranged"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.electric_arc.01", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.venom-impact",
+      "category": "spider-powers",
+      "type": "impact",
+      "tags": ["spider", "venom", "bioelectric", "impact"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.venom-burst",
+      "category": "spider-powers",
+      "type": "area",
+      "tags": ["spider", "venom", "bioelectric", "burst"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.chain_lightning.primary.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.venom-sword",
+      "category": "spider-powers",
+      "type": "persistent",
+      "tags": ["spider", "venom", "bioelectric", "sword"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.lightning_orb.01.loop.bluepurple.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.repulse",
+      "category": "spider-powers",
+      "type": "movement",
+      "tags": ["spider", "repulse", "push", "wind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.gust_of_wind.veryfast", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.dodge",
+      "category": "spider-powers",
+      "type": "movement",
+      "tags": ["spider", "dodge", "jump", "reaction"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "spider.pheromones",
+      "category": "spider-powers",
+      "type": "aura",
+      "tags": ["spider", "pheromones", "social", "aura"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

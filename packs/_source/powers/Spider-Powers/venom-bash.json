@@ -18,6 +18,26 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "rangeScaling": "reach",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "mle"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "spiderPowers": {
+      "mode": "venom-bash"
+    },
+    "effectProfiles": {
+      "attack": "spider.venom-melee",
+      "hit": "spider.venom-impact"
+    },
     "events": [
       {
         "id": "venom-bash-stunned",

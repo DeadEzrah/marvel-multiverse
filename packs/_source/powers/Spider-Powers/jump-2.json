@@ -13,12 +13,17 @@
     "range": "",
     "cost": "",
     "effect": "The character's Jump Speed is equal to their rank times their Run Speed. Outside of combat, they can move three times as fast.",
-    "numbered": 2
+    "numbered": 2,
+    "spiderPowers": {
+      "mode": "jump",
+      "jumpSpeedCalculation": "rank-times-run-speed",
+      "noncombatMultiplier": 3
+    }
   },
   "flags": {},
   "effects": [
     {
-      "name": "physical edge",
+      "name": "Jump at Rank times Run Speed",
       "img": "icons/svg/aura.svg",
       "duration": {
         "startTime": null,
@@ -36,17 +41,20 @@
         {
           "key": "system.movement.jump.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 10
         },
         {
           "key": "system.movement.jump.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "rank-runspeed",
+          "priority": 10
         },
         {
           "key": "system.movement.jump.noncom",
-          "mode": 1,
-          "value": 3
+          "mode": 5,
+          "value": 3,
+          "priority": 10
         }
       ],
       "description": "",

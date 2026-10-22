@@ -7,12 +7,44 @@
     "description": "The character can force things away.",
     "powerSet": "Spider-Powers",
     "prerequisites": "Stick Around, Rank 3",
-    "action": "Standard, movement or reaction",
+    "action": "Standard, Movement, or Reaction",
     "trigger": "Someone attacks the character.",
     "duration": "Instant",
     "range": "1 space",
     "cost": "5 Focus",
-    "effect": "The character can force something touching them-or nearly touching them-away in the same way that the Stick Around power allows them to stick things together. A character attempting to avoid being repelled must make a non-combat Melee vs. TN 16 action check. If they succeed, they can act normally. In terms of the size of something being repelled and how far it can be repelled, this works just like if the character was throwing it. The use of the power is limited only by the character's creativity. Examples include shoving away an attacker, propelling themselves extra far with a jump, keeping something-or someone-hovering in the air and so on. If used to cause something to hover, the maximum altitude this lifts the target is 1 space. If used to increase a jump, this adds 1 space to the character's Jump Speed for each rank."
+    "effect": "The character can force something touching them--or nearly touching them--away in the same way that the Stick Around power allows them to stick things together. A character attempting to avoid being repelled must make a non-combat Melee vs. TN 16 action check. If they succeed, they can act normally. In terms of the size of something being repelled and how far it can be repelled, this works just like if the character was throwing it. The use of the power is limited only by the character's creativity. Examples include shoving away an attacker, propelling themselves extra far with a jump, keeping something--or someone--hovering in the air and so on. If used to cause something to hover, the maximum altitude this lifts the target is 1 space. If used to increase a jump, this adds 1 space to the character's Jump Speed for each rank.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1,
+      "range": 1,
+      "willing": false
+    },
+    "spiderPowers": {
+      "mode": "repulse",
+      "resistAbility": "mle",
+      "resistTargetNumber": 16,
+      "throwRules": true,
+      "maximumHoverAltitude": 1,
+      "jumpBonusPerRank": 1
+    },
+    "effectProfiles": {
+      "activation": "spider.repulse"
+    },
+    "events": [
+      {
+        "id": "repulse-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "repulse-reminder",
+            "type": "manual",
+            "label": "Resolve an unwilling character's non-combat Melee check against TN 16. Use throwing rules for size and distance; object choice, hovering, and jump propulsion remain Narrator-directed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

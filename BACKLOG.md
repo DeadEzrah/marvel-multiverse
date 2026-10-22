@@ -278,6 +278,12 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Hurled Shield Block derives temporary ally DR from the source's highest Shield tier. Thrown-shield return timing and Shield unavailability remain explicit until a universal action/equipment ledger exists.
   - [x] Nine semantic profiles resolve to live-verified Free JB2A round-shield melee, throw, return, guard, wall, deflection, impact, healing, and bracing entries.
   - Focused gates pass 32/32 and the full repository passes 155/155. The installed matrix verified concentration DR/undo, defensive Trouble, tier-derived ally DR, exact Focus, and every profile. All fourteen compendium powers and ten Captain America embedded copies were refreshed with IDs preserved; legacy effects and temporary data were removed.
+- [x] Complete the Spider-Powers family migration.
+  - [x] Correct Jump, Wallcrawling, Webgliding, and Webslinging movement calculations.
+  - [x] Structure web attacks, escape TNs, persistent terrain, Spider-Strike scaling, Spider Sense, Spider-Dodge, and all Venom powers.
+  - [x] Preserve creative/object, attraction, movement, upkeep, and area-entry decisions as explicit boundaries.
+  - [x] Twelve semantic profiles resolve to live-verified Free JB2A web, bioelectric, impact, wind, dodge, and aura entries.
+  - Focused gates pass 32/32 and the full repository passes 162/162. All twenty compendium powers and nine embedded Spider-Man copies were refreshed with IDs preserved; temporary data was removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

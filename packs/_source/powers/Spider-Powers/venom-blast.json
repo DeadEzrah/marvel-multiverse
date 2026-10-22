@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character unleashes a bioelectric shock",
+    "description": "The character unleashes a bioelectric shock.",
     "powerSet": "Spider-Powers",
     "prerequisites": "",
     "action": "Standard",
@@ -18,6 +18,26 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 5,
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "spiderPowers": {
+      "mode": "venom-blast"
+    },
+    "effectProfiles": {
+      "attack": "spider.venom-ranged",
+      "hit": "spider.venom-impact"
+    },
     "events": [
       {
         "id": "venom-blast-stunned",

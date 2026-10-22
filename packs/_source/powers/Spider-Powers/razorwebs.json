@@ -12,7 +12,51 @@
     "duration": "Instant",
     "range": "10 spaces",
     "cost": "",
-    "effect": "The character makes an Agility attack on an enemy. If the attack is a success, the webbing does Health damage. On a Fantastic success, the attack also causes bleeding."
+    "effect": "The character makes an Agility attack on an enemy. If the attack is a success, the webbing does Health damage. On a Fantastic success, the attack also causes bleeding.",
+    "ability": "agl",
+    "attackTarget": "agl",
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 10,
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": false
+    },
+    "spiderPowers": {
+      "mode": "razorweb"
+    },
+    "effectProfiles": {
+      "attack": "spider.web-attack",
+      "hit": "spider.web-impact"
+    },
+    "events": [
+      {
+        "id": "razorwebs-bleeding",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "razorwebs-apply-bleeding",
+            "type": "status",
+            "statusId": "bleeding",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -17,6 +17,29 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 10,
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": false
+    },
+    "escape": {
+      "ability": "mle",
+      "targetNumber": 20
+    },
+    "spiderPowers": {
+      "mode": "webcast",
+      "fantasticPinnedStatus": "restrained"
+    },
+    "effectProfiles": {
+      "attack": "spider.web-attack",
+      "hit": "spider.web-impact"
+    },
     "events": [
       {
         "id": "webcasting-paralyzed",
@@ -27,6 +50,23 @@
             "id": "webcasting-apply-paralyzed",
             "type": "status",
             "statusId": "paralyzed",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      },
+      {
+        "id": "webcasting-restrained",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "webcasting-apply-restrained",
+            "type": "status",
+            "statusId": "restrained",
             "mode": "apply",
             "stacking": "none",
             "duration": {

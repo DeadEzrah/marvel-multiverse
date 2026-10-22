@@ -12,7 +12,14 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character has an edge on initiative checks and on Vigilance checks to perceive danger. Enemies have trouble on Agility checks against the character's Vigilance defense. The character also gains a permanent +2 bonus to their Agility defense."
+    "effect": "The character has an edge on initiative checks and on Vigilance checks to perceive danger. Enemies have trouble on Agility checks against the character's Vigilance defense. The character also gains a permanent +2 bonus to their Agility defense.",
+    "spiderPowers": {
+      "mode": "spider-sense",
+      "initiativeEdge": 1,
+      "dangerVigilanceEdge": 1,
+      "agilityAgainstVigilanceTrouble": 1,
+      "agilityDefenseBonus": 2
+    }
   },
   "flags": {},
   "effects": [
@@ -46,7 +53,21 @@
       "description": "",
       "transfer": true,
       "statuses": [],
-      "flags": {},
+      "flags": {
+        "marvel-multiverse": {
+          "defensiveRollModifier": {
+            "mode": "trouble",
+            "count": 1,
+            "label": "Spider Sense",
+            "requiresAttack": true,
+            "defenses": ["vig"],
+            "nonStacking": true
+          },
+          "spiderPowers": {
+            "dangerVigilanceEdge": 1
+          }
+        }
+      },
       "tint": null,
       "_key": "!items.effects!InUekWyvSZpy4TCE.8a6fd587a0e59998"
     }

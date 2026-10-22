@@ -12,12 +12,17 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can climb at a speed equal to their regular speed. Under normal conditions, they never lose their grip, no matter the angle of the surface."
+    "effect": "The character can climb at a speed equal to their regular speed. Under normal conditions, they never lose their grip, no matter the angle of the surface.",
+    "spiderPowers": {
+      "mode": "wallcrawling",
+      "climbEqualsRunSpeed": true,
+      "automaticGrip": true
+    }
   },
   "flags": {},
   "effects": [
     {
-      "name": "climb at runspeed",
+      "name": "Climb at Run Speed",
       "img": "icons/svg/aura.svg",
       "duration": {
         "startTime": null,
@@ -35,7 +40,8 @@
         {
           "key": "system.movement.climb.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "runspeed",
+          "priority": 10
         }
       ],
       "description": "<p><span style='font-family:Roboto Condensed'>Climb movement speed is equal to regular (run) speed.</span></p>",

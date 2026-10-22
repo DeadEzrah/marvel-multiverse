@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character can leap into the sky with a single bound.",
+    "description": "The character dodges with spider-like reflexes.",
     "powerSet": "Spider-Powers",
     "prerequisites": "",
     "action": "Reaction",
@@ -12,7 +12,57 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The attacker has trouble on the attack. If the attack misses, the character can leap in any direction at their Jump Speed."
+    "effect": "The attacker has trouble on the attack. If the attack misses, the character can leap in any direction at their Jump Speed.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "enemies"
+    },
+    "spiderPowers": {
+      "mode": "spider-dodge",
+      "requiresAgilityAttack": true,
+      "jumpOnMiss": true
+    },
+    "effectProfiles": {
+      "activation": "spider.dodge"
+    },
+    "events": [
+      {
+        "id": "spider-dodge-trouble",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "spider-dodge-next-attack-trouble",
+            "type": "future-roll-modifier",
+            "mode": "trouble",
+            "count": 1,
+            "label": "Spider-Dodge: Trouble on the triggering attack",
+            "matchSource": false,
+            "matchTarget": false
+          }
+        ]
+      },
+      {
+        "id": "spider-dodge-movement",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "spider-dodge-movement-reminder",
+            "type": "manual",
+            "label": "Use before the selected enemy rolls an Agility attack. If it misses, the character may immediately leap in any direction at Jump Speed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

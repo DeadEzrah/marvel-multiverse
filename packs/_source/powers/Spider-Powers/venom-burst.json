@@ -39,8 +39,13 @@
       "requiresFantastic": true,
       "type": "health"
     },
+    "spiderPowers": {
+      "mode": "venom-burst",
+      "radius": 5,
+      "fantasticHalfDamageOnly": true
+    },
     "effectProfiles": {
-      "impact": "power.electricity.ground-burst"
+      "impact": "spider.venom-burst"
     },
     "events": [
       {

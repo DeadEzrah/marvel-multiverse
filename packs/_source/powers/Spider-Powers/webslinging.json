@@ -12,12 +12,17 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character gains the swingline movement mode, with a Speed equal to triple their Run Speed. The reach of their swingline is equal to their Swingline Speed."
+    "effect": "The character gains the swingline movement mode, with a Speed equal to triple their Run Speed. The reach of their swingline is equal to their Swingline Speed.",
+    "spiderPowers": {
+      "mode": "webslinging",
+      "swinglineRunSpeedMultiplier": 3,
+      "reachEqualsSwinglineSpeed": true
+    }
   },
   "flags": {},
   "effects": [
     {
-      "name": "glide at run speed",
+      "name": "Webslinging at Triple Run Speed",
       "img": "icons/svg/aura.svg",
       "duration": {
         "startTime": null,
@@ -35,12 +40,14 @@
         {
           "key": "system.movement.swingline.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 10
         },
         {
           "key": "system.movement.swingline.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "triple-runspeed",
+          "priority": 10
         }
       ],
       "description": "",

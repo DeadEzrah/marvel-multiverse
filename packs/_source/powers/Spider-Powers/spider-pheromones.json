@@ -12,7 +12,56 @@
     "duration": "Concentration",
     "range": "5 spaces",
     "cost": "",
-    "effect": "The character has an edge on Ego (intimidation) checks against people who are not attracted to their gender. They also have an edge on Ego (persuasion) checks against people who are attracted to their gender."
+    "effect": "The character has an edge on Ego (intimidation) checks against people who are not attracted to their gender. They also have an edge on Ego (persuasion) checks against people who are attracted to their gender.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "spiderPowers": {
+      "mode": "pheromones",
+      "range": 5,
+      "intimidationEdgeWhenNotAttracted": true,
+      "persuasionEdgeWhenAttracted": true,
+      "circumstanceManual": true
+    },
+    "effectProfiles": {
+      "activation": "spider.pheromones"
+    },
+    "events": [
+      {
+        "id": "spider-pheromones-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "spider-pheromones-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Spider-Pheromones",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "spiderPowers": {
+                    "pheromones": true,
+                    "range": 5
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "spider-pheromones-reminder",
+            "type": "manual",
+            "label": "Within 5 spaces, select Edge for Ego (intimidation) against someone not attracted to the character's gender or Ego (persuasion) against someone who is."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,11 @@
     "duration": "The character's rank times 15 minutes",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character fills up to 5 spaces with sticky webs, and the affected spaces are considered difficult terrain.Any creature that starts its turn in or moves into an affected space must make an Agility check (target number 20) or be paralyzed by the webbing. Breaking free from webbing requires a Melee check (target number 20).",
+    "effect": "The character fills up to 5 spaces with sticky webs, and the affected spaces are considered difficult terrain. Any creature that starts its turn in or moves into an affected space must make an Agility check (target number 20) or be paralyzed by the webbing. Breaking free from webbing requires a Melee check (target number 20).",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
     "targeting": {
       "required": true,
       "count": 999,
@@ -30,7 +34,35 @@
         "attackAnimation": "center",
         "includeSelf": false
       }
-    }
+    },
+    "spiderPowers": {
+      "mode": "web-trap",
+      "maximumSpaces": 5,
+      "difficultTerrain": true,
+      "entryCheckAbility": "agl",
+      "entryCheckTargetNumber": 20,
+      "failedEntryStatus": "paralyzed",
+      "escapeAbility": "mle",
+      "escapeTargetNumber": 20,
+      "durationMinutesPerRank": 15
+    },
+    "effectProfiles": {
+      "activation": "spider.web-area"
+    },
+    "events": [
+      {
+        "id": "webtrapping-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "webtrapping-reminder",
+            "type": "manual",
+            "label": "Place up to 5 connected web-filled spaces as difficult terrain for 15 minutes per Rank. Creatures entering or starting there test Agility TN 20 or become paralyzed; escape is Melee TN 20."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

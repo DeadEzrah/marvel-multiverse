@@ -12,7 +12,59 @@
     "duration": "Concentration",
     "range": "1 space per rank",
     "cost": "10 Focus",
-    "effect": "The character can cause two things to be stuck to each other, in the same way that the Wallcrawling power allows a character to stick to surfaces. Breaking this connection requires a non-combat Melee vs. TN 16 action check, although the character can intentionally end it at any time. The use of the power is limited only by the character's creativity. Examples include sticking a person to a floor so they can't move or be taken away, sticking a door closed, sticking something to the character's back so they can keep their hands free and so on."
+    "effect": "The character can cause two things to be stuck to each other, in the same way that the Wallcrawling power allows a character to stick to surfaces. Breaking this connection requires a non-combat Melee vs. TN 16 action check, although the character can intentionally end it at any time. The use of the power is limited only by the character's creativity. Examples include sticking a person to a floor so they can't move or be taken away, sticking a door closed, sticking something to the character's back so they can keep their hands free and so on.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1,
+      "rangePerRank": 1,
+      "willing": false
+    },
+    "spiderPowers": {
+      "mode": "stick-around",
+      "rangePerRank": 1,
+      "escapeAbility": "mle",
+      "escapeTargetNumber": 16,
+      "objectSelectionManual": true
+    },
+    "effectProfiles": {
+      "activation": "spider.web-impact"
+    },
+    "events": [
+      {
+        "id": "stick-around-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "stick-around-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Stick Around",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "spiderPowers": {
+                    "stickAround": true,
+                    "escapeTargetNumber": 16
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "stick-around-reminder",
+            "type": "manual",
+            "label": "Choose the two things being stuck together within 1 space per Rank. Breaking the connection requires a non-combat Melee check against TN 16."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

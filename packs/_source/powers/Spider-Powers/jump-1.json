@@ -12,13 +12,18 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character gains the Jump movement mode with a Jump Speed equal to their Run Speed. They can jump this distance in any direction, vertically as wel as horizontally.",
-    "numbered": 1
+    "effect": "The character gains the Jump movement mode with a Jump Speed equal to their Run Speed. They can jump this distance in any direction, vertically as well as horizontally.",
+    "numbered": 1,
+    "spiderPowers": {
+      "mode": "jump",
+      "jumpSpeedCalculation": "run-speed",
+      "anyDirection": true
+    }
   },
   "flags": {},
   "effects": [
     {
-      "name": "jump at run speed",
+      "name": "Jump at Run Speed",
       "img": "icons/svg/aura.svg",
       "duration": {
         "startTime": null,
@@ -36,12 +41,14 @@
         {
           "key": "system.movement.jump.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 10
         },
         {
           "key": "system.movement.jump.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "runspeed",
+          "priority": 10
         }
       ],
       "description": "",

@@ -12,12 +12,16 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character gains the Glide movement mode, with a speed equal to double their Run Speed."
+    "effect": "The character gains the Glide movement mode, with a speed equal to double their Run Speed.",
+    "spiderPowers": {
+      "mode": "webgliding",
+      "glideRunSpeedMultiplier": 2
+    }
   },
   "flags": {},
   "effects": [
     {
-      "name": "glide at run speed",
+      "name": "Webgliding at Double Run Speed",
       "img": "icons/svg/aura.svg",
       "duration": {
         "startTime": null,
@@ -35,17 +39,14 @@
         {
           "key": "system.movement.glide.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 10
         },
         {
           "key": "system.movement.glide.calc",
           "mode": 5,
-          "value": "runspeed"
-        },
-        {
-          "key": "system.movement.glide.calc",
-          "mode": 1,
-          "value": 2
+          "value": "double-runspeed",
+          "priority": 10
         }
       ],
       "description": "",

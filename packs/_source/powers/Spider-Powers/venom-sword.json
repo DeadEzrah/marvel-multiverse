@@ -11,8 +11,57 @@
     "trigger": "The character or an ally within reach is attacked",
     "duration": "Concentration",
     "range": "",
-    "cost": "5 Focus per round",
-    "effect": "The character can create a sword from their own bioelectricity and wield it in combat. It can be used against any target within reach, and it adds +2 to the character's Melee damage multiplier for attacks made with it. On a fantastic success, the attack does double damage, and if the targe suffers any actual damage, they are also stunned for one round. This does not stack with other such bonuses. "
+    "cost": "5 Focus",
+    "effect": "The character can create a sword from their own bioelectricity and wield it in combat. It can be used against any target within reach, and it adds +2 to the character's Melee damage multiplier for attacks made with it. On a Fantastic success, the attack does double damage, and if the target suffers any actual damage, they are also stunned for one round. This does not stack with other such bonuses.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "spiderPowers": {
+      "mode": "venom-sword",
+      "meleeDamageMultiplierBonus": 2,
+      "focusUpkeepPerRound": 5,
+      "nonStacking": true,
+      "fantasticStunnedRounds": 1
+    },
+    "effectProfiles": {
+      "activation": "spider.venom-sword"
+    },
+    "events": [
+      {
+        "id": "venom-sword-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "venom-sword-damage-bonus",
+            "type": "active-effect",
+            "effect": {
+              "name": "Venom Sword",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "spiderPowers": {
+                    "venomSword": true,
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "venom-sword-reminder",
+            "type": "manual",
+            "label": "Spend 5 Focus each round to maintain the sword. Apply one-round stunned only when a Venom Sword attack is Fantastic and deals actual Health damage."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
