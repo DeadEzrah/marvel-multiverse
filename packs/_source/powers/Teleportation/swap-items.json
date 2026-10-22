@@ -12,7 +12,71 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character swaps items they possess with the items of another person they can see within 2 spaces per the character's rank. These items can include weapons, clothing or anything else that is on the other person but not attached to them. When the effect ends, the swapped items return to the people who had them originally. The character can swap all of their possessions, or they can be as selective as they like. The items must generally be swapped on an equal basis, but it is possible to swap something for nothing. For instance, the character could swap what's in their hands for what's in the target's hands If they are holding nothing and the target has a pistol, they can swap the pistol for nothing. If the person being swapped with is unwilling, the character must make an Ego check against that person's Vigilance defense to succeed."
+    "effect": "The character swaps items they possess with the items of another person they can see within 2 spaces per the character's rank. These items can include weapons, clothing or anything else that is on the other person but not attached to them. When the effect ends, the swapped items return to the people who had them originally. The character can swap all of their possessions, or they can be as selective as they like. The items must generally be swapped on an equal basis, but it is possible to swap something for nothing. For instance, the character could swap what's in their hands for what's in the target's hands If they are holding nothing and the target has a pistol, they can swap the pistol for nothing. If the person being swapped with is unwilling, the character must make an Ego check against that person's Vigilance defense to succeed.",
+    "automationPreset": "check.opposed.single",
+    "ability": "ego",
+    "attackTarget": "vig",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 2,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "includeSelf": false
+    },
+    "teleportation": {
+      "mode": "swap-items",
+      "rangePerRank": 2,
+      "requiresLineOfSight": true,
+      "willingTargetSkipsCheck": true,
+      "returnsOnConcentrationEnd": true,
+      "allowsSelectiveSwap": true,
+      "allowsNothingForItem": true
+    },
+    "effectProfiles": {
+      "hit": "movement.teleport",
+      "fantasticHit": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "swap-items-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "swap-items-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Items",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "teleportation": {
+                    "kind": "swap-items",
+                    "returnsOnEnd": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "swap-items-reminder",
+            "type": "manual",
+            "label": "Record the selected unattached possessions exchanged between source and target. Equal exchanges are normal, but an item may be swapped for nothing. Return every recorded item when concentration ends. A willing target does not require the Ego check."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

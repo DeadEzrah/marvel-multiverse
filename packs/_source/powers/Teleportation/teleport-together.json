@@ -12,7 +12,45 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character teleports, taking any person they are touching with them, into clear spaces they can see or have been to, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away. If the target does not wish to be teleported, the character must grab them first."
+    "effect": "The character teleports, taking any person they are touching with them, into clear spaces they can see or have been to, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away. If the target does not wish to be teleported, the character must grab them first.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "teleportation": {
+      "mode": "self-with-target",
+      "combatRangePerRank": 10,
+      "outOfCombatRangePerRank": 100,
+      "requiresClearDestination": true,
+      "requiresSeenOrKnownDestination": true,
+      "unwillingTargetMustBeGrabbed": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "teleport-together-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "teleport-together-reminder",
+            "type": "manual",
+            "label": "Teleport the character and the touched target to clear spaces they can see or have visited, up to 10 spaces per Rank in combat or 100 spaces per Rank outside combat. An unwilling target must already be grabbed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

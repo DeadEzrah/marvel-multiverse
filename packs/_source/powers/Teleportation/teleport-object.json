@@ -12,7 +12,35 @@
     "duration": "Permanent",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character can teleport along with them an object within reach as far away as their Teleport power normally allows them. The object (and things attached to or inside of it) can be up to their rank in sizes bigger than them. For example, if they are Rank 4, the object can be up to four sizes bigger than them."
+    "effect": "The character can teleport along with them an object within reach as far away as their Teleport power normally allows them. The object (and things attached to or inside of it) can be up to their rank in sizes bigger than them. For example, if they are Rank 4, the object can be up to four sizes bigger than them.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self-with-object",
+      "objectWithinReach": true,
+      "maximumObjectSizesAboveSourcePerRank": 1,
+      "usesOwnedTeleportRange": true,
+      "includesAttachedAndContainedObjects": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "teleport-object-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "teleport-object-reminder",
+            "type": "manual",
+            "label": "Choose an object within Reach no more than Rank sizes larger than the character. Teleport it, including attached or contained objects, with the character using the character's normal Teleport range."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

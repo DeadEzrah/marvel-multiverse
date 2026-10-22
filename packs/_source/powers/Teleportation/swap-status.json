@@ -9,10 +9,109 @@
     "prerequisites": "Swap Items, Rank 2",
     "action": "Standard, movement or reaction",
     "trigger": "The character is attacked.",
-    "duration": "Instant",
-    "range": "",
-    "cost": "",
-    "effect": "The character teleports into a clear space they can see or have been to, up to their rank in spaces away. If someone was about to attack them and they are now out of reach or line of sight, the attack automatically fails. If they are still within reach or line of sight, the attack has trouble instead."
+    "duration": "Concentration",
+    "range": "2 spaces per rank",
+    "cost": "5 Focus",
+    "effect": "The character swaps all or selected parts of their current status with a person they can see within 2 spaces per rank. Eligible parts include lost Health, lost Focus, conditions, Occupation, traits and tags. When concentration ends, the current altered states swap back, including changes that happened during the swap.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "rangePerRank": 2
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 2,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "includeSelf": false
+    },
+    "teleportation": {
+      "mode": "swap-status",
+      "rangePerRank": 2,
+      "requiresLineOfSight": true,
+      "selective": true,
+      "swappable": [
+        "lost-health",
+        "lost-focus",
+        "conditions",
+        "occupation",
+        "traits",
+        "tags"
+      ],
+      "returnsOnConcentrationEnd": true,
+      "returnUsesCurrentAlteredState": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "swap-status-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "swap-status-target-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Status",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "teleportation": {
+                    "kind": "swap-status",
+                    "role": "target",
+                    "returnsOnEnd": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "swap-status-resolution-reminder",
+            "type": "manual",
+            "label": "Record which parts of status are exchanged: lost Health, lost Focus, conditions, Occupation, traits, and/or tags. Recalculate lost resources against each recipient's maximum. When concentration ends, swap the then-current altered states back; this can transfer later changes, defeat, or death."
+          }
+        ]
+      },
+      {
+        "id": "swap-status-source",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "swap-status-source-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Status",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "teleportation": {
+                    "kind": "swap-status",
+                    "role": "source",
+                    "returnsOnEnd": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

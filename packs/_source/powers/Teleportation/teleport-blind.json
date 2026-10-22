@@ -12,7 +12,36 @@
     "duration": "Instant",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character teleports to someplace they've never been and never seen, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away. If the character teleports into something solid, they are automatically pushed out of it but take damage from the disruption equal to a standard action check. The damage multiplier is 1 for every space they must move to reach a clear area. If this kills them, their body is trapped inside the material they teleported into."
+    "effect": "The character teleports to someplace they've never been and never seen, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away. If the character teleports into something solid, they are automatically pushed out of it but take damage from the disruption equal to a standard action check. The damage multiplier is 1 for every space they must move to reach a clear area. If this kills them, their body is trapped inside the material they teleported into.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self",
+      "combatRangePerRank": 10,
+      "outOfCombatRangePerRank": 100,
+      "requiresClearDestination": false,
+      "requiresSeenOrKnownDestination": false,
+      "solidDestinationDisruption": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "teleport-blind-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "teleport-blind-movement-reminder",
+            "type": "manual",
+            "label": "Move up to 10 spaces per Rank in combat or 100 spaces per Rank outside combat, even to an unseen and unvisited destination. If the destination is solid, move to the nearest clear space and resolve standard-action damage with multiplier 1 per space moved; a lethal result leaves the body trapped."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

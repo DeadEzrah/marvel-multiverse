@@ -12,7 +12,36 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character teleports into a clear space they can see or have been to, up to their rank in spaces away. If someone was about to attack them and they are now out of reach or line of sight, the attack automatically fails. If they are still within reach or line of sight, the attack has trouble instead."
+    "effect": "The character teleports into a clear space they can see or have been to, up to their rank in spaces away. If someone was about to attack them and they are now out of reach or line of sight, the attack automatically fails. If they are still within reach or line of sight, the attack has trouble instead.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self",
+      "combatRangePerRank": 1,
+      "requiresClearDestination": true,
+      "requiresSeenOrKnownDestination": true,
+      "reactionAttackFailsIfInvalidated": true,
+      "reactionTroubleIfStillValid": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "blink-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "blink-movement-reminder",
+            "type": "manual",
+            "label": "Move to a clear space the character can see or has visited, up to Rank spaces away. If used as a reaction, the triggering attack fails if the character is now outside its reach or line of sight; otherwise that attack has Trouble."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

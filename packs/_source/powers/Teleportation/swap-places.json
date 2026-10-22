@@ -12,7 +12,99 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The characters swaps places with another person they can see within 2 spaces per the character's rank. When the effect ends. the character and the other person swap places again. If the person being swapped with is unwilling, the character must make an Ego check against that person's Vigilance defense to succeed"
+    "effect": "The characters swaps places with another person they can see within 2 spaces per the character's rank. When the effect ends. the character and the other person swap places again. If the person being swapped with is unwilling, the character must make an Ego check against that person's Vigilance defense to succeed",
+    "automationPreset": "check.opposed.single",
+    "ability": "ego",
+    "attackTarget": "vig",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 2,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "includeSelf": false
+    },
+    "teleportation": {
+      "mode": "swap-places",
+      "rangePerRank": 2,
+      "requiresLineOfSight": true,
+      "willingTargetSkipsCheck": true,
+      "returnsOnConcentrationEnd": true
+    },
+    "effectProfiles": {
+      "hit": "movement.teleport",
+      "fantasticHit": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "swap-places-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "swap-places-target-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Places",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "teleportation": {
+                    "kind": "swap-places",
+                    "role": "target",
+                    "returnsOnEnd": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "swap-places-target-reminder",
+            "type": "manual",
+            "label": "Swap the source and target token positions. When concentration ends, swap them back. A willing target does not require the Ego check."
+          }
+        ]
+      },
+      {
+        "id": "swap-places-source",
+        "trigger": "target-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "swap-places-source-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Places",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "teleportation": {
+                    "kind": "swap-places",
+                    "role": "source",
+                    "returnsOnEnd": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

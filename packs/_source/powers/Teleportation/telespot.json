@@ -12,7 +12,48 @@
     "duration": "Instant",
     "range": "10 spaces per rank",
     "cost": "5 Focus",
-    "effect": "As a standard action, the character can deploy small teleportals through which they can attack or otherwise affect items within 10 times their rank in spaces using the same action. As a reaction, they can deploy a small teleportal against a physical attack, deflecting it away or redirecting it to another target. They can harmlessly deflect any such attack automatically that isn't a Fantastic success. Redirecting an attack to another target requires the character to make an Agility check against the new target's Agility defense. On a success, use the original attack's damage against the new target. On a Fantastic success, double the damage. On a failure, the original attack hits the character instead."
+    "effect": "As a standard action, the character can deploy small teleportals through which they can attack or otherwise affect items within 10 times their rank in spaces using the same action. As a reaction, they can deploy a small teleportal against a physical attack, deflecting it away or redirecting it to another target. They can harmlessly deflect any such attack automatically that isn't a Fantastic success. Redirecting an attack to another target requires the character to make an Agility check against the new target's Agility defense. On a success, use the original attack's damage against the new target. On a Fantastic success, double the damage. On a failure, the original attack hits the character instead.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1,
+      "rangePerRank": 10
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "defense": "agl",
+      "range": 10,
+      "rangeScaling": "rank",
+      "includeSelf": false
+    },
+    "teleportation": {
+      "mode": "telespot",
+      "rangePerRank": 10,
+      "extendsActionReach": true,
+      "reactionDeflectsNonFantasticPhysicalAttack": true,
+      "reactionRedirectAbility": "agl",
+      "reactionRedirectDefense": "agl",
+      "reactionFantasticDamageMultiplier": 2,
+      "reactionFailurePreservesOriginalHit": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "telespot-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telespot-reminder",
+            "type": "manual",
+            "label": "Standard action: resolve the same action through a small portal against an item within 10 spaces per Rank. Reaction: automatically deflect a non-Fantastic physical attack, or roll Agility against a chosen target's Agility defense to redirect the original damage; double it on a Fantastic success, while failure leaves the original hit intact."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,36 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character pops away just as the attack reaches them and then pops back into the same space, leaving the projectile behind. The character makes an Ego check with an edge against the attacker's Agility check result. On a success, the projectile from the attack is teleported away, someplace safe. On a Fantastic success, the attack is turned against the attacker, using the Ego check the character just made as the attack check."
+    "effect": "The character pops away just as the attack reaches them and then pops back into the same space, leaving the projectile behind. The character makes an Ego check with an edge against the attacker's Agility check result. On a success, the projectile from the attack is teleported away, someplace safe. On a Fantastic success, the attack is turned against the attacker, using the Ego check the character just made as the attack check.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "reaction-defense",
+      "trigger": "incoming-ranged-attack",
+      "checkAbility": "ego",
+      "checkEdge": 1,
+      "targetNumberSource": "triggering-attack-result",
+      "fantasticRedirectsToAttacker": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "blink-defense-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "blink-defense-reminder",
+            "type": "manual",
+            "label": "Reaction to a ranged attack: roll Ego with Edge against the triggering Agility check result. Success teleports the projectile somewhere safe. Fantastic success redirects it to the attacker using this Ego check as the attack check."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

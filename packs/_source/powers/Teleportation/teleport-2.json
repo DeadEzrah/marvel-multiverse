@@ -12,7 +12,35 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "Outside of combat, the character can teleport up to 1,000 times their rank in spaces away."
+    "effect": "Outside of combat, the character can teleport up to 1,000 times their rank in spaces away.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self",
+      "combatRangePerRank": 10,
+      "outOfCombatRangePerRank": 1000,
+      "requiresClearDestination": true,
+      "requiresSeenOrKnownDestination": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "teleport-2-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "teleport-2-movement-reminder",
+            "type": "manual",
+            "label": "Move to a clear space the character can see or has visited, up to 10 spaces per Rank in combat or 1,000 spaces per Rank outside combat."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

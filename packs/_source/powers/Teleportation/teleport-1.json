@@ -12,7 +12,35 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character teleports into a clear space they can see or have been to, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away."
+    "effect": "The character teleports into a clear space they can see or have been to, up to 10 times their rank in spaces away. Outside of combat, they can teleport up to 100 times their rank in spaces away.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self",
+      "combatRangePerRank": 10,
+      "outOfCombatRangePerRank": 100,
+      "requiresClearDestination": true,
+      "requiresSeenOrKnownDestination": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "teleport-1-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "teleport-1-movement-reminder",
+            "type": "manual",
+            "label": "Move to a clear space the character can see or has visited, up to 10 spaces per Rank in combat or 100 spaces per Rank outside combat."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

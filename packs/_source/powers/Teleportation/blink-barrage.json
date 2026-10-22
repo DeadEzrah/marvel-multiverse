@@ -12,7 +12,60 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character teleports several times in quick succession and winds up in a clear space they can see or have been to, up to their rank in spaces away. Any attacks have trouble against them for one round."
+    "effect": "The character teleports several times in quick succession and winds up in a clear space they can see or have been to, up to their rank in spaces away. Any attacks have trouble against them for one round.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "teleportation": {
+      "mode": "self",
+      "combatRangePerRank": 1,
+      "requiresClearDestination": true,
+      "requiresSeenOrKnownDestination": true
+    },
+    "effectProfiles": {
+      "activation": "movement.teleport"
+    },
+    "events": [
+      {
+        "id": "blink-barrage-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "blink-barrage-defense",
+            "type": "active-effect",
+            "effect": {
+              "name": "Blink Barrage",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "defensiveRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Blink Barrage",
+                    "requiresAttack": true,
+                    "nonStacking": true,
+                    "endConcentrationOnSuccessfulAttack": false
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          },
+          {
+            "id": "blink-barrage-movement-reminder",
+            "type": "manual",
+            "label": "Move to a clear space the character can see or has visited, up to Rank spaces away."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
