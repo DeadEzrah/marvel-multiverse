@@ -614,6 +614,66 @@
       ]
     },
     {
+      "id": "healing.focus",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "focus", "beneficial", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "healing.cure",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "cure", "condition", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.cure_wounds.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "healing.sustain",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "sustain", "concentration", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.healing_generic.loop.greenorange", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "healing.restore",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "restore", "focus", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.purple", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "healing.resurrect",
+      "category": "power",
+      "type": "healing",
+      "tags": ["power", "healing", "resurrection", "life", "target"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "movement.flight",
       "category": "movement",
       "type": "flight",

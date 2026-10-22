@@ -12,7 +12,69 @@
     "duration": "Concentration",
     "range": "Reach",
     "cost": "5 Focus",
-    "effect": "The character can eliminate the effects of a target losing all of their Health. Rather than falling unconscious the target remains awake and mobile. They can use movement actions but not reactions or standard actions This does not protect a character from death. They can be killed normally, and this power cannot bring back a dead character. Once the power takes effect, the target does not have to remain within the character's reach. When the effect ends if the target has 0 Health or less, they become unconscious If the target's Health rises above 0 at any poist, this power automatically ends."
+    "effect": "The character can eliminate the effects of a target losing all of their Health. Rather than falling unconscious the target remains awake and mobile. They can use movement actions but not reactions or standard actions This does not protect a character from death. They can be killed normally, and this power cannot bring back a dead character. Once the power takes effect, the target does not have to remain within the character's reach. When the effect ends if the target has 0 Health or less, they become unconscious If the target's Health rises above 0 at any poist, this power automatically ends.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": true
+    },
+    "effectProfiles": {
+      "activation": "healing.sustain"
+    },
+    "events": [
+      {
+        "id": "lets-go-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "lets-go-support",
+            "type": "active-effect",
+            "effect": {
+              "name": "Let's Go",
+              "img": "systems/marvel-multiverse/icons/healing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "healingSupport": {
+                    "kind": "lets-go",
+                    "resource": "health",
+                    "endWhenAbove": 0,
+                    "statusOnEnd": "unconscious",
+                    "movementOnly": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "lets-go-remove-unconscious",
+            "type": "remove-status",
+            "statusId": "unconscious",
+            "mode": "remove"
+          },
+          {
+            "id": "lets-go-reminder",
+            "type": "manual",
+            "label": "The target can move but cannot take Standard actions or reactions, and can still be killed normally."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

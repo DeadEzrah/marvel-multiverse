@@ -12,7 +12,70 @@
     "duration": "Instant",
     "range": "Reach",
     "cost": "20 Focus",
-    "effect": "The character can bring a target back from being shattered. To attempt this, the character makes an Ego vs TN 20 action check. On a success, the target is restored to 1 Focus. On a Fantastic success, the target is restored to full Focus With any kind of success, the character using this power is then reduced to 1 Focus. On a failure, they only have to pay the minimum cost of 20 Focus."
+    "effect": "The character can bring a target back from being shattered. To attempt this, the character makes an Ego vs TN 20 action check. On a success, the target is restored to 1 Focus. On a Fantastic success, the target is restored to full Focus With any kind of success, the character using this power is then reduced to 1 Focus. On a failure, they only have to pay the minimum cost of 20 Focus.",
+    "ability": "ego",
+    "targetNumber": 20,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": true
+    },
+    "effectProfiles": {
+      "success": "healing.restore"
+    },
+    "events": [
+      {
+        "id": "restore-success",
+        "trigger": "source-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "restore-target-one-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "1 - @focus.value"
+          },
+          {
+            "id": "restore-remove-shattered",
+            "type": "remove-status",
+            "statusId": "shattered",
+            "mode": "remove"
+          }
+        ]
+      },
+      {
+        "id": "restore-success-source-cost",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "restore-source-one-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "1 - @focus.value"
+          }
+        ]
+      },
+      {
+        "id": "restore-fantastic",
+        "trigger": "source-fantastic-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "restore-target-full-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "@focus.max"
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

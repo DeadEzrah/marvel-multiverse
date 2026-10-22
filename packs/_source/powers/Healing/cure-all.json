@@ -12,7 +12,136 @@
     "duration": "Instant",
     "range": "Reach",
     "cost": "15 Focus",
-    "effect": "With a touch, the character can cure any temporary ailments a target suffers from. The character makes an Ego vs TN 12 action check. On a success, the effects of the ailment end immediately. On a Fantastic success, treat the result like a recovery check, and the target gains back that much of any Health and Focus lost to the condition. This can affect conditions including ablaze, bleeding, blinded, corroding, deafened, demoralized, paralyzed, poisoned and unconscious. If the target was demoralized they now have 1 Focus, and if the target was unconscious they now have 1 Health. (They can have more if the character got a Fantastic success and recovered more for them.) Note that this only works on acute conditions and diseases, those the target has contracted recently and that would-under ideal circumstances-resolve soon, leaving them alive. It does not affect chronic or permanent diseases or serious diseases that are likely to be fatal. For instance, it can cure temporary deafness but not permanent deafness. It can stop an allergy attack but not the allergies themselves. It can cure poison but not cancer. It has no effect against the Techno-Organic virus, the Transmode virus, the Legacy virus or other such diseases."
+    "effect": "With a touch, the character can cure any temporary ailments a target suffers from. The character makes an Ego vs TN 12 action check. On a success, the effects of the ailment end immediately. On a Fantastic success, treat the result like a recovery check, and the target gains back that much of any Health and Focus lost to the condition. This can affect conditions including ablaze, bleeding, blinded, corroding, deafened, demoralized, paralyzed, poisoned and unconscious. If the target was demoralized they now have 1 Focus, and if the target was unconscious they now have 1 Health. (They can have more if the character got a Fantastic success and recovered more for them.) Note that this only works on acute conditions and diseases, those the target has contracted recently and that would-under ideal circumstances-resolve soon, leaving them alive. It does not affect chronic or permanent diseases or serious diseases that are likely to be fatal. For instance, it can cure temporary deafness but not permanent deafness. It can stop an allergy attack but not the allergies themselves. It can cure poison but not cancer. It has no effect against the Techno-Organic virus, the Transmode virus, the Legacy virus or other such diseases.",
+    "ability": "ego",
+    "targetNumber": 12,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": true
+    },
+    "effectProfiles": {
+      "success": "healing.cure"
+    },
+    "events": [
+      {
+        "id": "cure-all-success",
+        "trigger": "source-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "cure-all-remove-ablaze",
+            "type": "remove-status",
+            "statusId": "ablaze",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-bleeding",
+            "type": "remove-status",
+            "statusId": "bleeding",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-blinded",
+            "type": "remove-status",
+            "statusId": "blinded",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-corroding",
+            "type": "remove-status",
+            "statusId": "corroding",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-deafened",
+            "type": "remove-status",
+            "statusId": "deafened",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-demoralized",
+            "type": "remove-status",
+            "statusId": "demoralized",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-paralyzed",
+            "type": "remove-status",
+            "statusId": "paralyzed",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-poisoned",
+            "type": "remove-status",
+            "statusId": "poisoned",
+            "mode": "remove"
+          },
+          {
+            "id": "cure-all-remove-unconscious",
+            "type": "remove-status",
+            "statusId": "unconscious",
+            "mode": "remove"
+          }
+        ]
+      },
+      {
+        "id": "cure-all-demoralized-floor",
+        "trigger": "source-success",
+        "recipient": "target",
+        "requirements": [
+          {
+            "type": "target-has-status",
+            "value": "demoralized"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "cure-all-focus-to-one",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "1 - @focus.value"
+          }
+        ]
+      },
+      {
+        "id": "cure-all-unconscious-floor",
+        "trigger": "source-success",
+        "recipient": "target",
+        "requirements": [
+          {
+            "type": "target-has-status",
+            "value": "unconscious"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "cure-all-health-to-one",
+            "type": "resource-change",
+            "resource": "health",
+            "formula": "1 - @health.value"
+          }
+        ]
+      },
+      {
+        "id": "cure-all-fantastic-recovery",
+        "trigger": "source-fantastic-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "cure-all-recovery-reminder",
+            "type": "manual",
+            "label": "Resolve a recovery check and restore that much Health and Focus lost specifically to the cured condition."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

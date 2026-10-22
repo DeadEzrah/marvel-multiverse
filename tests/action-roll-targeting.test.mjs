@@ -127,6 +127,38 @@ test("roll requests flag too few selected targets", () => {
   assert.equal(request.insufficientTargetsWarning, true);
 });
 
+test("fixed-TN powers prefill an editable target number", () => {
+  const target = {
+    documentName: "Actor",
+    uuid: "Actor.patient",
+    name: "Patient",
+  };
+  const request = buildActionRollRequest({
+    actor: {
+      system: {
+        abilities: {
+          ego: { value: 4 }
+        }
+      }
+    },
+    source: {
+      name: "Cure-All",
+      system: {
+        ability: "ego",
+        targetNumber: 12,
+        targeting: {
+          required: true,
+          count: 1
+        }
+      }
+    },
+    targets: [target]
+  });
+
+  assert.equal(request.targetNumber, 12);
+  assert.equal(request.autoPopulatedTargetNumber, true);
+});
+
 test("Defense Stance adds Trouble only to close attacks", () => {
   const targetActor = {
     uuid: "Actor.defender",

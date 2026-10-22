@@ -12,7 +12,101 @@
     "duration": "Instant",
     "range": "Reach",
     "cost": "20 or more Focus",
-    "effect": "The character can try to bring a target back from the dead if they do so soon after the target's death. To attempt this, they must be able to touch the dead target's body. and that body must be relatively intact-at least enough so that if the person came back to life they couldn't instantly die again. The character makes an Ego check against a TN equal to 10 plus 1 for every hour the target has been dead. For example, if the target has been dead for four hours, the TN is 14. On a success, the target is restored to 1 Health. On a Fantastic success, the target is restored to full Health. With any kind of success, the character using this power is then reduced to 1 Focus. On a failure, they only have to pay the minimum cost of 20 Focus."
+    "effect": "The character can try to bring a target back from the dead if they do so soon after the target's death. To attempt this, they must be able to touch the dead target's body. and that body must be relatively intact-at least enough so that if the person came back to life they couldn't instantly die again. The character makes an Ego check against a TN equal to 10 plus 1 for every hour the target has been dead. For example, if the target has been dead for four hours, the TN is 14. On a success, the target is restored to 1 Health. On a Fantastic success, the target is restored to full Health. With any kind of success, the character using this power is then reduced to 1 Focus. On a failure, they only have to pay the minimum cost of 20 Focus.",
+    "ability": "ego",
+    "targetNumber": 10,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": false
+    },
+    "effectProfiles": {
+      "success": "healing.resurrect"
+    },
+    "events": [
+      {
+        "id": "resurrect-success",
+        "trigger": "source-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "resurrect-target-one-health",
+            "type": "resource-change",
+            "resource": "health",
+            "formula": "1 - @health.value"
+          },
+          {
+            "id": "resurrect-remove-dead",
+            "type": "remove-status",
+            "statusId": "dead",
+            "mode": "remove"
+          },
+          {
+            "id": "resurrect-remove-unconscious",
+            "type": "remove-status",
+            "statusId": "unconscious",
+            "mode": "remove"
+          }
+        ]
+      },
+      {
+        "id": "resurrect-success-source-cost",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "resurrect-source-one-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "1 - @focus.value"
+          }
+        ]
+      },
+      {
+        "id": "resurrect-fantastic",
+        "trigger": "source-fantastic-success",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "resurrect-target-full-health",
+            "type": "resource-change",
+            "resource": "health",
+            "formula": "@health.max"
+          }
+        ]
+      },
+      {
+        "id": "resurrect-failure-refund",
+        "trigger": "source-failure",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "resurrect-refund-extra-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "@powerEvent.focusSpent - 20"
+          }
+        ]
+      },
+      {
+        "id": "resurrect-eligibility",
+        "trigger": "before-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "resurrect-eligibility-reminder",
+            "type": "manual",
+            "label": "Set TN to 10 plus hours since death and confirm the body is intact enough to survive revival."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,69 @@
     "duration": "Concentration",
     "range": "Reach",
     "cost": "5 Focus",
-    "effect": "The character can eliminate the effects of a target losing all of their Focus. Rather than becoming demoralized, the target can function normally without having trouble on all their actions due to their lack of focus. They cannot spend more Focus, though, and they can still be shattered. Once the power takes effect the target does not have to remain within the character's reach. When the effect ends. if the target has 0 Focus or less they become demoralized. If the target's Focus rises above 0 at any point, this power automatically ends."
+    "effect": "The character can eliminate the effects of a target losing all of their Focus. Rather than becoming demoralized, the target can function normally without having trouble on all their actions due to their lack of focus. They cannot spend more Focus, though, and they can still be shattered. Once the power takes effect the target does not have to remain within the character's reach. When the effect ends. if the target has 0 Focus or less they become demoralized. If the target's Focus rises above 0 at any point, this power automatically ends.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": true
+    },
+    "effectProfiles": {
+      "activation": "healing.sustain"
+    },
+    "events": [
+      {
+        "id": "never-surrender-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "never-surrender-support",
+            "type": "active-effect",
+            "effect": {
+              "name": "Never Surrender",
+              "img": "systems/marvel-multiverse/icons/healing.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "healingSupport": {
+                    "kind": "never-surrender",
+                    "resource": "focus",
+                    "endWhenAbove": 0,
+                    "statusOnEnd": "demoralized",
+                    "preventFocusSpend": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "never-surrender-remove-demoralized",
+            "type": "remove-status",
+            "statusId": "demoralized",
+            "mode": "remove"
+          },
+          {
+            "id": "never-surrender-reminder",
+            "type": "manual",
+            "label": "The target ignores demoralized Trouble but cannot spend Focus and can still be shattered."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

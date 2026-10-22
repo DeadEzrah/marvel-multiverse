@@ -8,6 +8,7 @@ globalThis.game = {
 };
 
 const {
+  applyPowerOutcomes,
   previewPowerOutcomes,
   sweepActorTurnDefensiveEffects,
   sweepExpiredPowerEffects,
@@ -148,6 +149,222 @@ test("target utility outcomes resolve actors from roll-context target UUIDs", ()
     assert.equal(preview.targets[0].targetUuid, "Actor.target");
     assert.equal(preview.targets[0].name, "Reaction Target");
   } finally {
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
+});
+
+test("fixed-TN action results drive source success events", () => {
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  const target = { uuid: "Actor.patient", name: "Patient", documentName: "Actor" };
+  globalThis.fromUuidSync = (uuid) => uuid === target.uuid ? target : null;
+  const item = {
+    system: {
+      events: [{
+        id: "cure-success",
+        trigger: "source-success",
+        recipient: "target",
+        outcomes: [{
+          id: "remove-poison",
+          type: "remove-status",
+          statusId: "poisoned"
+        }]
+      }]
+    }
+  };
+  const flags = {
+    rollContext: {
+      actorUuid: "Actor.healer",
+      itemUuid: "Item.cure-all",
+      targetUuids: [target.uuid],
+      isFantastic: false
+    },
+    actionRoll: {
+      request: {
+        targets: [{ actorUuid: target.uuid, name: target.name }]
+      },
+      result: {
+        outcome: "success",
+        targetResults: []
+      }
+    }
+  };
+  const message = {
+    getFlag: (_scope, key) => flags[key] ?? null
+  };
+
+  try {
+    const preview = previewPowerOutcomes(message, {
+      item,
+      triggers: ["source-success"]
+    });
+
+    assert.equal(preview.targets.length, 1);
+    assert.equal(preview.targets[0].targetUuid, target.uuid);
+    assert.equal(preview.targets[0].outcomes[0].eventId, "cure-success");
+  } finally {
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
+});
+
+test("resource formulas can use the activation Focus spend", async () => {
+  const originalGame = globalThis.game;
+  const originalFoundry = globalThis.foundry;
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  const originalRoll = globalThis.Roll;
+  const target = {
+    uuid: "Actor.patient",
+    documentName: "Actor",
+    system: { focus: { value: 2, max: 20 } },
+    getRollData() {
+      return this.system;
+    },
+    async update(changes) {
+      this.system.focus.value = changes["system.focus.value"];
+    }
+  };
+  const item = {
+    uuid: "Item.soothing-touch",
+    system: {
+      events: [{
+        id: "restore-focus",
+        trigger: "action-declared",
+        recipient: "target",
+        outcomes: [{
+          id: "restore-spent-focus",
+          type: "resource-change",
+          resource: "focus",
+          formula: "@powerEvent.focusSpent"
+        }]
+      }]
+    }
+  };
+  const flags = {
+    rollContext: {
+      actorUuid: "Actor.healer",
+      itemUuid: item.uuid,
+      targetUuids: [target.uuid]
+    },
+    actionFocus: {
+      amount: 14
+    }
+  };
+  const message = {
+    uuid: "ChatMessage.soothing-touch",
+    getFlag: (_scope, key) => flags[key] ?? null,
+    async update() {}
+  };
+  globalThis.game = {
+    ...originalGame,
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } },
+    settings: {
+      get: (_scope, key) => key === "enableExperimentalPowerOutcomes"
+    }
+  };
+  globalThis.foundry = {
+    utils: {
+      getProperty: (object, path) => path.split(".").reduce((value, key) => value?.[key], object)
+    }
+  };
+  globalThis.fromUuidSync = (uuid) => {
+    if (uuid === target.uuid) return target;
+    if (uuid === item.uuid) return item;
+    return null;
+  };
+  globalThis.Roll = class {
+    constructor(formula, data) {
+      this.formula = formula;
+      this.data = data;
+    }
+    async evaluate() {
+      this.total = this.data.powerEvent.focusSpent;
+      return this;
+    }
+  };
+
+  try {
+    const result = await applyPowerOutcomes(message, {
+      item,
+      eventIds: ["restore-focus"],
+      triggers: ["action-declared"]
+    });
+
+    assert.equal(result.success, true);
+    assert.equal(target.system.focus.value, 16);
+  } finally {
+    globalThis.game = originalGame;
+    globalThis.foundry = originalFoundry;
+    globalThis.fromUuidSync = originalFromUuidSync;
+    globalThis.Roll = originalRoll;
+  }
+});
+
+test("status removal supports Foundry Set status collections", async () => {
+  const originalGame = globalThis.game;
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  const deleted = [];
+  const target = {
+    uuid: "Actor.patient",
+    documentName: "Actor",
+    effects: {
+      contents: [{
+        id: "poisoned-effect",
+        statuses: new Set(["poisoned"])
+      }]
+    },
+    async deleteEmbeddedDocuments(_type, ids) {
+      deleted.push(...ids);
+    }
+  };
+  const item = {
+    uuid: "Item.cure-all",
+    system: {
+      events: [{
+        id: "remove-poison",
+        trigger: "action-declared",
+        recipient: "target",
+        outcomes: [{
+          id: "remove-poisoned",
+          type: "remove-status",
+          statusId: "poisoned"
+        }]
+      }]
+    }
+  };
+  const flags = {
+    rollContext: {
+      actorUuid: "Actor.healer",
+      itemUuid: item.uuid,
+      targetUuids: [target.uuid]
+    }
+  };
+  const message = {
+    uuid: "ChatMessage.cure-all",
+    getFlag: (_scope, key) => flags[key] ?? null,
+    async update() {}
+  };
+  globalThis.game = {
+    ...originalGame,
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } }
+  };
+  globalThis.fromUuidSync = (uuid) => {
+    if (uuid === target.uuid) return target;
+    if (uuid === item.uuid) return item;
+    return null;
+  };
+
+  try {
+    const result = await applyPowerOutcomes(message, {
+      item,
+      eventIds: ["remove-poison"],
+      triggers: ["action-declared"]
+    });
+
+    assert.equal(result.success, true);
+    assert.deepEqual(deleted, ["poisoned-effect"]);
+  } finally {
+    globalThis.game = originalGame;
     globalThis.fromUuidSync = originalFromUuidSync;
   }
 });

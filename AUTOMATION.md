@@ -106,9 +106,13 @@ jb2a.healing_generic.400px.green
 
 The database key was verified live with Sequencer and the active `JB2A_DnD5e` module. Do not replace it with `jb2a.healing_ability.01.green`; that key is not registered by the tested free package.
 
-### Healing Hands Migration
+### Healing Family Migration
 
-`packs/_source/powers/Healing/healing-hands.json` now includes single-target Reach targeting, variable Focus spending, structured healing, and the `healing` success profile. Its Focus cost, Health application, undo, target/self playback, and cleanup passed live validation.
+All seven records under `packs/_source/powers/Healing/` now have structured automation. Healing Hands and Soothing Touch use the selected variable Focus spend as the exact Health or Focus transfer. Let's Go and Never Surrender use target-owned maintained effects that restrict actions or Focus spending, end when the guarded resource rises above 0, and restore the removed status if support ends while that resource remains at 0. Cure-All, Restore, and Resurrect use fixed-TN non-attack action rolls whose ordinary, failure, and Fantastic results drive power events.
+
+Fixed-TN rolls fall back to `item.system.targetNumber` when no defense or explicit request TN exists, while the dialog keeps that value editable. Stored non-attack action results map success to `hit`, Fantastic success to `fantastic-hit`, and failures to `miss`, allowing the existing event trigger system to handle these utility checks. Formula roll data exposes `@powerEvent.focusSpent`; generic resource formulas use Foundry's base `Roll` rather than the Marvel action-die class. Status removal accepts Foundry 14 `Set` collections as well as arrays.
+
+The Healing support service is wired into actor updates, effect deletion, action rolls, and Focus spending. Its concentration cleanup is serialized per source actor so simultaneous resource-update hooks cannot delete the same maintained effect twice. The installed-runtime matrix passed 12/12 gates, all seven compendium records were refreshed, and Shaman's embedded Healing Hands was recreated from the updated compendium document.
 
 Do not infer healing formulas from description text at runtime. Encode them as structured data after validating the official rule and the focus-scaling contract.
 
@@ -389,6 +393,9 @@ Completed:
 - Weather metadata records Fog's Rank-scaled radius and ten-space line-of-sight limit; Weather 1-3's range and speed multipliers; Weather 3's Elemental Blast (Electricity) reaction exception; Weather 4's quarter range/speed and flight prohibition; and Chill/Warm's one-mile 0-100°F limits. Exact tier costs are 10, 15, and 20 Focus for Control Weather 2-4.
 - Thunder uses an all-character ten-space source area, attacks Ego against Resilience, and explicitly disables damage. An ordinary hit applies `deafened`; a Fantastic hit also applies one-round `stunned`. Centered `weather.thunder` playback avoids inappropriate per-target lightning arcs.
 - Eight semantic profiles resolve to verified Free JB2A assets for fog, rain, storm, thunderstorm, hurricane, thunder, chill, and warmth. The installed-runtime matrix passed 6/6 gates for exact Focus spending, concentration creation/replacement/removal, Thunder's ordinary/Fantastic conditions, and full undo. All eight live compendium documents and 12 embedded copies on Shaman, Storm, and Thor were refreshed, and all temporary actors, diagnostics, messages, and the macro were deleted.
+
+- The Healing migration completes all seven powers as one logical batch. Healing Hands and Soothing Touch perform selected-Focus Health and Focus transfers; Let's Go and Never Surrender provide maintained zero-resource support with action and spending guards; Cure-All removes its listed statuses and applies resource floors; Restore and Resurrect distinguish ordinary and Fantastic restoration while applying their source costs and failure refund rules.
+- Five semantic profiles resolve to verified Free JB2A healing and cure assets. The installed-runtime matrix passed 12/12 gates for variable transfers, undo/refunds, maintained support restrictions and automatic ending, status reversion, fixed-TN event routing, ordinary/Fantastic resource restoration, status removal, and Resurrect's extra-Focus failure refund. All seven live compendium documents and Shaman's embedded Healing Hands were refreshed, and temporary actors, diagnostics, staging data, and the macro were deleted.
 
 Not completed:
 

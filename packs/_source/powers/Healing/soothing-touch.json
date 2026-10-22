@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "Reach",
     "cost": "10 or more Focus",
-    "effect": "The character can restore a target creature's Focus with a touch. For every point of Focus the character spends, the target regains a point of Focus, up to their maximum score. The character must spend at least 10 Focus to use the power. Any Focus points that would have been restored beyond the target's maximum Focus are lost."
+    "effect": "The character can restore a target creature's Focus with a touch. For every point of Focus the character spends, the target regains a point of Focus, up to their maximum score. The character must spend at least 10 Focus to use the power. Any Focus points that would have been restored beyond the target's maximum Focus are lost.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "allies",
+      "includeSelf": true
+    },
+    "effectProfiles": {
+      "activation": "healing.focus"
+    },
+    "events": [
+      {
+        "id": "soothing-touch-restore-focus",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "soothing-touch-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "formula": "@powerEvent.focusSpent"
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -13,6 +13,13 @@
     "range": "Reach",
     "cost": "10 or more Focus",
     "effect": "The character can heal a target creature with a touch. For every point of Focus the character spends, the target regains a point of Health, up to their maximum score. The character must spend at least 10 Focus to use the power. Any Health points that would have been healed beyond the target's maximum Health are lost.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": true
+    },
     "targeting": {
       "required": true,
       "count": 1,
@@ -28,12 +35,12 @@
       "focusPerBenefit": 1
     },
     "effectProfiles": {
-      "success": "healing"
+      "activation": "power.healing.target"
     },
     "events": [
       {
         "id": "healing-hands-restore-health",
-        "trigger": "source-success",
+        "trigger": "action-declared",
         "recipient": "target",
         "outcomes": [
           {
