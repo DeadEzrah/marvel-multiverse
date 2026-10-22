@@ -38,10 +38,13 @@
       "enabled": true,
       "ability": "mle",
       "scale": 0.5,
-      "type": "health"
+      "type": "health",
+      "doubleOnFantastic": true
     },
     "effectProfiles": {
-      "impact": "melee.hit.heavy"
+      "attack": "strength.ground-stomp",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy"
     },
     "events": [
       {

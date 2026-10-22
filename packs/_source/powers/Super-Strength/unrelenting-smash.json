@@ -18,7 +18,49 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "mle",
+      "oncePerRound": true,
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 1,
+        "distanceScaling": "reach",
+        "targetFilter": "enemies",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "scale": 0.5,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.melee.whirlwind",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
+      {
+        "id": "unrelenting-smash-continue",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "unrelenting-smash-move-and-repeat",
+            "type": "manual",
+            "label": "You may move up to half your Speed using remaining movement, then pay 15 Focus to activate Unrelenting Smash again. Each target can only be affected once per round."
+          }
+        ]
+      },
       {
         "id": "unrelenting-smash-prone",
         "trigger": "target-fantastic-hit",

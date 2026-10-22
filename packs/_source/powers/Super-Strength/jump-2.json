@@ -30,23 +30,26 @@
         "startTurn": null
       },
       "disabled": false,
-      "origin": "Item.WpErC2aBVVJjvt7d ",
+      "origin": "Item.WpErC2aBVVJjvt7d",
       "_id": "ad19c5484f6a42df",
       "changes": [
         {
           "key": "system.movement.jump.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 20
         },
         {
           "key": "system.movement.jump.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "rank-runspeed",
+          "priority": 20
         },
         {
           "key": "system.movement.jump.noncom",
-          "mode": 1,
-          "value": 3
+          "mode": 5,
+          "value": 3,
+          "priority": 20
         }
       ],
       "description": "",
@@ -58,5 +61,5 @@
     }
   ],
   "folder": "88848a43d8a58388",
-  "_key": "!items!WpErC2aBVVJjvt7d "
+  "_key": "!items!WpErC2aBVVJjvt7d"
 }

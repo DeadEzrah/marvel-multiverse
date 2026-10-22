@@ -18,6 +18,27 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "minCount": 2,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "requireAllTargetsHit": true,
+      "doubleOnFantastic": false
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "banging-heads-prone",

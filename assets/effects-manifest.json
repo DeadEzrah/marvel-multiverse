@@ -178,6 +178,18 @@
       ]
     },
     {
+      "id": "strength.ground-stomp",
+      "category": "strength",
+      "type": "area",
+      "tags": ["strength", "ground", "stomp", "impact", "area"],
+      "sounds": [
+        { "file": "psfx.impacts.bludgeoning.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.ground_crack", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "weapon.blade.hit",
       "category": "weapon",
       "type": "impact",

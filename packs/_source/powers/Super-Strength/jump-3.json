@@ -1,5 +1,5 @@
 {
-  "_id": "7tD1eHitRB9sVZuw163d09d3e7",
+  "_id": "7tD1eHitRB9sVZuw",
   "name": "Jump 3",
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
@@ -30,23 +30,26 @@
         "startTurn": null
       },
       "disabled": false,
-      "origin": "Item.7tD1eHitRB9sVZuw163d09d3e7 ",
+      "origin": "Item.7tD1eHitRB9sVZuw",
       "_id": "4539fe67046045e1",
       "changes": [
         {
           "key": "system.movement.jump.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 30
         },
         {
           "key": "system.movement.jump.calc",
           "mode": 5,
-          "value": "runspeed"
+          "value": "rank-runspeed",
+          "priority": 30
         },
         {
           "key": "system.movement.jump.noncom",
-          "mode": 1,
-          "value": 50
+          "mode": 5,
+          "value": 50,
+          "priority": 30
         }
       ],
       "description": "",
@@ -54,9 +57,9 @@
       "statuses": [],
       "flags": {},
       "tint": null,
-      "_key": "!items.effects!7tD1eHitRB9sVZuw163d09d3e7.4539fe67046045e1"
+      "_key": "!items.effects!7tD1eHitRB9sVZuw.4539fe67046045e1"
     }
   ],
   "folder": "88848a43d8a58388",
-  "_key": "!items!7tD1eHitRB9sVZuw163d09d3e7 "
+  "_key": "!items!7tD1eHitRB9sVZuw"
 }

@@ -12,7 +12,25 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "For every point of Melee defense the character has, they con reduce knockback by 1 space."
+    "effect": "For every point of Melee defense the character has, they con reduce knockback by 1 space.",
+    "activation": {
+      "mode": "utility",
+      "target": "self"
+    },
+    "events": [
+      {
+        "id": "immovable-reduce-knockback",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "immovable-reduce-knockback-reminder",
+            "type": "manual",
+            "label": "Reduce the triggering knockback by up to the character's Melee defense in spaces."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

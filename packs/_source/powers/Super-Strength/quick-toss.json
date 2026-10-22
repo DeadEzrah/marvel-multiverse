@@ -18,7 +18,35 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "movement.whoosh",
+      "hit": "melee.hit.heavy",
+      "fantasticHit": "melee.hit.heavy"
+    },
     "events": [
+      {
+        "id": "quick-toss-thrown-person",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "quick-toss-resolve-thrown-person",
+            "type": "manual",
+            "label": "Apply regular damage and prone to the grabbed person, then place them within 1 space of the target. Validate the throw range from Mighty and the grabbed person's size."
+          }
+        ]
+      },
       {
         "id": "quick-toss-prone",
         "trigger": "target-fantastic-hit",
