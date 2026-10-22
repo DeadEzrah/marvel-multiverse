@@ -17,7 +17,35 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 2
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "events": [
+      {
+        "id": "point-blank-parry-bleeding",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "apply-bleeding",
+            "type": "status",
+            "statusId": "bleeding",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

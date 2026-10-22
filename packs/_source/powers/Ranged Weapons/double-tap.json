@@ -15,7 +15,37 @@
     "effect": "The character makes a ranged attack against an enemy within 2 spaces. If the attack is a success, the enemy takes regular damage. On a Fantastic success, the enemy takes double damage and is bleeding.",
     "ability": "agl",
     "attackTarget": "agl",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 2
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "events": [
+      {
+        "id": "double-tap-bleeding",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "apply-bleeding",
+            "type": "status",
+            "statusId": "bleeding",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

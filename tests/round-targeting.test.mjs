@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 const {
+  resolveActiveCombat,
   resolveOncePerRoundTargetActorUuids
 } = await import("../lib/services/round-targeting.mjs");
 
@@ -63,4 +64,22 @@ test("ordinary targeting does not consult the round ledger", () => {
   );
 
   assert.equal(excluded.size, 0);
+});
+
+test("active combat resolution ignores a stale game.combat reference", () => {
+  const previousGame = globalThis.game;
+  const active = { id: "active", active: true, round: 2 };
+  globalThis.game = {
+    combat: { id: "stale", active: false, round: 8 },
+    combats: {
+      active,
+      contents: [active]
+    }
+  };
+
+  try {
+    assert.equal(resolveActiveCombat(), active);
+  } finally {
+    globalThis.game = previousGame;
+  }
 });

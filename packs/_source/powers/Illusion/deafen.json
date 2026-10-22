@@ -16,7 +16,38 @@
     "ability": "ego",
     "attackTarget": "vig",
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 20,
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "events": [
+      {
+        "id": "deafen-target",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "apply-deafened",
+            "type": "status",
+            "statusId": "deafened",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

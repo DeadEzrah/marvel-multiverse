@@ -17,7 +17,36 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 2,
+      "minCount": 1,
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "scale": 0.5,
+      "doubleOnFantastic": true
+    },
+    "events": [
+      {
+        "id": "snap-shooting-bleeding",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "apply-bleeding",
+            "type": "status",
+            "statusId": "bleeding",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -10,6 +10,7 @@ globalThis.game = {
 const {
   previewPowerOutcomes,
   sweepActorTurnDefensiveEffects,
+  sweepExpiredPowerEffects,
   undoPowerOutcomes,
   validatePowerEvents
 } = await import("../lib/services/power-events.mjs");
@@ -313,6 +314,99 @@ test("undo without a transaction id reverses every applied target outcome", asyn
     assert.deepEqual(deleted.sort(), ["effect-a", "effect-b"]);
     assert.equal(transactions.every((entry) => entry.undone), true);
   } finally {
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
+});
+
+test("concurrent duration sweeps delete an expired effect only once", async () => {
+  const transaction = {
+    id: "timed-status",
+    targetActorUuid: "Actor.target",
+    createdEffectIds: ["effect-a"],
+    duration: { type: "rounds", value: 1 },
+    expiration: { combatId: "combat", round: 1 },
+    undone: false
+  };
+  const deleted = [];
+  const actor = {
+    documentName: "Actor",
+    effects: new Map([["effect-a", { id: "effect-a" }]]),
+    deleteEmbeddedDocuments: async (_type, ids) => {
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      deleted.push(...ids);
+      for (const id of ids) actor.effects.delete(id);
+    }
+  };
+  const message = {
+    getFlag: (_scope, key) => key === "resolution" ? { eventTransactions: [transaction] } : null,
+    update: async () => {}
+  };
+  const originalGame = globalThis.game;
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  globalThis.game = {
+    ...originalGame,
+    messages: [message],
+    actors: [],
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } }
+  };
+  globalThis.fromUuidSync = (uuid) => uuid === "Actor.target" ? actor : null;
+
+  try {
+    const results = await Promise.all([
+      sweepExpiredPowerEffects({ id: "combat", round: 2 }),
+      sweepExpiredPowerEffects({ id: "combat", round: 2 }, { boundary: "start", combatantId: "target" })
+    ]);
+
+    assert.deepEqual(deleted, ["effect-a"]);
+    assert.equal(transaction.undone, true);
+    assert.equal(results[0].sweptCount + results[1].sweptCount, 1);
+  } finally {
+    globalThis.game = originalGame;
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
+});
+
+test("duration sweeps close stale transactions whose effects are already gone", async () => {
+  const transaction = {
+    id: "stale-status",
+    targetActorUuid: "Actor.target",
+    createdEffectIds: ["missing-effect"],
+    duration: { type: "rounds", value: 1 },
+    expiration: { combatId: "combat", round: 1 },
+    undone: false
+  };
+  let deleteCalls = 0;
+  const actor = {
+    documentName: "Actor",
+    effects: new Map(),
+    deleteEmbeddedDocuments: async () => {
+      deleteCalls += 1;
+    }
+  };
+  const message = {
+    getFlag: (_scope, key) => key === "resolution" ? { eventTransactions: [transaction] } : null,
+    update: async () => {}
+  };
+  const originalGame = globalThis.game;
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  globalThis.game = {
+    ...originalGame,
+    messages: [message],
+    actors: [],
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } }
+  };
+  globalThis.fromUuidSync = (uuid) => uuid === "Actor.target" ? actor : null;
+
+  try {
+    const result = await sweepExpiredPowerEffects({ id: "combat", round: 2 });
+
+    assert.equal(result.sweptCount, 1);
+    assert.equal(deleteCalls, 0);
+    assert.equal(transaction.undone, true);
+  } finally {
+    globalThis.game = originalGame;
     globalThis.fromUuidSync = originalFromUuidSync;
   }
 });
