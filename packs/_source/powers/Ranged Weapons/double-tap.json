@@ -29,6 +29,9 @@
       "type": "health",
       "doubleOnFantastic": true
     },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
     "events": [
       {
         "id": "double-tap-bleeding",

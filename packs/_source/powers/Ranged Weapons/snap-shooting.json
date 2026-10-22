@@ -30,6 +30,9 @@
       "scale": 0.5,
       "doubleOnFantastic": true
     },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
     "events": [
       {
         "id": "snap-shooting-bleeding",

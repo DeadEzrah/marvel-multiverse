@@ -34,7 +34,7 @@ function damageFor(source, isFantastic) {
   }).finalDamage;
 }
 
-test("Double Tap and Point-Blank Parry deal regular or double damage", () => {
+test("Double Tap, Point-Blank Parry, and Stopping Power deal regular or double damage", () => {
   const source = {
     system: {
       ability: "agl",
@@ -50,7 +50,7 @@ test("Double Tap and Point-Blank Parry deal regular or double damage", () => {
   assert.equal(damageFor(source, true), 20);
 });
 
-test("Snap Shooting deals half regular damage or full Fantastic damage", () => {
+test("Snap Shooting and Weapons Blazing deal half regular damage or full Fantastic damage", () => {
   const source = {
     system: {
       ability: "agl",

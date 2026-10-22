@@ -163,6 +163,19 @@ The 13 weapon records are structured locally but still require complete live gat
   - The reactions and mobility batch live-validated Exploit's automatic Fantastic-hit victim targeting, exact 5-Focus spend/refund, Resilience attack, zero applied Health Damage Reduction, duplicate-trigger rejection, damage undo, and trigger undo. Riposte auto-targeted the attacker after a close miss, rejected duplicate use, resolved Fantastic damage and its weapon-effect reminder, and undid cleanly. Hit n Run started at one Edge, applied regular and Fantastic damage, preserved both movement and weapon-effect reminders, and undid cleanly.
   - Exploit copies were refreshed on Blade, Karnak, Lady Deathstrike, and Sabretooth; Riposte copies were refreshed on Blade, Lady Deathstrike, and Sabretooth. Hit n Run had no existing owner and was live-gated through a temporary embedded copy that was removed during cleanup. Riposte's shared reaction lookup now permits a missed close attack with zero or negative hypothetical damage when the reaction makes its own attack, while response-damage reactions retain their positive-damage requirement.
   - Unstoppable Assault completed the family. Live gates verified exact 15-Focus spending, half damage to every enemy within Reach, rejection of a repeat with only already-affected targets before Focus spend, filtering an already-affected enemy while allowing a newly reached enemy, exact repeat Focus spending, next-round eligibility reset, full Fantastic damage, per-target weapon-effect reminders, damage undo, Focus refunds, and cleanup. Sabretooth's embedded copy was refreshed.
+- [ ] Complete the Ranged Weapons family migration.
+  - [x] Double Tap has one-target two-space validation, regular/Fantastic damage, Fantastic bleeding, and generic projectile playback.
+  - [x] Snap Shooting has one-or-two-target selection, half/full damage, per-target Fantastic bleeding, and generic projectile playback.
+  - [x] Weapons Blazing accepts one or two targets, deals half/full damage, records its Fantastic bonus-attack reminder, and plays the generic projectile profile.
+  - [x] Stopping Power has one-target validation, exact 5-Focus spend/refund, regular/Fantastic damage, a same-target bonus-attack reminder, and generic projectile playback.
+  - [ ] Covering Fire, Return Fire, and Suppressive Fire Focus-damage group.
+  - [ ] Point-Blank Parry and Kill Zone reaction group.
+  - [ ] Dance of Death and Orchestra of Overkill area group.
+  - [ ] Headshot and Sniping precision group.
+  - [ ] Slow-Motion Shoot-Dodge mobility group.
+  - [ ] Fast Hands passive.
+  - The rapid-fire batch live-validated Double Tap's 108 Fantastic damage and projectile playback; one-target Weapons Blazing for 37 half damage; two-target Fantastic Snap Shooting for 54 damage and bleeding on each target; and Stopping Power's exact 5-Focus transaction, 104 Fantastic damage, projectile playback, and bonus-attack reminder. All damage, statuses, Focus, actor data, messages, targets, and tokens were restored or removed.
+  - Ten embedded copies were refreshed across Blade, Crossbones, Elsa Bloodstone, Gambit, Hawkeye, and Mystique.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

@@ -21,13 +21,15 @@
     "targeting": {
       "required": true,
       "count": 2,
+      "minCount": 1,
       "defense": "agl"
     },
     "damage": {
       "enabled": true,
       "ability": "agl",
       "scale": 0.5,
-      "type": "health"
+      "type": "health",
+      "doubleOnFantastic": true
     },
     "effectProfiles": {
       "attack": "weapon.projectile.gunshot"
