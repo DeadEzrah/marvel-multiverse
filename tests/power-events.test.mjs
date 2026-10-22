@@ -187,6 +187,41 @@ test("self-and-target outcomes include source and the hit target", () => {
   assert.equal(preview.targets[1].outcomes[0].recipientRole, "self-and-target");
 });
 
+test("after-roll source reminders appear after a hit or miss", () => {
+  const item = {
+    system: {
+      events: [{
+        id: "regain-reaction",
+        trigger: "after-roll",
+        recipient: "source",
+        outcomes: [{
+          id: "regain-reaction-reminder",
+          type: "manual",
+          label: "Regain the reaction spent on this attack."
+        }]
+      }]
+    }
+  };
+  const message = createMessage({
+    targets: [{
+      uuid: "Actor.target",
+      actorUuid: "Actor.target",
+      name: "Target",
+      outcome: "miss"
+    }]
+  });
+
+  const preview = previewPowerOutcomes(message, {
+    item,
+    triggers: ["after-roll"],
+    sourceName: "Source"
+  });
+
+  assert.equal(preview.targets.length, 1);
+  assert.equal(preview.targets[0].targetUuid, null);
+  assert.equal(preview.targets[0].outcomes[0].outcome.label, "Regain the reaction spent on this attack.");
+});
+
 test("damage-gated conditions require positive matching damage and any declared hit requirement", () => {
   const fantasticDamageItem = {
     system: {

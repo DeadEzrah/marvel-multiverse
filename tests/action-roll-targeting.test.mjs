@@ -81,6 +81,23 @@ test("minimum targets are capped at the declared maximum", () => {
   assert.equal(targeting.minCount, 2);
 });
 
+test("Kill Zone requires line of sight to an enemy", () => {
+  const targeting = resolveTargetingConfig({
+    system: {
+      targeting: {
+        required: true,
+        count: 1,
+        defense: "agl",
+        requiresLineOfSight: true,
+        targetFilter: "enemies"
+      }
+    }
+  });
+
+  assert.equal(targeting.requiresLineOfSight, true);
+  assert.equal(targeting.targetFilter, "enemies");
+});
+
 test("roll requests flag too few selected targets", () => {
   const request = buildActionRollRequest({
     actor: {

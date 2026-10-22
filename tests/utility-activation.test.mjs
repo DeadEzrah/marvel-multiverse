@@ -141,6 +141,56 @@ test("Return Fire targets the attacker from the latest incoming attack", () => {
   );
 });
 
+test("Point-Blank Parry targets the attacker from the latest incoming miss", () => {
+  const actor = { uuid: "Actor.defender" };
+  const source = {
+    system: {
+      activation: {
+        reactionType: "incoming-attack-miss"
+      }
+    }
+  };
+  const createAttackMessage = (id, isSuccess) => ({
+    id,
+    uuid: `ChatMessage.${id}`,
+    getFlag: (_scope, key) => ({
+      rollContext: {
+        actorUuid: "Actor.attacker",
+        tokenUuid: "Scene.scene.Token.attacker",
+        targetUuids: [actor.uuid]
+      },
+      actionRoll: {
+        request: { target: { actorUuid: actor.uuid } },
+        result: { isSuccess }
+      }
+    })[key] ?? null
+  });
+
+  assert.deepEqual(
+    resolveLatestDamageReactionContext(actor, source, [
+      createAttackMessage("miss", false),
+      createAttackMessage("hit", true)
+    ]),
+    {
+      type: "incoming-attack-miss",
+      sourceDamageMessageUuid: "ChatMessage.miss",
+      targetActorUuid: "Actor.attacker",
+      targetUuid: "Scene.scene.Token.attacker"
+    }
+  );
+
+  const miss = createAttackMessage("reserved-miss", false);
+  const reaction = {
+    id: "reaction",
+    uuid: "ChatMessage.reaction",
+    getFlag: (_scope, key) => ({
+      reactionContext: { sourceDamageMessageUuid: miss.uuid },
+      damageApplications: [{ undone: false }]
+    })[key] ?? null
+  };
+  assert.equal(resolveLatestDamageReactionContext(actor, source, [miss, reaction]), null);
+});
+
 test("Counterstrike Technique requires Attack Stance and uses half regular close damage", () => {
   const actor = {
     uuid: "Actor.defender",

@@ -22,12 +22,19 @@
       "required": true,
       "count": 1,
       "defense": "agl",
-      "range": 2
+      "range": 2,
+      "targetFilter": "enemies"
     },
     "damage": {
       "enabled": true,
       "type": "health",
       "doubleOnFantastic": true
+    },
+    "activation": {
+      "reactionType": "incoming-attack-miss"
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
     },
     "events": [
       {

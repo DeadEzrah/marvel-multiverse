@@ -35,7 +35,7 @@ function damageFor(source, isFantastic) {
   }).finalDamage;
 }
 
-test("Double Tap, Point-Blank Parry, and Stopping Power deal regular or double damage", () => {
+test("Double Tap, Point-Blank Parry, Stopping Power, and Kill Zone deal regular or double damage", () => {
   const source = {
     system: {
       ability: "agl",
