@@ -12,7 +12,88 @@
     "duration": "Concentration",
     "range": "5 spaces per rank",
     "cost": "10 Focus per turn",
-    "effect": "The character picks up to one ally in their line of sight per the character's rank. The character and those allies gain an edge on all action checks made while this power is in effect. There is no limit on the range from the character to their allies once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working."
+    "effect": "The character picks up to one ally in their line of sight per the character's rank. The character and those allies gain an edge on all action checks made while this power is in effect. There is no limit on the range from the character to their allies once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working.",
+    "activation": {
+      "mode": "utility",
+      "target": "required"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "countScaling": "rank",
+      "minCount": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "allies"
+    },
+    "effectProfiles": {
+      "activation": "luck.good"
+    },
+    "events": [
+      {
+        "id": "lucky-us-source-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "lucky-us-source-edge",
+            "type": "active-effect",
+            "effect": {
+              "name": "Lucky Us",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Lucky Us",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "lucky-us-targets-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "lucky-us-target-edge",
+            "type": "active-effect",
+            "effect": {
+              "name": "Lucky Us",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Lucky Us",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

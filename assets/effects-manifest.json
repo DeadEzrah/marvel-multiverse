@@ -754,6 +754,26 @@
       "animations": [
         { "file": "jb2a.wall_of_force.horizontal.grey", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "luck.good",
+      "category": "luck",
+      "type": "activation",
+      "tags": ["luck", "fortune", "edge", "blessing"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "luck.jinx",
+      "category": "luck",
+      "type": "impact",
+      "tags": ["luck", "jinx", "trouble", "curse"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.condition.curse.01.001.red", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

@@ -12,7 +12,47 @@
     "duration": "Concentration",
     "range": "",
     "cost": "3 Focus per turn",
-    "effect": "The character gains an edge on all action checks made while this power is in effect. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working."
+    "effect": "The character gains an edge on all action checks made while this power is in effect. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "luck.good"
+    },
+    "events": [
+      {
+        "id": "lucky-me-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "lucky-me-edge",
+            "type": "active-effect",
+            "effect": {
+              "name": "Lucky Me",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Lucky Me",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

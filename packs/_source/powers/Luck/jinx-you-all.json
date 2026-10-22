@@ -12,7 +12,57 @@
     "duration": "Concentration",
     "range": "5 spaces per rank",
     "cost": "10 Focus per turn",
-    "effect": "The character picks up to one foe per rank in their line of sight. Those foes have trouble on all action checks made for the power's duration. There is no limit on the range from the character to their foes once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working."
+    "effect": "The character picks up to one foe per rank in their line of sight. Those foes have trouble on all action checks made for the power's duration. There is no limit on the range from the character to their foes once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working.",
+    "activation": {
+      "mode": "utility",
+      "target": "required"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "countScaling": "rank",
+      "minCount": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies"
+    },
+    "effectProfiles": {
+      "activation": "luck.jinx"
+    },
+    "events": [
+      {
+        "id": "jinx-you-all-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "jinx-you-all-trouble",
+            "type": "active-effect",
+            "effect": {
+              "name": "Jinx You All",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Jinx You All",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

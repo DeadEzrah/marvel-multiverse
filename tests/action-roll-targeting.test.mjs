@@ -5,10 +5,29 @@ const {
   applyPostAttackDefensivePowers,
   buildActionRollRequest,
   expireTargetDefensiveRollModifiers,
+  resolveActorEffectRollModifiers,
   resolveDefensiveTargetResults,
   resolveTargetDefensiveRollModifiers,
   resolveTargetingConfig
 } = await import("../lib/services/action-roll.mjs");
+
+function luckModifierEffect(overrides = {}) {
+  return {
+    id: "luck-effect",
+    uuid: "Actor.lucky.ActiveEffect.luck-effect",
+    name: "Lucky Me",
+    flags: {
+      "marvel-multiverse": {
+        actionRollModifier: {
+          mode: "edge",
+          count: 1,
+          nonStacking: true,
+          ...overrides,
+        },
+      },
+    },
+  };
+}
 
 test("Untouchable Position applies after an attack without stacking", async () => {
   const created = [];
@@ -159,6 +178,55 @@ test("fixed-TN powers prefill an editable target number", () => {
   assert.equal(request.autoPopulatedTargetNumber, true);
 });
 
+test("Luck support applies universal non-stacking actor modifiers", () => {
+  const actor = {
+    uuid: "Actor.lucky",
+    system: { abilities: { ego: { value: 4 } } },
+    effects: [luckModifierEffect()],
+    items: [],
+  };
+
+  const alone = buildActionRollRequest({ actor, ability: "ego" });
+  const withExistingEdge = buildActionRollRequest({ actor, ability: "ego", edgeCount: 1 });
+
+  assert.equal(alone.edge, 1);
+  assert.equal(withExistingEdge.edge, 1);
+  assert.deepEqual(alone.rollModifierReasons, ["Lucky Me"]);
+});
+
+test("Charmed Life is optional and unavailable after use in the current round", () => {
+  const actor = {
+    uuid: "Actor.lucky",
+    effects: [luckModifierEffect({
+      label: "Charmed Life",
+      selection: "optional",
+      oncePerRound: true,
+    })],
+    items: [],
+  };
+  const combatContext = { combatId: "Combat.test", round: 2 };
+  const available = resolveActorEffectRollModifiers(actor, { combatContext, messages: [] });
+  const used = resolveActorEffectRollModifiers(actor, {
+    combatContext,
+    messages: [{
+      flags: {
+        "marvel-multiverse": {
+          rollContext: { actorUuid: actor.uuid, combatContext },
+          actionRoll: {
+            request: {
+              selectedCircumstanceModifierIds: ["Actor.lucky.ActiveEffect.luck-effect"],
+            },
+          },
+        },
+      },
+    }],
+  });
+
+  assert.equal(available.length, 1);
+  assert.equal(available[0].selected, false);
+  assert.equal(used.length, 0);
+});
+
 test("Defense Stance adds Trouble only to close attacks", () => {
   const targetActor = {
     uuid: "Actor.defender",
@@ -208,6 +276,30 @@ test("Slow-Motion Shoot-Dodge adds Trouble only to attacks against Agility defen
 
   assert.equal(resolveTargetDefensiveRollModifiers(targets, { attackTarget: "agl" }).length, 1);
   assert.equal(resolveTargetDefensiveRollModifiers(targets, { attackTarget: "mle" }).length, 0);
+});
+
+test("Real Jinx applies non-stacking Trouble only to attacks", () => {
+  const targetActor = {
+    uuid: "Actor.jinx",
+    effects: [{
+      id: "real-jinx",
+      flags: {
+        "marvel-multiverse": {
+          defensiveRollModifier: {
+            mode: "trouble",
+            count: 1,
+            nonStacking: true,
+            requiresAttack: true,
+          },
+        },
+      },
+    }],
+    items: [],
+  };
+  const targets = [{ actor: targetActor, actorUuid: targetActor.uuid }];
+
+  assert.equal(resolveTargetDefensiveRollModifiers(targets, { isAttack: true }).length, 1);
+  assert.equal(resolveTargetDefensiveRollModifiers(targets, { isAttack: false }).length, 0);
 });
 
 test("Unflappable Poise stacks with Defense Stance for double Trouble", () => {

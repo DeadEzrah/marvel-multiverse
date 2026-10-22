@@ -12,7 +12,66 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus per turn",
-    "effect": "The character makes a Melee check to touch the target. On a success, the power takes effect and that foe has trouble on all action checks made for the power duration. On a Fantastic success, the target also takes standard (not doubled) Melee damage.  The character must pay the Focus cost at the start af each of their subsequent turns of concentration to keep the power working."
+    "effect": "The character makes a Melee check to touch the target. On a success, the power takes effect and that foe has trouble on all action checks made for the power duration. On a Fantastic success, the target also takes standard (not doubled) Melee damage.  The character must pay the Focus cost at the start af each of their subsequent turns of concentration to keep the power working.",
+    "ability": "mle",
+    "attackTarget": "agl",
+    "attackKind": "close",
+    "attack": true,
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "minCount": 1,
+      "defense": "agl",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "effectProfiles": {
+      "hit": "luck.jinx",
+      "fantasticHit": "luck.jinx",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "jinx-you-active",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "jinx-you-trouble",
+            "type": "active-effect",
+            "effect": {
+              "name": "Jinx You",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Jinx You",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

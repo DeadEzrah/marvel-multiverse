@@ -15,7 +15,31 @@
     "effect": "All tharacters who attempt to harm the character by direct action have trouble on their action checks. Tha doea not stack with any other trouble."
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "_id": "RealJinxEffect01",
+      "_key": "!items.effects!melmQel0EKI6x1Dz.RealJinxEffect01",
+      "name": "Real Jinx",
+      "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+      "origin": "Item.melmQel0EKI6x1Dz",
+      "changes": [],
+      "disabled": false,
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "defensiveRollModifier": {
+            "mode": "trouble",
+            "count": 1,
+            "label": "Real Jinx",
+            "requiresAttack": true,
+            "nonStacking": true,
+            "endConcentrationOnSuccessfulAttack": false
+          }
+        }
+      }
+    }
+  ],
   "folder": "c3155c708eb54219",
   "_key": "!items!melmQel0EKI6x1Dz"
 }

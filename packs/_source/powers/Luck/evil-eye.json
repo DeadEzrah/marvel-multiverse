@@ -12,7 +12,56 @@
     "duration": "Concentration",
     "range": "5 spaces per rank",
     "cost": "5 Focus per turn",
-    "effect": "The character picks a foe in their line of sight That foe has trouble on all action checks made for the power's duration There is no limit on the range between the character and the foe once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working."
+    "effect": "The character picks a foe in their line of sight That foe has trouble on all action checks made for the power's duration There is no limit on the range between the character and the foe once the power is activated. The character must pay the Focus cost at the start of each of their subsequent turns of concentration to keep the power working.",
+    "activation": {
+      "mode": "utility",
+      "target": "required"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "minCount": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies"
+    },
+    "effectProfiles": {
+      "activation": "luck.jinx"
+    },
+    "events": [
+      {
+        "id": "evil-eye-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "evil-eye-trouble",
+            "type": "active-effect",
+            "effect": {
+              "name": "Evil Eye",
+              "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "actionRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Evil Eye",
+                    "selection": "automatic",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

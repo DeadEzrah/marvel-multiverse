@@ -15,7 +15,31 @@
     "effect": "The character gains an edge on any single action check each round. This does not stack with any other edge."
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "_id": "CharmedLife00001",
+      "_key": "!items.effects!XGaRTk8xwYBUUYdo.CharmedLife00001",
+      "name": "Charmed Life",
+      "img": "systems/marvel-multiverse/icons/four-leaf-clover.svg",
+      "origin": "Item.XGaRTk8xwYBUUYdo",
+      "changes": [],
+      "disabled": false,
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "actionRollModifier": {
+            "mode": "edge",
+            "count": 1,
+            "label": "Charmed Life",
+            "selection": "optional",
+            "nonStacking": true,
+            "oncePerRound": true
+          }
+        }
+      }
+    }
+  ],
   "folder": "c3155c708eb54219",
   "_key": "!items!XGaRTk8xwYBUUYdo"
 }
