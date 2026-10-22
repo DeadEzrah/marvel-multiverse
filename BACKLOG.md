@@ -168,7 +168,7 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Snap Shooting has one-or-two-target selection, half/full damage, per-target Fantastic bleeding, and generic projectile playback.
   - [x] Weapons Blazing accepts one or two targets, deals half/full damage, records its Fantastic bonus-attack reminder, and plays the generic projectile profile.
   - [x] Stopping Power has one-target validation, exact 5-Focus spend/refund, regular/Fantastic damage, a same-target bonus-attack reminder, and generic projectile playback.
-  - [ ] Covering Fire, Return Fire, and Suppressive Fire Focus-damage group.
+  - [x] Covering Fire, Return Fire, and Suppressive Fire redirect damage to Focus after applying Health Damage Reduction, double on a Fantastic success, and apply one round of `stunned` only when Focus is actually lost. Return Fire reserves the latest incoming attack and auto-targets its attacker.
   - [ ] Point-Blank Parry and Kill Zone reaction group.
   - [ ] Dance of Death and Orchestra of Overkill area group.
   - [ ] Headshot and Sniping precision group.
@@ -176,11 +176,12 @@ The 13 weapon records are structured locally but still require complete live gat
   - [ ] Fast Hands passive.
   - The rapid-fire batch live-validated Double Tap's 108 Fantastic damage and projectile playback; one-target Weapons Blazing for 37 half damage; two-target Fantastic Snap Shooting for 54 damage and bleeding on each target; and Stopping Power's exact 5-Focus transaction, 104 Fantastic damage, projectile playback, and bonus-attack reminder. All damage, statuses, Focus, actor data, messages, targets, and tokens were restored or removed.
   - Ten embedded copies were refreshed across Blade, Crossbones, Elsa Bloodstone, Gambit, Hawkeye, and Mystique.
+  - The Focus-damage batch live-validated Health Damage Reduction with unchanged Health, Focus-only loss, Fantastic doubling, one-round `stunned`, clean status undo, no stun at zero Focus, Return Fire attacker binding, corrected Covering Fire Vigilance defense, and generic projectile profiles. Gambit's embedded Suppressive Fire copy was refreshed, and all temporary actors and messages were deleted.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.
   - Live gates verified Deafen's exact 5-Focus spend, zero ordinary-success damage, one-round status lifecycle, active-combat selection, and expiration cleanup. Fantastic Double Tap dealt double damage, applied manual-duration bleeding, and supported condition and damage undo. Nine embedded Ranged Weapons copies were refreshed and all temporary data was removed.
-  - Remaining applications require optional-choice controls, third-party recipients, delayed movement/reaction triggers, area-entry checks, hybrid Health-reduction/Focus-damage support, or a canonical ruling for `pinned`.
+  - Remaining applications require optional-choice controls, third-party recipients, delayed movement/reaction triggers, area-entry checks, or a canonical ruling for `pinned`.
 - [ ] Add automated tests for automation-preset merging and explicit-field precedence.
 - [ ] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
 - [ ] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.

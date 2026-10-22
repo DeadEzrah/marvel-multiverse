@@ -61,7 +61,7 @@ test("Untouchable Position expires at the start of the defender's next turn", as
   }
 });
 
-function createMessage({ targets, damageContext = { targets: [] } }) {
+function createMessage({ targets, damageContext = { targets: [] }, damageApplications = [] }) {
   const flags = {
     rollContext: {
       actorUuid: "Actor.source",
@@ -70,7 +70,8 @@ function createMessage({ targets, damageContext = { targets: [] } }) {
     attackResolution: {
       targets
     },
-    damageContext
+    damageContext,
+    damageApplications
   };
 
   return {
@@ -218,7 +219,7 @@ test("damage-gated conditions require positive matching damage and any declared 
       }]
     }
   };
-  const createDamageMessage = ({ outcome, finalDamage }) => createMessage({
+  const createDamageMessage = ({ outcome, finalDamage, previousValue = 10, newValue = previousValue - finalDamage }) => createMessage({
     targets: [{
       uuid: "Token.target",
       actor: { uuid: "Actor.target", name: "Target" },
@@ -230,7 +231,17 @@ test("damage-gated conditions require positive matching damage and any declared 
         targetUuid: "Token.target",
         finalDamage
       }]
-    }
+    },
+    damageApplications: [{
+      undone: false,
+      targets: [{
+        targetUuid: "Token.target",
+        actorUuid: "Actor.target",
+        appliedDamage: finalDamage,
+        previousValue,
+        newValue
+      }]
+    }]
   });
 
   const fantasticDamage = previewPowerOutcomes(
@@ -245,6 +256,10 @@ test("damage-gated conditions require positive matching damage and any declared 
     createDamageMessage({ outcome: "hit", finalDamage: 1 }),
     { item: fantasticDamageItem, triggers: ["health-damage-applied"] }
   );
+  const noResourceLoss = previewPowerOutcomes(
+    createDamageMessage({ outcome: "fantastic-hit", finalDamage: 1, previousValue: 0, newValue: 0 }),
+    { item: fantasticDamageItem, triggers: ["health-damage-applied"] }
+  );
   const headshotDamage = previewPowerOutcomes(
     createDamageMessage({ outcome: "hit", finalDamage: 1 }),
     { item: anyDamageItem, triggers: ["health-damage-applied"] }
@@ -253,6 +268,7 @@ test("damage-gated conditions require positive matching damage and any declared 
   assert.equal(fantasticDamage.targets.length, 1);
   assert.equal(zeroDamage.targets.length, 0);
   assert.equal(ordinaryDamage.targets.length, 0);
+  assert.equal(noResourceLoss.targets.length, 0);
   assert.equal(headshotDamage.targets.length, 1);
 });
 

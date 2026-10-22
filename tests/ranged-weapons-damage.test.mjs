@@ -19,7 +19,8 @@ const attacker = {
 
 const target = {
   system: {
-    healthDamageReduction: 0
+    healthDamageReduction: 0,
+    focusDamageReduction: 0
   }
 };
 
@@ -65,4 +66,38 @@ test("Snap Shooting and Weapons Blazing deal half regular damage or full Fantast
 
   assert.equal(damageFor(source, false), 5);
   assert.equal(damageFor(source, true), 10);
+});
+
+test("Suppressive, Return, and Covering Fire damage Focus after Health Damage Reduction", () => {
+  const source = {
+    system: {
+      ability: "agl",
+      damage: {
+        enabled: true,
+        type: "focus",
+        damageReductionType: "health",
+        doubleOnFantastic: true
+      }
+    }
+  };
+  const reducedTarget = {
+    system: {
+      healthDamageReduction: 1,
+      focusDamageReduction: 0
+    }
+  };
+  const damage = (isFantastic) => resolveDamage({
+    attacker,
+    target: reducedTarget,
+    source,
+    rollContext: { ability: "agl" },
+    rollResult: { isSuccess: true, isFantastic, marvelDie: 3 },
+    config: resolveDamageConfig(source)
+  });
+
+  assert.equal(damage(false).damageType, "focus");
+  assert.equal(damage(false).damageReductionType, "health");
+  assert.equal(damage(false).damageReduction, 1);
+  assert.equal(damage(false).finalDamage, 7);
+  assert.equal(damage(true).finalDamage, 14);
 });

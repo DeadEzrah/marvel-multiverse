@@ -14,7 +14,50 @@
     "cost": "5 Focus",
     "effect": "The character makes an Agility attack against a target's Vigilance defense, If the attack is a success, apply Health Damage Reduction normally. Any damage taken is then applied to the target's Focus instead, It it's a Fantastic success, the damage is doubled and, if the target takes any focus damage, they are stunned for 1 round.",
     "ability": "agl",
-    "attackTarget": "vig"
+    "attackTarget": "vig",
+    "attackKind": "ranged",
+    "attack": true,
+    "damageType": "focus",
+    "activation": {
+      "reactionType": "incoming-attack"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "focus",
+      "damageReductionType": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "weapon.projectile.gunshot"
+    },
+    "events": [
+      {
+        "id": "return-fire-stun",
+        "trigger": "focus-damage-applied",
+        "recipient": "target",
+        "requirements": [
+          {
+            "type": "target-fantastic-hit"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "apply-stunned",
+            "type": "status",
+            "statusId": "stunned",
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

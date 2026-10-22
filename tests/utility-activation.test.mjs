@@ -105,6 +105,42 @@ test("Brace for Impact resolves only the latest unused physical Health damage", 
   );
 });
 
+test("Return Fire targets the attacker from the latest incoming attack", () => {
+  const actor = { uuid: "Actor.defender" };
+  const source = {
+    system: {
+      activation: {
+        reactionType: "incoming-attack"
+      }
+    }
+  };
+  const attackMessage = {
+    id: "incoming-attack",
+    uuid: "ChatMessage.incoming-attack",
+    getFlag: (_scope, key) => ({
+      rollContext: {
+        actorUuid: "Actor.attacker",
+        tokenUuid: "Scene.scene.Token.attacker",
+        targetUuids: [actor.uuid]
+      },
+      actionRoll: {
+        request: { target: { actorUuid: actor.uuid } },
+        result: { isSuccess: false }
+      }
+    })[key] ?? null
+  };
+
+  assert.deepEqual(
+    resolveLatestDamageReactionContext(actor, source, [attackMessage]),
+    {
+      type: "incoming-attack",
+      sourceDamageMessageUuid: "ChatMessage.incoming-attack",
+      targetActorUuid: "Actor.attacker",
+      targetUuid: "Scene.scene.Token.attacker"
+    }
+  );
+});
+
 test("Counterstrike Technique requires Attack Stance and uses half regular close damage", () => {
   const actor = {
     uuid: "Actor.defender",
