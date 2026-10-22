@@ -12,7 +12,55 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character can manipulate objects in their line of sight with their mind. The maximum range for this is 5 spaces times the character's rank. If someone tries to prevent the character from taking control of an object, the character makes a Logic check against the opponent's Agility defense."
+    "effect": "The character can manipulate objects in their line of sight with their mind. The maximum range is 5 spaces times the character's rank. If someone tries to prevent the character from taking control of an object, the character makes a Logic check against the opponent's Agility defense.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "telekinesis": {
+      "mode": "object-manipulation",
+      "rangePerRank": 5,
+      "requiresLineOfSight": true,
+      "contestedAbility": "log",
+      "contestedDefense": "agl"
+    },
+    "effectProfiles": {
+      "activation": "telekinesis.manipulate"
+    },
+    "events": [
+      {
+        "id": "telekinetic-manipulation-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-manipulation-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Telekinetic Manipulation",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "telekinesis": {
+                    "objectManipulation": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "telekinetic-manipulation-reminder",
+            "type": "manual",
+            "label": "Choose an object in line of sight within 5 spaces per Rank. If opposed, resolve Logic against the opponent's Agility defense."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

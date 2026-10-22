@@ -33,7 +33,7 @@
         "persistent": true,
         "duration": "concentration",
         "targetFilter": "all",
-        "requiresLineOfSight": false,
+        "requiresLineOfSight": true,
         "attackAnimation": "center",
         "includeSelf": false
       }
@@ -46,6 +46,30 @@
     },
     "events": [
       {
+        "id": "telekinetic-barrier-side-choice-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-barrier-source-chooses-side",
+            "type": "manual",
+            "label": "The barrier's creator chooses which side of the barrier the target occupies."
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-barrier-side-choice-failure",
+        "trigger": "target-miss",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-barrier-target-chooses-side",
+            "type": "manual",
+            "label": "The target chooses which side of the barrier they occupy."
+          }
+        ]
+      },
+      {
         "id": "telekinetic-barrier-paralyzed",
         "trigger": "target-fantastic-hit",
         "recipient": "target",
@@ -57,6 +81,18 @@
             "mode": "apply",
             "stacking": "none",
             "duration": { "type": "rounds", "value": 1 }
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-barrier-durability",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-barrier-durability-reminder",
+            "type": "manual",
+            "label": "Attacks target the creator's Logic defense. The barrier absorbs attacks dealing 10 damage or less; more than 10 destroys it while leaving protected characters unharmed."
           }
         ]
       }

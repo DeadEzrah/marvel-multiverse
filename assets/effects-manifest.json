@@ -1008,6 +1008,96 @@
       "animations": [
         { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "telekinesis.lift",
+      "category": "telekinesis",
+      "type": "activation",
+      "tags": ["telekinesis", "levitation", "lift", "movement"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.attack",
+      "category": "telekinesis",
+      "type": "projectile",
+      "tags": ["telekinesis", "attack", "force", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.impact",
+      "category": "telekinesis",
+      "type": "impact",
+      "tags": ["telekinesis", "force", "impact", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.crush",
+      "category": "telekinesis",
+      "type": "impact",
+      "tags": ["telekinesis", "crush", "force", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.grab",
+      "category": "telekinesis",
+      "type": "activation",
+      "tags": ["telekinesis", "grab", "restrain", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.manipulate",
+      "category": "telekinesis",
+      "type": "activation",
+      "tags": ["telekinesis", "manipulation", "object", "mind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.protection",
+      "category": "telekinesis",
+      "type": "shield",
+      "tags": ["telekinesis", "protection", "shield", "force"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.sphere",
+      "category": "telekinesis",
+      "type": "shield",
+      "tags": ["telekinesis", "sphere", "shield", "area"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.complete", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telekinesis.toss",
+      "category": "telekinesis",
+      "type": "movement",
+      "tags": ["telekinesis", "toss", "throw", "wind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.gust_of_wind.veryfast", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

@@ -7,14 +7,76 @@
     "description": "The character can create a protective sphere with their mind.",
     "powerSet": "Telekinesis",
     "prerequisites": "Telekinetic Protection 1",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The character is attacked or otherwise in danger.",
     "duration": "Concentration",
     "range": "",
-    "cost": "Same as the character's Telekinetic Protection power",
+    "cost": "5+ Focus",
     "effect": "The character envelops themselves —and any chosen people within up to 5 spaces times their rank—in a protective telekinetic sphere. When the sphere is formed, the character makes a Logic check and compares the results against the Agility defense of unwanted characters in the enclosed spaces. On a success, the character can move any unwanted people within the sphere's perimeter to spaces outside of the sphere. On a Fantastic success, such moved people suffer full damage. Attacks on the sphere are against the character's Logic defense. Any attacks on the sphere are absorbed as if made against the character's Telekinetic Protection power, and the sphere continues. If an attack does more damage than the character's Telekinetic Protection power can sustain, it destroys the sphere, but no one inside is harmed.",
     "ability": "log",
-    "attackTarget": "agl"
+    "attackTarget": "agl",
+    "attackKind": "ranged",
+    "attack": true,
+    "telekinesis": {
+      "mode": "protective-sphere",
+      "focusCostMatchesOwnedProtection": true,
+      "damageThresholdMatchesOwnedProtection": true,
+      "attackDefense": "log"
+    },
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "source",
+        "distance": 5,
+        "distanceScaling": "rank",
+        "persistent": true,
+        "duration": "concentration",
+        "targetFilter": "all",
+        "requiresLineOfSight": false,
+        "attackAnimation": "center",
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "effectProfiles": {
+      "cast": "telekinesis.sphere",
+      "hit": "telekinesis.impact"
+    },
+    "events": [
+      {
+        "id": "telekinetic-sphere-expulsion",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-sphere-expulsion-reminder",
+            "type": "manual",
+            "label": "Move this unwanted character to a space outside the sphere's perimeter."
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-sphere-durability",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-sphere-durability-reminder",
+            "type": "manual",
+            "label": "Use the Focus cost and damage threshold of the character's Telekinetic Protection tier. Attacks target Logic defense; a stronger attack destroys the sphere but does not harm anyone inside."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

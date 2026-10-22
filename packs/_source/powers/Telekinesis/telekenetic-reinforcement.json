@@ -11,8 +11,49 @@
     "trigger": "A character using a telekinetic power that grants damage protection is attacked.",
     "duration": "Instant",
     "range": "",
-    "cost": "Varies",
-    "effect": "The character can transfer any Health damage that gets through a telekinetic power that grants damage protection to their Focus instead, leaving the protection intact."
+    "cost": "1+ Focus",
+    "effect": "The character can transfer any Health damage that gets through a telekinetic power that grants damage protection to their Focus instead, leaving the protection intact.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "all",
+      "includeSelf": true,
+      "prerequisites": [
+        {
+          "type": "effect-flag",
+          "value": "telekineticProtection",
+          "message": "Telekinetic Reinforcement requires a target protected by a telekinetic damage-protection effect."
+        }
+      ]
+    },
+    "telekinesis": {
+      "mode": "reinforcement",
+      "focusCostEqualsTransferredHealthDamage": true,
+      "leavesProtectionIntact": true
+    },
+    "effectProfiles": {
+      "activation": "telekinesis.protection"
+    },
+    "events": [
+      {
+        "id": "telekinetic-reinforcement-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-reinforcement-reminder",
+            "type": "manual",
+            "label": "Enter Focus equal to the Health damage being transferred, prevent that Health damage, and leave the selected telekinetic protection intact."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,10 +12,57 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can move through the air in any direction at their Run Speed."
+    "effect": "The character can move through the air in any direction at their Run Speed.",
+    "telekinesis": {
+      "mode": "self-levitation",
+      "flightEqualsRunSpeed": true
+    }
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "name": "Levitation",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "origin": "Item.DttyfrVfrTR26qia",
+      "_id": "e37f1524501841db",
+      "changes": [
+        {
+          "key": "system.movement.flight.active",
+          "mode": 5,
+          "value": true,
+          "priority": 10
+        },
+        {
+          "key": "system.movement.flight.calc",
+          "mode": 5,
+          "value": "runspeed",
+          "priority": 10
+        }
+      ],
+      "description": "",
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "telekinesis": {
+            "levitation": true
+          }
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!DttyfrVfrTR26qia.e37f1524501841db"
+    }
+  ],
   "folder": "bac06ccb5a9f2d39",
   "_key": "!items!DttyfrVfrTR26qia"
 }

@@ -12,7 +12,71 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can move up to one person per rank through the air in any direction at the character's Run Speed. The levitated targets) must remain within 5 spaces times the character's rank. If any target does not wish to be moved like this, they must be telekinetically grabbed first."
+    "effect": "The character can move up to one person per rank through the air in any direction at the character's Run Speed. The levitated targets must remain within 5 spaces times the character's rank. If a target does not wish to be moved this way, they must be telekinetically grabbed first.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsPerRank": 1
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "all"
+    },
+    "telekinesis": {
+      "mode": "group-levitation",
+      "movementSpeed": "source-run",
+      "unwillingRequiresTelekineticGrab": true
+    },
+    "effectProfiles": {
+      "activation": "telekinesis.lift"
+    },
+    "events": [
+      {
+        "id": "group-levitation-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "group-levitation-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Group Levitation",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "telekinesis": {
+                    "levitated": true,
+                    "movementSpeed": "source-run"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "group-levitation-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "group-levitation-reminder",
+            "type": "manual",
+            "label": "Move selected targets through the air at the source's Run Speed and keep them within 5 spaces per source Rank. Confirm unwilling targets are already telekinetically grabbed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

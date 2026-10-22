@@ -18,6 +18,30 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "mle"
+    },
+    "damage": {
+      "enabled": false
+    },
+    "effectProfiles": {
+      "attack": "telekinesis.grab",
+      "hit": "telekinesis.impact"
+    },
+    "escape": {
+      "ability": "mle",
+      "targetNumber": 20,
+      "removesStatuses": [
+        "grappled",
+        "restrained"
+      ]
+    },
     "events": [
       {
         "id": "telekinetic-grab-grappled",
@@ -28,6 +52,23 @@
             "id": "telekinetic-grab-apply-grappled",
             "type": "status",
             "statusId": "grappled",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-grab-pinned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-grab-apply-pinned",
+            "type": "status",
+            "statusId": "restrained",
             "mode": "apply",
             "stacking": "none",
             "duration": {

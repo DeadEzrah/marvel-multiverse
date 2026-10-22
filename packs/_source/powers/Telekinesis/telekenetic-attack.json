@@ -18,6 +18,24 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "mle"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "telekinesis.attack",
+      "hit": "telekinesis.impact"
+    },
     "events": [
       {
         "id": "telekinetic-attack-stunned",

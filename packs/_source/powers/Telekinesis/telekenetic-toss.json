@@ -7,7 +7,7 @@
     "description": "The character can throw a foe around with their mind.",
     "powerSet": "Telekinesis",
     "prerequisites": "Telekinetic Grab, Rank 3",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The target is grabbed.",
     "duration": "Instant",
     "range": "Varies",
@@ -18,6 +18,29 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 5,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": false
+    },
+    "telekinesis": {
+      "mode": "grabbed-target-toss",
+      "requiresTelekineticallyGrabbedCharacter": true,
+      "thrownCharacterTakesRegularDamageOnFailure": true,
+      "thrownCharacterLandsProneWithinSpaces": 1,
+      "collisionTargetTakesRegularDamageOnSuccess": true
+    },
+    "effectProfiles": {
+      "attack": "telekinesis.toss",
+      "hit": "telekinesis.impact"
+    },
     "events": [
       {
         "id": "telekinetic-toss-prone",
@@ -33,6 +56,30 @@
             "duration": {
               "type": "manual"
             }
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-toss-thrown-character",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-toss-thrown-character-reminder",
+            "type": "manual",
+            "label": "Apply regular damage to the telekinetically grabbed character whether the check succeeds or fails, then place them prone within 1 space of the collision target."
+          }
+        ]
+      },
+      {
+        "id": "telekinetic-toss-collision-damage",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-toss-collision-damage-reminder",
+            "type": "manual",
+            "label": "Apply regular damage to the collision target."
           }
         ]
       }

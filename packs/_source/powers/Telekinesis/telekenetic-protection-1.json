@@ -12,7 +12,54 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character's personal telekinetic field protects them. Any attacks against them that do 10 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 10 points of damage, it destroys the protection. Either way, the character remains unharmed."
+    "effect": "The character's personal telekinetic field protects them. Any attacks against them that do 10 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 10 points of damage, it destroys the protection. Either way, the character remains unharmed.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "telekinesis": {
+      "mode": "personal-protection",
+      "damageThreshold": 10,
+      "attackDefense": "log"
+    },
+    "effectProfiles": {
+      "activation": "telekinesis.protection"
+    },
+    "events": [
+      {
+        "id": "telekinetic-protection-1-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "telekinetic-protection-1-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Telekinetic Protection 1",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "telekineticProtection": {
+                    "threshold": 10,
+                    "attackDefense": "log"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "telekinetic-protection-1-reminder",
+            "type": "manual",
+            "label": "The field absorbs an attack dealing 10 damage or less. More than 10 destroys the field, but the character remains unharmed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -17,7 +17,50 @@
     "attackTarget": "res",
     "attackKind": "close",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies",
+      "defense": "res",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Telekinetic Crush requires a grabbed target."
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "telekinesis.crush",
+      "hit": "telekinesis.impact"
+    },
+    "events": [
+      {
+        "id": "telekinetic-crush-pinned",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "telekinetic-crush-apply-pinned",
+            "type": "status",
+            "statusId": "restrained",
+            "mode": "apply",
+            "stacking": "none",
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
