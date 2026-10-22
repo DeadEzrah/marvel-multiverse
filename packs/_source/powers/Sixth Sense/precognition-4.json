@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character can see a whole year ahead",
+    "description": "The character can see a whole year ahead.",
     "powerSet": "Sixth Sense",
     "prerequisites": "Precognition 3, Rank 5",
     "action": "Standard",
@@ -12,8 +12,64 @@
     "duration": "Instant",
     "range": "",
     "cost": "20 Focus",
-    "effect": "The character gains a sense of what is going to happen to a particular person. place or item within their reach including themselves-in the next year.  Otherwise it works the same as Precognition 1. Alternatively. the character can consider the fate of something within a mile of their location (rather then within their reach) over the next month. or something within 100 miles of their location the next week, or something within 1000 miles of their location the next 24 hours, The character simply closes their eyes and thinks about the thing in question which must be something they already know about.",
-    "numbered": 4
+    "effect": "The character senses what is going to happen to a person, place, or item within their reach—including themselves—during the next year. Alternatively, they can consider a known subject within 1 mile during the next month, within 100 miles during the next week, or within 1,000 miles during the next 24 hours. Otherwise this works the same as Precognition 1.",
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "sixthSense": {
+      "mode": "precognition",
+      "tier": 4,
+      "questions": 1,
+      "horizons": [
+        {
+          "range": "reach",
+          "futureYears": 1
+        },
+        {
+          "rangeMiles": 1,
+          "futureMonths": 1,
+          "requiresKnownSubject": true
+        },
+        {
+          "rangeMiles": 100,
+          "futureDays": 7,
+          "requiresKnownSubject": true
+        },
+        {
+          "rangeMiles": 1000,
+          "futureHours": 24,
+          "requiresKnownSubject": true
+        }
+      ]
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.future"
+    },
+    "events": [
+      {
+        "id": "precognition-4-vision",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "precognition-4-reminder",
+            "type": "manual",
+            "label": "Ask one question about the next year within Reach, month within 1 mile, week within 100 miles, or 24 hours within 1,000 miles. Remote subjects must already be known. Resolve the answer as Precognition 1."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

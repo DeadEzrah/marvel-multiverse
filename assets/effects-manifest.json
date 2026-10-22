@@ -1098,6 +1098,66 @@
       "animations": [
         { "file": "jb2a.gust_of_wind.veryfast", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "sixth-sense.cosmic",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "cosmic", "awareness", "divination"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "sixth-sense.detect",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "detect", "supers", "vision"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.eyes.01.dark_green.single", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "sixth-sense.intuition",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "intuition", "guidance", "choice"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "sixth-sense.microscopic",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "microscopic", "analysis", "detail"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "sixth-sense.past",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "postcognition", "past", "vision"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "sixth-sense.future",
+      "category": "sixth-sense",
+      "type": "activation",
+      "tags": ["sixth-sense", "precognition", "future", "divination"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

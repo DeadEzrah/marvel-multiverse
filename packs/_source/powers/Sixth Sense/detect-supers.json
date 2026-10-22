@@ -10,9 +10,61 @@
     "action": "Standard",
     "trigger": "",
     "duration": "Concentration",
-    "range": "",
+    "range": "5 miles, or 25 miles for a single origin",
     "cost": "",
-    "effect": "The character can sense anyone within a certain distance of them who has super-powers. This reveals a count of the number of people who have powers and their rough distance and direction from the character. It doesn't supply any other information, like name, appearance. the type of powers and so on."
+    "effect": "The character can sense anyone within 5 miles who has super-powers, or within 25 miles if limited to a single origin. This reveals the number of people with powers and their rough distance and direction, but not names, appearances, or power types. Special Training powers do not count.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "sixthSense": {
+      "mode": "detect-supers",
+      "rangeMiles": 5,
+      "singleOriginRangeMiles": 25,
+      "excludesSpecialTraining": true,
+      "reveals": [
+        "count",
+        "rough-distance",
+        "rough-direction"
+      ]
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.detect"
+    },
+    "events": [
+      {
+        "id": "detect-supers-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "detect-supers-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Detect Supers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "sixthSense": {
+                    "detectSupers": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "detect-supers-reminder",
+            "type": "manual",
+            "label": "The Narrator reports count, rough distance, and rough direction within 5 miles, or 25 miles when limited to one origin. Exclude Special Training powers."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

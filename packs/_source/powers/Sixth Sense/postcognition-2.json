@@ -6,14 +6,50 @@
   "system": {
     "description": "The character knows what happened in the past day.",
     "powerSet": "Sixth Sense",
-    "prerequisites": "Postcognition 1 Rank 3",
+    "prerequisites": "Postcognition 1, Rank 3",
     "action": "Standard",
     "trigger": "",
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
     "effect": "The character can sense what happened to a particular person, place or item within their reach-including themselves-in the past 24 hours. Otherwise it works the same as Postcognition 1.",
-    "numbered": 2
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "sixthSense": {
+      "mode": "postcognition",
+      "tier": 2,
+      "lookbackHours": 24,
+      "viewingWindowHours": 24
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.past"
+    },
+    "events": [
+      {
+        "id": "postcognition-2-vision",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "postcognition-2-reminder",
+            "type": "manual",
+            "label": "Choose a person, place, item, or the source within Reach. The Narrator reveals the past 24 hours using the Postcognition 1 viewing rules."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

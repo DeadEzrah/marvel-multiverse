@@ -12,7 +12,54 @@
     "duration": "Concentration",
     "range": "1 space per rank",
     "cost": "5 Focus",
-    "effect": "The character can see and identify items that would normally require a microscope to detect, much less comprehend. This includes things like fingerprints, a single strand of hair and even a person's DNA. In the case of DNA. the character can use this to identify a person and link them to close relatives with similar DNA."
+    "effect": "The character can see and identify items that would normally require a microscope to detect, including fingerprints, a single strand of hair, and DNA. DNA can identify a person and link them to close relatives with similar DNA.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "sixthSense": {
+      "mode": "microscopic-awareness",
+      "rangePerRank": 1,
+      "identifiesFingerprints": true,
+      "identifiesDNAAndRelatives": true
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.microscopic"
+    },
+    "events": [
+      {
+        "id": "microscopic-awareness-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "microscopic-awareness-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Microscopic Awareness",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "sixthSense": {
+                    "microscopicAwareness": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "microscopic-awareness-reminder",
+            "type": "manual",
+            "label": "Inspect microscopic evidence within 1 space per Rank. DNA can identify a person and connect close relatives with similar DNA."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

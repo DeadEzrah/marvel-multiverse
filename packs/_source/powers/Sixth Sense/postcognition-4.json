@@ -6,14 +6,50 @@
   "system": {
     "description": "The character knows what happened in the past century.",
     "powerSet": "Sixth Sense",
-    "prerequisites": "Postcognition 3. Rank 5",
+    "prerequisites": "Postcognition 3, Rank 5",
     "action": "Standard",
     "trigger": "",
     "duration": "Instant",
     "range": "",
     "cost": "20 Focus",
-    "effect": "The character can sense what happened to a particular person. place on item within their reach-including themselves-in any week long period in the past century.  Otherwise it works the same as Postcognition 1.",
-    "numbered": 2
+    "effect": "The character can sense what happened to a particular person, place, or item within their reach—including themselves—during any week-long period in the past century. Otherwise it works the same as Postcognition 1.",
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "sixthSense": {
+      "mode": "postcognition",
+      "tier": 4,
+      "lookbackYears": 100,
+      "viewingWindowDays": 7
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.past"
+    },
+    "events": [
+      {
+        "id": "postcognition-4-vision",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "postcognition-4-reminder",
+            "type": "manual",
+            "label": "Choose a person, place, item, or the source within Reach and one week-long period in the past century. Resolve it using the Postcognition 1 viewing rules."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

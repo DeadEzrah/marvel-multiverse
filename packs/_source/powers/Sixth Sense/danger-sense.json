@@ -6,16 +6,51 @@
   "system": {
     "description": "The character can feel danger on the way.",
     "powerSet": "Sixth Sense",
-    "prerequisites": "Precognition 1. Rank 2",
+    "prerequisites": "Precognition 1, Rank 2",
     "action": "",
     "trigger": "",
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "Even if the character doesn't get a Fantastic result on their initiative check, they get a turn during the bonus round of any combat they are in. This works even if no one else in the combat can act in the bonus round"
+    "effect": "Even if the character does not get a Fantastic result on their initiative check, they get a turn during the bonus round of any combat they are in. This works even if no one else in the combat can act in the bonus round.",
+    "sixthSense": {
+      "mode": "danger-sense",
+      "alwaysActsInBonusRound": true,
+      "independentOfInitiativeFantastic": true
+    }
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "name": "Danger Sense",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "origin": "Item.KdVAEjrKMnvmyfIV",
+      "_id": "97a9b47209a54a74",
+      "changes": [],
+      "description": "",
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "dangerSense": {
+            "alwaysActsInBonusRound": true
+          }
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!KdVAEjrKMnvmyfIV.97a9b47209a54a74"
+    }
+  ],
   "folder": "34a53ed3fba44fe3",
   "_key": "!items!KdVAEjrKMnvmyfIV"
 }

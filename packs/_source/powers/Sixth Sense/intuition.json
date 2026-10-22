@@ -12,7 +12,33 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "When faced with a decision. the character can get a feeling about which choice would be best for them in the long run When activating this power. the player presents the choice to the Narrator. and the Narrator tells them which choice the intuition is leading the character toward."
+    "effect": "When faced with a decision, the character can get a feeling about which choice would be best for them in the long run. The player presents the choice to the Narrator, who tells them which option the intuition favors.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "sixthSense": {
+      "mode": "intuition",
+      "narratorChoiceGuidance": true,
+      "optimizesLongTermForSource": true
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.intuition"
+    },
+    "events": [
+      {
+        "id": "intuition-guidance",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "intuition-guidance-reminder",
+            "type": "manual",
+            "label": "Present the decision and its choices to the Narrator. The Narrator identifies which choice intuition favors for the character's long-term interests."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

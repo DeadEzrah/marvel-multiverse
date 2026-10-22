@@ -6,14 +6,50 @@
   "system": {
     "description": "The character knows what happened in the past year.",
     "powerSet": "Sixth Sense",
-    "prerequisites": "Postcognition 2. Rank 4",
+    "prerequisites": "Postcognition 2, Rank 4",
     "action": "Standard",
     "trigger": "",
     "duration": "Instant",
     "range": "",
     "cost": "20 Focus",
-    "effect": "The character can sense what happened to a particular person, place, or item within their reach-including themselves in any 24 hour period in the past year. Otherwise it works the same as Postcognition 1.",
-    "numbered": 2
+    "effect": "The character can sense what happened to a particular person, place, or item within their reach—including themselves—during any 24-hour period in the past year. Otherwise it works the same as Postcognition 1.",
+    "numbered": 3,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "sixthSense": {
+      "mode": "postcognition",
+      "tier": 3,
+      "lookbackYears": 1,
+      "viewingWindowHours": 24
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.past"
+    },
+    "events": [
+      {
+        "id": "postcognition-3-vision",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "postcognition-3-reminder",
+            "type": "manual",
+            "label": "Choose a person, place, item, or the source within Reach and one 24-hour period in the past year. Resolve it using the Postcognition 1 viewing rules."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

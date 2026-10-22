@@ -6,14 +6,60 @@
   "system": {
     "description": "The character can see the week ahead.",
     "powerSet": "Sixth Sense",
-    "prerequisites": "Precognition 1, Rank 1",
+    "prerequisites": "Precognition 1, Rank 3",
     "action": "Standard",
     "trigger": "",
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character gains a sense of what is going to happen to a particular person, place or item within their reach-including themselves-in the next week Otherwise this power works the same as Precognition 1. Alternatively. the character can consider the fate of something within a mile of their location (rather then within their reach) over the next 24 hours The character simply closes their eyes and thinks about the thing in question which must be something they already know about.",
-    "numbered": 2
+    "effect": "The character senses what is going to happen to a person, place, or item within their reach—including themselves—during the next week. Alternatively, they can consider a known subject within 1 mile during the next 24 hours. Otherwise this works the same as Precognition 1.",
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": false,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "sixthSense": {
+      "mode": "precognition",
+      "tier": 2,
+      "questions": 1,
+      "horizons": [
+        {
+          "range": "reach",
+          "futureDays": 7
+        },
+        {
+          "rangeMiles": 1,
+          "futureHours": 24,
+          "requiresKnownSubject": true
+        }
+      ]
+    },
+    "effectProfiles": {
+      "activation": "sixth-sense.future"
+    },
+    "events": [
+      {
+        "id": "precognition-2-vision",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "precognition-2-reminder",
+            "type": "manual",
+            "label": "Ask one question about the next week for a subject within Reach, or the next 24 hours for a known subject within 1 mile. Resolve the answer as Precognition 1."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
