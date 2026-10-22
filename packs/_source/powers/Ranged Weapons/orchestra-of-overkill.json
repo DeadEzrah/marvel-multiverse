@@ -36,14 +36,11 @@
       "enabled": true,
       "ability": "agl",
       "scale": 0.5,
-      "type": "health"
+      "type": "health",
+      "doubleOnFantastic": true
     },
     "effectProfiles": {
-      "movement": "movement.gambit.flourish",
-      "attack": "weapon.gambit.card-volley",
-      "hit": "power.kinetic.card-impact",
-      "fantasticHit": "destruction.kinetic.card-fantastic",
-      "miss": "weapon.gambit.card-miss"
+      "attack": "weapon.projectile.gunshot"
     },
     "events": [
       {
