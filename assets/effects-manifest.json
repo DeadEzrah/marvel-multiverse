@@ -1208,6 +1208,96 @@
       "animations": [
         { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "shield-bearer.guard",
+      "category": "shield-bearer",
+      "type": "shield",
+      "tags": ["shield-bearer", "shield", "guard", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.complete.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.wall",
+      "category": "shield-bearer",
+      "type": "persistent",
+      "tags": ["shield-bearer", "shield", "wall", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.loop.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.recover",
+      "category": "shield-bearer",
+      "type": "healing",
+      "tags": ["shield-bearer", "recovery", "healing"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.healing_generic.400px.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.brace",
+      "category": "shield-bearer",
+      "type": "shield",
+      "tags": ["shield-bearer", "brace", "impact", "defense"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.intro.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.deflect",
+      "category": "shield-bearer",
+      "type": "shield",
+      "tags": ["shield-bearer", "deflect", "reaction", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.outro_explode.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.bash",
+      "category": "shield-bearer",
+      "type": "melee",
+      "tags": ["shield-bearer", "shield", "bash", "melee"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.melee_attack.06.shield.01.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.throw",
+      "category": "shield-bearer",
+      "type": "projectile",
+      "tags": ["shield-bearer", "shield", "throw", "round"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield_attack.ranged.throw.01.white.02", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.impact",
+      "category": "shield-bearer",
+      "type": "impact",
+      "tags": ["shield-bearer", "shield", "impact", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "shield-bearer.return",
+      "category": "shield-bearer",
+      "type": "projectile",
+      "tags": ["shield-bearer", "shield", "return", "round"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield_attack.ranged.return.01.white.01", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

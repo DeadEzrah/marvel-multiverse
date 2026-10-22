@@ -12,7 +12,82 @@
     "duration": "Instant",
     "range": "5 spaces times the character's rank",
     "cost": "5 Focus",
-    "effect": "The ally gains Health Damage Reduction equal to the character's Shield power against that attack. The shield then bounces back to the character."
+    "effect": "The ally gains Health Damage Reduction equal to the character's Shield power against that attack. The shield then returns to the character at the start of their next turn.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "rangePerRank": 5,
+      "willing": true
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "allies"
+    },
+    "shieldBearer": {
+      "mode": "hurled-block",
+      "defense": "agl",
+      "damageReductionFromHighestShieldTier": true,
+      "returnsAtStartOfNextTurn": true,
+      "shieldUnavailableUntilReturn": true
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.throw"
+    },
+    "events": [
+      {
+        "id": "hurled-shield-block-reduction",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "hurled-shield-block-active",
+            "type": "active-effect",
+            "sourcePowerTier": {
+              "powerSet": "Shield Bearer",
+              "namePrefix": "Shield "
+            },
+            "effect": {
+              "name": "Hurled Shield Block",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": "@sourcePowerTier"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "shieldBearer": {
+                    "oneAttack": true,
+                    "removeAfterTriggeringAttack": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hurled-shield-block-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "hurled-shield-block-reminder",
+            "type": "manual",
+            "label": "Apply this before the triggering Agility attack, then Undo it after that attack resolves. The shield returns at the start of the character's next turn and is unavailable until then."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

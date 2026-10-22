@@ -13,40 +13,57 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character gains Health Damage Reduction 2.",
-    "numbered": 2
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "shieldBearer": {
+      "mode": "shield",
+      "tier": 2,
+      "healthDamageReduction": 2
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.guard"
+    },
+    "events": [
+      {
+        "id": "shield-2-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-2-damage-reduction",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shield 2",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 2
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "shieldBearer": {
+                    "tier": 2
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
-  "effects": [
-    {
-      "name": "Health Damage Reduction 2",
-      "img": "icons/svg/aura.svg",
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "origin": "Item.5a1NiKj7riqEuMlH",
-      "_id": "a0299651f0c224d1",
-      "changes": [
-        {
-          "key": "system.healthDamageReduction",
-          "mode": 4,
-          "value": 2
-        }
-      ],
-      "description": "",
-      "transfer": true,
-      "statuses": [],
-      "flags": {},
-      "tint": null,
-      "_key": "!items.effects!5a1NiKj7riqEuMlH.a0299651f0c224d1"
-    }
-  ],
+  "effects": [],
   "folder": "926e8d815f4d3fd7",
   "_key": "!items!5a1NiKj7riqEuMlH"
 }

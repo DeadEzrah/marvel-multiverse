@@ -18,6 +18,34 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 10,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": false
+    },
+    "shieldBearer": {
+      "mode": "ricochet",
+      "additionalAttackOnFantastic": true,
+      "additionalTargetRequired": true,
+      "rangeBetweenTargetsAddsToRoll": true,
+      "repeatWhileFantastic": true,
+      "returnsAtStartOfNextTurn": true,
+      "shieldUnavailableUntilReturn": true
+    },
+    "effectProfiles": {
+      "attack": "shield-bearer.throw",
+      "hit": "shield-bearer.impact",
+      "landing": "shield-bearer.return"
+    },
     "events": [
       {
         "id": "rico-shield-prone",
@@ -33,6 +61,30 @@
             "duration": {
               "type": "manual"
             }
+          }
+        ]
+      },
+      {
+        "id": "rico-shield-chain",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "rico-shield-chain-reminder",
+            "type": "manual",
+            "label": "Make another ranged attack against a different target, adding the distance between targets to the new attack's range. Repeat while each attack is a Fantastic success."
+          }
+        ]
+      },
+      {
+        "id": "rico-shield-return",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "rico-shield-return-reminder",
+            "type": "manual",
+            "label": "After the ricochet sequence ends, the shield returns at the start of the character's next turn. Until then, Shield powers and benefits are unavailable."
           }
         ]
       }

@@ -13,40 +13,57 @@
     "range": "",
     "cost": "25 Focus",
     "effect": "The character gains Health Damage Reduction 4.",
-    "numbered": 1
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "shieldBearer": {
+      "mode": "shield",
+      "tier": 4,
+      "healthDamageReduction": 4
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.guard"
+    },
+    "events": [
+      {
+        "id": "shield-4-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-4-damage-reduction",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shield 4",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 4
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "shieldBearer": {
+                    "tier": 4
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
-  "effects": [
-    {
-      "name": "Health Damage Reduction 4",
-      "img": "icons/svg/aura.svg",
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "origin": "Item.aXtJVLJTC69Hk3Hb",
-      "_id": "4d30dd52335b4e0a",
-      "changes": [
-        {
-          "key": "system.healthDamageReduction",
-          "mode": 4,
-          "value": 4
-        }
-      ],
-      "description": "",
-      "transfer": true,
-      "statuses": [],
-      "flags": {},
-      "tint": null,
-      "_key": "!items.effects!aXtJVLJTC69Hk3Hb.4d30dd52335b4e0a"
-    }
-  ],
+  "effects": [],
   "folder": "926e8d815f4d3fd7",
   "_key": "!items!aXtJVLJTC69Hk3Hb"
 }

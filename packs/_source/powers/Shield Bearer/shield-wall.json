@@ -12,7 +12,60 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "Attacks against the character have trouble. The character breaks concentration on this power if they use a movement action."
+    "effect": "Attacks against the character have trouble. The character breaks concentration on this power if they use a movement action.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "shieldBearer": {
+      "mode": "shield-wall",
+      "allAttacksHaveTrouble": true,
+      "breakConcentrationOnMovementAction": true
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.wall"
+    },
+    "events": [
+      {
+        "id": "shield-wall-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-wall-trouble",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shield Wall",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "defensiveRollModifier": {
+                    "mode": "trouble",
+                    "count": 1,
+                    "label": "Shield Wall",
+                    "requiresAttack": true,
+                    "nonStacking": true
+                  },
+                  "shieldBearer": {
+                    "breakConcentrationOnMovementAction": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "shield-wall-movement-reminder",
+            "type": "manual",
+            "label": "End concentration if the character uses another movement action."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

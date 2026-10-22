@@ -18,6 +18,26 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "rangeScaling": "reach",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "mle"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "shieldBearer": {
+      "mode": "melee-bash"
+    },
+    "effectProfiles": {
+      "attack": "shield-bearer.bash",
+      "hit": "melee.hit.heavy"
+    },
     "events": [
       {
         "id": "shield-bash-prone",

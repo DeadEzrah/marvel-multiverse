@@ -13,9 +13,60 @@
     "range": "5 spaces times the character's rank",
     "cost": "5 Focus",
     "effect": "The enemy has trouble on the attack. The shield then bounces back to the character.",
-    "ability": "agl",
-    "attackTarget": "agl",
-    "attackKind": "ranged"
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "rangePerRank": 5,
+      "willing": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "enemies"
+    },
+    "shieldBearer": {
+      "mode": "hurled-deflection",
+      "protectsAlly": true,
+      "defense": "agl",
+      "allyRangePerRank": 5,
+      "returnsAtStartOfNextTurn": true,
+      "shieldUnavailableUntilReturn": true
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.throw"
+    },
+    "events": [
+      {
+        "id": "hurled-shield-deflection-trouble",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "hurled-shield-deflection-next-attack-trouble",
+            "type": "future-roll-modifier",
+            "mode": "trouble",
+            "count": 1,
+            "label": "Hurled Shield Deflection: Trouble on the triggering attack",
+            "matchSource": false,
+            "matchTarget": false
+          }
+        ]
+      },
+      {
+        "id": "hurled-shield-deflection-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "hurled-shield-deflection-reminder",
+            "type": "manual",
+            "label": "Confirm the attack targets an ally's Agility within 5 spaces per Rank. The selected enemy receives Trouble. The shield returns at the start of the character's next turn and is unavailable until then."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

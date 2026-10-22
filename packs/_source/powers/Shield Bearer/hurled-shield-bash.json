@@ -18,6 +18,30 @@
     "attackKind": "ranged",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 10,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "defense": "agl"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "shieldBearer": {
+      "mode": "hurled-bash",
+      "returnsAtStartOfNextTurn": true,
+      "shieldUnavailableUntilReturn": true
+    },
+    "effectProfiles": {
+      "attack": "shield-bearer.throw",
+      "hit": "shield-bearer.impact",
+      "landing": "shield-bearer.return"
+    },
     "events": [
       {
         "id": "hurled-shield-bash-prone",
@@ -33,6 +57,18 @@
             "duration": {
               "type": "manual"
             }
+          }
+        ]
+      },
+      {
+        "id": "hurled-shield-bash-return",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "hurled-shield-bash-return-reminder",
+            "type": "manual",
+            "label": "The shield returns at the start of the character's next turn. Until then, the character cannot use other Shield powers or Shield benefits."
           }
         ]
       }

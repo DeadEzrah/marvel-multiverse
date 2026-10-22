@@ -12,7 +12,33 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "For every point of Melee defense the character has, they con reduce knockback by 1 space."
+    "effect": "For every point of Melee defense the character has, they can reduce knockback by 1 space.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "shieldBearer": {
+      "mode": "knockback-reduction",
+      "spacesPerMeleeDefense": 1,
+      "preventsProneWhenReducedToZero": true
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.brace"
+    },
+    "events": [
+      {
+        "id": "immovable-reduction",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "immovable-reduction-reminder",
+            "type": "manual",
+            "label": "Reduce the triggering knockback by up to the character's Melee defense. If reduced to 0 spaces, the character is not knocked prone by that knockback."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

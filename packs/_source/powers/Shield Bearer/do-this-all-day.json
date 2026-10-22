@@ -7,12 +7,43 @@
     "description": "The character draws on their inner strength to heal themselves.",
     "powerSet": "Shield Bearer",
     "prerequisites": "",
-    "action": "",
+    "action": "Standard",
     "trigger": "",
-    "duration": "",
+    "duration": "Instant",
     "range": "",
-    "cost": "",
-    "effect": ""
+    "cost": "5 or more Focus",
+    "effect": "The character heals 2 points of Health for every point of Focus they spend.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "healing",
+      "benefitPerFocus": 2,
+      "focusPerBenefit": 1
+    },
+    "shieldBearer": {
+      "mode": "recovery",
+      "healthPerFocus": 2
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.recover"
+    },
+    "events": [
+      {
+        "id": "shield-do-this-all-day-healing",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-do-this-all-day-restore-health",
+            "type": "healing",
+            "amount": 10
+          }
+        ]
+      }
+    ]
   },
   "folder": "926e8d815f4d3fd7",
   "_key": "!items!MCGRVGvWxnwQYHgB",

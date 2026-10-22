@@ -271,6 +271,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Resize Other enforces one target and records the Reach/grapple boundary. Object choice, target size choice, owned-tier limits, and dimensional destinations remain explicit where Foundry cannot safely adjudicate them.
   - [x] Five semantic profiles resolve to live-verified Free JB2A healing, misty-step, impact, and static-electricity entries.
   - Focused gates pass 31/31 and the full repository passes 148/148. The installed matrix verified reversible sizes, derived combat modifiers, one-use Trouble, target caps, exact Focus, and every profile. All fourteen compendium powers and nine embedded copies were refreshed with IDs preserved; temporary data was removed.
+- [x] Complete the Shield Bearer family migration.
+  - [x] Shield 1-4 grant concentration-owned DR 1-4 instead of permanent transferred DR. Correct Shield 4's tier number and restore the empty Do This All Day record.
+  - [x] Brace for Impact uses exact variable-Focus physical-damage mitigation. Shield Deflection and Hurled Shield Deflection apply one-use Trouble, while Shield Wall applies concentration-owned non-stacking defensive Trouble.
+  - [x] Shield Bash and Hurled Shield Bash use exact targeting, damage, and Fantastic `prone`. Rico-Shield preserves regular Fantastic damage and explicit repeat/range boundaries.
+  - [x] Hurled Shield Block derives temporary ally DR from the source's highest Shield tier. Thrown-shield return timing and Shield unavailability remain explicit until a universal action/equipment ledger exists.
+  - [x] Nine semantic profiles resolve to live-verified Free JB2A round-shield melee, throw, return, guard, wall, deflection, impact, healing, and bracing entries.
+  - Focused gates pass 32/32 and the full repository passes 155/155. The installed matrix verified concentration DR/undo, defensive Trouble, tier-derived ally DR, exact Focus, and every profile. All fourteen compendium powers and ten Captain America embedded copies were refreshed with IDs preserved; legacy effects and temporary data were removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

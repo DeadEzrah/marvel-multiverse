@@ -12,7 +12,40 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 or more Focus",
-    "effect": "For every point of Focus spent, the character can ignore 1 point of Health damage dealt by the attack."
+    "effect": "For every point of Focus spent, the character can ignore 1 point of Health damage dealt by the attack.",
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "reactionType": "incoming-physical-damage"
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "healing",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 1
+    },
+    "shieldBearer": {
+      "mode": "damage-mitigation",
+      "physicalOnly": true,
+      "healthPreventedPerFocus": 1
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.brace"
+    },
+    "events": [
+      {
+        "id": "shield-brace-for-impact-mitigation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-brace-for-impact-restore-health",
+            "type": "healing",
+            "amount": 5
+          }
+        ]
+      }
+    ]
   },
   "folder": "926e8d815f4d3fd7",
   "_key": "!items!xUoaVAtKTKsv8gir",

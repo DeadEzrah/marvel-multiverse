@@ -13,40 +13,57 @@
     "range": "",
     "cost": "",
     "effect": "The character gains Health Damage Reduction 1.",
-    "numbered": 1
+    "numbered": 1,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "shieldBearer": {
+      "mode": "shield",
+      "tier": 1,
+      "healthDamageReduction": 1
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.guard"
+    },
+    "events": [
+      {
+        "id": "shield-1-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-1-damage-reduction",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shield 1",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 1
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "shieldBearer": {
+                    "tier": 1
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
-  "effects": [
-    {
-      "name": "Health Damage Reduction 1",
-      "img": "icons/svg/aura.svg",
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "origin": "Item.t5xTGiK55gOYF9BL",
-      "_id": "920d1982af6b5044",
-      "changes": [
-        {
-          "key": "system.healthDamageReduction",
-          "mode": 4,
-          "value": 1
-        }
-      ],
-      "description": "",
-      "transfer": true,
-      "statuses": [],
-      "flags": {},
-      "tint": null,
-      "_key": "!items.effects!t5xTGiK55gOYF9BL.920d1982af6b5044"
-    }
-  ],
+  "effects": [],
   "folder": "926e8d815f4d3fd7",
   "_key": "!items!t5xTGiK55gOYF9BL"
 }

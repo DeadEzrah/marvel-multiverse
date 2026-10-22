@@ -12,7 +12,57 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The attack has trouble."
+    "effect": "The attack has trouble.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1,
+      "willing": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "enemies"
+    },
+    "shieldBearer": {
+      "mode": "deflection",
+      "requiresIncomingAttack": true,
+      "defense": "agl"
+    },
+    "effectProfiles": {
+      "activation": "shield-bearer.deflect"
+    },
+    "events": [
+      {
+        "id": "shield-deflection-trouble",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "shield-deflection-next-attack-trouble",
+            "type": "future-roll-modifier",
+            "mode": "trouble",
+            "count": 1,
+            "label": "Shield Deflection: Trouble on the triggering attack",
+            "matchSource": false,
+            "matchTarget": false
+          }
+        ]
+      },
+      {
+        "id": "shield-deflection-trigger",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-deflection-trigger-reminder",
+            "type": "manual",
+            "label": "Use this after the selected attacker declares an attack against the character's Agility and before that attack is rolled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
