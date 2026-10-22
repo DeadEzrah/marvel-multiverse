@@ -13,7 +13,52 @@
     "range": "",
     "cost": "20 Focus",
     "effect": "It starts to storm in an area up to 5 miles across times the character's rank, centered on the character. All ranges and all speeds are cut to one quarter normal, and flying is impossible.",
-    "numbered": 4
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.hurricane"
+    },
+    "events": [
+      {
+        "id": "control-weather-4-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "control-weather-4-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Control Weather 4",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "hurricane",
+                    "radiusMilesPerRank": 5,
+                    "rangeMultiplier": 0.25,
+                    "speedMultiplier": 0.25,
+                    "flightAllowed": false
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "control-weather-4-reminder",
+            "type": "manual",
+            "label": "Apply a hurricane in an area up to 5 miles across per Rank. Reduce all ranges and speeds to one quarter; flying is impossible."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

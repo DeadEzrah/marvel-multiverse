@@ -190,6 +190,102 @@
       ]
     },
     {
+      "id": "weather.fog",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "fog", "mist", "activation"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.fog_cloud.01.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.rain",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "rain", "water", "activation"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.template_square.raindrops.001.7x7.instant.combined.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.storm",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "storm", "rain", "activation"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.lightning.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.template_square.raindrops.001.7x7.instant.combined.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.thunderstorm",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "thunderstorm", "lightning", "activation"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.lightning.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.thunderwave.center.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.hurricane",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "hurricane", "wind", "whirlwind", "activation"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.heavy.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.whirlwind.bluegrey", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.thunder",
+      "category": "weather",
+      "type": "area",
+      "tags": ["weather", "thunder", "sound", "area"],
+      "sounds": [
+        { "file": "psfx.weapon-swooshes.lightning.v1.group01", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.thunderwave.center.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.chill",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "cold", "chill", "activation"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.aura_themed.01.outward.complete.cold.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "weather.warm",
+      "category": "weather",
+      "type": "activation",
+      "tags": ["weather", "heat", "warm", "activation"],
+      "sounds": [
+        { "file": "psfx.casting.generic", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.impact.006.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "weapon.blade.hit",
       "category": "weapon",
       "type": "impact",

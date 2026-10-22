@@ -13,7 +13,51 @@
     "range": "",
     "cost": "",
     "effect": "It starts to rain in an area up to 5 miles across times the character's rank, centered on the character. All ranges are cut in half. Movement is not affected.",
-    "numbered": 1
+    "numbered": 1,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.rain"
+    },
+    "events": [
+      {
+        "id": "control-weather-1-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "control-weather-1-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Control Weather 1",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "rain",
+                    "radiusMilesPerRank": 5,
+                    "rangeMultiplier": 0.5,
+                    "speedMultiplier": 1
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "control-weather-1-reminder",
+            "type": "manual",
+            "label": "Apply rain in an area up to 5 miles across per Rank, centered on the character. Halve all ranges; movement is unchanged."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

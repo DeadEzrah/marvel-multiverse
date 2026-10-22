@@ -13,7 +13,51 @@
     "range": "",
     "cost": "10 Focus",
     "effect": "It starts to storm in an area up to 5 miles across times the character's rank, centered on the character, All ranges and all speeds are cut in half.",
-    "numbered": 2
+    "numbered": 2,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.storm"
+    },
+    "events": [
+      {
+        "id": "control-weather-2-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "control-weather-2-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Control Weather 2",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "storm",
+                    "radiusMilesPerRank": 5,
+                    "rangeMultiplier": 0.5,
+                    "speedMultiplier": 0.5
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "control-weather-2-reminder",
+            "type": "manual",
+            "label": "Apply a storm in an area up to 5 miles across per Rank, centered on the character. Halve all ranges and speeds."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,51 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character creates a thick fog for up to 50 spaces per rank around them that blocks all line of sight beyond 10 spaces. They can also dispel any fog in a similar area."
+    "effect": "The character creates a thick fog for up to 50 spaces per rank around them that blocks all line of sight beyond 10 spaces. They can also dispel any fog in a similar area.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.fog"
+    },
+    "events": [
+      {
+        "id": "control-fog-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "control-fog-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Control Fog",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "fog",
+                    "radiusSpacesPerRank": 50,
+                    "lineOfSightLimitSpaces": 10,
+                    "canDispel": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "control-fog-reminder",
+            "type": "manual",
+            "label": "Create or dispel fog within 50 spaces per Rank. Created fog blocks line of sight beyond 10 spaces."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

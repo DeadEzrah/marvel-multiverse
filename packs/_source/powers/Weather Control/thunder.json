@@ -19,6 +19,7 @@
     "attack": true,
     "targeting": {
       "required": true,
+      "count": 999,
       "defense": "res",
       "area": {
         "enabled": true,
@@ -35,7 +36,7 @@
       "enabled": false
     },
     "effectProfiles": {
-      "impact": "power.electricity.arc"
+      "attack": "weather.thunder"
     },
     "events": [
       {

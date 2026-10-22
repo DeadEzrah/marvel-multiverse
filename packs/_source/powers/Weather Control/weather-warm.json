@@ -12,7 +12,50 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The temperature in an area roughly a mile across climbs as high as 100°F."
+    "effect": "The temperature in an area roughly a mile across climbs as high as 100°F.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.warm"
+    },
+    "events": [
+      {
+        "id": "weather-warm-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "weather-warm-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Weather Warm",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "temperature",
+                    "radiusMiles": 1,
+                    "maximumTemperatureF": 100
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "weather-warm-reminder",
+            "type": "manual",
+            "label": "Raise the temperature in an area roughly 1 mile across to as high as 100°F."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

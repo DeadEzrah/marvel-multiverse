@@ -13,7 +13,52 @@
     "range": "",
     "cost": "15 Focus",
     "effect": "It starts to storm in an area up to 5 miles across times the character's rank, centered on the character. All ranges and all speeds are cut in half. If the character also has the Elemental Blast (Electricity) power, they can use it as a reaction when attacked while this power is active,",
-    "numbered": 3
+    "numbered": 3,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.thunderstorm"
+    },
+    "events": [
+      {
+        "id": "control-weather-3-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "control-weather-3-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Control Weather 3",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "thunderstorm",
+                    "radiusMilesPerRank": 5,
+                    "rangeMultiplier": 0.5,
+                    "speedMultiplier": 0.5,
+                    "elementalBlastElectricityAsReactionWhenAttacked": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "control-weather-3-reminder",
+            "type": "manual",
+            "label": "Apply a thunderstorm in an area up to 5 miles across per Rank. Halve all ranges and speeds. Elemental Blast (Electricity) can be used as a reaction when this character is attacked."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,50 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The temperature in an area roughly a mile across falls as low as 0°F"
+    "effect": "The temperature in an area roughly a mile across falls as low as 0°F",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "effectProfiles": {
+      "activation": "weather.chill"
+    },
+    "events": [
+      {
+        "id": "weather-chill-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "weather-chill-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Weather Chill",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "weatherControl": {
+                    "kind": "temperature",
+                    "radiusMiles": 1,
+                    "minimumTemperatureF": 0
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "weather-chill-reminder",
+            "type": "manual",
+            "label": "Lower the temperature in an area roughly 1 mile across to as low as 0°F."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
