@@ -12,7 +12,57 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "An area up to 5 spaces wide per the character's rank-centered on anything the character wishes, within 50 spaces—is filled with silence. Those inside the area cannot hear anything, and no one outside of it can hear any noises made inside it. The character must remain within 50 spaces of the area to avoid breaking concentration."
+    "effect": "An area up to 5 spaces wide per the character's rank, centered on anything the character wishes within 50 spaces, is filled with silence. Those inside the area cannot hear anything, and no one outside it can hear noises made inside it. The character must remain within 50 spaces of the area to avoid breaking concentration.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "illusion": {
+      "mode": "silence-area",
+      "placementRange": 50,
+      "widthPerRank": 5,
+      "maintenanceRange": 50
+    },
+    "effectProfiles": {
+      "activation": "illusion.silence"
+    },
+    "events": [
+      {
+        "id": "silence-area-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "silence-area-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Silence Area",
+              "img": "systems/marvel-multiverse/icons/illusion.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "illusion": {
+                    "mode": "silence-area",
+                    "placementRange": 50,
+                    "widthPerRank": 5,
+                    "maintenanceRange": 50
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "silence-area-reminder",
+            "type": "manual",
+            "label": "Choose an area within 50 spaces, up to 5 spaces wide per Rank. Nothing inside can be heard from either side of its boundary. Moving more than 50 spaces away breaks concentration."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

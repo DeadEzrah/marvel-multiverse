@@ -12,7 +12,43 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 Focus",
-    "effect": "For every point of Ego defense the character has they can make one person or thing invisible, including themselves. Each of these can be one size bigger than them for every rank they have."
+    "effect": "For every point of Ego defense the character has, they can make one person or thing invisible, including themselves. Each can be one size larger than the character for every rank they have.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargetsAbility": "ego.defense",
+      "concentrationStatus": "invisible"
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "targetFilter": "all",
+      "includeSelf": true
+    },
+    "illusion": {
+      "mode": "group-invisibility",
+      "maximumTargetsAbility": "ego.defense",
+      "maximumSizeStepsPerRank": 1,
+      "objectsRequireRepresentation": true
+    },
+    "effectProfiles": {
+      "activation": "illusion.invisibility"
+    },
+    "events": [
+      {
+        "id": "group-invisibility-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "group-invisibility-size-reminder",
+            "type": "manual",
+            "label": "The total selected people or represented objects cannot exceed the character's Ego defense. Confirm each is no more than one size larger than the character per Rank."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

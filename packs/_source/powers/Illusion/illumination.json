@@ -12,7 +12,56 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character illuminates one object or point in line of sight, within 50 spaces, with bright light. The character can maintain concentration on the effect even il they move oul of range or line of sight."
+    "effect": "The character illuminates one object or point in line of sight, within 50 spaces, with bright light. The character can maintain concentration on the effect even if they move out of range or line of sight.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "illusion": {
+      "mode": "illumination",
+      "range": 50,
+      "requiresInitialLineOfSight": true,
+      "maintainsOutsideRange": true
+    },
+    "effectProfiles": {
+      "activation": "illusion.light"
+    },
+    "events": [
+      {
+        "id": "illumination-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "illumination-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Illumination",
+              "img": "systems/marvel-multiverse/icons/illusion.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "illusion": {
+                    "mode": "illumination",
+                    "range": 50,
+                    "maintainsOutsideRange": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "illumination-reminder",
+            "type": "manual",
+            "label": "Choose one object or point within 50 spaces and line of sight to emit bright light. After activation, concentration can continue outside that range and without line of sight."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

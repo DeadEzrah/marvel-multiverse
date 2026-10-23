@@ -1,10 +1,10 @@
 {
   "_id": "IBkz80gRi2Kq3Tgt",
-  "name": "Invisibility",
+  "name": "Mirror Images",
   "type": "power",
   "img": "systems/marvel-multiverse/icons/illusion.svg",
   "system": {
-    "description": "The character conjures up illusery duplicates of themselves.",
+    "description": "The character conjures up illusory duplicates of themselves.",
     "powerSet": "Illusion",
     "prerequisites": "Animated Illusion, Rank 3",
     "action": "Standard",
@@ -12,7 +12,57 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character creates one sound and sight illusory duplicate of themselves per rank. The duplicates look and sound exactly like them and are under their complete control. They start in the same space as the character and instantly move into any open space around them, up to 2 spaces away, during which time the character can swap places with any of the duplicates. The character's player should secretly record which one is the actual character. The duplicates can move up to 10 spaces away from the character, and they can pretend to attack (and miss) opponents. Any attack that hits a duplicate instantly removes it, If the character successfully attacks someone or does something else to make the truth evident, the illusion ends."
+    "effect": "The character creates one sound-and-sight illusory duplicate of themselves per rank. The duplicates look and sound exactly like them and are under their complete control. They start in the same space as the character and instantly move into any open space around them, up to 2 spaces away, during which time the character can swap places with any duplicate. The character's player should secretly record which one is the actual character. The duplicates can move up to 10 spaces away from the character, and they can pretend to attack and miss opponents. Any attack that hits a duplicate instantly removes it. If the character successfully attacks someone or otherwise makes the truth evident, the illusion ends.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "illusion": {
+      "mode": "mirror-images",
+      "duplicatesPerRank": 1,
+      "initialPlacementRange": 2,
+      "maximumDistance": 10,
+      "senses": ["visual", "auditory"]
+    },
+    "effectProfiles": {
+      "activation": "illusion.mirror"
+    },
+    "events": [
+      {
+        "id": "mirror-images-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mirror-images-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Mirror Images",
+              "img": "systems/marvel-multiverse/icons/illusion.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "illusion": {
+                    "mode": "mirror-images",
+                    "duplicatesPerRank": 1,
+                    "maximumDistance": 10
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "mirror-images-reminder",
+            "type": "manual",
+            "label": "Create one duplicate per Rank within 2 spaces and secretly record the real character. Duplicates may stay within 10 spaces, vanish when hit, and only pretend to attack. A successful real attack or other revealing action ends the illusion."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

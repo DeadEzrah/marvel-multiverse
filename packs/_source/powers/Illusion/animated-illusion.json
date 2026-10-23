@@ -6,13 +6,64 @@
   "system": {
     "description": "By manipulating visual light, the character creates a moving hologram.",
     "powerSet": "Illusion",
-    "prerequisites": "Static Illusion, Rank  2",
+    "prerequisites": "Static Illusion, Rank 2",
     "action": "Standard",
     "trigger": "",
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character creates a visual-only illusion anywhere in line of sight, within 50 spaces. The illusion can be anything up to four sizes larger than the character, and it can move freely within its limits. The character breaks concentration if they move beyond 50 spaces from the illusion or lose line of sight to it."
+    "effect": "The character creates a visual-only illusion anywhere in line of sight, within 50 spaces. The illusion can be anything up to four sizes larger than the character, and it can move freely within its limits. The character breaks concentration if they move beyond 50 spaces from the illusion or lose line of sight to it.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "illusion": {
+      "mode": "animated",
+      "range": 50,
+      "maximumSizeSteps": 4,
+      "senses": ["visual"],
+      "mobile": true,
+      "requiresLineOfSight": true
+    },
+    "effectProfiles": {
+      "activation": "illusion.hologram"
+    },
+    "events": [
+      {
+        "id": "animated-illusion-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "animated-illusion-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Animated Illusion",
+              "img": "systems/marvel-multiverse/icons/illusion.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "illusion": {
+                    "mode": "animated",
+                    "range": 50,
+                    "maximumSizeSteps": 4
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "animated-illusion-reminder",
+            "type": "manual",
+            "label": "Define a moving visual-only illusion no more than four sizes larger than the character, within 50 spaces and line of sight. Moving beyond 50 spaces or losing line of sight breaks concentration."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

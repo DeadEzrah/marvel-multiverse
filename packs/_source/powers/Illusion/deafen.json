@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/illusion.svg",
   "system": {
-    "description": "The character blasts a blinding light into the face of their foe.",
+    "description": "The character blasts a deafening sound at their foe.",
     "powerSet": "Illusion",
     "prerequisites": "Illumination, Rank 2",
     "action": "Standard",
@@ -17,6 +17,12 @@
     "attackTarget": "vig",
     "damageType": "health",
     "attackKind": "ranged",
+    "ability": "ego",
+    "attack": true,
+    "attackTarget": "vig",
+    "attackKind": "ranged",
+    "damageType": "health",
+    "automationPreset": "check.opposed.single",
     "targeting": {
       "required": true,
       "count": 1,
@@ -26,9 +32,17 @@
     },
     "damage": {
       "enabled": true,
+      "ability": "ego",
       "type": "health",
       "requiresFantastic": true,
       "doubleOnFantastic": false
+    },
+    "illusion": {
+      "mode": "deafen"
+    },
+    "effectProfiles": {
+      "attack": "illusion.deafen",
+      "impact": "illusion.deafen"
     },
     "events": [
       {

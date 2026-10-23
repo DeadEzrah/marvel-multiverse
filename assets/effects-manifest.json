@@ -1518,6 +1518,96 @@
       "animations": [
         { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "illusion.hologram",
+      "category": "illusion",
+      "type": "hologram",
+      "tags": ["illusion", "hologram", "visual", "magic"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.02.illusion.complete.purple", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.grand",
+      "category": "illusion",
+      "type": "hologram",
+      "tags": ["illusion", "hologram", "visual", "sound"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.cast_generic.sound.01.pinkteal.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.invisibility",
+      "category": "illusion",
+      "type": "invisibility",
+      "tags": ["illusion", "invisibility", "concealment", "mist"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.mirror",
+      "category": "illusion",
+      "type": "duplicates",
+      "tags": ["illusion", "mirror", "duplicates", "burst"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.butterflies.outward_burst.01.bluepurple", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.light",
+      "category": "illusion",
+      "type": "light",
+      "tags": ["illusion", "light", "illumination", "bright"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.dancing_light.blueyellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.darkness",
+      "category": "illusion",
+      "type": "darkness",
+      "tags": ["illusion", "darkness", "area", "concealment"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.darkness.black", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.silence",
+      "category": "illusion",
+      "type": "silence",
+      "tags": ["illusion", "silence", "sound", "area"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.soundwave.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.dazzle",
+      "category": "illusion",
+      "type": "light",
+      "tags": ["illusion", "dazzle", "blind", "burst"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.template_circle.out_pulse.01.burst.bluewhite", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "illusion.deafen",
+      "category": "illusion",
+      "type": "sound",
+      "tags": ["illusion", "deafen", "sound", "wave"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.soundwave.02.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

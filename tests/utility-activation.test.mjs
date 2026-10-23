@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 const {
+  resolveConcentrationStatusActorUuids,
   resolveLatestDamageReactionContext,
   resolveUtilityFocusAmount
 } = await import("../lib/services/utility-activation.mjs");
@@ -18,6 +19,17 @@ test("actor-only reaction targets are wrapped for action targeting", () => {
   } finally {
     globalThis.fromUuidSync = previousFromUuidSync;
   }
+});
+
+test("utility concentration statuses resolve direct Actor targets", () => {
+  const source = { uuid: "Actor.source", documentName: "Actor" };
+  const target = { uuid: "Actor.target", documentName: "Actor" };
+  const wrapped = { actor: { uuid: "Actor.wrapped" } };
+
+  assert.deepEqual(
+    resolveConcentrationStatusActorUuids(source, [target, wrapped], true),
+    ["Actor.source", "Actor.target", "Actor.wrapped"],
+  );
 });
 
 test("variable utility Focus accepts a selected amount within actor limits", async () => {

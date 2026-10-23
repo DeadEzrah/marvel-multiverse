@@ -12,7 +12,63 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character makes no noise at all-unless they wish to. They have an edge on Agility checks to sneak past people, and enemies have trouble on Vigilance checks to perceive them."
+    "effect": "The character makes no noise at all unless they wish to. They have an edge on Agility checks to sneak past people, and enemies have trouble on Vigilance checks to perceive them.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "illusion": {
+      "mode": "silence-self",
+      "sneakEdge": 1,
+      "perceptionTrouble": 1,
+      "voluntaryNoise": true
+    },
+    "effectProfiles": {
+      "activation": "illusion.silence"
+    },
+    "events": [
+      {
+        "id": "silence-self-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "silence-self-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Silence Self",
+              "img": "systems/marvel-multiverse/icons/illusion.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "illusion": {
+                    "mode": "silence-self",
+                    "voluntaryNoise": true
+                  },
+                  "actionRollModifier": {
+                    "mode": "edge",
+                    "count": 1,
+                    "label": "Silence Self: sneaking silently",
+                    "selection": "optional",
+                    "ability": "agl",
+                    "nonStacking": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "silence-self-reminder",
+            "type": "manual",
+            "label": "Select the optional Agility Edge only when sneaking silently. Enemies have Trouble on Vigilance checks to perceive the character by sound, and the character may choose to make noise."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

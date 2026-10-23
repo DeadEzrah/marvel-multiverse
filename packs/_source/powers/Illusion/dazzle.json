@@ -12,7 +12,35 @@
     "duration": "Instant",
     "range": "20 Spaces",
     "cost": "5 Focus",
-    "effect": "The character makes an Ego check against an enemy in their line of sight and compares that against the target's Vigilance defense. If the attack is a success, the enemy is blinded for 1 turn. On a Fantastic success, it also inflicts regular damage. Alternatively, the character can blind the victim with darkness, ",
+    "effect": "The character makes an Ego check against an enemy in their line of sight and compares that against the target's Vigilance defense. If the attack is a success, the enemy is blinded for 1 turn. On a Fantastic success, it also inflicts regular damage. Alternatively, the character can blind the victim with darkness.",
+    "ability": "ego",
+    "attack": true,
+    "attackTarget": "vig",
+    "attackKind": "ranged",
+    "damageType": "health",
+    "automationPreset": "check.opposed.single",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 20,
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "illusion": {
+      "mode": "dazzle",
+      "alternateDarkness": true
+    },
+    "effectProfiles": {
+      "attack": "illusion.dazzle",
+      "impact": "illusion.dazzle"
+    },
     "ability": "ego",
     "attackTarget": "vig",
     "damageType": "health",

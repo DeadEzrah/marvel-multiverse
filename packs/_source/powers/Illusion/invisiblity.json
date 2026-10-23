@@ -12,7 +12,36 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character becomes invisible. They have an edge on Agility checks to sneak past people, and enemies have trouble on Vigilance checks to perceive them. It's even harder to spot things that are invisible but aren't moving. Characters must be actively trying to do so to be able to make a Vigilance check."
+    "effect": "The character becomes invisible. They have an edge on Agility checks to sneak past people, and enemies have trouble on Vigilance checks to perceive them. It's even harder to spot things that are invisible but aren't moving. Characters must be actively trying to do so to be able to make a Vigilance check.",
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "concentrationStatus": "invisible",
+      "concentrationStatusIncludesSource": true
+    },
+    "illusion": {
+      "mode": "invisibility",
+      "self": true,
+      "sneakEdge": 1,
+      "perceptionTrouble": 1
+    },
+    "effectProfiles": {
+      "activation": "illusion.invisibility"
+    },
+    "events": [
+      {
+        "id": "invisibility-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "invisibility-rules-reminder",
+            "type": "manual",
+            "label": "The character has Edge on Agility checks to sneak. Enemies actively trying to perceive the character have Trouble on Vigilance checks; an unmoving invisible subject is harder to spot."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

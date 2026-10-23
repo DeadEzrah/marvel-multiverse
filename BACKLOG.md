@@ -290,6 +290,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Automate Mental Shelter's required targets, 5-spaces-per-Rank range, and concentration-owned Focus Damage Reduction from the source's highest Uncanny tier.
   - [x] Give every Telepathy power a live-verified Free JB2A semantic profile.
   - Focused gates pass 21/21 and the full repository passes 169/169. All twenty-seven compendium powers and thirty-five embedded world copies were refreshed with IDs preserved; six renamed character-specific copies retained their display names. Temporary data was removed.
+- [x] Complete the Illusion family migration.
+  - [x] Correct Mirror Images and Extend Invisibility identities, copied descriptions, source punctuation, and Flare's Fantastic damage scaling.
+  - [x] Structure Dazzle, Deafen, and Flare attacks with exact defenses, ranges, damage gates, areas, and one-round conditions.
+  - [x] Automate concentration-owned invisibility statuses, hologram and area state, Ego-defense group caps, and the optional Silence Self Agility Edge.
+  - [x] Preserve object representation, chosen illusion content, scene geometry, perception, duplicate removal, and reveal decisions as explicit boundaries.
+  - [x] Give every Illusion power a live-verified Free JB2A semantic profile.
+  - Focused gates pass 34/34 and the full repository passes 177/177. All fourteen compendium powers and five exact embedded copies were refreshed with IDs preserved; eleven bespoke hero powers were preserved. Temporary data was removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.
