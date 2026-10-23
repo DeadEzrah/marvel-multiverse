@@ -30,9 +30,9 @@ This document is the working list of known remaining tasks as of September 5, 20
 - [x] Verify the durability reminder: 10 damage or less is absorbed; more than 10 destroys the barrier.
 - [x] Clean up all test Regions and effects after the gate.
 
-## Remaining Telepathy Powers
+## Telepathy Powers
 
-Migrate in small related batches, running local, build, deployment, live, and cleanup gates after each batch.
+Completed in related batches with local, build, deployment, live, and cleanup gates after each batch.
 
 ### Link And Communication
 
@@ -284,6 +284,12 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Preserve creative/object, attraction, movement, upkeep, and area-entry decisions as explicit boundaries.
   - [x] Twelve semantic profiles resolve to live-verified Free JB2A web, bioelectric, impact, wind, dodge, and aura entries.
   - Focused gates pass 32/32 and the full repository passes 162/162. All twenty compendium powers and nine embedded Spider-Man copies were refreshed with IDs preserved; temporary data was removed.
+- [x] Complete the Telepathy family migration.
+  - [x] Preserve all opposed checks, target prerequisites, future-roll modifiers, group caps, Focus damage, Fantastic conditions, and safe manual boundaries across all twenty-seven powers.
+  - [x] Automate Astral Form's Rank-times-Run Flight and 10-times noncombat movement with concentration and undo.
+  - [x] Automate Mental Shelter's required targets, 5-spaces-per-Rank range, and concentration-owned Focus Damage Reduction from the source's highest Uncanny tier.
+  - [x] Give every Telepathy power a live-verified Free JB2A semantic profile.
+  - Focused gates pass 21/21 and the full repository passes 169/169. All twenty-seven compendium powers and thirty-five embedded world copies were refreshed with IDs preserved; six renamed character-specific copies retained their display names. Temporary data was removed.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

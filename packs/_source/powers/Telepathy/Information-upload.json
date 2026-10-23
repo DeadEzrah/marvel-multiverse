@@ -18,6 +18,7 @@
       "target": "required",
       "maxTargets": 1
     },
+    "effectProfiles": { "activation": "telepathy.memory" },
     "events": [
       {
         "id": "information-upload-requirements",

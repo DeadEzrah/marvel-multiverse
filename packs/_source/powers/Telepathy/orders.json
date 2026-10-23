@@ -33,6 +33,7 @@
         }
       ]
     },
+    "effectProfiles": { "cast": "telepathy.command" },
     "events": [
       {
         "id": "orders-requirements",

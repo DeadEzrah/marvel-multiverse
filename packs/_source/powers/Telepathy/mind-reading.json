@@ -27,6 +27,7 @@
         }
       ]
     },
+    "effectProfiles": { "cast": "telepathy.sense" },
     "events": [
       {
         "id": "mind-reading-link-reminder",

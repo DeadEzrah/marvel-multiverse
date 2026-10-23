@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character can enter the Astral Plane",
+    "description": "The character can enter the Astral Plane.",
     "powerSet": "Telepathy",
     "prerequisites": "Sorcerous, Rank 2",
     "action": "Standard",
@@ -12,12 +12,22 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can project an avatar into the Astral Plane, leering their physical body in a deep trance in the teal world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in The Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their Fun Speed. Outside of combat, they can move 10 times as fast.",
+    "effect": "The character can project an avatar into the Astral Plane, leaving their physical body in a deep trance in the real world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in the Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their Run Speed. Outside of combat, they can move 10 times as fast.",
     "activation": {
       "mode": "utility",
       "target": "none",
       "concentrationStatus": "astral-form",
       "concentrationStatusIncludesSource": true
+    },
+    "telepathy": {
+      "mode": "astral-form",
+      "physicalBodyVulnerable": true,
+      "flightCalculation": "rank-times-run-speed",
+      "noncombatMultiplier": 10,
+      "transparentAtRank": 4
+    },
+    "effectProfiles": {
+      "activation": "telepathy.astral"
     },
     "events": [
       {
@@ -25,6 +35,42 @@
         "trigger": "action-declared",
         "recipient": "source",
         "outcomes": [
+          {
+            "id": "astral-form-movement",
+            "type": "active-effect",
+            "effect": {
+              "name": "Astral Form",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.movement.flight.active",
+                  "mode": 5,
+                  "value": true
+                },
+                {
+                  "key": "system.movement.flight.calc",
+                  "mode": 5,
+                  "value": "rank-runspeed"
+                },
+                {
+                  "key": "system.movement.flight.noncom",
+                  "mode": 5,
+                  "value": 10
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "telepathy": {
+                    "astralForm": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
           {
             "id": "astral-form-rules-reminder",
             "type": "manual",

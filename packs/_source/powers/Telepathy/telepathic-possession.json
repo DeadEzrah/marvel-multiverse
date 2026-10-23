@@ -24,6 +24,7 @@
         { "type": "source-link", "itemName": "Telepathic Link", "message": "Telepathic Possession requires an active Telepathic Link with the target." }
       ]
     },
+    "effectProfiles": { "cast": "telepathy.command" },
     "events": [
       { "id": "telepathic-possession-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
         { "id": "telepathic-possession-prerequisite-reminder", "type": "manual", "label": "Contested possession has Trouble. An empty-minded body can receive a permanent transfer without this check; resolve that exception manually." }

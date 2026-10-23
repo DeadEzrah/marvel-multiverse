@@ -12,7 +12,7 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character uses a mirage to alter their appearance-and the appearance of up to one other person per rank, within 10 spaces-in the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see other people. The target number for anyone trying to see through the mirage is the characters Logic defense, if the affected characters are impersonating people known to the other person, that person has an edge.",
+    "effect": "The character uses a mirage to alter their appearance—and the appearance of up to one other person per rank, within 10 spaces—in the minds of people within 20 spaces per rank. Cameras (for instance) can still record them, but when people look in the characters' direction, they see other people. The target number for anyone trying to see through the mirage is the character's Logic defense. If the affected characters are impersonating people known to the other person, that person has an edge.",
     "activation": {
       "mode": "utility",
       "target": "optional",
@@ -20,6 +20,7 @@
       "range": 10,
       "willing": true
     },
+    "effectProfiles": { "activation": "telepathy.mirage" },
     "events": [
       {
         "id": "grand-fool-rules",

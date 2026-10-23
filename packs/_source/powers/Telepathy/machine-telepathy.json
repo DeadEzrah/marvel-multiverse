@@ -21,6 +21,7 @@
       "required": false,
       "count": 1
     },
+    "effectProfiles": { "cast": "telepathy.machine" },
     "events": [
       {
         "id": "machine-telepathy-requirements",

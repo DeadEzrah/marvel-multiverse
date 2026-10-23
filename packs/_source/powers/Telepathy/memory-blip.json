@@ -19,6 +19,7 @@
     "targeting": {
       "defense": "log"
     },
+    "effectProfiles": { "cast": "telepathy.memory" },
     "events": [
       {
         "id": "memory-blip-requirements",

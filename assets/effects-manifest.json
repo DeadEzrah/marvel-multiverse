@@ -1418,6 +1418,106 @@
       "animations": [
         { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
       ]
+    },
+    {
+      "id": "telepathy.astral",
+      "category": "telepathy",
+      "type": "transformation",
+      "tags": ["telepathy", "astral", "projection", "blue"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.shelter",
+      "category": "telepathy",
+      "type": "shield",
+      "tags": ["telepathy", "mental", "shelter", "shield"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.shield.01.complete.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.animal",
+      "category": "telepathy",
+      "type": "communication",
+      "tags": ["telepathy", "animal", "communication"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.bless.400px.intro.yellow", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.link",
+      "category": "telepathy",
+      "type": "communication",
+      "tags": ["telepathy", "link", "communication", "divination"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.mirage",
+      "category": "telepathy",
+      "type": "illusion",
+      "tags": ["telepathy", "mirage", "illusion", "mind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.misty_step.01.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.command",
+      "category": "telepathy",
+      "type": "control",
+      "tags": ["telepathy", "command", "control", "mind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.eyes.01.dark_green.single.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.memory",
+      "category": "telepathy",
+      "type": "memory",
+      "tags": ["telepathy", "memory", "mind", "divination"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.magic_signs.circle.01.divination", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.sense",
+      "category": "telepathy",
+      "type": "sense",
+      "tags": ["telepathy", "sense", "reading", "mind"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.eyes.01.dark_green.single.0", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.machine",
+      "category": "telepathy",
+      "type": "communication",
+      "tags": ["telepathy", "machine", "communication", "electricity"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.static_electricity.03.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "telepathy.mental-impact",
+      "category": "telepathy",
+      "type": "impact",
+      "tags": ["telepathy", "mental", "focus", "impact"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact.004.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
     }
   ]
 }

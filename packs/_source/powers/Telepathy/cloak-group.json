@@ -22,6 +22,7 @@
       "concentrationStatus": "mentally-concealed",
       "concentrationStatusIncludesSource": true
     },
+    "effectProfiles": { "activation": "telepathy.mirage" },
     "events": [
       {
         "id": "cloak-group-rules",

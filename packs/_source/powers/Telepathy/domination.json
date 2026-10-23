@@ -24,6 +24,7 @@
         { "type": "source-link", "itemName": "Telepathic Link", "message": "Domination requires an active Telepathic Link with the target." }
       ]
     },
+    "effectProfiles": { "cast": "telepathy.command" },
     "events": [
       { "id": "domination-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
         { "id": "domination-prerequisite-reminder", "type": "manual", "label": "This initial Logic check has Trouble." }

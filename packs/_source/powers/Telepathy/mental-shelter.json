@@ -15,20 +15,54 @@
     "effect": "The character extends their mental defenses to protect any chosen people within up to 5 spaces times their rank. The protected targets are granted Focus Damage Reduction equal to the character's Uncanny power.",
     "activation": {
       "mode": "utility",
-      "target": "optional",
+      "target": "required",
+      "minTargets": 1,
       "rangePerRank": 5,
       "willing": true
+    },
+    "telepathy": {
+      "mode": "mental-shelter",
+      "focusDamageReductionFromUncannyTier": true,
+      "rangePerRank": 5
+    },
+    "effectProfiles": {
+      "activation": "telepathy.shelter"
     },
     "events": [
       {
         "id": "mental-shelter-rules",
         "trigger": "action-declared",
-        "recipient": "source",
+        "recipient": "target",
         "outcomes": [
           {
-            "id": "mental-shelter-rules-reminder",
-            "type": "manual",
-            "label": "Confirm the selected people are chosen allies within 5 spaces per rank. While concentration lasts, each protected target has Focus Damage Reduction equal to the source's Uncanny power; apply that reduction manually."
+            "id": "mental-shelter-damage-reduction",
+            "type": "active-effect",
+            "sourcePowerTier": {
+              "powerSet": "Basic",
+              "namePrefix": "Uncanny "
+            },
+            "effect": {
+              "name": "Mental Shelter",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.focusDamageReduction",
+                  "mode": 4,
+                  "value": "@sourcePowerTier"
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "telepathy": {
+                    "mentalShelter": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
           }
         ]
       }

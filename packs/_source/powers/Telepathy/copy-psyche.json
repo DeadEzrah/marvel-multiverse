@@ -18,6 +18,7 @@
       "target": "optional",
       "maxTargets": 1
     },
+    "effectProfiles": { "activation": "telepathy.memory" },
     "events": [
       { "id": "copy-psyche-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
         { "id": "copy-psyche-choice-reminder", "type": "manual", "label": "Choose to copy, transmit or erase a psyche. Confirm required Telepathic Links and the capacity limit of one stored extra mind per rank. Track the chosen psyche and host manually." },

@@ -20,6 +20,7 @@
       "maxTargetsPerRank": 5,
       "willing": true
     },
+    "effectProfiles": { "activation": "telepathy.link" },
     "events": [
       {
         "id": "telepathic-network-requirements",

@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character alters someone's memory..",
+    "description": "The character alters someone's memory.",
     "powerSet": "Telepathy",
     "prerequisites": "Memory Blip, Rank 4",
     "action": "Standard",
@@ -17,6 +17,7 @@
     "ability": "log",
     "attackTarget": "log",
     "targeting": { "defense": "log" },
+    "effectProfiles": { "cast": "telepathy.memory" },
     "events": [
       { "id": "edit-memory-declared", "trigger": "action-declared", "recipient": "source", "outcomes": [
         { "id": "edit-memory-complexity-reminder", "type": "manual", "label": "Confirm an established Telepathic Link and describe the edit. The Narrator may adjust the Logic target number for the memory's complexity and compatibility." }

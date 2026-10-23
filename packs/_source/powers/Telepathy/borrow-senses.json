@@ -19,6 +19,7 @@
       "maxTargets": 1,
       "willing": true
     },
+    "effectProfiles": { "activation": "telepathy.link" },
     "events": [
       {
         "id": "borrow-senses-requirements",

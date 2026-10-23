@@ -12,7 +12,7 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character makes a Melee attack against a target. If the attack is a success, it Inflicts regular Focus damage (instead of Health damage), On a Fantastic success, the target takes double damage instead and is stunned for one round",
+    "effect": "The character makes a Melee attack against a target. If the attack is a success, it inflicts regular Focus damage instead of Health damage. On a Fantastic success, the target takes double damage instead and is stunned for one round.",
     "automationPreset": "attack.single-focus",
     "ability": "mle",
     "attackTarget": "mle",
@@ -21,6 +21,10 @@
       "defense": "mle",
       "range": 1,
       "rangeScaling": "reach"
+    },
+    "effectProfiles": {
+      "attack": "telepathy.mental-impact",
+      "hit": "telepathy.mental-impact"
     },
     "events": [
       {

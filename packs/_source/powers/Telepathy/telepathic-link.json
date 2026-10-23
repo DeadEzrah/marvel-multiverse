@@ -19,6 +19,7 @@
     "targeting": {
       "defense": "vig"
     },
+    "effectProfiles": { "cast": "telepathy.link" },
     "events": [
       {
         "id": "telepathic-link-requirements",
