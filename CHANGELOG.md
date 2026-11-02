@@ -4,6 +4,23 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.4.0] - 2026-11-02
+
+### Added
+- Structured activation, targeting, Focus, event, family metadata, and semantic animation profiles for all sixteen Omniversal Travel powers.
+- Regression coverage for self, together, other, portal, Time-Out, and Instant Replay workflows.
+- Variable Focus support for costs paid in fixed per-round increments, including exact 15-Focus Time-Out round blocks.
+
+### Changed
+- Dimensional, Multiversal, and Time travel destinations remain Narrator-controlled rather than moving tokens across scenes, universes, or timelines automatically.
+- Time-Out variants create reversible manual-duration markers without freezing every world Actor or changing combat turns automatically.
+
+### Fixed
+- Corrected Time Travel's copied reaction trigger and malformed effect text to use its intended standard-or-movement travel workflow.
+- Preserved Omniversal Travel family metadata when powers are imported or embedded on actors.
+
+## [3.3.0] - 2026-11-02
+
 ### Added
 - Structured automation and semantic effect-profile aliases for the Plasticity power family.
 - Regression tests for Plasticity targeting, concentration effects, damage, conditions, and manual-rule boundaries.

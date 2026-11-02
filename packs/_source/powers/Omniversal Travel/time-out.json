@@ -12,7 +12,57 @@
     "duration": "1 round per rank.",
     "range": "",
     "cost": "15 Focus per round.",
-    "effect": "The character freezes time for everyone but themselves. During this period, they can act normally while everyone else seems to be frozen in place. The character can choose to activate the power for the maximum duration or choose to stop at any time. However long, they must pay the Focus cost for each round. For example, Quicksilver uses Time-Out as an action and pays 30 Focus to activate it for two rounds. He can take his normal number of actions, reactions and movement, while the other characters cannot take any actions, reactions or movements until after the two rounds end."
+    "effect": "The character freezes time for everyone but themselves. During this period, they can act normally while everyone else seems to be frozen in place. The character can choose to activate the power for the maximum duration or choose to stop at any time. However long, they must pay the Focus cost for each round. For example, Quicksilver uses Time-Out as an action and pays 30 Focus to activate it for two rounds. He can take his normal number of actions, reactions and movement, while the other characters cannot take any actions, reactions or movements until after the two rounds end.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "omniversalTravel": {
+      "mode": "time-out",
+      "scope": "time",
+      "focusPerRound": 15,
+      "maximumRoundsPerRank": 1,
+      "selectedRoundsFromFocus": true,
+      "mayEndEarly": true,
+      "worldFreezeManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.time"
+    },
+    "events": [
+      {
+        "id": "time-out-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "time-out-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Time-Out",
+              "img": "systems/marvel-multiverse/icons/portal.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "omniversalTravel": {
+                    "mode": "time-out"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          },
+          {
+            "id": "time-out-reminder",
+            "type": "manual",
+            "label": "The character acts while everyone else is frozen for one prepaid round per 15 Focus, up to the character's Rank. End early if desired. World actors, combat turns, and reactions are not mutated automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

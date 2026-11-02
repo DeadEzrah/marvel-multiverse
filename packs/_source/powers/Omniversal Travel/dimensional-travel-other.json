@@ -15,7 +15,53 @@
     "effect": "The character makes an Ego check against the Vigilance defense of a target they have grabbed. If the check is successful, the character can send the target to another dimension. The target can be sent to any location in that dimension that the character has been to before. Otherwise, the target arrives at the most common entrance to that dimension.",
     "ability": "ego",
     "attackTarget": "vig",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "label": "Target must be grabbed."
+        }
+      ]
+    },
+    "omniversalTravel": {
+      "mode": "target-only",
+      "scope": "dimension",
+      "sameUniverse": true,
+      "requiresGrabbedTarget": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "most-common-entrance",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "hit": "omniversal.travel",
+      "fantasticHit": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "dimensional-travel-other-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "dimensional-travel-other-reminder",
+            "type": "manual",
+            "label": "Send the grabbed target to a previously visited place in another dimension of the same universe, or to that dimension's most common entrance. Scene selection and token placement remain Narrator-controlled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

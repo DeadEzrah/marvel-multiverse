@@ -12,7 +12,46 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character moves to a different dimension, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other dimension, they can arrive In any place they've been to before. Otherwise, they arrive at the most common entrance to that dimension."
+    "effect": "The character moves to a different dimension, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other dimension, they can arrive in any place they've been to before. Otherwise, they arrive at the most common entrance to that dimension.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "omniversalTravel": {
+      "mode": "self-with-target",
+      "scope": "dimension",
+      "sameUniverse": true,
+      "unwillingTargetMustBeGrabbed": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "most-common-entrance",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "dimensional-travel-together-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "dimensional-travel-together-reminder",
+            "type": "manual",
+            "label": "Move the character and touched target to a previously visited place in another dimension of the same universe, or to its most common entrance. An unwilling target must already be grabbed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

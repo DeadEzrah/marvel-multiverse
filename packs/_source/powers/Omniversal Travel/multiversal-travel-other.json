@@ -15,7 +15,52 @@
     "effect": "The character makes an Ego check against the Vigilance of a target they have grabbed. If the check is successful, the character can send the target to another universe. The target can be sent to any location in that universe that the character has been to before. Otherwise, the target arrives at the closest available corresponding space in the other universe.",
     "ability": "ego",
     "attackTarget": "vig",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "label": "Target must be grabbed."
+        }
+      ]
+    },
+    "omniversalTravel": {
+      "mode": "target-only",
+      "scope": "universe",
+      "requiresGrabbedTarget": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "closest-corresponding-space",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "hit": "omniversal.travel",
+      "fantasticHit": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "multiversal-travel-other-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "multiversal-travel-other-reminder",
+            "type": "manual",
+            "label": "Send the grabbed target to a previously visited place in another universe, or to its closest available corresponding space. Scene selection and token placement remain Narrator-controlled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

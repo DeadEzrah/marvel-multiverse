@@ -28,6 +28,9 @@
     "plasticity.movement": "movement.whoosh",
     "power.control.copy": "telepathy.command",
     "power.control.attack": "telepathy.mental-impact",
+    "omniversal.travel": "movement.teleport",
+    "omniversal.portal": "movement.teleport",
+    "omniversal.time": "movement.superspeed",
     "movement.superspeed": "movement.whoosh",
     "movement.flight": "movement.whoosh"
   },

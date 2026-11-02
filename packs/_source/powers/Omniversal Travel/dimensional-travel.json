@@ -12,7 +12,36 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character instantly moves from their current dimension to another dimension within the same universe. For instance: from Earth to Asgard, Limbo or Kun-Lun. When they move to the other dimension, they can arrive in any place they've been to before. Otherwise, they arrive at the most common entrance to that dimension."
+    "effect": "The character instantly moves from their current dimension to another dimension within the same universe. For instance: from Earth to Asgard, Limbo or Kun-Lun. When they move to the other dimension, they can arrive in any place they've been to before. Otherwise, they arrive at the most common entrance to that dimension.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "omniversalTravel": {
+      "mode": "self",
+      "scope": "dimension",
+      "sameUniverse": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "most-common-entrance",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "dimensional-travel-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "dimensional-travel-reminder",
+            "type": "manual",
+            "label": "Move the character to a previously visited place in another dimension of the same universe. Otherwise, use that dimension's most common entrance. Scene selection and token placement remain Narrator-controlled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

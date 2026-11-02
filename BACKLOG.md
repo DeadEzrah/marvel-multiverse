@@ -311,6 +311,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Live-gate targeting, variable Focus, concentration end/undo, grabbed-target prerequisites, and normal/failure/Fantastic non-damaging attack outcomes.
   - [x] Live-gate concentration replacement.
   - [x] Refresh installed compendium and exact canonical embedded copies; verify Sequencer/Free JB2A playback and remove temporary live-test data.
+- [x] Complete the Omniversal Travel migration in the installed Foundry world.
+  - [x] Structure all sixteen powers across self travel, travel together, travel other, portals, Time-Out variants, and Instant Replay.
+  - [x] Preserve cross-scene, dimension, universe, timeline, willing-target, failed-check, and global time-stop decisions as explicit Narrator boundaries.
+  - [x] Add exact 15-Focus-per-round parsing and validation for prepaid Time-Out duration blocks.
+  - [x] Live-gate exact Focus spend/refund, required and Rank-capped targets, grabbed-target prerequisites, non-damaging failure/normal/Fantastic attacks, concentration, marker apply/undo, and cleanup.
+  - [x] Verify travel, portal, and time semantic playback through Sequencer and Free JB2A.
+  - [x] Confirm all sixteen installed compendium records preserve Omniversal metadata; no exact embedded world copies required refresh.
 - [x] Complete destructible object token profiles.
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.

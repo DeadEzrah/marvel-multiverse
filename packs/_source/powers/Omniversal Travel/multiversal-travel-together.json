@@ -12,7 +12,45 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character moves to a different universe, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other universe, they can arrive in any place they've been to before. Otherwise, they arrive at the closest available corresponding space in the other universe."
+    "effect": "The character moves to a different universe, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other universe, they can arrive in any place they've been to before. Otherwise, they arrive at the closest available corresponding space in the other universe.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "omniversalTravel": {
+      "mode": "self-with-target",
+      "scope": "universe",
+      "unwillingTargetMustBeGrabbed": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "closest-corresponding-space",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "multiversal-travel-together-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "multiversal-travel-together-reminder",
+            "type": "manual",
+            "label": "Move the character and touched target to a previously visited place in another universe, or to the closest available corresponding space. An unwilling target must already be grabbed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

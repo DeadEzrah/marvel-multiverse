@@ -12,7 +12,36 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "Once per battle, the character can make a second attempt at a check that they just failed, erasing and replacing the first attempt entirely."
+    "effect": "Once per battle, the character can make a second attempt at a check that they just failed, erasing and replacing the first attempt entirely.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "omniversalTravel": {
+      "mode": "instant-replay",
+      "scope": "time",
+      "trigger": "failed-check",
+      "usesPerBattle": 1,
+      "replacesOriginalCheck": true,
+      "rerollManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.time"
+    },
+    "events": [
+      {
+        "id": "instant-replay-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "instant-replay-reminder",
+            "type": "manual",
+            "label": "Use only once per battle immediately after this character fails a check. Make a second attempt and replace the original check entirely; the previous message is not mutated automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

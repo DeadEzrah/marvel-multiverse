@@ -12,7 +12,58 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character opens a glowing portal in a space next to them that moves anything that enters it between that space and its destination, which forms a matched glowing portal in the other place. The other end of the portal must be in a clear space in another period of time, in roughly the same place. Anything can move through the portal in either direction until it is closed, which the character can do at will."
+    "effect": "The character opens a glowing portal in a space next to them that moves anything that enters it between that space and its destination, which forms a matched glowing portal in the other place. The other end of the portal must be in a clear space in another period of time, in roughly the same place. Anything can move through the portal in either direction until it is closed, which the character can do at will.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "omniversalTravel": {
+      "mode": "portal",
+      "scope": "time",
+      "originWithinReach": true,
+      "requiresClearDestination": true,
+      "fallbackDestination": "roughly-same-place",
+      "bidirectional": true,
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.portal"
+    },
+    "events": [
+      {
+        "id": "time-portal-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "time-portal-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Time Portal",
+              "img": "systems/marvel-multiverse/icons/portal.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "omniversalTravel": {
+                    "mode": "portal",
+                    "scope": "time"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "time-portal-reminder",
+            "type": "manual",
+            "label": "Place one portal next to the character and its matching end in a clear space in another period, in roughly the same place. Anything may pass either way until concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

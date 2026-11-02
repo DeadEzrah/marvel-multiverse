@@ -7,12 +7,40 @@
     "description": "The character moves from one time to another.",
     "powerSet": "Omniversal Travel",
     "prerequisites": "Rank 3",
-    "action": "Reaction",
-    "trigger": "The character fails a check.",
+    "action": "Standard or movement",
+    "trigger": "",
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character instantly moves from their current time to another time-for instance, from the present to when they move to the other time, they can arrive in any place they've been to before. Otherwise, they arrive at the closest available corresponding space in the other time."
+    "effect": "The character instantly moves from their current time to another time. They can arrive at a place they have visited in that time; otherwise, they arrive at the closest available corresponding space.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "omniversalTravel": {
+      "mode": "self",
+      "scope": "time",
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "closest-corresponding-space",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "time-travel-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "time-travel-reminder",
+            "type": "manual",
+            "label": "Move the character to a previously visited place in another time. Otherwise, use the closest available corresponding space. Scene selection and token placement remain Narrator-controlled."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

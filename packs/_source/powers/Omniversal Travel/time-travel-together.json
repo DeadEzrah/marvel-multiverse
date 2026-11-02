@@ -12,7 +12,45 @@
     "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character moves to a different time, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other time, they can arrive in any place they've been to before. Otherwise, they arrive at the closest available corresponding space in the other time."
+    "effect": "The character moves to a different time, taking any person they are touching with them. If the target does not wish to come along, the character must grab them first. When they move to the other time, they can arrive in any place they've been to before. Otherwise, they arrive at the closest available corresponding space in the other time.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "omniversalTravel": {
+      "mode": "self-with-target",
+      "scope": "time",
+      "unwillingTargetMustBeGrabbed": true,
+      "previouslyVisitedDestination": true,
+      "fallbackDestination": "closest-corresponding-space",
+      "crossSceneMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.travel"
+    },
+    "events": [
+      {
+        "id": "time-travel-together-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "time-travel-together-reminder",
+            "type": "manual",
+            "label": "Move the character and touched target to a previously visited place in another time, or to the closest available corresponding space. An unwilling target must already be grabbed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,67 @@
     "duration": "1 round per rank.",
     "range": "",
     "cost": "15 Focus per round",
-    "effect": "The character freezes time for one person or thing within their reach. Everything and everyone else can act normally. If the target does not wish to be frozen, the character must grab them first. The character can choose to activate the power for the maximum duration or choose to stop at any time. However long, they must pay the Focus cost for each round. For example, Quicksilver uses Time-Out as an action and pays 30 Focus to activate it for two rounds. He can take his normal number of actions, reactions and movement, while the other characters cannot take any actions, reactions or movements until after the two rounds end."
+    "effect": "The character freezes time for one person or thing within their reach. Everything and everyone else can act normally. If the target does not wish to be frozen, the character must grab them first. The character can choose to activate the power for the maximum duration or choose to stop at any time. However long, they must pay the Focus cost for each round. For example, Quicksilver uses Time-Out as an action and pays 30 Focus to activate it for two rounds. He can take his normal number of actions, reactions and movement, while the other characters cannot take any actions, reactions or movements until after the two rounds end.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "minTargets": 1,
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "includeSelf": false
+    },
+    "omniversalTravel": {
+      "mode": "time-out-tag",
+      "scope": "time",
+      "focusPerRound": 15,
+      "maximumRoundsPerRank": 1,
+      "selectedRoundsFromFocus": true,
+      "unwillingTargetMustBeGrabbed": true,
+      "mayEndEarly": true,
+      "targetFreezeManual": true
+    },
+    "effectProfiles": {
+      "activation": "omniversal.time"
+    },
+    "events": [
+      {
+        "id": "time-out-tag-active",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "time-out-tag-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Time-Out Tag",
+              "img": "systems/marvel-multiverse/icons/portal.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "omniversalTravel": {
+                    "mode": "time-out-tag"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          },
+          {
+            "id": "time-out-tag-reminder",
+            "type": "manual",
+            "label": "Freeze the target for one prepaid round per 15 Focus, up to the character's Rank. An unwilling target must already be grabbed. Remove or undo the marker when the selected duration ends or the character stops early."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
