@@ -12,7 +12,63 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 or more Focus",
-    "effect": "The character picks another character within 10 spaces and in their line of sight and duplicates all their powers that could be selected with the Special Training origin. They can now use those powers as if they were always theirs. If the copied powers have costs, the character must pay the highest of them, or a minimum of 5 Focus. When the character uses a copied power, they must pay any cost normally as well."
+    "effect": "The character picks another character within 10 spaces and in their line of sight and duplicates all their powers that could be selected with the Special Training origin. They can now use those powers as if they were always theirs. If the copied powers have costs, the character must pay the highest of them, or a minimum of 5 Focus. When the character uses a copied power, they must pay any cost normally as well.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 10,
+      "concentrationStatus": "power-control-clone-moves",
+      "concentrationStatusIncludesSource": true
+    },
+    "targeting": {
+      "requiresLineOfSight": true
+    },
+    "powerControl": {
+      "mode": "clone-special-training-powers",
+      "range": 10,
+      "minimumFocus": 5,
+      "maximumFocusFromTargetPowers": true,
+      "requiredOrigin": "Special Training",
+      "payCopiedPowerCostOnUse": true
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "clone-moves-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "clone-moves-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Clone Moves",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "clone-special-training-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "clone-moves-resolution",
+            "type": "manual",
+            "label": "Copy only powers eligible for the Special Training origin. Pay the highest copied-power Focus cost or 5, whichever is greater, then pay each copied power's normal cost when used. Add eligible powers and handle all use and concentration changes manually."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

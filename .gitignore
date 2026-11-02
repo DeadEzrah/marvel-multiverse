@@ -5,6 +5,7 @@ marvel-multiverse-*.zip
 marvel-multiverse.lock
 packs/*
 !packs/_source/
+!packs/_source/**
 
 
 # IDE

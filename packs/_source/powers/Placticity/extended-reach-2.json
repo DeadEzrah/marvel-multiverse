@@ -13,6 +13,10 @@
     "range": "",
     "cost": "",
     "effect": "The character's reach is 10 times normal.",
+    "plasticity": {
+      "mode": "extended-reach",
+      "reachMultiplier": 10
+    },
     "numbered": 2
   },
   "flags": {},

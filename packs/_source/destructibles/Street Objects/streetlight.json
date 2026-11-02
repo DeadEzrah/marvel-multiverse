@@ -1,0 +1,30 @@
+{
+  "_id": "DstStreetlight01",
+  "name": "Streetlight",
+  "type": "npc",
+  "img": "systems/marvel-multiverse/icons/destructibles/street-object.svg",
+  "system": {
+    "attributes": { "rank": { "value": 1 } },
+    "abilities": {
+      "mle": { "value": -3 }, "agl": { "value": -3 }, "res": { "value": -3 },
+      "vig": { "value": -3 }, "ego": { "value": -3 }, "log": { "value": -3 }
+    },
+    "health": { "value": 25, "max": 25 },
+    "healthDamageReduction": 1,
+    "focus": { "value": 0, "max": 0 },
+    "size": "big",
+    "history": "A metal streetlight or utility pole. Its durability is a Narrator-ready starting point and can be edited after import.",
+    "movement": { "run": { "active": false }, "climb": { "active": false }, "swim": { "active": false }, "jump": { "active": false } }
+  },
+  "prototypeToken": {
+    "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
+    "width": 1, "height": 1,
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/street-object.svg" },
+    "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
+  },
+  "items": [],
+  "effects": [],
+  "folder": "DstStreet0000001",
+  "flags": { "marvel-multiverse": { "destructible": { "version": 1, "category": "street-objects", "profile": "sturdy" } } },
+  "_key": "!actors!DstStreetlight01"
+}

@@ -297,6 +297,24 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Preserve object representation, chosen illusion content, scene geometry, perception, duplicate removal, and reveal decisions as explicit boundaries.
   - [x] Give every Illusion power a live-verified Free JB2A semantic profile.
   - Focused gates pass 34/34 and the full repository passes 177/177. All fourteen compendium powers and five exact embedded copies were refreshed with IDs preserved; eleven bespoke hero powers were preserved. Temporary data was removed.
+- [x] Complete the Plasticity migration in the installed Foundry world.
+  - [x] Structure all thirteen source records, including Reach and Flexible Bones passive tiers, utility activation targeting, exact attack damage and status outcomes, and manual-only rule boundaries.
+  - [x] Replace Body Sheet and Stilt Steps' permanently transferred concentration effects with source-owned, undoable concentration effects.
+  - [x] Add source-level regression coverage for Rank-capped Body Sphere protection, Rubberneck's Reach limit, canonical status changes, and semantic effect aliases.
+  - [x] Live-gate status apply/remove and normal, failure, and Fantastic attack outcomes.
+  - [x] Live-gate exact Body Sheet and Body Sphere Focus spend/refund, Rank-one Body Sphere target rejection, source/target effects, concentration end, and cleanup.
+  - [x] Refresh installed compendium and exact canonical embedded copies; verify Sequencer/Free JB2A playback and remove temporary live-test data.
+- [x] Complete the Power Control migration in the installed Foundry world.
+  - [x] Structure all thirteen powers with exact target/range/cost metadata, safe no-damage Ego attacks, concentration lifecycle tracking, and manual outcomes for power mutation.
+  - [x] Preserve target-power selection, per-use costs, grabbed-target requirements, and Power Slider's subjective Narrator adjudication as explicit boundaries.
+  - [x] Correct the Swipe Power compendium name and add source-level regression coverage for all power records, attacks, targeting, costs, and effect-profile aliases.
+  - [x] Live-gate targeting, variable Focus, concentration end/undo, grabbed-target prerequisites, and normal/failure/Fantastic non-damaging attack outcomes.
+  - [x] Live-gate concentration replacement.
+  - [x] Refresh installed compendium and exact canonical embedded copies; verify Sequencer/Free JB2A playback and remove temporary live-test data.
+- [x] Complete destructible object token profiles.
+  - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
+  - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.
+  - [x] Import and live-gate a Car profile through ordinary weapon targeting, Damage Reduction, Health loss to zero, unlinked-token isolation, and cleanup.
 - [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.

@@ -15,7 +15,73 @@
     "effect": "The character makes an Ego attack against the grabbed target. On a success, they remove all of the target's powers and take them for their own. They can now use those powers as if they were always theirs. If the target's powers have costs, the character must pay the highest of them, or a minimum of 15 Focus. When the character uses a power, they must pay any cost normally as well.",
     "ability": "ego",
     "attackTarget": "ego",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 1,
+      "rangeScaling": "reach",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Steal Powers requires a grabbed target."
+        }
+      ]
+    },
+    "powerControl": {
+      "mode": "steal-all-powers",
+      "requiresGrappledTarget": true,
+      "minimumFocus": 15,
+      "maximumFocusFromTargetPowers": true,
+      "payStolenPowerCostOnUse": true
+    },
+    "effectProfiles": {
+      "attack": "power.control.attack",
+      "hit": "telepathy.mental-impact",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "steal-powers-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "steal-powers-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Steal Powers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "steal-all-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "steal-powers-resolution",
+            "type": "manual",
+            "label": "Remove all target powers and grant them to the source for the duration of concentration. Pay the highest target-power Focus cost or 15, whichever is greater, and pay each stolen power's normal cost when used. Restore the target's powers when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

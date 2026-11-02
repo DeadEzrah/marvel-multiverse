@@ -12,7 +12,61 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 or more Focus",
-    "effect": " The character picks one power from another character within 5 spaces and boosts it. If the power has ranges or effective areas or durations, these are doubled. If the power affects a damage multiplier, add 1 to the effect. Any effects that normally happen with a Fantastic success automatically happen on any success not just a Fantastic one. If the power has a cost, the character muss pay it as well, with a minimum of 5 Focus."
+    "effect": " The character picks one power from another character within 5 spaces and boosts it. If the power has ranges or effective areas or durations, these are doubled. If the power affects a damage multiplier, add 1 to the effect. Any effects that normally happen with a Fantastic success automatically happen on any success not just a Fantastic one. If the power has a cost, the character must pay it as well, with a minimum of 5 Focus.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 5,
+      "concentrationStatus": "power-control-bump-power",
+      "concentrationStatusIncludesSource": true
+    },
+    "powerControl": {
+      "mode": "boost-one-power",
+      "range": 5,
+      "minimumFocus": 5,
+      "copyTargetPowerCost": true,
+      "rangeAreaDurationMultiplier": 2,
+      "damageMultiplierBonus": 1,
+      "fantasticOutcomesOnSuccess": true
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "bump-power-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "bump-power-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Bump Power",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "boost-one-power"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "bump-power-resolution",
+            "type": "manual",
+            "label": "Choose one target power and boost it: double its range, area, and duration; add 1 to its damage multiplier; allow Fantastic-only effects on any success. Pay that power's Focus cost or 5, whichever is greater. Resolve ongoing changes manually while concentrating."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -1,0 +1,10 @@
+{
+  "name": "Vehicles",
+  "type": "Actor",
+  "_id": "DstVehicl0000001",
+  "folder": "DstRoot000000001",
+  "sort": 300000,
+  "flags": {},
+  "color": "#b72f32",
+  "_key": "!folders!DstVehicl0000001"
+}

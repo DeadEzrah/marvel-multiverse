@@ -13,7 +13,79 @@
     "range": "",
     "cost": "Varies",
     "effect": "The character picks one power from another character within 20 spaces and makes an Ego attack against them. On a success, they tamp the power down. If the power has ranges or effective areas or durations, these are halved. If the power affects a damage multiplier, subtract 1 from the effect. The power can no longer enjoy Fantastic successes. If the power has a Focus cost, the character must also pay that cost to dampen it.",
-    "ability": "ego"
+    "ability": "ego",
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 20,
+      "requiresLineOfSight": true
+    },
+    "powerControl": {
+      "mode": "dampen-one-power",
+      "range": 20,
+      "rangeAreaDurationMultiplier": 0.5,
+      "damageMultiplierPenalty": 1,
+      "fantasticSuccessesDisabled": true,
+      "payTargetPowerFocusCost": true
+    },
+    "effectProfiles": {
+      "attack": "power.control.attack",
+      "hit": "telepathy.mental-impact",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "dampen-power-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "dampen-power-cost",
+            "type": "manual",
+            "label": "Choose one target power and determine Dampen Power's variable Focus cost from that power. Manually spend the required amount; do not assume an additional fixed cost."
+          }
+        ]
+      },
+      {
+        "id": "dampen-power-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "dampen-power-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Dampen Power",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "dampen-one-power"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "dampen-power-resolution",
+            "type": "manual",
+            "label": "Choose the affected target power and halve its range, area, and duration; subtract 1 from its damage multiplier and disable Fantastic successes. Restore it when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

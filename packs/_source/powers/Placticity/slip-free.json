@@ -12,7 +12,38 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The character is not grabbed or pinned."
+    "effect": "The character is not grabbed or pinned.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "plasticity": {
+      "mode": "slip-free",
+      "removesStatus": "grappled",
+      "pinnedNeedsManualResolution": true
+    },
+    "effectProfiles": {
+      "activation": "plasticity.movement"
+    },
+    "events": [
+      {
+        "id": "slip-free-reaction",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "slip-free-remove-grappled",
+            "type": "remove-status",
+            "statusId": "grappled"
+          },
+          {
+            "id": "slip-free-pinned-reminder",
+            "type": "manual",
+            "label": "Use only when grabbed or pinned. The grappled status is removed automatically; resolve any nonstandard pinned effect manually."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

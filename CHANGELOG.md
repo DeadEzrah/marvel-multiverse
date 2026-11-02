@@ -2,6 +2,22 @@
 
 All notable changes to the Marvel Multiverse Foundry system should be documented in this file.
 
+## [Unreleased]
+
+### Added
+- Structured automation and semantic effect-profile aliases for the Plasticity power family.
+- Regression tests for Plasticity targeting, concentration effects, damage, conditions, and manual-rule boundaries.
+- Structured Power Control activation and attack workflows with safe manual resolution for copied, boosted, dampened, stolen, and swapped abilities.
+- A Destructible Objects Actor compendium with twelve neutral NPC-backed token profiles for walls, doors, street objects, vehicles, and building sections.
+- Original system-owned token artwork and regression coverage for destructible profile Health, Damage Reduction, defenses, token bars, and manifest registration.
+
+### Fixed
+- Body Sheet and Stilt Steps now grant concentration-owned effects rather than permanent transferred effects.
+- Corrected Rubberneck's copied description and Flexible Fingers' description typo.
+- Restored legacy weapon damage inference when Foundry hydrates optional damage configuration to an empty object.
+- Preserved Plasticity and Power Control family metadata when powers are imported or embedded on actors.
+- Bumped the system and package version from 3.2.1 to 3.3.0; release validation now keeps the Foundry manifest, package metadata, lockfile, and download URL in sync.
+
 ## [3.2.1] - 2026-10-08
 
 ### Changed

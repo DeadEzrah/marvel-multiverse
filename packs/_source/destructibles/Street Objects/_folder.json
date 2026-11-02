@@ -1,0 +1,10 @@
+{
+  "name": "Street Objects",
+  "type": "Actor",
+  "_id": "DstStreet0000001",
+  "folder": "DstRoot000000001",
+  "sort": 200000,
+  "flags": {},
+  "color": "#b52d30",
+  "_key": "!folders!DstStreet0000001"
+}

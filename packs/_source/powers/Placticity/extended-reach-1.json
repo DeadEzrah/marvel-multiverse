@@ -13,6 +13,10 @@
     "range": "",
     "cost": "",
     "effect": "The character's reach quadruples",
+    "plasticity": {
+      "mode": "extended-reach",
+      "reachMultiplier": 4
+    },
     "numbered": 1
   },
   "flags": {},

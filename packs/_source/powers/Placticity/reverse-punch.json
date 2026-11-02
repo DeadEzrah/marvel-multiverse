@@ -19,6 +19,31 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies"
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "plasticity": {
+      "mode": "reverse-punch",
+      "attackEdge": true,
+      "fantasticStatus": "stunned",
+      "fantasticStatusDurationRounds": 1
+    },
+    "effectProfiles": {
+      "attack": "plasticity.punch",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "reverse-punch-stunned",

@@ -10,7 +10,7 @@ This maintained fork provides character and item sheets, Marvel dice, action wor
 
 | Component | Current target |
 |---|---|
-| Marvel Multiverse system | 3.2.1 |
+| Marvel Multiverse system | 3.3.0 |
 | Foundry VTT | 12-14; verified on 14.365 |
 | Primary branch | [`main`](https://github.com/DeadEzrah/marvel-multiverse/tree/main) |
 | Issue tracker | [GitHub issues](https://github.com/DeadEzrah/marvel-multiverse/issues) |
@@ -50,6 +50,12 @@ https://raw.githubusercontent.com/DeadEzrah/marvel-encounter-packs/main/module.j
 Optional visual integrations include Sequencer, JB2A, PSFX, and FXMaster. Missing visual modules never prevent rules or encounter progression.
 
 The public Character Library contains only original, generic, or redistribution-approved content. Recognizable or uncertain personal campaign conversions should remain in a separate private/local vault; public suite packages must never require or reference that vault.
+
+## Destructible Objects
+
+The **Destructible Objects** Actor compendium provides neutral, unlinked NPC token profiles for walls and doors, street objects, vehicles, and large structure sections. Import a profile, place its token, and target it with ordinary attacks; Health, Damage Reduction, defenses, token bars, and damage application use the same workflow as every other NPC.
+
+The supplied durability values are editable Narrator-ready starting points, not a replacement for an official ruling. Destroying a token does not automatically delete Foundry Wall or Tile documents, trigger a collapse, or create debris. The Narrator should hide or remove matching scene geometry when appropriate.
 
 ## Documentation
 

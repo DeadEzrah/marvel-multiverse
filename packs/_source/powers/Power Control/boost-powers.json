@@ -12,7 +12,61 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 or more Focus",
-    "effect": "The character picks one character within 5 spaces and boosts all of their powers. If the powers have ranges or effective areas or durations, these are doubled. If the powers affect a damage multiplier, add 1 to the effects. Any effects that normally happen with a Fantastic successes automatically happen on any success, not just a Fantastic one. If the target's powers have costs, the character must pay the highest of them or a minimum of 15 Focus."
+    "effect": "The character picks one character within 5 spaces and boosts all of their powers. If the powers have ranges or effective areas or durations, these are doubled. If the powers affect a damage multiplier, add 1 to the effects. Any effects that normally happen with a Fantastic successes automatically happen on any success, not just a Fantastic one. If the target's powers have costs, the character must pay the highest of them or a minimum of 15 Focus.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 5,
+      "concentrationStatus": "power-control-boost-powers",
+      "concentrationStatusIncludesSource": true
+    },
+    "powerControl": {
+      "mode": "boost-all-powers",
+      "range": 5,
+      "minimumFocus": 15,
+      "copyTargetPowerCost": true,
+      "rangeAreaDurationMultiplier": 2,
+      "damageMultiplierBonus": 1,
+      "fantasticOutcomesOnSuccess": true
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "boost-powers-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "boost-powers-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Boost Powers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "boost-all-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "boost-powers-resolution",
+            "type": "manual",
+            "label": "Boost every target power: double its range, area, and duration; add 1 to damage multipliers; allow Fantastic-only effects on any success. Pay the highest target-power Focus cost or 15, whichever is greater. Power-specific changes and repeat usage require manual resolution while this concentration lasts."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/placticity.svg",
   "system": {
-    "description": "The character can reach past an enemy and punch them from behind.",
+    "description": "The character can stretch their head away from their body.",
     "powerSet": "Plasticity",
     "prerequisites": "Flexible Bones 1, Extended Reach 1",
     "action": "",
@@ -12,7 +12,37 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can move their head away from their body, up to their reach, to establish a line of sight to a target."
+    "effect": "The character can move their head away from their body, up to their reach, to establish a line of sight to a target.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach"
+    },
+    "plasticity": {
+      "mode": "rubberneck",
+      "lineOfSightRange": "reach",
+      "tokenMovement": false
+    },
+    "events": [
+      {
+        "id": "rubberneck-sightline",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "rubberneck-reminder",
+            "type": "manual",
+            "label": "Extend the head up to the character's current Reach and confirm a clear line of sight from that position. The head can reach around obstacles; this does not move the character's token."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

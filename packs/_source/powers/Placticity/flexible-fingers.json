@@ -4,15 +4,38 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/placticity.svg",
   "system": {
-    "description": "The character can tur their fingers and hands into whatever tool they need.",
+    "description": "The character can turn their fingers and hands into whatever tool they need.",
     "powerSet": "Plasticity",
     "prerequisites": "",
-    "action": "",
+    "action": "Standard",
     "trigger": "",
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "With a standard action, the character can automatically pick any lock that requires a physical key. They can also shape their hands to form almost any other kind of simple tool."
+    "effect": "With a standard action, the character can automatically pick any lock that requires a physical key. They can also shape their hands to form almost any other kind of simple tool.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "plasticity": {
+      "mode": "flexible-fingers",
+      "automaticPhysicalKeyLockPicking": true,
+      "simpleToolsOnly": true
+    },
+    "events": [
+      {
+        "id": "flexible-fingers-use",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "flexible-fingers-limits",
+            "type": "manual",
+            "label": "Automatically pick a lock requiring a physical key or form a simple tool. Resolve the tool's suitability for the task with the Narrator."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

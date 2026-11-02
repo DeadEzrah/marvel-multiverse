@@ -1,0 +1,30 @@
+{
+  "_id": "DstConcreteWall1",
+  "name": "Reinforced Concrete Wall",
+  "type": "npc",
+  "img": "systems/marvel-multiverse/icons/destructibles/structure.svg",
+  "system": {
+    "attributes": { "rank": { "value": 1 } },
+    "abilities": {
+      "mle": { "value": -3 }, "agl": { "value": -3 }, "res": { "value": -3 },
+      "vig": { "value": -3 }, "ego": { "value": -3 }, "log": { "value": -3 }
+    },
+    "health": { "value": 80, "max": 80 },
+    "healthDamageReduction": 3,
+    "focus": { "value": 0, "max": 0 },
+    "size": "huge",
+    "history": "A targetable section of reinforced concrete. Hide or remove the matching Foundry Wall segment when this token is destroyed.",
+    "movement": { "run": { "active": false }, "climb": { "active": false }, "swim": { "active": false }, "jump": { "active": false } }
+  },
+  "prototypeToken": {
+    "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
+    "width": 2, "height": 1,
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/structure.svg" },
+    "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
+  },
+  "items": [],
+  "effects": [],
+  "folder": "DstStruct0000001",
+  "flags": { "marvel-multiverse": { "destructible": { "version": 1, "category": "large-structures", "profile": "heavy" } } },
+  "_key": "!actors!DstConcreteWall1"
+}

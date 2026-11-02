@@ -12,7 +12,109 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character forms their body into a sphere, protecting up to one ally per rank, squeezed into the same space. Those inside the sphere gain Health Damage Reduction 3 against outside attacks, but they cannot move on their own until the character releases them. Alternatively, if the attacker is within the character's reach, the character can make an Agility check against the target's Agility defense. On a success, the character envelops the attacker, grabbing them. On a Fantastic success, the character closes the sphere enough to pin the attacker too."
+    "effect": "The character forms their body into a sphere, protecting up to one ally per rank, squeezed into the same space. Those inside the sphere gain Health Damage Reduction 3 against outside attacks, but they cannot move on their own until the character releases them. Alternatively, if the attacker is within the character's reach, the character can make an Agility check against the target's Agility defense. On a success, the character envelops the attacker, grabbing them. On a Fantastic success, the character closes the sphere enough to pin the attacker too.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargetsPerRank": 1,
+      "concentrationStatus": "plasticity-body-sphere",
+      "concentrationStatusIncludesSource": true
+    },
+    "targeting": {
+      "count": 1,
+      "targetFilter": "allies"
+    },
+    "plasticity": {
+      "mode": "body-sphere",
+      "alliesPerRank": 1,
+      "healthDamageReduction": 3,
+      "requiresSameSpace": true,
+      "alliesCannotMoveIndependently": true,
+      "alternativeReachAttack": {
+        "ability": "agl",
+        "defense": "agl",
+        "successStatus": "grappled",
+        "fantasticStatus": "pinned"
+      }
+    },
+    "effectProfiles": {
+      "activation": "plasticity.form"
+    },
+    "events": [
+      {
+        "id": "body-sphere-source-benefit",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "body-sphere-source-damage-reduction",
+            "type": "active-effect",
+            "effect": {
+              "name": "Body Sphere",
+              "img": "systems/marvel-multiverse/icons/placticity.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 3
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "plasticity": {
+                    "bodySphere": true,
+                    "cannotMoveIndependently": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "body-sphere-shared-space",
+            "type": "manual",
+            "label": "Place each selected ally in the same space. The source and protected allies cannot move independently until released. The alternative Agility attack to grab an attacker, including Fantastic pinning, must be resolved separately."
+          }
+        ]
+      },
+      {
+        "id": "body-sphere-ally-benefit",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "body-sphere-ally-damage-reduction",
+            "type": "active-effect",
+            "effect": {
+              "name": "Body Sphere",
+              "img": "systems/marvel-multiverse/icons/placticity.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 3
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "plasticity": {
+                    "bodySphere": true,
+                    "cannotMoveIndependently": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

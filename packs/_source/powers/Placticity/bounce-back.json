@@ -12,7 +12,39 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The fall doesn't damage the character. If they are prone, they stand up. If they'd like, they can also jump a number of spaces, up to their Run Speed."
+    "effect": "The fall doesn't damage the character. If they are prone, they stand up. If they'd like, they can also jump a number of spaces, up to their Run Speed.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "plasticity": {
+      "mode": "bounce-back",
+      "negatesFallDamage": true,
+      "standsFromProne": true,
+      "optionalJumpMaximum": "run-speed"
+    },
+    "effectProfiles": {
+      "activation": "plasticity.bounce"
+    },
+    "events": [
+      {
+        "id": "bounce-back-reaction",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "bounce-back-stand",
+            "type": "remove-status",
+            "statusId": "prone"
+          },
+          {
+            "id": "bounce-back-resolve-trigger",
+            "type": "manual",
+            "label": "Use only after fall damage or being knocked prone. Negate the fall damage and, if desired, jump up to the character's Run Speed."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

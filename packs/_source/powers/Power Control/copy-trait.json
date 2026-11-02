@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character duplicates another characters trait.",
+    "description": "The character duplicates another character's trait.",
     "powerSet": "Power Control",
     "prerequisites": "",
     "action": "Standard",
@@ -12,7 +12,56 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character picks one trait another character within 10 spaces has and duplicates it. They can now use it as if it was always theirs."
+    "effect": "The character picks one trait another character within 10 spaces has and duplicates it. They can now use it as if it was always theirs.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 10,
+      "concentrationStatus": "power-control-copy-trait",
+      "concentrationStatusIncludesSource": true
+    },
+    "powerControl": {
+      "mode": "copy-one-trait",
+      "range": 10
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "copy-trait-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "copy-trait-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Copy Trait",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "copy-one-trait"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "copy-trait-resolution",
+            "type": "manual",
+            "label": "Choose one trait the target has, apply its rules to the source for the duration of concentration, then remove the copied trait and restore the prior state when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

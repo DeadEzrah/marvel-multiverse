@@ -1,0 +1,10 @@
+{
+  "name": "Walls and Doors",
+  "type": "Actor",
+  "_id": "DstWalls00000001",
+  "folder": "DstRoot000000001",
+  "sort": 100000,
+  "flags": {},
+  "color": "#8b3f2f",
+  "_key": "!folders!DstWalls00000001"
+}

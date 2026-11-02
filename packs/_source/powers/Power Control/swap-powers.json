@@ -14,7 +14,68 @@
     "cost": "10 or more Focus",
     "effect": "The character makes an Ego attack against a target they can see within 2 spaces per the character's rank. If the target's powers have costs, the character must pay the highest of them, or a minimum of 10 Focus. On a success, they swap all of their non-Swap powers with the target's powers. Both characters can now use their new powers as if they had always had them. Whenever a character uses a swapped power they must pay any cost for it normally as well.",
     "ability": "ego",
-    "attackTarget": "ego"
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 2,
+      "rangeScaling": "rank",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies"
+    },
+    "powerControl": {
+      "mode": "swap-powers",
+      "rangePerRank": 2,
+      "minimumFocus": 10,
+      "maximumFocusFromTargetPowers": true,
+      "excludePowerSet": "Power Control",
+      "paySwappedPowerCostOnUse": true
+    },
+    "effectProfiles": {
+      "attack": "power.control.attack",
+      "hit": "telepathy.mental-impact",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "swap-powers-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "swap-powers-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swap Powers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "swap-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "swap-powers-resolution",
+            "type": "manual",
+            "label": "Swap all eligible powers except Power Control. Both characters may use the other's powers and must pay the normal cost each time. Restore both power sets when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

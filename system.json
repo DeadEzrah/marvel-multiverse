@@ -25,7 +25,7 @@
             "thumbnail": "systems/marvel-multiverse/ui/official/mmrpg-setup-thumbnail.png"
         }
     ],
-    "version": "3.2.1",
+    "version": "3.3.0",
     "compatibility": {
         "minimum": 12,
         "verified": "14.365"
@@ -122,6 +122,15 @@
             "type": "Item",
             "private": false,
             "flags": {}
+        },
+        {
+            "name": "destructibles",
+            "label": "Destructible Objects",
+            "system": "marvel-multiverse",
+            "path": "packs/destructibles",
+            "type": "Actor",
+            "private": false,
+            "flags": {}
         }
     ],
     "packFolders": [
@@ -135,13 +144,14 @@
                 "origins",
                 "occupations",
                 "items",
-                "powers"
+                "powers",
+                "destructibles"
             ]
         }
     ],
     "socket": true,
     "manifest": "https://raw.githubusercontent.com/DeadEzrah/marvel-multiverse/main/system.json",
-    "download": "https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.2.1/marvel-multiverse-3.2.1.zip",
+    "download": "https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.3.0/marvel-multiverse-3.3.0.zip",
     "background": "systems/marvel-multiverse/ui/official/mmrpg-background.webp",
     "grid": {
         "distance": 5,

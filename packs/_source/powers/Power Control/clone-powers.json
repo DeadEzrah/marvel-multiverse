@@ -12,7 +12,59 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 or more Focus",
-    "effect": "The character picks another character within 10 spaces and duplicates all of their powers. They can now use those powers as if they were always theirs. If the target's powers have costs, the character must pay the highest of them, or a minimum of 15 Focus. When the character uses a copied power, they must pay any cost normally as well."
+    "effect": "The character picks another character within 10 spaces and duplicates all of their powers. They can now use those powers as if they were always theirs. If the target's powers have costs, the character must pay the highest of them, or a minimum of 15 Focus. When the character uses a copied power, they must pay any cost normally as well.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 10,
+      "concentrationStatus": "power-control-clone-powers",
+      "concentrationStatusIncludesSource": true
+    },
+    "powerControl": {
+      "mode": "clone-all-powers",
+      "range": 10,
+      "minimumFocus": 15,
+      "maximumFocusFromTargetPowers": true,
+      "payCopiedPowerCostOnUse": true
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "clone-powers-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "clone-powers-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Clone Powers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "clone-all-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "clone-powers-resolution",
+            "type": "manual",
+            "label": "Duplicate all eligible target powers. Pay the highest target-power Focus cost or 15, whichever is greater, then pay each copied power's normal cost when used. Add eligible powers and handle all use and concentration changes manually."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

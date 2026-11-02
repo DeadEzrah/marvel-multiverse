@@ -21,6 +21,13 @@
     "melee.punch": "melee.hit.light",
     "melee.kick": "melee.hit.heavy",
     "melee.slam": "melee.hit.heavy",
+    "plasticity.form": "martial.stance.defense",
+    "plasticity.bounce": "movement.landing.light",
+    "plasticity.crush": "melee.slam",
+    "plasticity.punch": "melee.punch",
+    "plasticity.movement": "movement.whoosh",
+    "power.control.copy": "telepathy.command",
+    "power.control.attack": "telepathy.mental-impact",
     "movement.superspeed": "movement.whoosh",
     "movement.flight": "movement.whoosh"
   },

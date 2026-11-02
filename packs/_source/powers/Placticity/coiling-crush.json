@@ -18,6 +18,46 @@
     "attackKind": "close",
     "attack": true,
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Coiling Crush requires an enemy the character has grabbed."
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "plasticity": {
+      "mode": "coiling-crush",
+      "breakFreeAbility": "mle",
+      "breakFreeDefense": "mle",
+      "followUpAction": "movement",
+      "followUpAttackAbility": "mle",
+      "followUpDefense": "res",
+      "followUpDamage": {
+        "type": "health",
+        "normal": "regular",
+        "fantasticMultiplier": 2
+      }
+    },
+    "effectProfiles": {
+      "attack": "plasticity.crush",
+      "hit": "melee.hit.light",
+      "fantasticHit": "melee.hit.heavy",
+      "miss": "melee.miss"
+    },
     "events": [
       {
         "id": "coiling-crush-paralyzed",
@@ -31,8 +71,20 @@
             "mode": "apply",
             "stacking": "none",
             "duration": {
-              "type": "manual"
+              "type": "concentration"
             }
+          }
+        ]
+      },
+      {
+        "id": "coiling-crush-follow-up",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "coiling-crush-turn-actions",
+            "type": "manual",
+            "label": "While concentrating, spend a movement action on a Melee check against the paralyzed target's Resilience: success deals regular Health damage, Fantastic success deals double. On the target's turn, it may make a Melee check against the source's Melee defense to break free."
           }
         ]
       }

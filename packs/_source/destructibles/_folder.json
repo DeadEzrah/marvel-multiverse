@@ -1,0 +1,10 @@
+{
+  "name": "Destructible Objects",
+  "type": "Actor",
+  "_id": "DstRoot000000001",
+  "folder": null,
+  "sort": 100000,
+  "flags": {},
+  "color": "#cd2c1e",
+  "_key": "!folders!DstRoot000000001"
+}

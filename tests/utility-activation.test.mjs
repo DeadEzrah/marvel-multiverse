@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 const {
   resolveConcentrationStatusActorUuids,
   resolveLatestDamageReactionContext,
+  resolveUtilityTargetLimits,
   resolveUtilityFocusAmount
 } = await import("../lib/services/utility-activation.mjs");
 const { resolveReactionAllowance, resolveReactionTarget } = await import("../lib/services/reaction-context.mjs");
@@ -30,6 +31,21 @@ test("utility concentration statuses resolve direct Actor targets", () => {
     resolveConcentrationStatusActorUuids(source, [target, wrapped], true),
     ["Actor.source", "Actor.target", "Actor.wrapped"],
   );
+});
+
+test("required utility targets use a minimum of one without an explicit targeting block", () => {
+  const limits = resolveUtilityTargetLimits({
+    system: {
+      activation: {
+        mode: "utility",
+        target: "required",
+        maxTargets: 1
+      }
+    }
+  }, {});
+
+  assert.equal(limits.minimum, 1);
+  assert.equal(limits.maximum, 1);
 });
 
 test("variable utility Focus accepts a selected amount within actor limits", async () => {

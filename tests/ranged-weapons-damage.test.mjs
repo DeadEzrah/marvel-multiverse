@@ -35,6 +35,25 @@ function damageFor(source, isFantastic) {
   }).finalDamage;
 }
 
+test("hydrated empty damage data preserves legacy weapon damage inference", () => {
+  const source = {
+    system: {
+      attack: true,
+      ability: "agl",
+      damageType: "health",
+      damageMultiplierBonus: "+1",
+      damage: {},
+    },
+  };
+
+  const config = resolveDamageConfig(source);
+
+  assert.equal(config.enabled, true);
+  assert.equal(config.damageType, "health");
+  assert.equal(config.multiplierBonus, 1);
+  assert.equal(damageFor(source, false), 13);
+});
+
 test("Double Tap, Point-Blank Parry, Stopping Power, and Kill Zone deal regular or double damage", () => {
   const source = {
     system: {

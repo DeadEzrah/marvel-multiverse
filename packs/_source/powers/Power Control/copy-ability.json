@@ -12,7 +12,58 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character picks one ability score of another character within 10 spaces and duplicates it. They now use that ability score in place of their own."
+    "effect": "The character picks one ability score of another character within 10 spaces and duplicates it. They now use that ability score in place of their own.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1,
+      "range": 10,
+      "concentrationStatus": "power-control-copy-ability",
+      "concentrationStatusIncludesSource": true
+    },
+    "powerControl": {
+      "mode": "copy-ability",
+      "range": 10,
+      "targetAbilityChoice": true,
+      "replaceMatchingSourceAbility": true
+    },
+    "effectProfiles": {
+      "activation": "power.control.copy"
+    },
+    "events": [
+      {
+        "id": "copy-ability-rules",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "copy-ability-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Copy Ability",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "copy-ability"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "copy-ability-resolution",
+            "type": "manual",
+            "label": "Choose one target ability score and use it in place of the matching source score for the duration of concentration. Apply the replacement and restore the original score when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

@@ -1,0 +1,30 @@
+{
+  "_id": "DstTruck00000001",
+  "name": "Truck",
+  "type": "npc",
+  "img": "systems/marvel-multiverse/icons/destructibles/vehicle.svg",
+  "system": {
+    "attributes": { "rank": { "value": 1 } },
+    "abilities": {
+      "mle": { "value": -3 }, "agl": { "value": -3 }, "res": { "value": -3 },
+      "vig": { "value": -3 }, "ego": { "value": -3 }, "log": { "value": -3 }
+    },
+    "health": { "value": 75, "max": 75 },
+    "healthDamageReduction": 2,
+    "focus": { "value": 0, "max": 0 },
+    "size": "huge",
+    "history": "A heavy civilian truck represented as an attackable token. Movement is descriptive; the Narrator controls the token.",
+    "movement": { "run": { "active": true, "calc": "double" }, "climb": { "active": false }, "swim": { "active": false }, "jump": { "active": false } }
+  },
+  "prototypeToken": {
+    "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
+    "width": 3, "height": 2,
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/vehicle.svg" },
+    "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
+  },
+  "items": [],
+  "effects": [],
+  "folder": "DstVehicl0000001",
+  "flags": { "marvel-multiverse": { "destructible": { "version": 1, "category": "vehicles", "profile": "heavy" } } },
+  "_key": "!actors!DstTruck00000001"
+}

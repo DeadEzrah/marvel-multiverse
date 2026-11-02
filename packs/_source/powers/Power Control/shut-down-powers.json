@@ -12,7 +12,66 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 or more Focus",
-    "effect": "The character picks another character within 20 spaces and makes an Ego attack against them. On a success, they remove all of a target's powers. If the target's powers have costs, the character must pay the highest of them, or a minimum of 15 Focus."
+    "effect": "The character picks another character within 20 spaces and makes an Ego attack against them. On a success, they remove all of a target's powers. If the target's powers have costs, the character must pay the highest of them, or a minimum of 15 Focus.",
+    "ability": "ego",
+    "attackTarget": "ego",
+    "attackKind": "ranged",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 20,
+      "requiresLineOfSight": true
+    },
+    "powerControl": {
+      "mode": "shut-down-all-powers",
+      "range": 20,
+      "minimumFocus": 15,
+      "maximumFocusFromTargetPowers": true
+    },
+    "effectProfiles": {
+      "attack": "power.control.attack",
+      "hit": "telepathy.mental-impact",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "shut-down-powers-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shut-down-powers-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Shut Down Powers",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "shut-down-all-powers"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "shut-down-powers-resolution",
+            "type": "manual",
+            "label": "Suppress all target powers for the duration of concentration. Pay the highest target-power Focus cost or 15, whichever is greater. Restore all suppressed powers when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

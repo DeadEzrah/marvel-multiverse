@@ -1,6 +1,6 @@
 {
   "_id": "nnmvCBn8OGU03QvH",
-  "name": "Steal Powers",
+  "name": "Swipe Power",
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
@@ -15,7 +15,73 @@
     "effect": "The character makes an Ego attack against the grabbed target. On a success, they remove one of the target's powers and take it for their own. They can now use that power as if it was always theirs. If the power has a cost, the character must pay it or a minimum of 10 Focus. When the character uses the power, they must pay any cost normally as well.",
     "ability": "ego",
     "attackTarget": "ego",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 1,
+      "rangeScaling": "reach",
+      "requiresLineOfSight": true,
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "message": "Swipe Power requires a grabbed target."
+        }
+      ]
+    },
+    "powerControl": {
+      "mode": "steal-one-power",
+      "requiresGrappledTarget": true,
+      "minimumFocus": 10,
+      "maximumFocusFromTargetPower": true,
+      "payStolenPowerCostOnUse": true
+    },
+    "effectProfiles": {
+      "attack": "power.control.attack",
+      "hit": "telepathy.mental-impact",
+      "miss": "melee.miss"
+    },
+    "events": [
+      {
+        "id": "swipe-power-success",
+        "trigger": "source-success",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "swipe-power-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Swipe Power",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "powerControl": {
+                    "mode": "steal-one-power"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "swipe-power-resolution",
+            "type": "manual",
+            "label": "Choose and remove one target power, granting it to the source for the duration of concentration. Pay that power's Focus cost or 10, whichever is greater, then pay the power's normal cost when used. Restore the target's power when concentration ends."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

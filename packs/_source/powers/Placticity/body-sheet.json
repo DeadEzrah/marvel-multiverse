@@ -12,79 +12,80 @@
     "duration": "Concentration",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character gains Health Damage Reduction 3, but they cannot make attacks. They gain a Glide Speed equal to double their Run Speed."
+    "effect": "The character gains Health Damage Reduction 3, but they cannot make attacks. They gain a Glide Speed equal to double their Run Speed.",
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "concentrationStatus": "plasticity-body-sheet",
+      "concentrationStatusIncludesSource": true
+    },
+    "plasticity": {
+      "mode": "body-sheet",
+      "healthDamageReduction": 3,
+      "glideRunSpeedMultiplier": 2,
+      "cannotAttackWhileActive": true
+    },
+    "effectProfiles": {
+      "activation": "plasticity.form"
+    },
+    "events": [
+      {
+        "id": "body-sheet-activate",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "body-sheet-benefits",
+            "type": "active-effect",
+            "effect": {
+              "name": "Body Sheet",
+              "img": "systems/marvel-multiverse/icons/placticity.svg",
+              "changes": [
+                {
+                  "key": "system.healthDamageReduction",
+                  "mode": 4,
+                  "value": 3
+                },
+                {
+                  "key": "system.movement.glide.active",
+                  "mode": 5,
+                  "value": true
+                },
+                {
+                  "key": "system.movement.glide.calc",
+                  "mode": 5,
+                  "value": "runspeed"
+                },
+                {
+                  "key": "system.movement.glide.calc",
+                  "mode": 1,
+                  "value": 2
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "plasticity": {
+                    "bodySheet": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "body-sheet-restrictions",
+            "type": "manual",
+            "label": "While Body Sheet is active, the character cannot make attacks. Activate this reaction only when falling or targeted by an attack."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
-  "effects": [
-    {
-      "name": "Health Damage Reduction 3",
-      "img": "icons/svg/aura.svg",
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "origin": "Item.R128rlNSkXlJSpx4",
-      "_id": "0f2bcd3cbc2644a3",
-      "changes": [
-        {
-          "key": "system.healthDamageReduction",
-          "mode": 4,
-          "value": 3
-        }
-      ],
-      "description": "",
-      "transfer": true,
-      "statuses": [],
-      "flags": {},
-      "tint": null,
-      "_key": "!items.effects!R128rlNSkXlJSpx4.0f2bcd3cbc2644a3"
-    },
-    {
-      "name": "Glide at run speed times rank",
-      "img": "icons/svg/aura.svg",
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "origin": "Item.R128rlNSkXlJSpx4",
-      "_id": "e44701e6257846ae",
-      "changes": [
-        {
-          "key": "system.movement.glide.active",
-          "mode": 5,
-          "value": true
-        },
-        {
-          "key": "system.movement.glide.calc",
-          "mode": 5,
-          "value": "runspeed"
-        },
-        {
-          "key": "system.movement.glide.calc",
-          "mode": 1,
-          "value": 2
-        }
-      ],
-      "description": "",
-      "transfer": true,
-      "statuses": [],
-      "flags": {},
-      "tint": null,
-      "_key": "!items.effects!R128rlNSkXlJSpx4.e44701e6257846ae"
-    }
-  ],
+  "effects": [],
   "folder": "b660cb39178688a5",
   "_key": "!items!R128rlNSkXlJSpx4"
 }
