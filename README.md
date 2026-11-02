@@ -10,7 +10,7 @@ This maintained fork provides character and item sheets, Marvel dice, action wor
 
 | Component | Current target |
 |---|---|
-| Marvel Multiverse system | 3.5.0 |
+| Marvel Multiverse system | 3.6.0 |
 | Foundry VTT | 12-14; verified on 14.365 |
 | Primary branch | [`main`](https://github.com/DeadEzrah/marvel-multiverse/tree/main) |
 | Issue tracker | [GitHub issues](https://github.com/DeadEzrah/marvel-multiverse/issues) |

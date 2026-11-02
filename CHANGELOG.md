@@ -4,6 +4,19 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.6.0] - 2026-11-02
+
+### Added
+- Structured family metadata, event outcomes, safe manual boundaries, and semantic animation profiles for all three Narrative powers.
+- Permanent Corrupting Touch markers gated by a successful damaging Melee hit, with explicit Heroic/Villainous, Karma, domination, and escape reminders.
+- Optional self/one-target DNA Manipulation activation and replaceable Magic Mask wearer markers with complete capability metadata.
+- Regression coverage for Narrative targeting, source corrections, event schemas, semantic aliases, and universal action-roll damage events.
+
+### Fixed
+- Corrected Magic Masks' invalid leading-space document ID, copied Corrupting Touch summary, and missing punctuation.
+- Corrected DNA Manipulation's malformed sentence.
+- Universal action-roll damage now emits the canonical damage-applied hook and records both Token and Actor identities, allowing damage-gated power events to resolve against their actual hit target.
+
 ## [3.5.0] - 2026-11-02
 
 ### Added

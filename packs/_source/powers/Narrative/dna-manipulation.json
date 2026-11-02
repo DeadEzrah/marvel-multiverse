@@ -9,10 +9,51 @@
     "prerequisites": "",
     "action": "",
     "trigger": "",
-    "duration": "",
+    "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character is able to identify, copy and manipulate DNA in themselves and others. They can use this to create a body from scratch that they can then occupy by using the Copy Psyche power. In addition, the character can cause latent mutant powers to manifest upon command. both in their own body and in that of others. They can also copy DNA from other people and insert it into their body to fool security systems into thinking that they are members of a particular genetic group or family line."
+    "effect": "The character is able to identify, copy and manipulate DNA in themselves and others. They can use this to create a body from scratch that they can then occupy by using the Copy Psyche power. In addition, the character can cause latent mutant powers to manifest upon command, both in their own body and in that of others. They can also copy DNA from other people and insert it into their body to fool security systems into thinking that they are members of a particular genetic group or family line.",
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "maxTargets": 1
+    },
+    "narrative": {
+      "mode": "dna-manipulation",
+      "targets": [
+        "self",
+        "other"
+      ],
+      "capabilities": [
+        "identify-dna",
+        "copy-dna",
+        "manipulate-dna",
+        "create-body",
+        "manifest-latent-mutant-power",
+        "spoof-genetic-identity"
+      ],
+      "createdBodyRequiresCopyPsyche": true,
+      "bodyCreationManual": true,
+      "powerManifestationManual": true,
+      "geneticIdentityManual": true
+    },
+    "effectProfiles": {
+      "activation": "narrative.transformation"
+    },
+    "events": [
+      {
+        "id": "dna-manipulation-resolution",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "dna-manipulation-reminder",
+            "type": "manual",
+            "label": "Choose one DNA use and record its Narrator-approved result: identify/copy/manipulate DNA, create a body for Copy Psyche, manifest a latent mutant power, or spoof a genetic identity. Actor powers, traits, tags, and identity are not mutated automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

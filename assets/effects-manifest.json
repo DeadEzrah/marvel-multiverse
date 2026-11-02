@@ -39,6 +39,9 @@
     "elemental.form": "phasing.aura",
     "elemental.grab": "telekinesis.grab",
     "elemental.weapon": "weapon.melee.swing",
+    "narrative.corruption": "telepathy.command",
+    "narrative.transformation": "resize.other",
+    "narrative.mask": "power.magic.cast",
     "movement.superspeed": "movement.whoosh",
     "movement.flight": "movement.whoosh"
   },

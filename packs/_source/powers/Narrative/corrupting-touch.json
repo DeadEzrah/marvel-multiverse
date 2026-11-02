@@ -7,12 +7,95 @@
     "description": "With a touch, the character can corrupt a person and command their utter loyalty.",
     "powerSet": "Narrative",
     "prerequisites": "",
-    "action": "",
+    "action": "Standard",
     "trigger": "",
-    "duration": "",
-    "range": "",
+    "duration": "Permanent",
+    "range": "Touch",
     "cost": "",
-    "effect": "With a touch, the character can corrupt a person and command their utter loyalty. In combat, this requires a successful Melee attack that inflicts at least 1 point of damage. The clothes of a corrupted target appear to be photographic negatives of their normal colors. If the target has the Heroic tag, replace that with the Villainous tag and remove their Karma. The target is completely dominated and will follow the corrupting character's orders. If any order involves harming someone, the target gets to make an Ego action check vs. the corrupting character's Ego defense to end the domination. If the target originally had the Heroic tag, they get an edge on the check. If the order would cause the target to harm themselves, they also get an edge on the check, and if they originally had the Heroic tag, they get a double edge. If a target with the Heroic tag breaks free from this power, their Karma instantly resets to its regular amount before being dominated."
+    "effect": "With a touch, the character can corrupt a person and command their utter loyalty. In combat, this requires a successful Melee attack that inflicts at least 1 point of damage. The clothes of a corrupted target appear to be photographic negatives of their normal colors. If the target has the Heroic tag, replace that with the Villainous tag and remove their Karma. The target is completely dominated and will follow the corrupting character's orders. If any order involves harming someone, the target gets to make an Ego action check vs. the corrupting character's Ego defense to end the domination. If the target originally had the Heroic tag, they get an edge on the check. If the order would cause the target to harm themselves, they also get an edge on the check, and if they originally had the Heroic tag, they get a double edge. If a target with the Heroic tag breaks free from this power, their Karma instantly resets to its regular amount before being dominated.",
+    "ability": "mle",
+    "attackTarget": "agl",
+    "attackKind": "melee",
+    "attack": true,
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 1,
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "mle",
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "narrative": {
+      "mode": "corrupting-touch",
+      "requiresTouch": true,
+      "combatRequiresMeleeDamage": true,
+      "minimumCombatDamage": 1,
+      "permanentDomination": true,
+      "heroicBecomesVillainous": true,
+      "heroicKarmaRemoved": true,
+      "escapeCheck": {
+        "ability": "ego",
+        "defense": "source-ego",
+        "trigger": "order-harms-someone",
+        "heroicEdge": true,
+        "selfHarmEdge": true,
+        "heroicSelfHarmDoubleEdge": true
+      },
+      "tagAndKarmaMutationManual": true
+    },
+    "effectProfiles": {
+      "attack": "melee.punch",
+      "hit": "narrative.corruption"
+    },
+    "events": [
+      {
+        "id": "corrupting-touch-domination",
+        "trigger": "health-damage-applied",
+        "recipient": "target",
+        "requirements": [
+          {
+            "type": "minimum-damage",
+            "value": 1
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "corrupting-touch-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Corrupted",
+              "img": "systems/marvel-multiverse/icons/narrative.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "narrative": {
+                    "mode": "corrupted",
+                    "escapeDefense": "source-ego"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "permanent"
+            }
+          },
+          {
+            "id": "corrupting-touch-manual-state",
+            "type": "manual",
+            "label": "The target is dominated. If Heroic, replace that tag with Villainous and remove its Karma. Resolve Ego escape checks when an order harms someone, with the listed Heroic and self-harm edges; restore normal Karma if a formerly Heroic target breaks free."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

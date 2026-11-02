@@ -17,8 +17,14 @@ globalThis.foundry = {
     },
   },
 };
+const hookCalls = [];
+globalThis.Hooks = {
+  callAll(...args) {
+    hookCalls.push(args);
+  },
+};
 
-const { applyActorDamage } = await import("../lib/damage-application.mjs");
+const { applyActorDamage, recordActionDamageApplication } = await import("../lib/damage-application.mjs");
 const { applyActorStatus } = await import("../lib/conditions.mjs");
 
 function createActor() {
@@ -107,4 +113,48 @@ test("applies, deduplicates, toggles, and removes direct statuses", async () => 
   assert.equal(duplicate.skipped, true);
   assert.deepEqual(removed.removedEffectIds, ["effect-0"]);
   assert.equal(actor.effects.contents.length, 0);
+});
+
+test("recording universal action damage emits the canonical damage-applied hook", async () => {
+  hookCalls.length = 0;
+  const scopeFlags = {
+    rollContext: {
+      targetUuids: ["Scene.test.Token.target"],
+    },
+    actionDamage: {
+      targetUuid: "Actor.target",
+      damage: {
+        damageType: "health",
+        finalDamage: 8,
+      },
+      apply: {
+        success: true,
+        actorUuid: "Actor.target",
+        previousValue: 30,
+        newValue: 22,
+        appliedDamage: 8,
+      },
+    },
+  };
+  const message = {
+    flags: { "marvel-multiverse": scopeFlags },
+    getFlag(scope, key) {
+      if (scope !== "marvel-multiverse") return null;
+      return key ? this.flags[scope]?.[key] : this.flags[scope];
+    },
+    async update(data) {
+      this.flags["marvel-multiverse"] = data.flags["marvel-multiverse"];
+    },
+  };
+
+  const transaction = await recordActionDamageApplication(message);
+
+  assert.equal(transaction.source, "action-roll");
+  assert.equal(transaction.targets[0].targetUuid, "Scene.test.Token.target");
+  assert.equal(transaction.targets[0].actorUuid, "Actor.target");
+  assert.equal(hookCalls.length, 1);
+  assert.equal(hookCalls[0][0], "marvel-multiverse.damageApplied");
+  assert.equal(hookCalls[0][1], message);
+  assert.equal(hookCalls[0][2], transaction);
+  assert.equal(hookCalls[0][3].success, true);
 });

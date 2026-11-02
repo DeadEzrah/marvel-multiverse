@@ -325,6 +325,12 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Preserve chosen element effects, directional movement, unwanted-target checks, construct geometry, weapon choice, pin choice, and unusual elemental-form uses as explicit boundaries.
   - [x] Live-gate variable Focus, damage scaling, normal/failure/Fantastic attacks, grabbed prerequisites, statuses, concentration, Reinforcement transfer/undo, semantic playback, and cleanup.
   - [x] Refresh all seventy-three exact canonical embedded copies with IDs and configured elements preserved while leaving renamed hero powers untouched.
+- [x] Complete the Narrative migration in the installed Foundry world.
+  - [x] Structure Corrupting Touch, DNA Manipulation, and Magic Masks with family metadata and safe manual mutation boundaries.
+  - [x] Correct Magic Masks' invalid document ID and copied summary plus malformed DNA and mask punctuation.
+  - [x] Gate Corrupting Touch's permanent marker behind applied Health damage and preserve tag, Karma, domination, and escape decisions explicitly.
+  - [x] Live-gate DNA optional targeting, Magic Mask marker apply/undo, Corrupting Touch Fantastic damage/marker/undo, and all three semantic effects.
+  - [x] Confirm all thirty-four embedded Narrative powers are bespoke records and require no canonical refresh.
 - [x] Complete destructible object token profiles.
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.
