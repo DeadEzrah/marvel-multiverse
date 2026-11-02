@@ -26,17 +26,50 @@
       "required": true,
       "count": 1,
       "defense": "agl",
-      "range": 10
+      "range": 10,
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "includeFocusBonusInBase": true,
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "elementalControl": {
+      "mode": "attack",
+      "specialEffectOnFantastic": true
     },
     "effectProfiles": {
-      "attack": "power.energy.blast",
-      "hit": "power.energy.impact"
+      "attack": "elemental.attack",
+      "hit": "elemental.impact"
     },
     "effectOverrides": {
       "attack": {
         "duration": 3000
       }
-    }
+    },
+    "events": [
+      {
+        "id": "elemental-blast-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-blast-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

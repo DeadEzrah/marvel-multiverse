@@ -7,7 +7,7 @@
     "description": "The character envelops a target's head in an element.",
     "powerSet": "Elemental Control",
     "prerequisites": "Elemental Grab, Rank 4",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "The target is grabbed with Elemental Grab.",
     "duration": "Instant",
     "range": "Varies",
@@ -17,7 +17,52 @@
     "attackTarget": "res",
     "isElemental": true,
     "damageType": "health",
-    "attackKind": "close"
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "res",
+      "range": 5,
+      "rangeScaling": "rank",
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled"
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "elementalControl": {
+      "mode": "suffocation",
+      "requiresElementalGrab": true,
+      "pinOnFantasticOptional": true,
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "elemental.grab",
+      "hit": "elemental.impact"
+    },
+    "events": [
+      {
+        "id": "elemental-suffocation-fantastic-boundary",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-suffocation-pin-and-special-effect",
+            "type": "manual",
+            "label": "The target may also be pinned. Apply the configured element's Fantastic success effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

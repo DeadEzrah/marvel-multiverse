@@ -13,7 +13,55 @@
     "range": "",
     "cost": "5 Focus",
     "effect": "The character infuses their energy into a handheld weapon in their grasp. When the character gets a Fantastic success attacking with the weapon, add the energy's special effect.",
-    "isElemental": true
+    "isElemental": true,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "elementalControl": {
+      "mode": "weapon-infusion",
+      "requiresHeldWeapon": true,
+      "weaponSelectionManual": true,
+      "specialEffectOnWeaponFantastic": true
+    },
+    "effectProfiles": {
+      "activation": "elemental.weapon"
+    },
+    "events": [
+      {
+        "id": "elemental-infusion-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-infusion-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Elemental Infusion",
+              "img": "systems/marvel-multiverse/icons/four-elements.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "elementalControl": {
+                    "weaponInfusion": true,
+                    "weaponSelectionManual": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "elemental-infusion-boundary",
+            "type": "manual",
+            "label": "Choose a handheld weapon in the character's grasp. While concentration lasts, apply the configured element's effect when that weapon scores a Fantastic success."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

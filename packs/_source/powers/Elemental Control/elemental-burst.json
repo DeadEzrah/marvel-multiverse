@@ -17,7 +17,46 @@
     "isElemental": true,
     "ability": "agl",
     "attackTarget": "agl",
-    "attackRange": 10
+    "attackRange": 10,
+    "attack": true,
+    "attackKind": "ranged",
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10,
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "elementalControl": {
+      "mode": "attack",
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "elemental.attack",
+      "hit": "elemental.impact"
+    },
+    "events": [
+      {
+        "id": "elemental-burst-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-burst-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

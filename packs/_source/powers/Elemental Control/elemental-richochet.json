@@ -1,23 +1,64 @@
 {
   "_id": "ZzRySxUQjMJ6rZ7S",
-  "name": "Elemental Richochet",
+  "name": "Elemental Ricochet",
   "type": "power",
   "img": "systems/marvel-multiverse/icons/four-elements.svg",
   "system": {
-    "description": "The character bounces the burst off one fae and into another",
+    "description": "The character bounces the burst off one foe and into another.",
     "powerSet": "Elemental Control",
-    "prerequisites": "Elemental Burst. Rank 3",
+    "prerequisites": "Elemental Burst, Rank 3",
     "action": "Standard",
     "trigger": "",
-    "duration": "instant",
+    "duration": "Instant",
     "range": "10 spaces times the character's rank",
     "cost": "10 Focus",
-    "effect": "The character makes a ranged attack against a target in line of sight. If the attack is a success, it inflicts regular damage. On a Fantastic success, energy also bounces off the first target 10 another in line of sight, and the character can make a new attack against that target, adding the new range to the previous attack's range. This can bo repeated until an attack is not fantastic.",
+    "effect": "The character makes a ranged attack against a target in line of sight. If the attack is a success, it inflicts regular damage. On a Fantastic success, energy also bounces off the first target to another in line of sight, and the character can make a new attack against that target, adding the new range to the previous attack's range. This can be repeated until an attack is not Fantastic.",
     "isElemental": true,
     "ability": "agl",
     "attackTarget": "agl",
     "damageType": "health",
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10,
+      "rangeScaling": "rank",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "type": "health",
+      "doubleOnFantastic": false
+    },
+    "elementalControl": {
+      "mode": "ricochet",
+      "repeatWhileFantastic": true,
+      "newTargetRequired": true,
+      "cumulativeRange": true,
+      "followUpAttacksManual": true
+    },
+    "effectProfiles": {
+      "attack": "elemental.attack",
+      "hit": "elemental.impact"
+    },
+    "events": [
+      {
+        "id": "elemental-ricochet-follow-up",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-ricochet-repeat",
+            "type": "manual",
+            "label": "Make a new attack against a different target in line of sight, adding the new range to the previous attack's range. Repeat while each attack is Fantastic."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

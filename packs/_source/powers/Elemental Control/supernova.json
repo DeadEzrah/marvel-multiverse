@@ -33,7 +33,7 @@
         "shape": "circle",
         "origin": "source",
         "distance": 10,
-        "targetFilter": "all",
+        "targetFilter": "enemies",
         "includeSelf": false
       }
     },
@@ -41,12 +41,32 @@
       "enabled": true,
       "ability": "ego",
       "scale": 0.5,
+      "fantasticScale": 1,
+      "doubleOnFantastic": false,
       "includeFocusBonusInBase": true,
       "type": "health"
     },
+    "elementalControl": {
+      "mode": "source-area-attack",
+      "specialEffectOnFantastic": true
+    },
     "effectProfiles": {
-      "impact": "destruction.explosion.medium"
-    }
+      "impact": "elemental.burst"
+    },
+    "events": [
+      {
+        "id": "supernova-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "supernova-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

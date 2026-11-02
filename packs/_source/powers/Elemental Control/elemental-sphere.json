@@ -7,15 +7,91 @@
     "description": "The character can create a protective sphere of their element.",
     "powerSet": "Elemental Control",
     "prerequisites": "Elemental Protection 1",
-    "action": "Standard or reaction",
+    "action": "Standard or Reaction",
     "trigger": "",
     "duration": "Concentration",
     "range": "",
-    "cost": "Same as the character's Elemental Protection power",
-    "effect": "The character envelops themselves - and any chosen people within up to 5 spaces times their rank- in a protective sphere comprised of their element. When the sphere is formed, the character makes an Ego check and compares the results against the Agility defense of unwanted characters in the enclosed spaces. On a success, the character can move any unwanted people within the sphere's perimeter to spaces outside of the sphere. On a Fantastic success, such moved people suffer full damage and the element's special effect. Attacks against the sphere are against the character's Ego defense. Any attacks against the sphere are absorbed as if made against the character's Elemental Protection power, and the sphere continues. If an attack does more damage than the character's Elemental Protection power can sustain, it destroys the sphere, but no one inside is harmed.",
+    "cost": "5 or more Focus",
+    "effect": "The character envelops themselves—and any chosen people within up to 5 spaces times their rank—in a protective sphere comprised of their element. When the sphere is formed, the character makes an Ego check and compares the results against the Agility defense of unwanted characters in the enclosed spaces. On a success, the character can move any unwanted people within the sphere's perimeter to spaces outside of the sphere. On a Fantastic success, such moved people suffer full damage and the element's special effect. Attacks against the sphere are against the character's Ego defense. Any attacks against the sphere are absorbed as if made against the character's Elemental Protection power, and the sphere continues. If an attack does more damage than the character's Elemental Protection power can sustain, it destroys the sphere, but no one inside is harmed.",
     "ability": "ego",
     "attackTarget": "agl",
-    "isElemental": true
+    "isElemental": true,
+    "activation": {
+      "mode": "utility",
+      "target": "optional",
+      "minTargets": 0,
+      "maxTargets": 999,
+      "rangePerRank": 5,
+      "willing": true,
+      "focusStep": 5,
+      "focusMaximumFromPowerTier": {
+        "powerSet": "Elemental Control",
+        "namePrefix": "Elemental Protection ",
+        "focusPerTier": 5
+      }
+    },
+    "targeting": {
+      "required": false,
+      "count": 999,
+      "range": 5,
+      "rangeScaling": "rank",
+      "targetFilter": "allies",
+      "includeSelf": false
+    },
+    "elementalControl": {
+      "mode": "sphere",
+      "radiusPerRank": 5,
+      "protectionThresholdPerFocus": 2,
+      "unwantedTargetChecksManual": true,
+      "unwantedTargetDefense": "agl",
+      "unwantedTargetMovementManual": true,
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "activation": "elemental.wall"
+    },
+    "events": [
+      {
+        "id": "elemental-sphere-active",
+        "trigger": "action-declared",
+        "recipient": "self-and-target",
+        "outcomes": [
+          {
+            "id": "elemental-sphere-protection",
+            "type": "active-effect",
+            "effect": {
+              "name": "Elemental Sphere",
+              "img": "systems/marvel-multiverse/icons/four-elements.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "elementalControl": {
+                    "sphere": true,
+                    "protectionThresholdFromFocusMultiplier": 2
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "elemental-sphere-boundary",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-sphere-unwanted-targets",
+            "type": "manual",
+            "label": "Resolve Ego against each unwanted character's Agility. On success, move that character outside the sphere; on a Fantastic success, also deal full damage and apply the configured element's effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

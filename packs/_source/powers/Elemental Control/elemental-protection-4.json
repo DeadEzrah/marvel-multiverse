@@ -4,17 +4,59 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/four-elements.svg",
   "system": {
-    "description": "The character protects themselves with their element.",
+    "description": "The character's elemental protection is like a battleship.",
     "powerSet": "Elemental Control",
-    "prerequisites": "Elemental Barrier, Rank 2",
+    "prerequisites": "Elemental Protection 3, Rank 5",
     "action": "Standard or Reaction",
     "trigger": "The character is attacked or otherwise in danger.",
     "duration": "Concentration",
     "range": "",
-    "cost": "5 Focus",
-    "effect": "The character protects themselves with their element. Any attacks against them that do 10 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 10 points of damage, it destroys the protection. Either way, the character remains unharmed.",
+    "cost": "20 Focus",
+    "effect": "The character protects themselves with their element. Any attacks against them that do 40 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 40 points of damage, it destroys the protection, allowing excess damage through.",
     "isElemental": true,
-    "numbered": 4
+    "numbered": 4,
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "elementalControl": {
+      "mode": "protection",
+      "tier": 4,
+      "protectionThreshold": 40
+    },
+    "effectProfiles": {
+      "activation": "elemental.guard"
+    },
+    "events": [
+      {
+        "id": "elemental-protection-4-active",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-protection-4-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Elemental Protection 4",
+              "img": "systems/marvel-multiverse/icons/four-elements.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "elementalControl": {
+                    "tier": 4,
+                    "protectionThreshold": 40
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

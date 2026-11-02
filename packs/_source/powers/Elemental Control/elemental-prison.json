@@ -11,12 +11,137 @@
     "trigger": "",
     "duration": "Concentration",
     "range": "",
-    "cost": "Same as the character's Elemental Protection power",
+    "cost": "5 or more Focus",
     "effect": "The character picks a point within their line of sight and traps any chosen targets within up to 5 spaces times their rank—in a prison comprised of their element. When the Elemental Prison is formed, the character makes an Ego check and compares the results against the Agility defense of targets inside the enclosed spaces. On each success, the character traps the target within the prison's perimeter. On a Fantastic success, such imprisoned people suffer full damage and the element's special effect too. Attacks against the prison are against the character's Ego defense. Any attacks against the prison are absorbed as if made against the character's Elemental Protection power, and the prison continues. If an attack does more damage than the character's Elemental Protection power can sustain, it destroys the prison, but no one inside is harmed. ",
     "ability": "ego",
     "attackTarget": "agl",
     "isElemental": true,
-    "attackKind": "ranged"
+    "attackKind": "ranged",
+    "attack": true,
+    "activation": {
+      "focusStep": 5,
+      "focusMaximumFromPowerTier": {
+        "powerSet": "Elemental Control",
+        "namePrefix": "Elemental Protection ",
+        "focusPerTier": 5
+      }
+    },
+    "targeting": {
+      "required": true,
+      "count": 999,
+      "defense": "agl",
+      "area": {
+        "enabled": true,
+        "shape": "circle",
+        "origin": "placed",
+        "distance": 5,
+        "distanceScaling": "rank",
+        "persistent": true,
+        "duration": "concentration",
+        "targetFilter": "all",
+        "requiresLineOfSight": true,
+        "includeSelf": false
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "elementalControl": {
+      "mode": "prison",
+      "radiusPerRank": 5,
+      "protectionThresholdPerFocus": 2,
+      "constructDefense": "ego",
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "cast": "elemental.wall",
+      "impact": "elemental.impact"
+    },
+    "events": [
+      {
+        "id": "elemental-prison-active",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-prison-concentration",
+            "type": "active-effect",
+            "effect": {
+              "name": "Elemental Prison",
+              "img": "systems/marvel-multiverse/icons/four-elements.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "elementalControl": {
+                    "prison": true,
+                    "constructThresholdFromFocusMultiplier": 2
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "elemental-prison-trapped",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-prison-target-marker",
+            "type": "active-effect",
+            "effect": {
+              "name": "Trapped in Elemental Prison",
+              "img": "systems/marvel-multiverse/icons/four-elements.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "elementalControl": {
+                    "trappedInPrison": true
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          }
+        ]
+      },
+      {
+        "id": "elemental-prison-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-prison-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
+          }
+        ]
+      },
+      {
+        "id": "elemental-prison-durability",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-prison-track-durability",
+            "type": "manual",
+            "label": "The prison uses the selected Elemental Protection threshold and the creator's Ego defense. A stronger attack destroys it without harming anyone inside."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

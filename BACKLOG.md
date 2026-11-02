@@ -318,6 +318,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Live-gate exact Focus spend/refund, required and Rank-capped targets, grabbed-target prerequisites, non-damaging failure/normal/Fantastic attacks, concentration, marker apply/undo, and cleanup.
   - [x] Verify travel, portal, and time semantic playback through Sequencer and Free JB2A.
   - [x] Confirm all sixteen installed compendium records preserve Omniversal metadata; no exact embedded world copies required refresh.
+- [x] Complete the Elemental Control migration in the installed Foundry world.
+  - [x] Structure all eighteen powers across attacks, areas, grabs, protection, constructs, infusion, reinforcement, and elemental form.
+  - [x] Correct Elemental Protection 4, Elemental Push, and Elemental Ricochet source defects.
+  - [x] Automate Elemental Protection threshold absorption, excess damage, concentration breakage, and tier-derived Sphere/Prison Focus choices.
+  - [x] Preserve chosen element effects, directional movement, unwanted-target checks, construct geometry, weapon choice, pin choice, and unusual elemental-form uses as explicit boundaries.
+  - [x] Live-gate variable Focus, damage scaling, normal/failure/Fantastic attacks, grabbed prerequisites, statuses, concentration, Reinforcement transfer/undo, semantic playback, and cleanup.
+  - [x] Refresh all seventy-three exact canonical embedded copies with IDs and configured elements preserved while leaving renamed hero powers untouched.
 - [x] Complete destructible object token profiles.
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.

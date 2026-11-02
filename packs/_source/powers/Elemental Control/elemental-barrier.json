@@ -41,8 +41,14 @@
     "damage": {
       "enabled": false
     },
+    "elementalControl": {
+      "mode": "barrier",
+      "protectionThreshold": 10,
+      "sideChoiceManual": true,
+      "specialEffectOnFantastic": true
+    },
     "effectProfiles": {
-      "cast": "defense.elemental.wall"
+      "cast": "elemental.wall"
     },
     "events": [
       {

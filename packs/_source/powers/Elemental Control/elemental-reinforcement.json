@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/four-elements.svg",
   "system": {
-    "description": "the character reinforces their powers with their element.",
+    "description": "The character reinforces their powers with their element.",
     "powerSet": "Elemental Control",
     "prerequisites": "Elemental Protection 1",
     "action": "Reaction",
@@ -13,7 +13,49 @@
     "range": "",
     "cost": "Varies",
     "effect": "The character can transfer any Health damage that gets through an elemental power that grants damage protection to their focus instead, leaving the protection intact.",
-    "isElemental": true
+    "isElemental": true,
+    "activation": {
+      "mode": "utility",
+      "target": "none",
+      "reactionType": "incoming-health-damage"
+    },
+    "elementalControl": {
+      "mode": "reinforcement",
+      "requiresElementalProtectionDamage": true,
+      "transfersHealthDamageToFocus": true,
+      "leavesProtectionIntact": true,
+      "eligibilityManual": true
+    },
+    "effectProfiles": {
+      "activation": "elemental.guard"
+    },
+    "events": [
+      {
+        "id": "elemental-reinforcement-transfer",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "elemental-reinforcement-restore-health",
+            "type": "healing",
+            "amount": 999
+          },
+          {
+            "id": "elemental-reinforcement-damage-focus",
+            "type": "resource-change",
+            "resource": "focus",
+            "delta": 0,
+            "useReactionDamage": true,
+            "amountMultiplier": -1
+          },
+          {
+            "id": "elemental-reinforcement-boundary",
+            "type": "manual",
+            "label": "Use only when the triggering Health damage got through an elemental power that grants damage protection."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

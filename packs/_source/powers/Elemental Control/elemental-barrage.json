@@ -27,19 +27,40 @@
         "shape": "circle",
         "distance": 10,
         "targetFilter": "enemies",
-        "includeSelf": false
+        "includeSelf": false,
+        "requiresLineOfSight": true
       }
     },
+    "elementalControl": {
+      "mode": "placed-area-attack",
+      "specialEffectOnFantastic": true
+    },
     "effectProfiles": {
-      "attack": "power.energy.blast",
-      "impact": "destruction.explosion.medium"
+      "attack": "elemental.attack",
+      "impact": "elemental.burst"
     },
     "damage": {
       "enabled": true,
       "ability": "ego",
       "scale": 0.5,
+      "fantasticScale": 1,
+      "doubleOnFantastic": false,
       "type": "health"
-    }
+    },
+    "events": [
+      {
+        "id": "elemental-barrage-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-barrage-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

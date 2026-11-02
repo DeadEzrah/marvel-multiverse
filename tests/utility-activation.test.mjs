@@ -176,6 +176,31 @@ test("Brace for Impact resolves only the latest unused physical Health damage", 
   );
 });
 
+test("Elemental Reinforcement captures incoming Health damage without adding a target", () => {
+  const actor = { uuid: "Actor.defender" };
+  const source = { system: { activation: { reactionType: "incoming-health-damage" } } };
+  const message = {
+    uuid: "ChatMessage.damage",
+    getFlag: (_scope, key) => ({
+      rollContext: { element: "fire" },
+      actionDamage: {
+        targetUuid: actor.uuid,
+        damage: { damageType: "health" },
+        apply: { success: true, appliedDamage: 12, previousValue: 30 },
+      },
+    })[key] ?? null,
+  };
+
+  assert.deepEqual(resolveLatestDamageReactionContext(actor, source, [message]), {
+    type: "incoming-health-damage",
+    sourceDamageMessageUuid: "ChatMessage.damage",
+    appliedDamage: 12,
+    previousValue: 30,
+    targetActorUuid: null,
+    responseDamage: 12,
+  });
+});
+
 test("Return Fire targets the attacker from the latest incoming attack", () => {
   const actor = { uuid: "Actor.defender" };
   const source = {

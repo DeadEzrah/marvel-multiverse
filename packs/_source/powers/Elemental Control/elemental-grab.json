@@ -18,6 +18,29 @@
     "isElemental": true,
     "attackKind": "ranged",
     "attack": true,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "range": 5,
+      "rangeScaling": "rank",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "elementalControl": {
+      "mode": "grab",
+      "escapeAbility": "mle",
+      "escapeTargetNumber": 20,
+      "pinOnFantasticOptional": true,
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "elemental.grab",
+      "hit": "elemental.impact"
+    },
     "events": [
       {
         "id": "elemental-grab-grappled",
@@ -33,6 +56,18 @@
             "duration": {
               "type": "concentration"
             }
+          }
+        ]
+      },
+      {
+        "id": "elemental-grab-fantastic-boundary",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-grab-pin-and-special-effect",
+            "type": "manual",
+            "label": "The target may also be pinned. Apply the configured element's Fantastic success effect."
           }
         ]
       }

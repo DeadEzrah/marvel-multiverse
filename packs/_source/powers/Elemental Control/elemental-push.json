@@ -6,18 +6,56 @@
   "system": {
     "description": "The character can move a target with their element.",
     "powerSet": "Elemental Control",
-    "prerequisites": "Elemental Burst. Rank 1",
+    "prerequisites": "Elemental Burst, Rank 1",
     "action": "Standard",
     "trigger": "",
-    "duration": "instant",
+    "duration": "Instant",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character makes an Ego attack against the target's Agility defense. If the attack succeeds. the character can move the target in any direction. up to space times the character's rank. On a Fantastic success, the target also takes regular damage, is knocked prone and suffers the element's special effect.",
+    "effect": "The character makes an Ego attack against the target's Agility defense. If the attack succeeds, the character can move the target in any direction up to 1 space times the character's rank. On a Fantastic success, the target also takes regular damage, is knocked prone and suffers the element's special effect.",
     "ability": "ego",
     "attackTarget": "agl",
     "isElemental": true,
+    "attack": true,
+    "attackKind": "ranged",
     "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "requiresFantastic": true,
+      "doubleOnFantastic": false
+    },
+    "elementalControl": {
+      "mode": "push",
+      "movementSpacesPerRank": 1,
+      "movementDirectionManual": true,
+      "specialEffectOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "elemental.attack",
+      "impact": "elemental.impact"
+    },
     "events": [
+      {
+        "id": "elemental-push-movement",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-push-move-target",
+            "type": "manual",
+            "label": "Move the target in any chosen direction up to 1 space per Rank."
+          }
+        ]
+      },
       {
         "id": "elemental-push-prone",
         "trigger": "target-fantastic-hit",
@@ -32,6 +70,18 @@
             "duration": {
               "type": "manual"
             }
+          }
+        ]
+      },
+      {
+        "id": "elemental-push-special-effect",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "elemental-push-apply-special-effect",
+            "type": "manual",
+            "label": "Apply the configured element's Fantastic success effect."
           }
         ]
       }

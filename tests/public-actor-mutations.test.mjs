@@ -73,6 +73,27 @@ test("rejects invalid direct damage without mutating the actor", async () => {
   assert.equal(actor.system.health.value, 30);
 });
 
+test("Elemental Protection absorbs its threshold and allows only excess damage through", async () => {
+  const protectedActor = createActor();
+  protectedActor.effects.contents.push({
+    id: "elemental-protection",
+    disabled: false,
+    flags: { "marvel-multiverse": { elementalControl: { protectionThreshold: 20 } } },
+  });
+
+  const absorbed = await applyActorDamage({ actor: protectedActor, kind: "health", amount: 25 });
+  assert.equal(absorbed.elementalProtection.absorbedDamage, 20);
+  assert.equal(absorbed.appliedDamage, 0);
+  assert.equal(protectedActor.system.health.value, 30);
+  assert.equal(protectedActor.effects.contents.length, 1);
+
+  const breached = await applyActorDamage({ actor: protectedActor, kind: "health", amount: 31 });
+  assert.equal(breached.elementalProtection.destroyed, true);
+  assert.equal(breached.appliedDamage, 6);
+  assert.equal(protectedActor.system.health.value, 24);
+  assert.equal(protectedActor.effects.contents.length, 0);
+});
+
 test("applies, deduplicates, toggles, and removes direct statuses", async () => {
   const actor = createActor();
 

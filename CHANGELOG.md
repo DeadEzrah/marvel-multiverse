@@ -4,6 +4,25 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.5.0] - 2026-11-02
+
+### Added
+- Structured activation, targeting, damage, concentration, family metadata, and semantic animation profiles for all eighteen Elemental Control powers.
+- Conditional Elemental Protection absorption that preserves the protection at or below its threshold, breaks it above the threshold, and applies only excess Health damage.
+- Tier-derived 5-Focus choices for Elemental Sphere and Elemental Prison, plus exact Health-to-Focus transfer and undo for Elemental Reinforcement.
+- Regression coverage for elemental attacks, areas, grabs, suffocation, protection tiers, Focus scaling, Reinforcement, and safe manual boundaries.
+
+### Changed
+- Elemental special effects remain explicit reminders because their outcome depends on the element configured on each actor-owned power.
+- Elemental Sphere, Prison, Barrier, Infusion, and Protection effects now use concentration-owned markers and cleanup.
+
+### Fixed
+- Corrected Elemental Protection 4 to require Elemental Protection 3 and Rank 5, cost 20 Focus, and absorb 40 damage.
+- Corrected Elemental Push's missing 1-space-per-Rank movement value and malformed punctuation.
+- Corrected Elemental Ricochet's display name, copied typos, cumulative range reminder, and Fantastic repeat boundary.
+- Prevented hydrated empty tier metadata from capping unrelated variable-Focus powers at zero.
+- Corrected unlimited Focus-scaling dialog text so it no longer displays a `null` limit.
+
 ## [3.4.0] - 2026-11-02
 
 ### Added
