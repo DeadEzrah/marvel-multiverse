@@ -10,7 +10,7 @@ This maintained fork provides character and item sheets, Marvel dice, action wor
 
 | Component | Current target |
 |---|---|
-| Marvel Multiverse system | 3.14.0 |
+| Marvel Multiverse system | 3.15.0 |
 | Foundry VTT | 12-14; verified on 14.365 |
 | Primary branch | [`main`](https://github.com/DeadEzrah/marvel-multiverse/tree/main) |
 | Issue tracker | [GitHub issues](https://github.com/DeadEzrah/marvel-multiverse/issues) |
@@ -57,6 +57,10 @@ The **Destructible Objects** Actor compendium provides neutral, unlinked NPC tok
 
 The supplied durability values are editable Narrator-ready starting points, not a replacement for an official ruling. Destroying a token does not automatically delete Foundry Wall or Tile documents, trigger a collapse, or create debris. The Narrator should hide or remove matching scene geometry when appropriate.
 
+## Quick Actions HUD
+
+Select a character Token and use **Abilities and Powers** in the Token HUD to open the compact Quick Actions interface. It provides ability checks, attacks, non-combat checks, initiative, searchable power-set groups, power activation, and concentration controls without duplicating character-sheet editing tools.
+
 ## Documentation
 
 - [Documentation home](docs/DOCUMENTATION-HOME.md)
@@ -87,7 +91,7 @@ npm run validate:release
 Focused native Node regression tests live in `tests/`:
 
 ```powershell
-node --test tests\*.test.mjs
+npm test
 ```
 
 Do not commit licensed rules text or proprietary sourcebook content. Compendium and automation data must contain only content the contributor is authorized to distribute.

@@ -4,6 +4,16 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.15.0] - 2026-11-03
+
+### Added
+- Added non-combat ability checks, initiative, power search, collapsible power-set categories, and per-power concentration controls to Quick Actions.
+- Added a compact, consistent icon language for abilities, power-set categories, resources, action timing, and Focus costs without requiring unique artwork for every power.
+
+### Changed
+- Reduced the Quick Actions footprint while preserving readable names, values, action types, and costs.
+- Widened the white Damage formula containers by five pixels to align their right inset with the surrounding comic-sheet panel.
+
 ## [3.14.0] - 2026-11-03
 
 ### Added
