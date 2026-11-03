@@ -4,6 +4,12 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.12.0] - 2026-11-02
+
+### Added
+- Added a permission-checked public `restoreResource` API for restoring Health or Focus to its maximum or by a capped explicit amount.
+- Added regression coverage for full, partial, and invalid resource restoration.
+
 ## [3.11.0] - 2026-11-02
 
 ### Added

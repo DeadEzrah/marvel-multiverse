@@ -25,7 +25,7 @@
             "thumbnail": "systems/marvel-multiverse/ui/official/mmrpg-setup-thumbnail.png"
         }
     ],
-    "version": "3.11.0",
+    "version": "3.12.0",
     "compatibility": {
         "minimum": 12,
         "verified": "14.365"
@@ -151,7 +151,7 @@
     ],
     "socket": true,
     "manifest": "https://raw.githubusercontent.com/DeadEzrah/marvel-multiverse/main/system.json",
-    "download": "https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.11.0/marvel-multiverse-3.11.0.zip",
+    "download": "https://github.com/DeadEzrah/marvel-multiverse/releases/download/release-3.12.0/marvel-multiverse-3.12.0.zip",
     "background": "systems/marvel-multiverse/ui/official/mmrpg-background.webp",
     "grid": {
         "distance": 5,

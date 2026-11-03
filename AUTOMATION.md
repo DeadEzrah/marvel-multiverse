@@ -129,6 +129,11 @@ await game.marvelMultiverse.applyDamage({
   amount: 10
 });
 
+await game.marvelMultiverse.restoreResource({
+  actor,
+  kind: "health"
+});
+
 await game.marvelMultiverse.applyStatus({
   actor,
   status: "stunned",
@@ -136,7 +141,7 @@ await game.marvelMultiverse.applyStatus({
 });
 ```
 
-`applyDamage` accepts `health` or `focus`, applies the corresponding actor Damage Reduction by default, floors the resource at zero, and supports `ignoreReduction: true` for mechanics that explicitly bypass reduction. `applyStatus` supports `apply`, `remove`, and `toggle`, normalizes condition aliases, prevents duplicate effects, and uses the system's condition icons and ActiveEffect markers. Both methods also accept `actorUuid` or `tokenUuid`, enforce actor ownership/GM permission, and return structured success or failure results.
+`applyDamage` accepts `health` or `focus`, applies the corresponding actor Damage Reduction by default, floors the resource at zero, and supports `ignoreReduction: true` for mechanics that explicitly bypass reduction. `restoreResource` restores Health or Focus to its maximum when `amount` is omitted, or restores a capped explicit amount. `applyStatus` supports `apply`, `remove`, and `toggle`, normalizes condition aliases, prevents duplicate effects, and uses the system's condition icons and ActiveEffect markers. These methods also accept `actorUuid` or `tokenUuid`, enforce actor ownership/GM permission, and return structured success or failure results.
 
 ## Areas and Walls
 
