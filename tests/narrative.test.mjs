@@ -77,6 +77,7 @@ test("Magic Masks has a valid document ID and a single replaceable wearer marker
 test("Narrative semantic aliases resolve to registered effects", async () => {
   const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
   assert.equal(manifest.fallbacks["narrative.corruption"], "telepathy.command");
-  assert.equal(manifest.fallbacks["narrative.transformation"], "resize.other");
+  assert.equal(manifest.fallbacks["narrative.transformation"], undefined);
+  assert.equal(powers["dna-manipulation.json"].system.effectProfiles, undefined);
   assert.equal(manifest.fallbacks["narrative.mask"], "power.magic.cast");
 });

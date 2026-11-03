@@ -17,9 +17,6 @@
       "mode": "defense-substitution",
       "incomingDefense": "mle",
       "substituteDefense": "agl"
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

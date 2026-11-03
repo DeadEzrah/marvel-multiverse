@@ -35,8 +35,7 @@
       "broadTroubleManual": true
     },
     "effectProfiles": {
-      "attack": "magic.hex",
-      "hit": "magic.impact"
+      "hit": "magic.curse"
     },
     "events": [
       {

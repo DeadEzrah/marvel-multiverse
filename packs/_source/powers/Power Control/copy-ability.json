@@ -27,9 +27,6 @@
       "targetAbilityChoice": true,
       "replaceMatchingSourceAbility": true
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "copy-ability-rules",

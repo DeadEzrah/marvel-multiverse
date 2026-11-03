@@ -24,9 +24,6 @@
       "naturalAbilities": true,
       "formAndAbilitiesManual": true
     },
-    "effectProfiles": {
-      "activation": "basic.transform"
-    },
     "events": [
       {
         "id": "shape-shift-activation",

@@ -19,9 +19,6 @@
       "family": "sturdy",
       "tier": 4,
       "healthDamageReduction": 4
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

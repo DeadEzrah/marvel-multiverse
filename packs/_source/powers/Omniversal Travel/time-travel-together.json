@@ -34,9 +34,6 @@
       "fallbackDestination": "closest-corresponding-space",
       "crossSceneMovementManual": true
     },
-    "effectProfiles": {
-      "activation": "omniversal.travel"
-    },
     "events": [
       {
         "id": "time-travel-together-resolution",

@@ -152,14 +152,13 @@ test("Magic utility targeting enforces rank ranges and target counts", () => {
   assert.equal(vehicle.system.magic.vehicleMutationManual, true);
 });
 
-test("Magic semantic aliases resolve to registered effects", async () => {
+test("Magic profiles preserve explicit fire, ice, curse, psychic, and unsupported semantics", async () => {
   const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
   const aliases = {
     "magic.astral": "telepathy.astral",
     "magic.attack": "power.energy.blast",
     "magic.impact": "power.energy.impact",
     "magic.bind": "power.hellfire.bind",
-    "magic.hex": "telepathy.command",
     "magic.mist": "power.magic.vapors.activation",
     "magic.portal": "movement.teleport",
     "magic.sense": "telepathy.sense",
@@ -168,5 +167,30 @@ test("Magic semantic aliases resolve to registered effects", async () => {
 
   for (const [alias, effect] of Object.entries(aliases)) {
     assert.equal(manifest.fallbacks[alias], effect, alias);
+  }
+
+  assert.deepEqual(powers["flames-of-the-faltine.json"].system.effectProfiles, {
+    attack: "power.fire.projectile",
+    hit: "power.fire.impact",
+  });
+  assert.deepEqual(powers["icy-tendrils-of-ikthalon.json"].system.effectProfiles, {
+    attack: "power.ice.cast",
+    hit: "power.ice.impact",
+  });
+  assert.equal(powers["hex-bolt.json"].system.effectProfiles.fantasticHit, "magic.curse");
+  assert.deepEqual(powers["jinx.json"].system.effectProfiles, { hit: "magic.curse" });
+  assert.equal(powers["probability-manipulation-hex.json"].system.effectProfiles.activation, "luck.good");
+  assert.equal(powers["penance-stare.json"].system.effectProfiles.hit, "telepathy.mental-impact");
+  for (const file of ["brain-drain.json", "leech-life.json", "dispel spell.json"]) {
+    assert.equal(powers[file].system.effectProfiles, undefined, `${file}: unsupported drain/dispel visual`);
+  }
+  assert.equal(manifest.fallbacks["magic.hex"], undefined);
+
+  const profiles = Object.fromEntries(manifest.effects.map((effect) => [effect.id, effect]));
+  assert.equal(profiles["magic.curse"].animations[0].file, "jb2a.condition.curse.01.001.red");
+  assert.equal(profiles["power.ice.cast"].animations[0].file, "jb2a.ice_spikes.radial.burst.white");
+  assert.equal(profiles["power.ice.impact"].animations[0].file, "jb2a.impact_themed.ice_shard.blue");
+  for (const id of ["magic.curse", "power.ice.cast", "power.ice.impact"]) {
+    assert.deepEqual(profiles[id].animations[0].moduleIds, ["jb2a_patreon", "JB2A_DnD5e"]);
   }
 });

@@ -36,9 +36,6 @@
       "mayEndEarly": true,
       "targetFreezeManual": true
     },
-    "effectProfiles": {
-      "activation": "omniversal.time"
-    },
     "events": [
       {
         "id": "time-out-tag-active",

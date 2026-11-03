@@ -30,7 +30,7 @@
       "selectedPowerManual": true
     },
     "effectProfiles": {
-      "activation": "magic.hex"
+      "activation": "magic.cast"
     },
     "events": [
       {

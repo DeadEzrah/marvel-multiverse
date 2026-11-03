@@ -35,11 +35,6 @@
       "fantasticSuccessesDisabled": true,
       "payTargetPowerFocusCost": true
     },
-    "effectProfiles": {
-      "attack": "power.control.attack",
-      "hit": "telepathy.mental-impact",
-      "miss": "melee.miss"
-    },
     "events": [
       {
         "id": "dampen-power-activation",

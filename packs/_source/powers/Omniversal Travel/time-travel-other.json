@@ -43,10 +43,6 @@
       "fallbackDestination": "closest-corresponding-space",
       "crossSceneMovementManual": true
     },
-    "effectProfiles": {
-      "hit": "omniversal.travel",
-      "fantasticHit": "omniversal.travel"
-    },
     "events": [
       {
         "id": "time-travel-other-success",

@@ -20,9 +20,6 @@
       "tier": 3,
       "ability": "mle",
       "liftingSizeIncrease": 3
-    },
-    "effectProfiles": {
-      "activation": "basic.passive"
     }
   },
   "flags": {},

@@ -18,9 +18,6 @@
       "family": "brilliance",
       "tier": 3,
       "ability": "log"
-    },
-    "effectProfiles": {
-      "activation": "basic.passive"
     }
   },
   "flags": {},

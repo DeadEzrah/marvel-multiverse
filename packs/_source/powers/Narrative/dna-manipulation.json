@@ -37,9 +37,6 @@
       "powerManifestationManual": true,
       "geneticIdentityManual": true
     },
-    "effectProfiles": {
-      "activation": "narrative.transformation"
-    },
     "events": [
       {
         "id": "dna-manipulation-resolution",

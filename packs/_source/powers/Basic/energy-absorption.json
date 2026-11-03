@@ -25,9 +25,6 @@
       "maximumFocusMultiplier": 2,
       "excessFocusEndsAfterCombat": true
     },
-    "effectProfiles": {
-      "activation": "basic.absorb"
-    },
     "events": [
       {
         "id": "energy-absorption-conversion",

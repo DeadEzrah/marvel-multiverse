@@ -21,9 +21,6 @@
         "agl"
       ],
       "multipleCopiesNoAdditionalBenefit": true
-    },
-    "effectProfiles": {
-      "activation": "basic.passive"
     }
   },
   "flags": {},

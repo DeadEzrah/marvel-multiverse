@@ -17,9 +17,6 @@
       "mode": "passive",
       "healthDamageReduction": 1,
       "reinforcedSkeleton": true
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

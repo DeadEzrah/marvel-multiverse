@@ -33,11 +33,6 @@
       "minimumFocus": 15,
       "maximumFocusFromTargetPowers": true
     },
-    "effectProfiles": {
-      "attack": "power.control.attack",
-      "hit": "telepathy.mental-impact",
-      "miss": "melee.miss"
-    },
     "events": [
       {
         "id": "shut-down-powers-success",

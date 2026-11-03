@@ -231,22 +231,42 @@ test("subjective Basic powers retain explicit safe boundaries", () => {
   assert.equal(powers["wisecracker.json"].system.basic.triggerSelectionManual, true);
 });
 
-test("Basic semantic aliases resolve to registered effects", async () => {
+test("passive, defensive, transformation, absorption, and taunt visuals stay unconfigured", async () => {
+  const intentionallyUnanimated = [
+    "accuracy-1.json", "accuracy-2.json", "accuracy-3.json", "accuracy-4.json",
+    "additional-limbs.json",
+    "brilliance-1.json", "brilliance-2.json", "brilliance-3.json", "brilliance-4.json",
+    "discipline-1.json", "discipline-2.json", "discipline-3.json", "discipline-4.json",
+    "mighty-1.json", "mighty-2.json", "mighty-3.json", "mighty-4.json",
+    "brawling.json", "environmental-protection.json", "evasion.json", "integrity.json",
+    "reinforced-skeleton.json",
+    "sturdy-1.json", "sturdy-2.json", "sturdy-3.json", "sturdy-4.json",
+    "uncanny-1.json", "uncanny-2.json", "uncanny-3.json", "uncanny-4.json",
+    "wisdom.json", "disguise.json", "shape-shift.json", "energy-absorption.json",
+  ];
+  for (const file of intentionallyUnanimated) {
+    assert.equal(powers[file].system.effectProfiles, undefined, `${file}: no misleading visual`);
+  }
+  assert.equal(powers["wisecracker.json"].system.effectProfiles.attack, undefined);
+  assert.equal(powers["wisecracker.json"].system.effectProfiles.hit, "basic.mental-impact");
+
+  const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
+  for (const alias of ["basic.passive", "basic.defense", "basic.transform", "basic.absorb", "basic.taunt"]) {
+    assert.equal(manifest.fallbacks[alias], undefined, alias);
+  }
+});
+
+test("remaining Basic semantic aliases resolve to registered effects", async () => {
   const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
   const aliases = [
-    "basic.passive",
-    "basic.defense",
     "basic.anger",
     "basic.trick",
-    "basic.transform",
-    "basic.absorb",
     "basic.flight",
     "basic.healing",
     "basic.sense",
     "basic.weapon",
     "basic.inspire",
     "basic.dodge",
-    "basic.taunt",
     "basic.mental-impact",
   ];
   for (const alias of aliases) {

@@ -32,9 +32,6 @@
       "requiredOrigin": "Special Training",
       "payCopiedPowerCostOnUse": true
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "clone-moves-rules",

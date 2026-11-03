@@ -34,7 +34,7 @@
       "troubleRemovalManual": true
     },
     "effectProfiles": {
-      "activation": "magic.hex"
+      "activation": "luck.good"
     },
     "events": [
       {

@@ -30,9 +30,6 @@
       "damageMultiplierBonus": 1,
       "fantasticOutcomesOnSuccess": true
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "bump-power-rules",

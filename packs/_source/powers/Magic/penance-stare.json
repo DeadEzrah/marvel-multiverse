@@ -68,8 +68,8 @@
       "paralyzedOnFantastic": true
     },
     "effectProfiles": {
-      "attack": "magic.hex",
-      "hit": "magic.impact"
+      "attack": "telepathy.command",
+      "hit": "telepathy.mental-impact"
     }
   },
   "flags": {},

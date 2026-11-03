@@ -26,9 +26,6 @@
       "mayEndEarly": true,
       "worldFreezeManual": true
     },
-    "effectProfiles": {
-      "activation": "omniversal.time"
-    },
     "events": [
       {
         "id": "time-out-active",

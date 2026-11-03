@@ -25,9 +25,6 @@
       "mode": "copy-one-trait",
       "range": 10
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "copy-trait-rules",

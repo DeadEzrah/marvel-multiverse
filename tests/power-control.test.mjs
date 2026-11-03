@@ -123,13 +123,14 @@ test("Power Slider keeps its subjective shifts explicit", () => {
   assert.deepEqual(slider.duration, { combat: "one-combat", outsideCombat: "one-day" });
 });
 
-test("all Power Control events and effect-profile aliases validate", async () => {
+test("all Power Control events validate without copy or suppression visuals", async () => {
   for (const [file, power] of Object.entries(powers)) {
     const validation = validatePowerEvents(power.system.events);
     assert.equal(validation.valid, true, `${file}: ${JSON.stringify(validation.issues)}`);
+    assert.equal(power.system.effectProfiles, undefined, `${file}: unsupported power mutation remains unanimated`);
   }
 
   const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
-  assert.equal(manifest.fallbacks["power.control.copy"], "telepathy.command");
-  assert.equal(manifest.fallbacks["power.control.attack"], "telepathy.mental-impact");
+  assert.equal(manifest.fallbacks["power.control.copy"], undefined);
+  assert.equal(manifest.fallbacks["power.control.attack"], undefined);
 });

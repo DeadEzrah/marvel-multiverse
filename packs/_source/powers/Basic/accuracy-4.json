@@ -19,9 +19,6 @@
       "family": "accuracy",
       "tier": 4,
       "ability": "agl"
-    },
-    "effectProfiles": {
-      "activation": "basic.passive"
     }
   },
   "flags": {},

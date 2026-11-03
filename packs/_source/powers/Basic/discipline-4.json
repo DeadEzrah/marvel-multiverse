@@ -19,9 +19,6 @@
       "family": "discipline",
       "tier": 4,
       "ability": "ego"
-    },
-    "effectProfiles": {
-      "activation": "basic.passive"
     }
   },
   "flags": {},

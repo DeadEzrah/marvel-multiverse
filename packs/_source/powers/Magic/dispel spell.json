@@ -34,10 +34,6 @@
       "fantasticEndsAllConcentration": true,
       "concentrationChoiceManual": true
     },
-    "effectProfiles": {
-      "attack": "magic.hex",
-      "hit": "magic.impact"
-    },
     "events": [
       {
         "id": "dispel-spell-success",

@@ -377,6 +377,15 @@ The 13 weapon records are structured locally but still require complete live gat
 - [ ] Make the full ESLint run clean or explicitly baseline documented legacy findings.
 - [ ] Run `npm run build`, pack validation, and `git diff --check` before release.
 
+## Targeted Animation Semantic Cleanup
+
+- [x] Remove martial-stance playback from permanent Basic traits and generic shield playback from passive Basic defenses.
+- [x] Leave unsupported time, absorption, taunt, transformation/DNA, power-copy, drain, dispel, and power-suppression semantics unanimated.
+- [x] Remove the misleading phasing alias for permanent Elemental Form.
+- [x] Specialize Flames of the Faltine, Icy Tendrils of Ikthalon, Jinx, Hex Bolt, Probability Manipulation, and Penance Stare with semantically appropriate installed profiles.
+- [x] Register verified Free-JB2A curse and ice keys with Patreon/Free module fallback support.
+- [x] Add source regressions that reject the removed high-confidence mismatches and verify exact optional asset keys.
+
 ## Repository And Release Hygiene
 
 - [ ] Review the large dirty worktree and separate changes into logical commits without reverting unrelated work.

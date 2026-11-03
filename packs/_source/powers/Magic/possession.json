@@ -37,8 +37,7 @@
       "sourceBodyVulnerable": true
     },
     "effectProfiles": {
-      "attack": "magic.hex",
-      "hit": "magic.impact"
+      "attack": "telepathy.command"
     },
     "events": [
       {

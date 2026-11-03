@@ -158,6 +158,7 @@ test("sphere, prison, infusion, reinforcement, and form expose safe automation b
   assert.equal(reinforcement.events[0].outcomes[1].amountMultiplier, -1);
   assert.equal(form.elementalControl.reformAtPositiveHealth, true);
   assert.equal(form.elementalControl.zeroHealthStateManual, true);
+  assert.equal(form.effectProfiles, undefined);
 });
 
 test("Elemental semantic aliases resolve to registered effects", async () => {
@@ -167,4 +168,5 @@ test("Elemental semantic aliases resolve to registered effects", async () => {
   assert.equal(manifest.fallbacks["elemental.wall"], "defense.elemental.wall");
   assert.equal(manifest.fallbacks["elemental.guard"], "shield-bearer.guard");
   assert.equal(manifest.fallbacks["elemental.grab"], "telekinesis.grab");
+  assert.equal(manifest.fallbacks["elemental.form"], undefined);
 });

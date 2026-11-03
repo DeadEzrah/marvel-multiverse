@@ -25,9 +25,6 @@
       "replacesOriginalCheck": true,
       "rerollManual": true
     },
-    "effectProfiles": {
-      "activation": "omniversal.time"
-    },
     "events": [
       {
         "id": "instant-replay-resolution",

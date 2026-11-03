@@ -28,9 +28,6 @@
       "maximumFocusFromTargetPowers": true,
       "payCopiedPowerCostOnUse": true
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "clone-powers-rules",

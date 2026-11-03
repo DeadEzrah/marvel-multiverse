@@ -61,7 +61,6 @@
       "triggerSelectionManual": true
     },
     "effectProfiles": {
-      "attack": "basic.taunt",
       "hit": "basic.mental-impact"
     }
   },

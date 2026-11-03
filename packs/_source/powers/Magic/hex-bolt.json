@@ -39,7 +39,8 @@
     },
     "effectProfiles": {
       "attack": "magic.attack",
-      "hit": "magic.impact"
+      "hit": "magic.impact",
+      "fantasticHit": "magic.curse"
     },
     "events": [
       {

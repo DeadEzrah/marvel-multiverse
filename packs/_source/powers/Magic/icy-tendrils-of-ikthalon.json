@@ -58,8 +58,8 @@
       "paralysisDurationManual": true
     },
     "effectProfiles": {
-      "attack": "magic.attack",
-      "hit": "magic.impact"
+      "attack": "power.ice.cast",
+      "hit": "power.ice.impact"
     }
   },
   "flags": {},

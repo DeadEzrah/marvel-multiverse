@@ -29,7 +29,6 @@ test("self travel utilities preserve scope and Narrator-owned placement", () => 
   for (const [file, scope] of [
     ["dimensional-travel.json", "dimension"],
     ["multiversal-travel.json", "universe"],
-    ["time-travel.json", "time"],
   ]) {
     const power = powers[file];
     assert.equal(power.system.activation.target, "none", `${file}: self activation`);
@@ -42,6 +41,7 @@ test("self travel utilities preserve scope and Narrator-owned placement", () => 
 
   assert.equal(powers["time-travel.json"].system.action, "Standard or movement");
   assert.equal(powers["time-travel.json"].system.trigger, "");
+  assert.equal(powers["time-travel.json"].system.omniversalTravel.scope, "time");
 });
 
 test("together travel requires one touched target without guessing willingness", () => {
@@ -79,7 +79,7 @@ test("other travel uses a grabbed-target Ego attack without damage", () => {
 });
 
 test("portals create concentration-owned source markers", () => {
-  for (const file of ["dimensional-portal.json", "multiversal-portal.json", "time-portal.json"]) {
+  for (const file of ["dimensional-portal.json", "multiversal-portal.json"]) {
     const system = powers[file].system;
     const marker = system.events[0].outcomes.find((outcome) => outcome.type === "active-effect");
     assert.equal(system.activation.target, "none", `${file}: no selected target`);
@@ -88,6 +88,9 @@ test("portals create concentration-owned source markers", () => {
     assert.equal(marker.duration.type, "concentration", `${file}: concentration marker`);
     assert.equal(system.effectProfiles.activation, "omniversal.portal", `${file}: portal effect`);
   }
+  const timePortal = powers["time-portal.json"].system;
+  assert.equal(timePortal.events[0].outcomes.find((outcome) => outcome.type === "active-effect").duration.type, "concentration");
+  assert.equal(timePortal.omniversalTravel.bidirectional, true);
 });
 
 test("Time-Out powers accept prepaid fifteen-Focus round blocks", async () => {
@@ -151,9 +154,15 @@ test("Instant Replay preserves its once-per-battle manual reroll boundary", () =
   assert.equal(replay.omniversalTravel.rerollManual, true);
 });
 
-test("Omniversal semantic aliases reuse verified travel effects", async () => {
+test("time powers stay unanimated while spatial travel keeps verified effects", async () => {
   const manifest = JSON.parse(await readFile(new URL("../assets/effects-manifest.json", import.meta.url), "utf8"));
   assert.equal(manifest.fallbacks["omniversal.travel"], "movement.teleport");
   assert.equal(manifest.fallbacks["omniversal.portal"], "movement.teleport");
-  assert.equal(manifest.fallbacks["omniversal.time"], "movement.superspeed");
+  assert.equal(manifest.fallbacks["omniversal.time"], undefined);
+  for (const file of [
+    "instant-replay.json", "time-out.json", "time-out-bubble.json", "time-out-tag.json",
+    "time-portal.json", "time-travel.json", "time-travel-together.json", "time-travel-other.json",
+  ]) {
+    assert.equal(powers[file].system.effectProfiles, undefined, file);
+  }
 });

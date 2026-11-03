@@ -4,6 +4,17 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.11.0] - 2026-11-02
+
+### Added
+- Verified Free/Patreon JB2A curse and ice profiles for explicitly cursed and frozen power outcomes.
+- Regression coverage that rejects misleading animation assignments for passive traits, temporal effects, absorption, taunts, DNA transformation, and power copying or suppression.
+
+### Changed
+- Specialized Flames of the Faltine, Icy Tendrils, Jinx, Hex Bolt, Probability Manipulation Hex, and Penance Stare with behavior-appropriate fire, ice, curse, fortune, and psychic profiles.
+- Removed visible animations from powers whose passive, temporal, absorptive, verbal, biological, copying, or suppression behavior has no appropriate installed JB2A asset.
+- Reduced semantic animation references from 534 to 460 by preferring no visual over a misleading generic effect.
+
 ## [3.10.0] - 2026-11-02
 
 ### Added

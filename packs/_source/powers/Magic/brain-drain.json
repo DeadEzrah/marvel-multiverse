@@ -47,10 +47,6 @@
       "fantasticHealingScale": 1,
       "healingFromAppliedDamage": true
     },
-    "effectProfiles": {
-      "attack": "magic.attack",
-      "hit": "magic.impact"
-    },
     "events": [
       {
         "id": "brain-drain-healing",

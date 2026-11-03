@@ -19,9 +19,6 @@
       "family": "uncanny",
       "tier": 3,
       "focusDamageReduction": 3
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

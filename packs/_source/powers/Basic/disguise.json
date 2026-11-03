@@ -23,9 +23,6 @@
       "knownPersonEdge": true,
       "appearanceMutationManual": true
     },
-    "effectProfiles": {
-      "activation": "basic.transform"
-    },
     "events": [
       {
         "id": "disguise-activation",

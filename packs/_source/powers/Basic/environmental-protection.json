@@ -24,9 +24,6 @@
       ],
       "selection": "any-or-all",
       "selectedProtectionsManual": true
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

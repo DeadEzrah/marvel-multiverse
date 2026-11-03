@@ -40,8 +40,8 @@
       "ongoingDamageManual": true
     },
     "effectProfiles": {
-      "attack": "magic.attack",
-      "hit": "magic.impact"
+      "attack": "power.fire.projectile",
+      "hit": "power.fire.impact"
     },
     "events": [
       {

@@ -26,9 +26,6 @@
       "range": 10,
       "payCopiedPowerCostOnUse": true
     },
-    "effectProfiles": {
-      "activation": "power.control.copy"
-    },
     "events": [
       {
         "id": "copy-power-rules",

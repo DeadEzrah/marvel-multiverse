@@ -26,9 +26,6 @@
       "bidirectional": true,
       "crossSceneMovementManual": true
     },
-    "effectProfiles": {
-      "activation": "omniversal.portal"
-    },
     "events": [
       {
         "id": "time-portal-active",

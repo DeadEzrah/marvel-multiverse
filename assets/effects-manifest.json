@@ -26,44 +26,33 @@
     "plasticity.crush": "melee.slam",
     "plasticity.punch": "melee.punch",
     "plasticity.movement": "movement.whoosh",
-    "power.control.copy": "telepathy.command",
-    "power.control.attack": "telepathy.mental-impact",
     "omniversal.travel": "movement.teleport",
     "omniversal.portal": "movement.teleport",
-    "omniversal.time": "movement.superspeed",
     "elemental.attack": "power.energy.blast",
     "elemental.impact": "power.energy.impact",
     "elemental.burst": "destruction.explosion.medium",
     "elemental.wall": "defense.elemental.wall",
     "elemental.guard": "shield-bearer.guard",
-    "elemental.form": "phasing.aura",
     "elemental.grab": "telekinesis.grab",
     "elemental.weapon": "weapon.melee.swing",
     "narrative.corruption": "telepathy.command",
-    "narrative.transformation": "resize.other",
     "narrative.mask": "power.magic.cast",
     "magic.astral": "telepathy.astral",
     "magic.attack": "power.energy.blast",
     "magic.impact": "power.energy.impact",
     "magic.bind": "power.hellfire.bind",
-    "magic.hex": "telepathy.command",
     "magic.mist": "power.magic.vapors.activation",
     "magic.portal": "movement.teleport",
     "magic.sense": "telepathy.sense",
     "magic.shield": "defense.shield",
-    "basic.passive": "martial.stance.defense",
-    "basic.defense": "defense.shield",
     "basic.anger": "martial.stance.attack",
     "basic.trick": "luck.good",
-    "basic.transform": "resize.other",
-    "basic.absorb": "power.energy.impact",
     "basic.flight": "telekinesis.lift",
     "basic.healing": "power.healing.target",
     "basic.sense": "telepathy.sense",
     "basic.weapon": "weapon.melee.swing",
     "basic.inspire": "tactics.rally",
     "basic.dodge": "tactics.evade",
-    "basic.taunt": "telepathy.command",
     "basic.mental-impact": "telepathy.mental-impact",
     "movement.superspeed": "movement.whoosh",
     "movement.flight": "movement.whoosh"
@@ -542,6 +531,38 @@
       ]
     },
     {
+      "id": "power.fire.projectile",
+      "category": "power",
+      "type": "projectile",
+      "tags": ["power", "magic", "fire", "projectile"],
+      "sounds": [
+        { "file": "psfx.cantrips.fire-bolt.v1", "source": "PSFX", "moduleIds": ["psfx"], "kind": "sequencer-database", "bundled": false }
+      ],
+      "animations": [
+        { "file": "jb2a.fireball.beam.orange", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.ice.cast",
+      "category": "power",
+      "type": "cast",
+      "tags": ["power", "magic", "ice", "cold", "cast"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.ice_spikes.radial.burst.white", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "power.ice.impact",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "magic", "ice", "cold", "impact"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.impact_themed.ice_shard.blue", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
       "id": "power.hellfire.chains",
       "category": "power",
       "type": "projectile",
@@ -814,6 +835,16 @@
       "category": "luck",
       "type": "impact",
       "tags": ["luck", "jinx", "trouble", "curse"],
+      "sounds": [],
+      "animations": [
+        { "file": "jb2a.condition.curse.01.001.red", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }
+      ]
+    },
+    {
+      "id": "magic.curse",
+      "category": "power",
+      "type": "impact",
+      "tags": ["power", "magic", "hex", "jinx", "curse"],
       "sounds": [],
       "animations": [
         { "file": "jb2a.condition.curse.01.001.red", "source": "JB2A", "moduleIds": ["jb2a_patreon", "JB2A_DnD5e"], "kind": "sequencer-database", "bundled": false }

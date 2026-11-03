@@ -17,9 +17,6 @@
       "mode": "defense-substitution",
       "incomingDefense": "ego",
       "substituteDefense": "log"
-    },
-    "effectProfiles": {
-      "activation": "basic.defense"
     }
   },
   "flags": {},

@@ -43,11 +43,6 @@
       "maximumFocusFromTargetPowers": true,
       "payStolenPowerCostOnUse": true
     },
-    "effectProfiles": {
-      "attack": "power.control.attack",
-      "hit": "telepathy.mental-impact",
-      "miss": "melee.miss"
-    },
     "events": [
       {
         "id": "steal-powers-success",
