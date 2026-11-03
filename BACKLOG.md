@@ -353,6 +353,7 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.
   - [x] Import and live-gate a Car profile through ordinary weapon targeting, Damage Reduction, Health loss to zero, unlinked-token isolation, and cleanup.
+  - [x] Replace shared category placeholders with twelve unique system-owned SVG portraits and prototype-token images, then live-verify every asset and Token render.
 - [x] Complete the remaining persistent web, aura, and maintained-effect migration.
   - [x] Pass the final 253/253 repository suite; back up and migrate the Foundry world to system 3.9.0; verify all seven changed compendium records.
   - [x] Live-gate Webtrapping connected-space Region placement, failed-entry `paralyzed`, duplicate non-stacking, and Melee TN 20 escape/removal.

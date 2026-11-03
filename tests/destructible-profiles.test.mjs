@@ -40,6 +40,18 @@ test("destructible profiles are targetable, damage-ready, neutral tokens", () =>
   }
 });
 
+test("every destructible profile has unique system-owned SVG artwork", async () => {
+  const artwork = actors.map((actor) => actor.prototypeToken.texture.src);
+  assert.equal(new Set(artwork).size, actors.length);
+
+  for (const actor of actors) {
+    assert.equal(actor.img, actor.prototypeToken.texture.src, `${actor.name}: portrait and token artwork`);
+    const relativePath = actor.img.replace("systems/marvel-multiverse/", "");
+    const svg = await readFile(new URL(`../${relativePath}`, import.meta.url), "utf8");
+    assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/u, `${actor.name}: valid SVG`);
+  }
+});
+
 test("system manifest exposes the Actor compendium", async () => {
   const manifest = JSON.parse(await readFile(new URL("../system.json", import.meta.url), "utf8"));
   const pack = manifest.packs.find((entry) => entry.name === "destructibles");

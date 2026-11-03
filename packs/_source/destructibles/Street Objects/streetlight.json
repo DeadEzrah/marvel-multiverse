@@ -2,7 +2,7 @@
   "_id": "DstStreetlight01",
   "name": "Streetlight",
   "type": "npc",
-  "img": "systems/marvel-multiverse/icons/destructibles/street-object.svg",
+  "img": "systems/marvel-multiverse/icons/destructibles/streetlight.svg",
   "system": {
     "attributes": { "rank": { "value": 1 } },
     "abilities": {
@@ -19,7 +19,7 @@
   "prototypeToken": {
     "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
     "width": 1, "height": 1,
-    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/street-object.svg" },
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/streetlight.svg" },
     "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
   },
   "items": [],

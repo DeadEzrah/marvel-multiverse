@@ -4,6 +4,15 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.10.0] - 2026-11-02
+
+### Added
+- Twelve distinct original system-owned SVG portraits and prototype-token images for Wooden Door, Reinforced Door, Brick Wall Section, Streetlight, Fire Hydrant, Dumpster, Motorcycle, Car, Truck, Small Building Section, Large Building Section, and Reinforced Concrete Wall.
+- Regression coverage requiring every destructible profile to use a unique readable SVG and matching portrait/token artwork.
+
+### Changed
+- Replaced the four shared category placeholders so destructible objects are immediately distinguishable on the canvas and in the Actor compendium.
+
 ## [3.9.0] - 2026-11-02
 
 ### Added

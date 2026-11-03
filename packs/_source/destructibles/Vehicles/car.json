@@ -2,7 +2,7 @@
   "_id": "DstCar0000000001",
   "name": "Car",
   "type": "npc",
-  "img": "systems/marvel-multiverse/icons/destructibles/vehicle.svg",
+  "img": "systems/marvel-multiverse/icons/destructibles/car.svg",
   "system": {
     "attributes": { "rank": { "value": 1 } },
     "abilities": {
@@ -19,7 +19,7 @@
   "prototypeToken": {
     "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
     "width": 2, "height": 1,
-    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/vehicle.svg" },
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/car.svg" },
     "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
   },
   "items": [],

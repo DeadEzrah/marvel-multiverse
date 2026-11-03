@@ -2,7 +2,7 @@
   "_id": "DstDumpster00001",
   "name": "Dumpster",
   "type": "npc",
-  "img": "systems/marvel-multiverse/icons/destructibles/street-object.svg",
+  "img": "systems/marvel-multiverse/icons/destructibles/dumpster.svg",
   "system": {
     "attributes": { "rank": { "value": 1 } },
     "abilities": {
@@ -19,7 +19,7 @@
   "prototypeToken": {
     "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
     "width": 2, "height": 1,
-    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/street-object.svg" },
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/dumpster.svg" },
     "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
   },
   "items": [],

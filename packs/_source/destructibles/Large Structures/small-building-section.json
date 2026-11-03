@@ -2,7 +2,7 @@
   "_id": "DstSmallBuild001",
   "name": "Small Building Section",
   "type": "npc",
-  "img": "systems/marvel-multiverse/icons/destructibles/structure.svg",
+  "img": "systems/marvel-multiverse/icons/destructibles/small-building.svg",
   "system": {
     "attributes": { "rank": { "value": 1 } },
     "abilities": {
@@ -19,7 +19,7 @@
   "prototypeToken": {
     "actorLink": false, "disposition": 0, "displayName": 20, "displayBars": 40,
     "width": 3, "height": 3,
-    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/structure.svg" },
+    "texture": { "src": "systems/marvel-multiverse/icons/destructibles/small-building.svg" },
     "bar1": { "attribute": "health" }, "bar2": { "attribute": null }
   },
   "items": [],
