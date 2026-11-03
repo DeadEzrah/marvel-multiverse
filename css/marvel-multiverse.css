@@ -3107,6 +3107,8 @@
 
 .marvel-multiverse.sheet.actor.comic-character-sheet .window-content,
 .application.actor.comic-character-sheet .window-content {
+  container-name: mmcomic-sheet;
+  container-type: inline-size;
   min-width: 760px;
   padding: 0;
   overflow: auto;
@@ -4802,14 +4804,19 @@
   color: var(--mmcomic-ink);
 }
 
-@media (max-width: 900px) {
+@container mmcomic-sheet (max-width: 1080px) {
   .marvel-multiverse.sheet.actor.comic-character-sheet .mmcomic-dashboard,
   .application.actor.comic-character-sheet .mmcomic-dashboard {
-    grid-template-columns: 210px minmax(520px, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .marvel-multiverse.sheet.actor.comic-character-sheet .mmcomic-portrait-panel,
+  .application.actor.comic-character-sheet .mmcomic-portrait-panel {
+    grid-template-rows: minmax(250px, 286px) 74px;
+    height: 360px;
   }
   .marvel-multiverse.sheet.actor.comic-character-sheet .mmcomic-stats,
   .application.actor.comic-character-sheet .mmcomic-stats {
-    grid-template-columns: 64px 84px 105px 105px minmax(120px, 1fr) 88px;
+    grid-template-columns: 64px minmax(84px, 0.9fr) minmax(105px, 1fr) minmax(105px, 1fr) minmax(120px, 1.1fr) 88px;
   }
   .marvel-multiverse.sheet.actor.comic-character-sheet .mmcomic-identity-grid,
   .application.actor.comic-character-sheet .mmcomic-identity-grid {
@@ -4968,7 +4975,7 @@
 
 .mm-quick-hud {
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   right: 328px;
   bottom: 18px;
   display: flex;

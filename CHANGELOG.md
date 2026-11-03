@@ -4,6 +4,17 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.14.0] - 2026-11-03
+
+### Added
+- Added the standard `npm test` command so the complete native regression suite is available to development, CI, and release workflows.
+- Added regression coverage for Foundry 14 roll-message mode normalization.
+
+### Changed
+- Updated roll chat creation to use Foundry 14 `messageMode` without changing the system's existing public, GM, blind, or self-roll behavior.
+- Made the comic character sheet switch to a stacked dashboard when its window is narrowed, preventing clipped statistics and damage controls.
+- Raised the quick actions HUD above ordinary application windows while ensuring its roll dialogs remain unobstructed.
+
 ## [3.13.0] - 2026-11-02
 
 ### Changed
