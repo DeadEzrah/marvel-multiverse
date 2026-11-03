@@ -3,6 +3,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const { validatePowerEvents } = await import("../lib/services/power-events.mjs");
+const {
+  buildActionRollRequest,
+  resolveActorEffectRollModifiers,
+} = await import("../lib/services/action-roll.mjs");
 
 async function loadPower(fileName) {
   const url = new URL(`../packs/_source/powers/Spider-Powers/${fileName}`, import.meta.url);
@@ -92,6 +96,70 @@ test("creative and persistent powers expose exact manual boundaries", () => {
   assert.equal(powers["webtrapping.json"].system.spiderPowers.entryCheckTargetNumber, 20);
   assert.equal(powers["webtrapping.json"].system.spiderPowers.durationMinutesPerRank, 15);
   assert.equal(powers["spider-pheromones.json"].system.spiderPowers.circumstanceManual, true);
+});
+
+test("Spider-Pheromones offers explicit, mutually exclusive Ego circumstances without guessing", () => {
+  const marker = powers["spider-pheromones.json"].system.events[0].outcomes[0];
+  const effect = {
+    id: "pheromones",
+    uuid: "Actor.spider.ActiveEffect.pheromones",
+    ...marker.effect,
+  };
+  const actor = {
+    uuid: "Actor.spider",
+    system: {
+      abilities: {
+        ego: { value: 4 },
+        agl: { value: 5 },
+      },
+    },
+    effects: [effect],
+    items: [],
+  };
+
+  const egoRequest = buildActionRollRequest({ actor, ability: "ego" });
+  const agilityRequest = buildActionRollRequest({ actor, ability: "agl" });
+
+  assert.equal(marker.duration.type, "concentration");
+  assert.equal(egoRequest.edge, 0);
+  assert.equal(egoRequest.circumstanceModifiers.length, 2);
+  assert.deepEqual(
+    egoRequest.circumstanceModifiers.map(({ selected, nonStacking, exclusiveGroup }) => ({
+      selected,
+      nonStacking,
+      exclusiveGroup,
+    })),
+    [
+      { selected: false, nonStacking: true, exclusiveGroup: "spider-pheromones-circumstance" },
+      { selected: false, nonStacking: true, exclusiveGroup: "spider-pheromones-circumstance" },
+    ],
+  );
+  assert.match(egoRequest.circumstanceModifiers[0].label, /Intimidation.*within 5 spaces.*not attracted/i);
+  assert.match(egoRequest.circumstanceModifiers[1].label, /Persuasion.*within 5 spaces.*attracted/i);
+  assert.equal(agilityRequest.circumstanceModifiers.length, 0);
+  assert.equal(agilityRequest.edge, 0);
+});
+
+test("Spider-Pheromones alternatives cannot stack with each other or an existing Edge", () => {
+  const markerEffect = powers["spider-pheromones.json"].system.events[0].outcomes[0].effect;
+  const selectedEffect = structuredClone(markerEffect);
+  for (const modifier of selectedEffect.flags["marvel-multiverse"].actionRollModifiers) {
+    modifier.selected = true;
+  }
+  const actor = {
+    uuid: "Actor.spider",
+    system: { abilities: { ego: { value: 4 } } },
+    effects: [{
+      id: "pheromones",
+      uuid: "Actor.spider.ActiveEffect.pheromones",
+      ...selectedEffect,
+    }],
+    items: [],
+  };
+
+  assert.equal(resolveActorEffectRollModifiers(actor, { ability: "ego" }).length, 2);
+  assert.equal(buildActionRollRequest({ actor, ability: "ego" }).edge, 1);
+  assert.equal(buildActionRollRequest({ actor, ability: "ego", edgeCount: 1 }).edge, 1);
 });
 
 test("all Spider-Powers events and semantic profiles are valid", () => {

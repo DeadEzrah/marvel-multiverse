@@ -46,7 +46,35 @@
                   "spiderPowers": {
                     "pheromones": true,
                     "range": 5
-                  }
+                  },
+                  "actionRollModifiers": [
+                    {
+                      "id": "not-attracted-intimidation",
+                      "mode": "edge",
+                      "count": 1,
+                      "selection": "optional",
+                      "selected": false,
+                      "nonStacking": true,
+                      "exclusiveGroup": "spider-pheromones-circumstance",
+                      "label": "Spider-Pheromones: Intimidation; target within 5 spaces and not attracted to the character's gender",
+                      "when": {
+                        "ability": "ego"
+                      }
+                    },
+                    {
+                      "id": "attracted-persuasion",
+                      "mode": "edge",
+                      "count": 1,
+                      "selection": "optional",
+                      "selected": false,
+                      "nonStacking": true,
+                      "exclusiveGroup": "spider-pheromones-circumstance",
+                      "label": "Spider-Pheromones: Persuasion; target within 5 spaces and attracted to the character's gender",
+                      "when": {
+                        "ability": "ego"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -57,7 +85,7 @@
           {
             "id": "spider-pheromones-reminder",
             "type": "manual",
-            "label": "Within 5 spaces, select Edge for Ego (intimidation) against someone not attracted to the character's gender or Ego (persuasion) against someone who is."
+            "label": "For an Ego roll, explicitly select the one applicable Spider-Pheromones circumstance only after confirming the target is within 5 spaces: Intimidation when not attracted to the character's gender, or Persuasion when attracted."
           }
         ]
       }

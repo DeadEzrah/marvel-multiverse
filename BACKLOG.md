@@ -282,6 +282,8 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Correct Jump, Wallcrawling, Webgliding, and Webslinging movement calculations.
   - [x] Structure web attacks, escape TNs, persistent terrain, Spider-Strike scaling, Spider Sense, Spider-Dodge, and all Venom powers.
   - [x] Preserve creative/object, attraction, movement, upkeep, and area-entry decisions as explicit boundaries.
+  - [x] Automate Webtrapping's explicitly placed, up-to-five-space connected Region with Agility TN 20 entry/start-turn checks, non-stacking `paralyzed`, and Melee TN 20 escape/undo metadata.
+  - [x] Add explicit, mutually exclusive Spider-Pheromones confirmations for its two within-5-spaces Ego Edge circumstances without inferring gender, attraction, or proximity.
   - [x] Twelve semantic profiles resolve to live-verified Free JB2A web, bioelectric, impact, wind, dodge, and aura entries.
   - Focused gates pass 32/32 and the full repository passes 162/162. All twenty compendium powers and nine embedded Spider-Man copies were refreshed with IDs preserved; temporary data was removed.
 - [x] Complete the Telepathy family migration.
@@ -295,8 +297,10 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Structure Dazzle, Deafen, and Flare attacks with exact defenses, ranges, damage gates, areas, and one-round conditions.
   - [x] Automate concentration-owned invisibility statuses, hologram and area state, Ego-defense group caps, and the optional Silence Self Agility Edge.
   - [x] Preserve object representation, chosen illusion content, scene geometry, perception, duplicate removal, and reveal decisions as explicit boundaries.
+  - [x] Complete the maintained-zone remainder for Darkness, Silence Area, Static Illusion, Animated Illusion, and Grand Illusion with concentration-owned anchor Regions, exact 50-space placement/maintenance limits, and line-of-sight placement/maintenance only where printed.
+  - [x] Keep sensory suppression, chosen illusion content and dimensions, movement, interaction, perception, and reveal adjudication manual; anchor Regions never mutate scene sight/sound or infer geometry.
   - [x] Give every Illusion power a live-verified Free JB2A semantic profile.
-  - Focused gates pass 34/34 and the full repository passes 177/177. All fourteen compendium powers and five exact embedded copies were refreshed with IDs preserved; eleven bespoke hero powers were preserved. Temporary data was removed.
+  - The original focused gates passed 34/34; the maintained-zone source regression set passes 13/13, and the historical full-family migration baseline was 177/177. All fourteen compendium powers and five exact embedded copies were refreshed with IDs preserved; eleven bespoke hero powers were preserved. Temporary data was removed.
 - [x] Complete the Plasticity migration in the installed Foundry world.
   - [x] Structure all thirteen source records, including Reach and Flexible Bones passive tiers, utility activation targeting, exact attack damage and status outcomes, and manual-only rule boundaries.
   - [x] Replace Body Sheet and Stilt Steps' permanently transferred concentration effects with source-owned, undoable concentration effects.
@@ -349,11 +353,18 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.
   - [x] Import and live-gate a Car profile through ordinary weapon targeting, Damage Reduction, Health loss to zero, unlinked-token isolation, and cleanup.
-- [ ] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
+- [x] Complete the remaining persistent web, aura, and maintained-effect migration.
+  - [x] Pass the final 253/253 repository suite; back up and migrate the Foundry world to system 3.9.0; verify all seven changed compendium records.
+  - [x] Live-gate Webtrapping connected-space Region placement, failed-entry `paralyzed`, duplicate non-stacking, and Melee TN 20 escape/removal.
+  - [x] Live-gate Static Illusion anchor and concentration marker creation plus forced line-of-sight cleanup.
+  - [x] Live-gate Spider-Pheromones' concentration marker, two optional mutually exclusive Ego circumstances, and concentration cleanup.
+  - [x] Refresh Spider-Man's one exact embedded Webtrapping copy with its ID preserved and remove all temporary actors, tokens, scenes, Regions, and messages.
+  - [x] Retain illusion geometry/sensory effects, Webtrapping cell choice, and Spider-Pheromones proximity, gender, and attraction as explicit player/Narrator boundaries.
+- [x] Complete the prose-power condition audit, skipping powers with existing structured events and assigning every new status outcome to the source, target, or both as required.
   - Deterministic hit, Fantastic-hit, and Health-damage-gated source/target applications are complete for 44 records.
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.
   - Live gates verified Deafen's exact 5-Focus spend, zero ordinary-success damage, one-round status lifecycle, active-combat selection, and expiration cleanup. Fantastic Double Tap dealt double damage, applied manual-duration bleeding, and supported condition and damage undo. Nine embedded Ranged Weapons copies were refreshed and all temporary data was removed.
-  - Remaining applications require optional-choice controls, third-party recipients, delayed movement/reaction triggers, area-entry checks, or a canonical ruling for `pinned`.
+  - Optional-choice controls, third-party recipients, delayed movement/reaction triggers, subjective area/geometry decisions, and Narrator adjudication remain explicit manual boundaries; unsupported `pinned` outcomes use the documented `restrained` mapping or remain a stated choice.
 - [ ] Add automated tests for automation-preset merging and explicit-field precedence.
 - [ ] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
 - [ ] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.

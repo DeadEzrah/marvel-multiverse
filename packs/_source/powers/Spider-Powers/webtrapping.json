@@ -18,21 +18,38 @@
       "target": "none"
     },
     "targeting": {
-      "required": true,
-      "count": 999,
+      "required": false,
+      "count": 0,
       "area": {
         "enabled": true,
-        "shape": "rectangle",
+        "shape": "connected-spaces",
         "origin": "placed",
         "distance": 5,
-        "width": 5,
-        "height": 1,
+        "maximumSpaces": 5,
         "persistent": true,
         "duration": "The character's rank times 15 minutes",
         "targetFilter": "all",
         "requiresLineOfSight": true,
         "attackAnimation": "center",
-        "includeSelf": false
+        "includeSelf": false,
+        "trigger": {
+          "events": [
+            "enter",
+            "start-turn"
+          ],
+          "check": {
+            "ability": "agl",
+            "targetNumber": 20
+          },
+          "failure": {
+            "statusId": "paralyzed",
+            "escape": {
+              "ability": "mle",
+              "targetNumber": 20,
+              "timing": "action"
+            }
+          }
+        }
       }
     },
     "spiderPowers": {

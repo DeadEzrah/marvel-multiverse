@@ -2242,6 +2242,8 @@ class ChatMessageMarvel extends ChatMessage {
     const sourceItem = rollContext?.itemUuid && typeof globalThis.fromUuidSync === "function"
       ? globalThis.fromUuidSync(rollContext.itemUuid)
       : null;
+    const area = sourceItem?.system?.targeting?.area;
+    const regionUuid = Array.isArray(rollContext?.areaRegionUuids) ? rollContext.areaRegionUuids[0] : null;
     const focusCost = parseFocusCost(sourceItem?.system?.cost ?? rollContext?.source?.costText ?? null);
     const eventTransactions = message.getFlag("marvel-multiverse", "resolution")?.eventTransactions ?? [];
     const result = await startConcentration(actorRecord, {
@@ -2257,6 +2259,12 @@ class ChatMessageMarvel extends ChatMessage {
         ? utilityActivation.concentrationStatusActorUuids
         : [],
       regionUuids: Array.isArray(rollContext?.areaRegionUuids) ? rollContext.areaRegionUuids : [],
+      areaMaintenance: regionUuid && Number(area?.maintenanceRange) > 0 ? {
+        range: Number(area.maintenanceRange),
+        requiresLineOfSight: Boolean(area.maintenanceRequiresLineOfSight),
+        sourceTokenUuid: rollContext?.tokenUuid ?? null,
+        regionUuid,
+      } : null,
       maintenance: focusCost?.valid && focusCost.cadence === "turn"
         ? { resource: "focus", amount: focusCost.value, cadence: "turn", timing: "start-of-subsequent-turn" }
         : null,

@@ -4,6 +4,18 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.9.0] - 2026-11-02
+
+### Added
+- Persistent Webtrapping Regions with explicit one-to-five connected-space placement, entry and turn-start Agility checks, non-duplicating paralysis, Melee escape checks, undo support, and active-owner/GM execution.
+- Explicit Spider-Pheromones circumstance choices for the applicable Ego (Intimidation) or Ego (Persuasion) Edge without inferring attraction, gender, or proximity.
+- Concentration-owned anchor Regions for Darkness, Silence Area, Static Illusion, Animated Illusion, and Grand Illusion, including objective placement, maintenance-range, line-of-sight, replacement, deletion, and undo handling.
+- Regression coverage for persistent-area triggers, escape metadata, pheromone choice scoping, maintained Illusion anchors, and linked and unlinked Tokens.
+
+### Changed
+- Arbitrary web placement, sensory mutation, illusion geometry, perception, interaction, movement, and reveal adjudication remain explicit player or Narrator decisions rather than unsafe scene mutation.
+- The remaining persistent web, aura, maintained-effect, and deterministic prose-condition migration is complete.
+
 ## [3.8.0] - 2026-11-02
 
 ### Added

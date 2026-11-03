@@ -17,13 +17,28 @@
       "mode": "utility",
       "target": "none"
     },
+    "targeting": {
+      "area": {
+        "enabled": true,
+        "shape": "anchor",
+        "distance": 0.25,
+        "origin": "placed",
+        "placementRange": 50,
+        "persistent": true,
+        "duration": "Concentration",
+        "requiresLineOfSight": true,
+        "maintenanceRange": 50,
+        "maintenanceRequiresLineOfSight": true
+      }
+    },
     "illusion": {
       "mode": "grand",
       "range": 50,
       "maximumSizeSteps": 5,
       "senses": ["visual", "auditory"],
       "mobile": true,
-      "requiresLineOfSight": true
+      "requiresLineOfSight": true,
+      "maintenanceRange": 50
     },
     "effectProfiles": {
       "activation": "illusion.grand"

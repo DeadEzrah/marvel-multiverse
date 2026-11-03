@@ -17,6 +17,19 @@
       "mode": "utility",
       "target": "none"
     },
+    "targeting": {
+      "area": {
+        "enabled": true,
+        "shape": "anchor",
+        "distance": 0.25,
+        "origin": "placed",
+        "placementRange": 50,
+        "persistent": true,
+        "duration": "Concentration",
+        "maintenanceRange": 50,
+        "maintenanceRequiresLineOfSight": false
+      }
+    },
     "illusion": {
       "mode": "darkness",
       "placementRange": 50,
