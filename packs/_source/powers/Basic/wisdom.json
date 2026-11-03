@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character not only has brains but knows when to use them",
+    "description": "The character not only has brains but knows when to use them.",
     "powerSet": "Basic",
     "prerequisites": "",
     "action": "",
@@ -12,7 +12,15 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can use their Ego defense score against Logic attacks too"
+    "effect": "The character can use their Ego defense score against Logic attacks too.",
+    "basic": {
+      "mode": "defense-substitution",
+      "incomingDefense": "log",
+      "substituteDefense": "ego"
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [],

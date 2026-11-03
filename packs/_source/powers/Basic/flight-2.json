@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "Outside of combat, the character can fly up to 50 times their Flight Speed.",
-    "numbered": 2
+    "numbered": 2,
+    "basic": {
+      "mode": "movement",
+      "movement": "flight",
+      "combatSpeedFormula": "rank-times-run",
+      "noncombatMultiplier": 50
+    },
+    "effectProfiles": {
+      "activation": "basic.flight"
+    }
   },
   "flags": {},
   "effects": [
@@ -36,27 +45,20 @@
         {
           "key": "system.movement.flight.active",
           "mode": 5,
-          "value": true
-        },
-        {
-          "key": "system.movement.jump.active",
-          "mode": 5,
-          "value": false
+          "value": true,
+          "priority": 20
         },
         {
           "key": "system.movement.flight.calc",
           "mode": 5,
-          "value": "runspeed"
-        },
-        {
-          "key": "system.movement.flight.calc",
-          "mode": 5,
-          "value": "rank"
+          "value": "rank-runspeed",
+          "priority": 20
         },
         {
           "key": "system.movement.flight.noncom",
-          "mode": 1,
-          "value": 50
+          "mode": 5,
+          "value": 50,
+          "priority": 20
         }
       ],
       "description": "",

@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character has the moves and is hard to hit,",
+    "description": "The character has the moves and is hard to hit.",
     "powerSet": "Basic",
     "prerequisites": "",
     "action": "",
@@ -12,7 +12,15 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can use their Melee defense score against Agility attacks too."
+    "effect": "The character can use their Melee defense score against Agility attacks too.",
+    "basic": {
+      "mode": "defense-substitution",
+      "incomingDefense": "agl",
+      "substituteDefense": "mle"
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [],

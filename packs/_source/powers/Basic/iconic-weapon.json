@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "",
+    "description": "The character owns a unique and powerful signature weapon.",
     "powerSet": "Basic",
     "prerequisites": "",
     "action": "",
@@ -12,7 +12,16 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character is known for owning and using a unique and powerful weapon, like Mjolnir (Thor's hammer) or Captain America's shield. The Narrator must approve the details of this weapon. This power can be taken more than once, but each time must be with a different weapon."
+    "effect": "The character is known for owning and using a unique and powerful weapon, like Mjolnir (Thor's hammer) or Captain America's shield. The Narrator must approve the details of this weapon. This power can be taken more than once, but each time must be with a different weapon.",
+    "basic": {
+      "mode": "iconic-weapon",
+      "repeatableForDifferentWeapons": true,
+      "narratorApprovalRequired": true,
+      "weaponDefinitionManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.weapon"
+    }
   },
   "flags": {},
   "effects": [],

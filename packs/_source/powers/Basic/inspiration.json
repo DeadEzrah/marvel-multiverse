@@ -12,7 +12,87 @@
     "duration": "1 round",
     "range": "",
     "cost": "",
-    "effect": "The character inspires an ally in earshot. The ally gains an edge on all action checks until the start of the character's next turn."
+    "effect": "The character inspires an ally in earshot. The ally gains an edge on all action checks until the start of the character's next turn.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargets": 1
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "targetFilter": "allies",
+      "requiresLineOfSight": false
+    },
+    "basic": {
+      "mode": "inspiration",
+      "requiresEarshot": true,
+      "edgeAllActionChecks": true
+    },
+    "effectProfiles": {
+      "activation": "basic.inspire"
+    },
+    "events": [
+      {
+        "id": "inspiration-ally",
+        "trigger": "action-declared",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "inspiration-edge-effect",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Inspired",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [
+                {
+                  "key": "system.abilities.mle.edge",
+                  "mode": 2,
+                  "value": 1
+                },
+                {
+                  "key": "system.abilities.agl.edge",
+                  "mode": 2,
+                  "value": 1
+                },
+                {
+                  "key": "system.abilities.res.edge",
+                  "mode": 2,
+                  "value": 1
+                },
+                {
+                  "key": "system.abilities.vig.edge",
+                  "mode": 2,
+                  "value": 1
+                },
+                {
+                  "key": "system.abilities.ego.edge",
+                  "mode": 2,
+                  "value": 1
+                },
+                {
+                  "key": "system.abilities.log.edge",
+                  "mode": 2,
+                  "value": 1
+                }
+              ],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "basic": {
+                    "mode": "inspiration"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "start-of-source-turn"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

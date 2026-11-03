@@ -4,6 +4,23 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.8.0] - 2026-11-02
+
+### Added
+- Structured family metadata, passive tiers, utility activation, reaction outcomes, safe manual boundaries, and semantic animation profiles for all forty-six Basic powers.
+- Automatic alternate-defense selection for Brawling, Evasion, Integrity, and Wisdom.
+- Energy Absorption damage restoration and Focus conversion capped at twice maximum Focus, Resilience-based Healing Factor recovery, Group Flight targeting, Inspiration's all-check edge, Slow-Motion Dodge defense trouble, and complete Wisecracker damage and status automation.
+- Fourteen semantic Basic animation aliases and regression coverage for every Basic record, tier, transferred effect, event schema, target limit, defense substitution, conversion cap, manual boundary, and animation alias.
+
+### Changed
+- Anger's dynamic ability changes, Combat Trickery's die replacement, disguises, iconic weapons, chosen environmental protections, heightened-sense interpretation, Group Flight token movement, and Shape-Shift forms remain explicit where automatic actor or scene mutation would be unsafe.
+- The Item DataModel now preserves Basic family metadata on imported and embedded powers.
+
+### Fixed
+- Corrected Discipline 2's printed bonus, Mighty 1's self-prerequisite, Mighty 2's lifting progression, and Flight's malformed movement calculation effects.
+- Removed Energy Absorption's copied trigger and Focus cost from Environmental Protection.
+- Corrected malformed punctuation, wording, and OCR errors across Accuracy 1 and 4, Additional Limbs, Brawling, Brilliance 4, Disguise, Evasion, Healing Factor, Heightened Senses, Reinforced Skeleton, Shape-Shift, Wisdom, and Wisecracker.
+
 ## [3.7.0] - 2026-11-02
 
 ### Added

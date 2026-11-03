@@ -12,7 +12,18 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can sense things roughly twice as for away as normal, They also have an edge on Vigilance checks to perceive things. and enemies have trouble on checks they make to sneak past the character."
+    "effect": "The character can sense things roughly twice as far away as normal. They also have an edge on Vigilance checks to perceive things, and enemies have trouble on checks they make to sneak past the character.",
+    "basic": {
+      "mode": "heightened-senses",
+      "tier": 1,
+      "senseRangeMultiplier": 2,
+      "perceptionEdge": 1,
+      "enemySneakTrouble": 1,
+      "situationalChecksManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.sense"
+    }
   },
   "flags": {},
   "effects": [],

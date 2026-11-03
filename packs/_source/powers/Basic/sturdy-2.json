@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "The character gains Health Damage Reduction 2.",
-    "numbered": 2
+    "numbered": 2,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "sturdy",
+      "tier": 2,
+      "healthDamageReduction": 2
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [

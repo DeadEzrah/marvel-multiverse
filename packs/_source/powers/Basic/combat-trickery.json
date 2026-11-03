@@ -12,7 +12,33 @@
     "duration": "Instant",
     "range": "",
     "cost": "5 focus",
-    "effect": "Once per battle, when the character is attacking targets of equal or higher rank, the character automatically rolls a 1 on their Marvel die, and that die cannot be affected by trouble. If the character is attacking multiple targets, all the targets must be of equal or higher rank."
+    "effect": "Once per battle, when the character is attacking targets of equal or higher rank, the character automatically rolls a 1 on their Marvel die, and that die cannot be affected by trouble. If the character is attacking multiple targets, all the targets must be of equal or higher rank.",
+    "basic": {
+      "mode": "die-replacement",
+      "oncePerBattle": true,
+      "requiredTargetRank": "equal-or-higher",
+      "allTargetsMustQualify": true,
+      "forcedMarvelDie": 1,
+      "ignoresMarvelDieTrouble": true,
+      "dieReplacementManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.trick"
+    },
+    "events": [
+      {
+        "id": "combat-trickery-use",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "combat-trickery-boundary",
+            "type": "manual",
+            "label": "Once per battle, confirm every target is equal or higher Rank, spend 5 Focus, and set the Marvel die to 1. Trouble cannot alter that die; die replacement remains explicit."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

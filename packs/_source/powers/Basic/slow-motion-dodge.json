@@ -12,10 +12,55 @@
     "duration": "Instant",
     "range": "",
     "cost": "",
-    "effect": "The enemy has trouble on the attack."
+    "effect": "The enemy has trouble on the attack.",
+    "basic": {
+      "mode": "defensive-reaction",
+      "defense": "agl",
+      "trouble": 1
+    },
+    "effectProfiles": {
+      "activation": "basic.dodge"
+    }
   },
   "flags": {},
-  "effects": [],
+  "effects": [
+    {
+      "name": "Slow-Motion Dodge",
+      "img": "systems/marvel-multiverse/icons/super-powers.svg",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "origin": "Item.7baXplrfXa9PmJAf",
+      "_id": "BasicSlowDodge01",
+      "changes": [],
+      "description": "",
+      "transfer": true,
+      "statuses": [],
+      "flags": {
+        "marvel-multiverse": {
+          "defensiveRollModifier": {
+            "mode": "trouble",
+            "count": 1,
+            "label": "Slow-Motion Dodge",
+            "defenses": [
+              "agl"
+            ],
+            "requiresAttack": true,
+            "nonStacking": true
+          }
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!7baXplrfXa9PmJAf.BasicSlowDodge01"
+    }
+  ],
   "folder": "bbe663a787c7ec04",
   "_key": "!items!7baXplrfXa9PmJAf"
 }

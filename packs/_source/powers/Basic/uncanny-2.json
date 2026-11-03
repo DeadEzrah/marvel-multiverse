@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "Any damage multiplier for attacks against the character's Focus is reduced by 2.",
-    "numbered": 2
+    "numbered": 2,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "uncanny",
+      "tier": 2,
+      "focusDamageReduction": 2
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [

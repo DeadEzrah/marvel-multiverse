@@ -12,7 +12,15 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can use their Logic defense score against Ego attacks too."
+    "effect": "The character can use their Logic defense score against Ego attacks too.",
+    "basic": {
+      "mode": "defense-substitution",
+      "incomingDefense": "ego",
+      "substituteDefense": "log"
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [],

@@ -338,6 +338,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Pass focused Magic gates, the 227-test full repository suite, effect validation, pack build, and focused lint with no new errors.
   - [x] Live-gate required utility targets, grabbed and zero-Focus prerequisites, Summon Portal Focus spend and concentration apply/undo, installed metadata, and all nine semantic effects.
   - [x] Refresh twenty-nine exact canonical embedded copies with IDs and configured elements preserved while leaving four renamed or bespoke powers untouched.
+- [x] Complete the Basic migration in the installed Foundry world.
+  - [x] Structure all forty-six powers across passive tiers, defenses, movement, recovery, reactions, support, transformations, and safe manual boundaries.
+  - [x] Correct Discipline 2, Mighty progression, Environmental Protection, Flight calculations, and malformed source wording.
+  - [x] Automate alternate-defense selection, Energy Absorption conversion, Group Flight limits, Inspiration, Healing Factor, Slow-Motion Dodge, and Wisecracker.
+  - [x] Pass 11 focused Basic gates, the 238-test full repository suite, effect validation, pack build, and focused lint with no new errors.
+  - [x] Live-gate representative passives, alternate defenses, Energy Absorption, Group Flight, Inspiration, maintained markers, Wisecracker, and all fourteen semantic effects.
+  - [x] Refresh 218 exact canonical embedded copies across 85 actors with IDs and actor-specific configuration preserved while leaving nine renamed or bespoke powers untouched.
 - [x] Complete destructible object token profiles.
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.

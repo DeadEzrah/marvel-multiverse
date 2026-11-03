@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/super-powers.svg",
   "system": {
-    "description": "The character appears to be someone else,",
+    "description": "The character appears to be someone else.",
     "powerSet": "Basic",
     "prerequisites": "",
     "action": "Standard",
@@ -12,7 +12,55 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character instantly alters their appearance so that they appear to be someone else. The target number for anyone trying to see through the disguise is the character's Ego defense. If the character is impersonating someone known to the other person, that person has an edge."
+    "effect": "The character instantly alters their appearance so that they appear to be someone else. The target number for anyone trying to see through the disguise is the character's Ego defense. If the character is impersonating someone known to the other person, that person has an edge.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "basic": {
+      "mode": "disguise",
+      "detectionTargetNumber": "ego-defense",
+      "knownPersonEdge": true,
+      "appearanceMutationManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.transform"
+    },
+    "events": [
+      {
+        "id": "disguise-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "disguise-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Disguise",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "basic": {
+                    "mode": "disguise"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          },
+          {
+            "id": "disguise-boundary",
+            "type": "manual",
+            "label": "Choose the assumed appearance. Attempts to see through it use the character's Ego defense as the target number, with an edge when the observer knows the impersonated person."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

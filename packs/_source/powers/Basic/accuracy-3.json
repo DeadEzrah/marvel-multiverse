@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "The character adds +3 to their Agility damage multiplier, and they gain a +3 bonus to Agility checks other than attacks.",
-    "numbered": 3
+    "numbered": 3,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "accuracy",
+      "tier": 3,
+      "ability": "agl"
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

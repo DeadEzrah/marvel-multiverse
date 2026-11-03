@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "The character can fly. Their combat Flight Speed is equal to their rank times their Run Speed. Outside of combat, they can move three times their Flight Speed.",
-    "numbered": 1
+    "numbered": 1,
+    "basic": {
+      "mode": "movement",
+      "movement": "flight",
+      "combatSpeedFormula": "rank-times-run",
+      "noncombatMultiplier": 3
+    },
+    "effectProfiles": {
+      "activation": "basic.flight"
+    }
   },
   "flags": {},
   "effects": [
@@ -36,22 +45,20 @@
         {
           "key": "system.movement.flight.active",
           "mode": 5,
-          "value": true
+          "value": true,
+          "priority": 10
         },
         {
           "key": "system.movement.flight.calc",
           "mode": 5,
-          "value": "runspeed"
-        },
-        {
-          "key": "system.movement.flight.calc",
-          "mode": 5,
-          "value": "rank"
+          "value": "rank-runspeed",
+          "priority": 10
         },
         {
           "key": "system.movement.flight.noncom",
-          "mode": 1,
-          "value": 3
+          "mode": 5,
+          "value": 3,
+          "priority": 10
         }
       ],
       "description": "",

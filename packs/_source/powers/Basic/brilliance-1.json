@@ -12,7 +12,16 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character adds +1 to their Logic damage multiplier, and they gain a +1 bonus to Logic checks other than attacks."
+    "effect": "The character adds +1 to their Logic damage multiplier, and they gain a +1 bonus to Logic checks other than attacks.",
+    "basic": {
+      "mode": "passive-tier",
+      "family": "brilliance",
+      "tier": 1,
+      "ability": "log"
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

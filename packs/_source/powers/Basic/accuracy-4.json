@@ -6,14 +6,23 @@
   "system": {
     "description": "The character can out-target almost anyone.",
     "powerSet": "Basic",
-    "prerequisites": "Accuracy 3. Rank 4",
+    "prerequisites": "Accuracy 3, Rank 4",
     "action": "",
     "trigger": "",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "The character adds +4 to their Agility damage multiplier, and they gain a +4 bonus to Agility checks other than attacks.",
-    "numbered": 4
+    "numbered": 4,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "accuracy",
+      "tier": 4,
+      "ability": "agl"
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

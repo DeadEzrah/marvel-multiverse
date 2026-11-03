@@ -12,8 +12,18 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "Treat the character as three sizes bigger for lifting, carrying, swinging and throwing things. They also add +2 to their Melee damage multiplier, and they gain a +2 bonus to Melee checks other than attacks.",
-    "numbered": 2
+    "effect": "Treat the character as two sizes bigger for lifting, carrying, swinging and throwing things. They also add +2 to their Melee damage multiplier, and they gain a +2 bonus to Melee checks other than attacks.",
+    "numbered": 2,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "mighty",
+      "tier": 2,
+      "ability": "mle",
+      "liftingSizeIncrease": 2
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

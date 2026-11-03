@@ -12,8 +12,17 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character adds +1 to their Ego damage multiplier, and they gain a +1 bonus to Ego checks other than attacks.",
-    "numbered": 2
+    "effect": "The character adds +2 to their Ego damage multiplier, and they gain a +2 bonus to Ego checks other than attacks.",
+    "numbered": 2,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "discipline",
+      "tier": 2,
+      "ability": "ego"
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

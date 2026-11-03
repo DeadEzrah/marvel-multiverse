@@ -12,7 +12,33 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "At the ond of the character's turn, they regain Health equal to their Resilience, (This works outside of combat too, quickly bringing them back 1o full Health)"
+    "effect": "At the end of the character's turn, they regain Health equal to their Resilience. This works outside combat too, quickly bringing them back to full Health.",
+    "basic": {
+      "mode": "regeneration",
+      "timing": "end-of-turn",
+      "amountAbility": "res",
+      "worksOutsideCombat": true
+    },
+    "effectProfiles": {
+      "activation": "basic.healing"
+    },
+    "events": [
+      {
+        "id": "healing-factor-recovery",
+        "trigger": "end-of-source-turn",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "healing-factor-restore-health",
+            "type": "healing",
+            "formula": "@abilities.res.value",
+            "duration": {
+              "type": "instant"
+            }
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

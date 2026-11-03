@@ -12,7 +12,19 @@
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character has an additional prehensile appendage (like a toil) or a symmetrical pair of them (like arms) that can be used to lift objects, use tools or otherwise take actions that normally require the use of a hand. This grants them an edge in Melee and Agility checks. A character can have as many additional limbs as they like-within reason-but they get no additional advantages for them."
+    "effect": "The character has an additional prehensile appendage (like a tail) or a symmetrical pair of them (like arms) that can be used to lift objects, use tools or otherwise take actions that normally require the use of a hand. This grants them an edge on Melee and Agility checks. A character can have as many additional limbs as they like, within reason, but they gain no additional advantages from them.",
+    "basic": {
+      "mode": "passive",
+      "additionalLimbs": true,
+      "edgeAbilities": [
+        "mle",
+        "agl"
+      ],
+      "multipleCopiesNoAdditionalBenefit": true
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

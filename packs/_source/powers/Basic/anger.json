@@ -12,7 +12,62 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 or more Focus",
-    "effect": "The character becomes angry and uses that anger to increase their strength. For every 10 points of Focus they spend, they add +15 to their Melee damage bonus and lose -2 from their Logic- and subsequently their Logic defense. While using this power, they cannot use any other powers that require concentration."
+    "effect": "The character becomes angry and uses that anger to increase their strength. For every 10 points of Focus they spend, they add +15 to their Melee damage bonus and lose -2 from their Logic- and subsequently their Logic defense. While using this power, they cannot use any other powers that require concentration.",
+    "focusCost": {
+      "mode": "variable",
+      "minimum": 10,
+      "increment": 10
+    },
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "basic": {
+      "mode": "anger",
+      "focusPerTier": 10,
+      "meleeDamageBonusPerTier": 15,
+      "logicPenaltyPerTier": 2,
+      "exclusiveConcentration": true,
+      "sheetChangesManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.anger"
+    },
+    "events": [
+      {
+        "id": "anger-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "anger-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Anger",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "basic": {
+                    "mode": "anger"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "anger-adjustments",
+            "type": "manual",
+            "label": "For every 10 Focus spent, add +15 to the Melee damage bonus and subtract 2 from Logic and its defense. End any other concentration before applying Anger; the dynamic sheet changes remain explicit."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

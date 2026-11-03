@@ -13,7 +13,17 @@
     "range": "",
     "cost": "",
     "effect": "Treat the character as three sizes bigger for lifting, carrying, swinging and throwing things. They also add +3 to their Melee damage multiplier, and they gain a +3 bonus to Melee checks other than attacks.",
-    "numbered": 3
+    "numbered": 3,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "mighty",
+      "tier": 3,
+      "ability": "mle",
+      "liftingSizeIncrease": 3
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

@@ -12,7 +12,68 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "For every point of Ego the character has, they can hoist one ally into the air with them. The Flight Speed of the group is half the character's, and all affected allies must remain within 5 spaces times the character's rank. The character controls each ally's speed and position during the character's turn, but they can release any or all allies at any time."
+    "effect": "For every point of Ego the character has, they can hoist one ally into the air with them. The Flight Speed of the group is half the character's, and all affected allies must remain within 5 spaces times the character's rank. The character controls each ally's speed and position during the character's turn, but they can release any or all allies at any time.",
+    "activation": {
+      "mode": "utility",
+      "target": "required",
+      "maxTargetsAbility": "ego.value"
+    },
+    "targeting": {
+      "required": true,
+      "minCount": 1,
+      "count": 99,
+      "range": 5,
+      "rangeScaling": "rank",
+      "targetFilter": "allies",
+      "requiresLineOfSight": false
+    },
+    "basic": {
+      "mode": "group-flight",
+      "maximumAlliesAbility": "ego",
+      "speedScale": 0.5,
+      "maximumDistancePerRank": 5,
+      "sourceControlsMovement": true,
+      "releaseAtAnyTime": true,
+      "tokenMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.flight"
+    },
+    "events": [
+      {
+        "id": "group-flight-activation",
+        "trigger": "action-declared",
+        "recipient": "self-and-target",
+        "outcomes": [
+          {
+            "id": "group-flight-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Group Flight",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "basic": {
+                    "mode": "group-flight"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "group-flight-movement",
+            "type": "manual",
+            "label": "The group flies at half the source?s Flight Speed. Keep allies within 5 spaces per Rank; the source controls their movement and may release any ally at any time. Token movement remains explicit."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

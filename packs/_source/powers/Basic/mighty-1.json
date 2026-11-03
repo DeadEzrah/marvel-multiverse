@@ -6,14 +6,24 @@
   "system": {
     "description": "The character is superhumanly strong.",
     "powerSet": "Basic",
-    "prerequisites": "Mighty 1, Rank 2",
+    "prerequisites": "Rank 2",
     "action": "",
     "trigger": "",
     "duration": "Permanent",
     "range": "",
     "cost": "",
     "effect": "Treat the character as one size bigger for lifting, carrying, swinging and throwing things. They also add +1 to their Melee damage multiplier, and they gain a +1 bonus to Melee checks other than attacks.",
-    "numbered": 1
+    "numbered": 1,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "mighty",
+      "tier": 1,
+      "ability": "mle",
+      "liftingSizeIncrease": 1
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

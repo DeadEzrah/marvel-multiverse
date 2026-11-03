@@ -7,12 +7,27 @@
     "description": "Environmental effects don't bother the character.",
     "powerSet": "Basic",
     "prerequisites": "",
-    "action": "Permanent",
-    "trigger": "The character takes Health damage.",
-    "duration": "Instant",
+    "action": "",
+    "trigger": "",
+    "duration": "Permanent",
     "range": "",
-    "cost": "15 Focus",
-    "effect": "The character is not harmed by intense cold or heat, the pressure of the deep seas or the intense radiation and vacuum of space. The player can choose any or all of these protections, as best fits with the character concept."
+    "cost": "",
+    "effect": "The character is not harmed by intense cold or heat, the pressure of the deep seas or the intense radiation and vacuum of space. The player can choose any or all of these protections, as best fits with the character concept.",
+    "basic": {
+      "mode": "environmental-immunity",
+      "availableProtections": [
+        "intense-cold",
+        "intense-heat",
+        "deep-sea-pressure",
+        "radiation",
+        "vacuum"
+      ],
+      "selection": "any-or-all",
+      "selectedProtectionsManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [],

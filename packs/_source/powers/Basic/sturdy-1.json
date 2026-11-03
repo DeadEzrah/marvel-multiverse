@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "The character's body is so sturdy that they have Health Damage Reduction 1. If this power stems from armor or anything else removable-like Iron Man's armor-the character should apply the Tech Reliance trait to it.",
-    "numbered": 1
+    "numbered": 1,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "sturdy",
+      "tier": 1,
+      "healthDamageReduction": 1
+    },
+    "effectProfiles": {
+      "activation": "basic.defense"
+    }
   },
   "flags": {},
   "effects": [

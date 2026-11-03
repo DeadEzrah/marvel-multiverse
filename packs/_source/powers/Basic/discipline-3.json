@@ -13,7 +13,16 @@
     "range": "",
     "cost": "",
     "effect": "The character adds +3 to their Ego damage multiplier, and they gain a +3 bonus to Ego checks other than attacks.",
-    "numbered": 3
+    "numbered": 3,
+    "basic": {
+      "mode": "passive-tier",
+      "family": "discipline",
+      "tier": 3,
+      "ability": "ego"
+    },
+    "effectProfiles": {
+      "activation": "basic.passive"
+    }
   },
   "flags": {},
   "effects": [

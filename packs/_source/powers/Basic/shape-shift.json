@@ -7,12 +7,61 @@
     "description": "The character can change forms.",
     "powerSet": "Basic",
     "prerequisites": "Disguise, Rank 3",
-    "action": "standard or reaction",
+    "action": "Standard or reaction",
     "trigger": "The character is attacked or otherwise in danger.",
     "duration": "Permanent",
     "range": "",
     "cost": "",
-    "effect": "The character can change into another form no more than one size bigger or smaller than their regular form. When in any form the character has access to the natural abilities of that form, For instance, if they transformed into a bird, they could fly. When transformed into a fish, they can breathe water."
+    "effect": "The character can change into another form no more than one size bigger or smaller than their regular form. In any form, the character has access to that form?s natural abilities. For instance, a bird can fly and a fish can breathe underwater.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "basic": {
+      "mode": "shape-shift",
+      "minimumSizeDelta": -1,
+      "maximumSizeDelta": 1,
+      "naturalAbilities": true,
+      "formAndAbilitiesManual": true
+    },
+    "effectProfiles": {
+      "activation": "basic.transform"
+    },
+    "events": [
+      {
+        "id": "shape-shift-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shape-shift-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Shape-Shift",
+              "img": "systems/marvel-multiverse/icons/super-powers.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "basic": {
+                    "mode": "shape-shift"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "manual"
+            }
+          },
+          {
+            "id": "shape-shift-boundary",
+            "type": "manual",
+            "label": "Choose a form no more than one size larger or smaller and resolve its natural abilities explicitly. Actor size, movement, senses and identity are not mutated automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],
