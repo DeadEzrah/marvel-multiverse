@@ -12,7 +12,61 @@
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character creates a thick fog for up to 100 spaces per rank around them that blocks all line of sight beyond 10 spaces and keeps people or creatures inside it from flying, gliding or web slinging."
+    "effect": "The character creates a thick fog for up to 100 spaces per rank around them that blocks all line of sight beyond 10 spaces and keeps people or creatures inside it from flying, gliding or web slinging.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "magic": {
+      "mode": "environmental-mist",
+      "tradition": "sorcerous",
+      "radiusPerRank": 100,
+      "sightLimit": 10,
+      "prohibitedMovement": [
+        "flight",
+        "gliding",
+        "web-slinging"
+      ],
+      "environmentalEnforcementManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.mist"
+    },
+    "events": [
+      {
+        "id": "mists-of-munnopor-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "mists-of-munnopor-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Mists of Munnopor",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "mists-of-munnopor"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "mists-of-munnopor-boundary",
+            "type": "manual",
+            "label": "Create a mist with a radius of 100 spaces per Rank. It blocks sight beyond 10 spaces and prevents flight, gliding and web-slinging; scene vision and movement modes are resolved explicitly."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

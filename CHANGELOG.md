@@ -4,6 +4,24 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.7.0] - 2026-11-02
+
+### Added
+- Structured activation, targeting, damage, concentration, family metadata, and safe manual boundaries for all twenty-eight Magic powers.
+- Exact automation for variable-Focus Bolts of Balthakk, Fantastic-only Flare damage, Magic conditions, grabbed-target drains, zero-Focus Possession eligibility, dual-mode Vapors of Valtorr, and Rank-scaled ranges and areas.
+- Declarative target-tag damage scaling, used by Penance Stare to halve automatic Focus damage against Heroic targets.
+- Nine semantic Magic animation aliases for astral projection, attacks, impacts, bindings, hexes, mist, portals, sensing, and shields.
+- Regression coverage for every Magic record, event schema, attack configuration, condition duration, utility target limit, manual boundary, animation alias, and Heroic damage scale.
+
+### Changed
+- Concentration-breaking choices, possession behavior, illusory duplicate control, vehicle mutation, simulated powers, dynamic defenses, environmental restrictions, portal placement, and subjective supernatural interpretation remain explicit rather than mutating actors or scenes unsafely.
+- The Item DataModel now preserves Magic family metadata on imported and embedded powers.
+
+### Fixed
+- Corrected copied summaries for Brain Drain, Hex Bolt, and Sense Supernatural, plus malformed Astral Form, Bolts of Balthakk, Flames of the Faltine, and Flare wording.
+- Corrected Bolts of Balthakk to use a ranged Ego attack with Agility-based damage, Flare to deal regular rather than half damage on a Fantastic success, and Mists of Morpheus to replace stunned with unconscious on a Fantastic success.
+- Corrected Penance Stare's Rank-scaled range and Heroic half-damage handling, Winds of Watoomb's Ego defense contest, and Possess Vehicle's Rank-based damage and control range.
+
 ## [3.6.0] - 2026-11-02
 
 ### Added

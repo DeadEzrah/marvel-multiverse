@@ -12,9 +12,58 @@
     "duration": "Instant",
     "range": "",
     "cost": "15 Focus",
-    "effect": "The character makes an Ego check against the Ego defense of a target using a magic power that requires concentration. On a success, the target's concentration on that power is broken, On a Fantastic success, the target's concentration is broken entirely.",
+    "effect": "The character makes an Ego check against the Ego defense of a target using a magic power that requires concentration. On a success, the target's concentration on that power is broken. On a Fantastic success, the target's concentration is broken entirely.",
     "ability": "ego",
-    "attackTarget": "ego"
+    "attackTarget": "ego",
+    "attack": true,
+    "attackKind": "ranged",
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "magic": {
+      "mode": "dispel",
+      "tradition": "sorcerous",
+      "requiresMagicConcentration": true,
+      "fantasticEndsAllConcentration": true,
+      "concentrationChoiceManual": true
+    },
+    "effectProfiles": {
+      "attack": "magic.hex",
+      "hit": "magic.impact"
+    },
+    "events": [
+      {
+        "id": "dispel-spell-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "dispel-spell-break-one",
+            "type": "manual",
+            "label": "Verify the target is concentrating on a magic power, then end that chosen concentration."
+          }
+        ]
+      },
+      {
+        "id": "dispel-spell-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "dispel-spell-break-all",
+            "type": "manual",
+            "label": "Fantastic success: end all of the target?s concentration effects."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

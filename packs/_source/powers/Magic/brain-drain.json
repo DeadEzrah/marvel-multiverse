@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/magic.svg",
   "system": {
-    "description": "The character fires enchanted bots of electricity from their fingers.",
+    "description": "The character drains a grabbed target's mental energy.",
     "powerSet": "Magic",
     "prerequisites": "Rank 2",
     "action": "Reaction",
@@ -16,7 +16,55 @@
     "ability": "ego",
     "attackTarget": "vig",
     "damageType": "focus",
-    "attackKind": "close"
+    "attackKind": "close",
+    "attack": true,
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "vig",
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "enemies",
+      "prerequisites": [
+        {
+          "type": "status",
+          "value": "grappled",
+          "label": "Target must be grabbed"
+        }
+      ]
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "focus",
+      "doubleOnFantastic": true
+    },
+    "magic": {
+      "mode": "leech",
+      "resource": "focus",
+      "tradition": "general",
+      "normalHealingScale": 0.5,
+      "fantasticHealingScale": 1,
+      "healingFromAppliedDamage": true
+    },
+    "effectProfiles": {
+      "attack": "magic.attack",
+      "hit": "magic.impact"
+    },
+    "events": [
+      {
+        "id": "brain-drain-healing",
+        "trigger": "focus-damage-applied",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "brain-drain-heal",
+            "type": "manual",
+            "label": "Restore Focus to the source equal to half the applied Focus damage, or the full applied Focus damage on a Fantastic success."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

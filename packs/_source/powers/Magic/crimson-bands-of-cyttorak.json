@@ -20,12 +20,12 @@
     "attack": true,
     "events": [
       {
-        "id": "crimson-bands-of-cyttorak-paralyzed",
+        "id": "crimson-bands-paralyzed",
         "trigger": "target-hit",
         "recipient": "target",
         "outcomes": [
           {
-            "id": "crimson-bands-of-cyttorak-apply-paralyzed",
+            "id": "crimson-bands-apply-paralyzed",
             "type": "status",
             "statusId": "paralyzed",
             "mode": "apply",
@@ -35,8 +35,41 @@
             }
           }
         ]
+      },
+      {
+        "id": "crimson-bands-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "crimson-bands-pin",
+            "type": "manual",
+            "label": "The target may also be pinned. Breaking free requires a Melee check against TN 20."
+          }
+        ]
       }
-    ]
+    ],
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "mle",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "magic": {
+      "mode": "binding",
+      "tradition": "sorcerous",
+      "escapeAbility": "mle",
+      "escapeTargetNumber": 20,
+      "pinOnFantasticOptional": true
+    },
+    "effectProfiles": {
+      "attack": "magic.bind",
+      "hit": "magic.bind"
+    }
   },
   "flags": {},
   "effects": [],

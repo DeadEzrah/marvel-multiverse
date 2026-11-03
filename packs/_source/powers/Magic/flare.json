@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/flare.svg",
   "system": {
-    "description": "The character generates a dazzling fare of light.",
+    "description": "The character generates a dazzling flare of light.",
     "powerSet": "Magic",
     "prerequisites": "Illumination, Rank 3",
     "action": "Standard",
@@ -35,11 +35,13 @@
     "damage": {
       "enabled": true,
       "ability": "ego",
-      "scale": 0.5,
+      "scale": 1,
       "requiresFantastic": true,
+      "doubleOnFantastic": false,
       "type": "health"
     },
     "effectProfiles": {
+      "attack": "magic.cast",
       "impact": "power.light.flare"
     },
     "events": [
@@ -54,11 +56,21 @@
             "statusId": "blinded",
             "mode": "apply",
             "stacking": "none",
-            "duration": { "type": "rounds", "value": 1 }
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
           }
         ]
       }
-    ]
+    ],
+    "magic": {
+      "mode": "area-attack",
+      "tradition": "general",
+      "radius": 5,
+      "blindedTurns": 1,
+      "damageOnlyOnFantastic": true
+    }
   },
   "flags": {},
   "effects": [],

@@ -12,7 +12,40 @@
     "duration": "Varies",
     "range": "",
     "cost": "5 or more focus",
-    "effect": "The character casts a hex that allows them to use any other power that they have the rank to use, even if they would not normally meet the power's other prerequisites. They must pay whatever the regular Focus cost is for that power, plus 5 Focus. If the duration of the used power is permanent, it is concentration for the character instead. If the power is a numbered permanent power (like Mighty 3), the Focus cost is 5 times that number instead. (Mighty 3 would cost 15 Focus.)"
+    "effect": "The character casts a hex that allows them to use any other power that they have the rank to use, even if they would not normally meet the power's other prerequisites. They must pay whatever the regular Focus cost is for that power, plus 5 Focus. If the duration of the used power is permanent, it is concentration for the character instead. If the power is a numbered permanent power (like Mighty 3), the Focus cost is 5 times that number instead. (Mighty 3 would cost 15 Focus.)",
+    "focusCost": {
+      "mode": "variable",
+      "minimum": 1
+    },
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "magic": {
+      "mode": "simulated-power",
+      "tradition": "chaotic",
+      "costReduction": 1,
+      "minimumCost": 1,
+      "permanentPowerRequiresConcentration": true,
+      "selectedPowerManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.hex"
+    },
+    "events": [
+      {
+        "id": "powerful-hex-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "powerful-hex-selection",
+            "type": "manual",
+            "label": "Select a power, pay 1 less Focus than its normal cost (minimum 1), and resolve that power explicitly. If the selected power is permanent, track it as concentration instead."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

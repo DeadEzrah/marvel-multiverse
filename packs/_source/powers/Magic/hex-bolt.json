@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/magic.svg",
   "system": {
-    "description": "The character shoots out chains covered in hellfire.",
+    "description": "The character fires a hex bolt at a foe.",
     "powerSet": "Magic",
     "prerequisites": "Chaotic, Rank 2",
     "action": "Standard",
@@ -17,7 +17,66 @@
     "attackTarget": "agl",
     "attackKind": "ranged",
     "attack": true,
-    "damageType": "health"
+    "damageType": "health",
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "magic": {
+      "mode": "attack",
+      "tradition": "chaotic",
+      "fantasticTroubleRounds": 1,
+      "troubleAutomationManual": true
+    },
+    "effectProfiles": {
+      "attack": "magic.attack",
+      "hit": "magic.impact"
+    },
+    "events": [
+      {
+        "id": "hex-bolt-fantastic-trouble",
+        "trigger": "target-fantastic-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "hex-bolt-trouble-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Hex Bolt Trouble",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "hex-bolt-trouble"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "rounds",
+              "value": 1
+            }
+          },
+          {
+            "id": "hex-bolt-trouble-reminder",
+            "type": "manual",
+            "label": "The target has trouble on all actions for one round. The marker is tracked, but broad trouble is resolved manually."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

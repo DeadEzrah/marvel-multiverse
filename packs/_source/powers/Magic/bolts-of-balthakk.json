@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/magic.svg",
   "system": {
-    "description": "The character fires enchanted bots of electricity from their fingers.",
+    "description": "The character fires enchanted bolts of electricity from their fingers.",
     "powerSet": "Magic",
     "prerequisites": "Sorcerous, Rank 2",
     "action": "Standard",
@@ -15,9 +15,8 @@
     "effect": "The character makes an Ego check with an edge against the Agility defense of a target in their line of sight. For this attack, add +1 to the character's Agility damage bonus for every 2 points of Focus they spend. On a success, an affected target takes that total damage. On a Fantastic success, an affected target takes double that total damage and is stunned for one round.",
     "ability": "ego",
     "attackTarget": "agl",
-    "edgeMode": "edge",
     "damageType": "health",
-    "attackKind": "close",
+    "attackKind": "ranged",
     "attack": true,
     "attackEdgeMode": "edge",
     "events": [
@@ -39,7 +38,38 @@
           }
         ]
       }
-    ]
+    ],
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 20,
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "agl",
+      "type": "health",
+      "includeFocusBonusInBase": true,
+      "doubleOnFantastic": true
+    },
+    "focusScaling": {
+      "enabled": true,
+      "mode": "damage",
+      "benefitPerFocus": 1,
+      "focusPerBenefit": 2
+    },
+    "magic": {
+      "mode": "attack",
+      "tradition": "sorcerous",
+      "damageAbility": "agl",
+      "stunnedOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "magic.attack",
+      "hit": "magic.impact"
+    }
   },
   "flags": {},
   "effects": [],

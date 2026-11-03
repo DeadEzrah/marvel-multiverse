@@ -12,7 +12,67 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 Focus",
-    "effect": "The character conjures swirling winds that they control. All movement by a foe within 10 spaces per the character's rank is cut in half. The character can also use this spell to push away smoke, mist or fog. If such a thing was created by a power, the character makes an Ego check with an edge against the Ego defense of the opposing controller. On a success, the controller's power ends. On a Fantastic success, the controller is knocked prone. Additionally, the Winds of Watoomb can be used to reinforce the Shield of the Seraphim. The character can transfer any Health damage that gets through the Shield of the Seraphim's protection to their Focus instead, leaving the Shield of the Seraphim intact."
+    "effect": "The character conjures swirling winds that they control. All movement by a foe within 10 spaces per the character's rank is cut in half. The character can also use this spell to push away smoke, mist or fog. If such a thing was created by a power, the character makes an Ego check with an edge against the Ego defense of the opposing controller. On a success, the controller's power ends. On a Fantastic success, the controller is knocked prone. Additionally, the Winds of Watoomb can be used to reinforce the Shield of the Seraphim. The character can transfer any Health damage that gets through the Shield of the Seraphim's protection to their Focus instead, leaving the Shield of the Seraphim intact.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "magic": {
+      "mode": "multi-use-wind",
+      "tradition": "sorcerous",
+      "rangePerRank": 10,
+      "modes": [
+        "slow-foes",
+        "disperse-fog",
+        "reinforce-shield"
+      ],
+      "foeSpeedMultiplier": 0.5,
+      "fogControllerCheck": {
+        "ability": "ego",
+        "defense": "ego",
+        "edge": true
+      },
+      "shieldTransferHealth": true,
+      "modeSelectionManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.cast"
+    },
+    "events": [
+      {
+        "id": "winds-of-watoomb-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "winds-of-watoomb-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Winds of Watoomb",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "winds-of-watoomb"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "winds-of-watoomb-mode",
+            "type": "manual",
+            "label": "Choose one use: halve foe movement within 10 spaces per Rank; disperse fog with an Ego-versus-Ego check with edge and knock the controller prone on a Fantastic success; or transfer incoming Health damage that passes Shield of the Seraphim to this character's Focus. Movement, environmental removal and shield interception remain explicit."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

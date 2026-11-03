@@ -19,7 +19,19 @@
     "attack": true,
     "events": [
       {
-        "id": "exorcism-stunned",
+        "id": "exorcism-success",
+        "trigger": "target-hit",
+        "recipient": "target",
+        "outcomes": [
+          {
+            "id": "exorcism-end-possession",
+            "type": "manual",
+            "label": "Resolve against the possessor?s Ego defense, then end the concentration maintaining possession."
+          }
+        ]
+      },
+      {
+        "id": "exorcism-fantastic",
         "trigger": "target-fantastic-hit",
         "recipient": "target",
         "outcomes": [
@@ -33,10 +45,37 @@
               "type": "rounds",
               "value": 1
             }
+          },
+          {
+            "id": "exorcism-end-all",
+            "type": "manual",
+            "label": "Fantastic success: end all of the possessor?s concentration effects."
           }
         ]
       }
-    ]
+    ],
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "magic": {
+      "mode": "exorcism",
+      "tradition": "general",
+      "targetsPossessorDefense": true,
+      "successEndsPossession": true,
+      "fantasticEndsAllConcentration": true,
+      "possessionSelectionManual": true
+    },
+    "effectProfiles": {
+      "attack": "magic.cast",
+      "hit": "magic.impact"
+    }
   },
   "flags": {},
   "effects": [],

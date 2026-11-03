@@ -19,38 +19,62 @@
     "attack": true,
     "damageType": "health",
     "targeting": {
-      "required": true,
+      "required": false,
       "count": 1,
-      "defense": "vig",
+      "defense": "agl",
       "range": 25,
-      "rangeScaling": "rank"
+      "rangeScaling": "rank",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": false
     },
     "damage": {
       "enabled": true,
       "ability": "ego",
-      "scale": 1,
-      "type": "health"
+      "type": "health",
+      "doubleOnFantastic": true
     },
     "effectProfiles": {
-      "activation": "power.magic.vapors.activation",
-      "hit": "power.magic.vapors.strike"
+      "activation": "magic.mist",
+      "attack": "power.magic.vapors.strike",
+      "hit": "magic.impact"
     },
     "events": [
       {
-        "id": "vapors-of-valtorr-reminder",
+        "id": "vapors-of-valtorr-create",
         "trigger": "action-declared",
         "recipient": "source",
         "outcomes": [
           {
-            "id": "vapors-of-valtorr-remind-mist",
+            "id": "vapors-of-valtorr-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Vapors of Valtorr",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "vapors-of-valtorr"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "vapors-of-valtorr-mode",
             "type": "manual",
-            "label": "This roll is a later-turn mist attack. Maintain concentration and block line of sight beyond 5 spaces inside the mist."
+            "label": "With no target, create the mist and do not attack. On later turns, select one target inside the mist to make the configured attack. Enforce the 5-space sight limit explicitly."
           }
         ]
       },
       {
-        "id": "vapors-of-valtorr-blinded",
-        "trigger": "target-fantastic-hit",
+        "id": "vapors-of-valtorr-blind",
+        "trigger": "target-hit",
         "recipient": "target",
         "outcomes": [
           {
@@ -59,11 +83,23 @@
             "statusId": "blinded",
             "mode": "apply",
             "stacking": "none",
-            "duration": { "type": "rounds", "value": 1 }
+            "duration": {
+              "type": "end-of-target-next-turn"
+            }
           }
         ]
       }
-    ]
+    ],
+    "magic": {
+      "mode": "mist-creation-and-attack",
+      "tradition": "sorcerous",
+      "radiusPerRank": 25,
+      "sightLimit": 5,
+      "initialCreationHasNoAttack": true,
+      "laterAttackWithinMist": true,
+      "blindedTurns": 1,
+      "dualModeManual": true
+    }
   },
   "flags": {},
   "effects": [],

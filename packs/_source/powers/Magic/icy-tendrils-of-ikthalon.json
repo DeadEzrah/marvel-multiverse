@@ -36,7 +36,31 @@
           }
         ]
       }
-    ]
+    ],
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "agl",
+      "range": 10,
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "health",
+      "doubleOnFantastic": true
+    },
+    "magic": {
+      "mode": "attack",
+      "tradition": "sorcerous",
+      "paralyzedOnFantastic": true,
+      "paralysisDurationManual": true
+    },
+    "effectProfiles": {
+      "attack": "magic.attack",
+      "hit": "magic.impact"
+    }
   },
   "flags": {},
   "effects": [],

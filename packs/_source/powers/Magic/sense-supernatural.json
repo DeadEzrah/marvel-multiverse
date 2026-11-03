@@ -4,7 +4,7 @@
   "type": "power",
   "img": "systems/marvel-multiverse/icons/magic.svg",
   "system": {
-    "description": "The character can look into a person's soul.",
+    "description": "The character can sense supernatural entities and effects nearby.",
     "powerSet": "Magic",
     "prerequisites": "",
     "action": "Standard",
@@ -12,7 +12,60 @@
     "duration": "Concentration",
     "range": "",
     "cost": "",
-    "effect": "The character can reach out with their mind to sense the presence of supernatural people, places or things within 100 spaces per rank. This tells them the location of the supernatural thing and its general status. If a target or targets wish to remain undetected, the character must make an Ego check and compare it against each target's Vigilance defense. If they succeed, they sense the target. On a Fantastic success, they can also identify if the target is cursed or demonic."
+    "effect": "The character can reach out with their mind to sense the presence of supernatural people, places or things within 100 spaces per rank. This tells them the location of the supernatural thing and its general status. If a target or targets wish to remain undetected, the character must make an Ego check and compare it against each target's Vigilance defense. If they succeed, they sense the target. On a Fantastic success, they can also identify if the target is cursed or demonic.",
+    "ability": "ego",
+    "attackTarget": "vig",
+    "attack": true,
+    "attackKind": "ranged",
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": false,
+      "count": 99,
+      "defense": "vig",
+      "range": 100,
+      "rangeScaling": "rank",
+      "targetFilter": "all",
+      "requiresLineOfSight": false
+    },
+    "magic": {
+      "mode": "sense",
+      "tradition": "general",
+      "rangePerRank": 100,
+      "hiddenTargetDefense": "vig",
+      "fantasticIdentifiesCurseOrDemonicSource": true,
+      "classificationManual": true
+    },
+    "effectProfiles": {
+      "attack": "magic.sense"
+    },
+    "events": [
+      {
+        "id": "sense-supernatural-scan",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "sense-supernatural-nearby",
+            "type": "manual",
+            "label": "Reveal supernatural entities and effects within 100 spaces per Rank as appropriate. Hidden entities require the configured Ego-versus-Vigilance check."
+          }
+        ]
+      },
+      {
+        "id": "sense-supernatural-fantastic",
+        "trigger": "target-fantastic-hit",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "sense-supernatural-identify",
+            "type": "manual",
+            "label": "Identify whether the sensed entity or effect is a curse or demonic in origin."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

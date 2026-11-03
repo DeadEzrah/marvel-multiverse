@@ -7,12 +7,65 @@
     "description": "The character can enter the Astral Plane",
     "powerSet": "Magic",
     "prerequisites": "Sorcerous, Rank 2",
-    "action": "Standard",
+    "action": "Standard or reaction",
     "trigger": "The character is harmed by an attack.",
     "duration": "Concentration",
     "range": "",
     "cost": "5 Focus",
-    "effect": "The character can project an avatar into the Astral Plane, leering their physical body in a deep trance in the teal world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in The Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their run Speed. Outside of combat, they can move 10 times as fast."
+    "effect": "The character can project an avatar into the Astral Plane, leaving their physical body in a deep trance in the real world, where it is vulnerable to attack. While in the Astral Plane, they can interact with other characters in the Astral Plane, but they are intangible, invisible and generally undetectable in the real world. However, they can sense things in the real world. If the character is Rank 4 or higher, they can also take on a transparent form that can be seen in the real world. While in the Astral Plane, the character can fly, and in combat, their Flight Speed is equal to their rank times their Run Speed. Outside of combat, they can move 10 times as fast.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "magic": {
+      "mode": "astral-form",
+      "tradition": "sorcerous",
+      "physicalBodyVulnerable": true,
+      "realWorldIntangible": true,
+      "realWorldInvisible": true,
+      "transparentAtRank": 4,
+      "flightSpeedFormula": "rank-times-run",
+      "outOfCombatSpeedMultiplier": 10,
+      "astralMovementManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.astral"
+    },
+    "events": [
+      {
+        "id": "astral-form-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "astral-form-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Astral Form",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "astral-form"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "astral-form-boundary",
+            "type": "manual",
+            "label": "Leave the physical body in a vulnerable trance. Resolve Astral Plane interaction, real-world sensing, Rank 4 transparency and astral movement explicitly; token visibility and cross-plane placement are not changed automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

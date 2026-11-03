@@ -12,7 +12,73 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 focus",
-    "effect": "The character takes magical control of a vehicle they are inside of or touching. Hellfire engulfs the outside of the vehicle, but it does no damage to it. Anyone that comes into contact with it, though, takes regular damage with a damage multiplier equal to the character's rank. On a Fantastic success, it inflicts regular Health damage and regular Focus damage instead. The character controls the vehicle by will, as long as it is within 20 spaces times the character's rank. They use their Ego for all checks to operate it, and they get an edge on all such checks. The vehicle's speed doubles. It can climb walls at this speed and can even make jumps at that same speed."
+    "effect": "The character takes magical control of a vehicle they are inside of or touching. Hellfire engulfs the outside of the vehicle, but it does no damage to it. Anyone that comes into contact with it, though, takes regular damage with a damage multiplier equal to the character's rank. On a Fantastic success, it inflicts regular Health damage and regular Focus damage instead. The character controls the vehicle by will, as long as it is within 20 spaces times the character's rank. They use their Ego for all checks to operate it, and they get an edge on all such checks. The vehicle's speed doubles. It can climb walls at this speed and can even make jumps at that same speed.",
+    "activation": {
+      "mode": "utility",
+      "target": "required"
+    },
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "range": 1,
+      "rangeScaling": "reach",
+      "targetFilter": "all"
+    },
+    "magic": {
+      "mode": "vehicle-possession",
+      "tradition": "cursed",
+      "requiresTouchOrInside": true,
+      "operationAbility": "ego",
+      "operationEdge": true,
+      "speedMultiplier": 2,
+      "wallClimb": true,
+      "jumpAtVehicleSpeed": true,
+      "controlRangePerRank": 20,
+      "hellfireContactDamageMultiplier": "rank",
+      "hellfireFantasticDamageTypes": [
+        "health",
+        "focus"
+      ],
+      "vehicleMutationManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.cast"
+    },
+    "events": [
+      {
+        "id": "possess-vehicle-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "possess-vehicle-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Possess Vehicle",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "possess-vehicle"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "possess-vehicle-boundary",
+            "type": "manual",
+            "label": "Confirm the source is touching or inside the vehicle. Resolve Ego operation checks with edge, control within 20 spaces per Rank, doubled speed, wall climbing, jumps at vehicle speed and Rank-multiplier contact damage explicitly. On a Fantastic success, contact inflicts both Health and Focus damage. Vehicle statistics and movement are not mutated automatically."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

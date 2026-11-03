@@ -12,7 +12,63 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 focus",
-    "effect": "The character produces a hex to help protect themselves. Make an Ego check. The result is now the character's defense against any attack. If the result isn't as high as the character would like, they can end the hex and try again later. On a Fantastic success, the hex also grants Health Damage Reduction 1 for its duration."
+    "effect": "The character produces a hex to help protect themselves. Make an Ego check. The result is now the character's defense against any attack. If the result isn't as high as the character would like, they can end the hex and try again later. On a Fantastic success, the hex also grants Health Damage Reduction 1 for its duration.",
+    "ability": "ego",
+    "attack": false,
+    "damage": {
+      "enabled": false
+    },
+    "targeting": {
+      "required": false,
+      "count": 0,
+      "targetFilter": "self"
+    },
+    "magic": {
+      "mode": "protection-hex",
+      "tradition": "chaotic",
+      "defenseValueFromRollTotal": true,
+      "appliesToAllDefenses": true,
+      "fantasticHealthDamageReduction": 1,
+      "dynamicDefenseManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.shield"
+    },
+    "events": [
+      {
+        "id": "protection-hex-resolution",
+        "trigger": "after-roll",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "protection-hex-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Protection Hex",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "protection-hex"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "protection-hex-defense",
+            "type": "manual",
+            "label": "Record the Ego check total as all defense scores while concentration lasts. On a Fantastic success, also apply Health Damage Reduction 1. Dynamic defense replacement remains explicit."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

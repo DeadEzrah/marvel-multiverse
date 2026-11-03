@@ -48,7 +48,9 @@
             "statusId": "grappled",
             "mode": "apply",
             "stacking": "none",
-            "duration": { "type": "concentration" }
+            "duration": {
+              "type": "concentration"
+            }
           },
           {
             "id": "hellfire-chains-apply-paralyzed",
@@ -56,7 +58,9 @@
             "statusId": "paralyzed",
             "mode": "apply",
             "stacking": "none",
-            "duration": { "type": "concentration" }
+            "duration": {
+              "type": "concentration"
+            }
           },
           {
             "id": "hellfire-chains-follow-up",
@@ -65,7 +69,24 @@
           }
         ]
       }
-    ]
+    ],
+    "magic": {
+      "mode": "binding-attack",
+      "tradition": "cursed",
+      "rangePerRank": 10,
+      "escapeAbility": "mle",
+      "escapeTargetNumber": 20,
+      "fantasticStatuses": [
+        "grappled",
+        "paralyzed"
+      ],
+      "subsequentAttackDefense": "res",
+      "subsequentDamageTypes": [
+        "health",
+        "focus"
+      ],
+      "subsequentAttackManual": true
+    }
   },
   "flags": {},
   "effects": [],

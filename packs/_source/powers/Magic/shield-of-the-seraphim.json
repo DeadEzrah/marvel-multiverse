@@ -12,7 +12,56 @@
     "duration": "Concentration",
     "range": "",
     "cost": "10 focus",
-    "effect": "The character produces a magical shield that protects them from physical damage. Any attacks against them that do 20 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 20 points of damage, it destroys the protection. Either way, the character remains unharmed."
+    "effect": "The character produces a magical shield that protects them from physical damage. Any attacks against them that do 20 points of damage or less are instantly absorbed, and the protection continues. If an attack does more than 20 points of damage, it destroys the protection. Either way, the character remains unharmed.",
+    "activation": {
+      "mode": "utility",
+      "target": "none"
+    },
+    "magic": {
+      "mode": "damage-threshold-shield",
+      "tradition": "sorcerous",
+      "physicalDamageThreshold": 20,
+      "blocksBelowThreshold": true,
+      "physicalDamageClassificationManual": true
+    },
+    "effectProfiles": {
+      "activation": "magic.shield"
+    },
+    "events": [
+      {
+        "id": "shield-of-the-seraphim-activation",
+        "trigger": "action-declared",
+        "recipient": "source",
+        "outcomes": [
+          {
+            "id": "shield-of-the-seraphim-marker",
+            "type": "active-effect",
+            "stacking": "replace",
+            "effect": {
+              "name": "Shield of the Seraphim",
+              "img": "systems/marvel-multiverse/icons/magic.svg",
+              "changes": [],
+              "statuses": [],
+              "flags": {
+                "marvel-multiverse": {
+                  "magic": {
+                    "mode": "shield-of-the-seraphim"
+                  }
+                }
+              }
+            },
+            "duration": {
+              "type": "concentration"
+            }
+          },
+          {
+            "id": "shield-of-the-seraphim-boundary",
+            "type": "manual",
+            "label": "Ignore individual physical-damage hits below 20 while concentration lasts. Damage type classification and threshold enforcement remain explicit so nonphysical Health damage is not blocked incorrectly."
+          }
+        ]
+      }
+    ]
   },
   "flags": {},
   "effects": [],

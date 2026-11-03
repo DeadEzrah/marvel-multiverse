@@ -331,6 +331,13 @@ The 13 weapon records are structured locally but still require complete live gat
   - [x] Gate Corrupting Touch's permanent marker behind applied Health damage and preserve tag, Karma, domination, and escape decisions explicitly.
   - [x] Live-gate DNA optional targeting, Magic Mask marker apply/undo, Corrupting Touch Fantastic damage/marker/undo, and all three semantic effects.
   - [x] Confirm all thirty-four embedded Narrative powers are bespoke records and require no canonical refresh.
+- [x] Complete the Magic migration in the installed Foundry world.
+  - [x] Structure all twenty-eight powers with exact attacks, targeting, damage, conditions, concentration markers, family metadata, and safe manual boundaries.
+  - [x] Correct copied summaries, malformed wording, incorrect damage scaling, missing Fantastic outcomes, Rank-scaled ranges, Winds of Watoomb's defense, and Possess Vehicle's Rank-based rules.
+  - [x] Add declarative Heroic half-damage handling for Penance Stare and source-level regression coverage for every record and semantic alias.
+  - [x] Pass focused Magic gates, the 227-test full repository suite, effect validation, pack build, and focused lint with no new errors.
+  - [x] Live-gate required utility targets, grabbed and zero-Focus prerequisites, Summon Portal Focus spend and concentration apply/undo, installed metadata, and all nine semantic effects.
+  - [x] Refresh twenty-nine exact canonical embedded copies with IDs and configured elements preserved while leaving four renamed or bespoke powers untouched.
 - [x] Complete destructible object token profiles.
   - [x] Add twelve NPC-backed walls, doors, street objects, vehicles, and structure sections with editable Health, Damage Reduction, neutral unlinked tokens, and system-owned artwork.
   - [x] Register and build the Destructible Objects Actor compendium with source-level regression coverage.

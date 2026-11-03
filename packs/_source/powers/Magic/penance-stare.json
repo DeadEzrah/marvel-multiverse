@@ -37,7 +37,40 @@
           }
         ]
       }
-    ]
+    ],
+    "targeting": {
+      "required": true,
+      "count": 1,
+      "defense": "ego",
+      "range": 3,
+      "rangeScaling": "rank",
+      "targetFilter": "enemies",
+      "requiresLineOfSight": true
+    },
+    "damage": {
+      "enabled": true,
+      "ability": "ego",
+      "type": "focus",
+      "doubleOnFantastic": true,
+      "targetTagScales": [
+        {
+          "tag": "Heroic",
+          "scale": 0.5
+        }
+      ]
+    },
+    "magic": {
+      "mode": "focus-attack",
+      "tradition": "cursed",
+      "rangePerRank": 3,
+      "heroicDamageScale": 0.5,
+      "shatteredRecoveryChoiceManual": true,
+      "paralyzedOnFantastic": true
+    },
+    "effectProfiles": {
+      "attack": "magic.hex",
+      "hit": "magic.impact"
+    }
   },
   "flags": {},
   "effects": [],
