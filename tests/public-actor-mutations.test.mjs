@@ -24,11 +24,7 @@ globalThis.Hooks = {
   },
 };
 
-const {
-  applyActorDamage,
-  recordActionDamageApplication,
-  restoreActorResource,
-} = await import("../lib/damage-application.mjs");
+const { applyActorDamage, recordActionDamageApplication } = await import("../lib/damage-application.mjs");
 const { applyActorStatus } = await import("../lib/conditions.mjs");
 
 function createActor() {
@@ -80,40 +76,6 @@ test("rejects invalid direct damage without mutating the actor", async () => {
 
   assert.equal(result.success, false);
   assert.equal(result.reason, "invalid-damage-amount");
-  assert.equal(actor.system.health.value, 30);
-});
-
-test("restores actor resources through the public mutation boundary", async () => {
-  const actor = createActor();
-  actor.system.health.max = 30;
-  actor.system.focus.max = 20;
-  actor.system.health.value = 4;
-  actor.system.focus.value = 3;
-
-  const health = await restoreActorResource({ actor, kind: "health" });
-  const focus = await restoreActorResource({ actor, kind: "focus", amount: 5 });
-
-  assert.equal(health.success, true);
-  assert.equal(health.previousValue, 4);
-  assert.equal(health.newValue, 30);
-  assert.equal(health.restoredAmount, 26);
-  assert.equal(focus.success, true);
-  assert.equal(focus.newValue, 8);
-  assert.equal(actor.system.health.value, 30);
-  assert.equal(actor.system.focus.value, 8);
-});
-
-test("rejects invalid resource restoration without mutating the actor", async () => {
-  const actor = createActor();
-  actor.system.health.max = 30;
-
-  const invalidKind = await restoreActorResource({ actor, kind: "karma" });
-  const invalidAmount = await restoreActorResource({ actor, kind: "health", amount: -1 });
-
-  assert.equal(invalidKind.success, false);
-  assert.equal(invalidKind.reason, "invalid-resource-kind");
-  assert.equal(invalidAmount.success, false);
-  assert.equal(invalidAmount.reason, "invalid-restore-amount");
   assert.equal(actor.system.health.value, 30);
 });
 
