@@ -4,6 +4,15 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.16.0] - 2026-11-04
+
+### Added
+- Added a readable comic-book theme for Foundry Journal windows, text pages, and page editors.
+- Added documented `mm-journal-*` authoring classes for read-aloud text, callouts, checks, responsive cards, and statistic summaries.
+
+### Changed
+- Improved Journal typography, navigation, tables, links, secrets, images, editor spacing, focus states, and narrow-window behavior without styling unrelated Foundry or module applications.
+
 ## [3.15.0] - 2026-11-03
 
 ### Added

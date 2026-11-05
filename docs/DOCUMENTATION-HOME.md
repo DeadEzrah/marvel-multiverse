@@ -8,6 +8,7 @@ The canonical suite is hosted exclusively under [`DeadEzrah` on GitHub](https://
 
 - [Repository README](../README.md)
 - [Installation and updates](INSTALLATION.md)
+- [Journal styling and adventure authoring](JOURNAL-AUTHORING.md)
 - [Automation architecture](../AUTOMATION.md)
 - [Current backlog](../BACKLOG.md)
 - [Changelog](../CHANGELOG.md)
