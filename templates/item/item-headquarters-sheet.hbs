@@ -50,10 +50,10 @@
     <div class="tab attributes" data-group="primary" data-tab="operations">
       <h3>Resources</h3>
       <div class="flexrow -gap-sm">
-        <button type="button" data-action="adjustHeadquartersResource" data-amount="-1" title="Spend one resource"><i class="fas fa-minus"></i></button>
+        <button type="button" data-action="adjustHeadquartersResource" data-amount="-1" title="Spend one resource" aria-label="Spend one resource"><i class="fas fa-minus"></i></button>
         <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Current</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.resources.value" value="{{system.resources.value}}"></div></div>
         <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Maximum</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.resources.max" value="{{system.resources.max}}"></div></div>
-        <button type="button" data-action="adjustHeadquartersResource" data-amount="1" title="Restore one resource"><i class="fas fa-plus"></i></button>
+        <button type="button" data-action="adjustHeadquartersResource" data-amount="1" title="Restore one resource" aria-label="Restore one resource"><i class="fas fa-plus"></i></button>
       </div>
       <h3>Defenses</h3>
       <div class="flexrow -gap-sm">
@@ -70,7 +70,7 @@
           <div class="flexrow -gap-sm">
             <input type="text" name="system.facilities.{{index}}.name" value="{{facility.name}}" placeholder="Facility">
             <label><input type="checkbox" name="system.facilities.{{index}}.active" {{checked facility.active}}> Active</label>
-            <button type="button" data-action="removeHeadquartersFacility"><i class="fas fa-trash"></i></button>
+            <button type="button" data-action="removeHeadquartersFacility" title="Remove facility" aria-label="Remove facility"><i class="fas fa-trash"></i></button>
           </div>
           <textarea name="system.facilities.{{index}}.description" placeholder="Description">{{facility.description}}</textarea>
         </fieldset>
@@ -81,7 +81,7 @@
           <div class="flexrow -gap-sm">
             <input type="text" name="system.upgrades.{{index}}.name" value="{{upgrade.name}}" placeholder="Upgrade">
             <label><input type="checkbox" name="system.upgrades.{{index}}.active" {{checked upgrade.active}}> Active</label>
-            <button type="button" data-action="removeHeadquartersUpgrade"><i class="fas fa-trash"></i></button>
+            <button type="button" data-action="removeHeadquartersUpgrade" title="Remove upgrade" aria-label="Remove upgrade"><i class="fas fa-trash"></i></button>
           </div>
           <textarea name="system.upgrades.{{index}}.description" placeholder="Description">{{upgrade.description}}</textarea>
         </fieldset>
@@ -99,8 +99,8 @@
         {{#each system.actorUuids as |uuid|}}
           <div class="flexrow -gap-sm">
             <code>{{uuid}}</code>
-            <button type="button" data-action="openHeadquartersLink" data-uuid="{{uuid}}"><i class="fas fa-external-link-alt"></i></button>
-            <button type="button" data-action="removeHeadquartersActor" data-uuid="{{uuid}}"><i class="fas fa-unlink"></i></button>
+            <button type="button" data-action="openHeadquartersLink" data-uuid="{{uuid}}" title="Open linked actor" aria-label="Open linked actor"><i class="fas fa-external-link-alt"></i></button>
+            <button type="button" data-action="removeHeadquartersActor" data-uuid="{{uuid}}" title="Unlink actor" aria-label="Unlink actor"><i class="fas fa-unlink"></i></button>
           </div>
         {{/each}}
       </div>

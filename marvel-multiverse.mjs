@@ -844,6 +844,7 @@ class ChatMessageMarvel extends ChatMessage {
       this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls")
     );
     anchor.setAttribute("title", this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls"));
+    anchor.dataset.tooltip = this._localizeOrFallback("MARVEL_MULTIVERSE.AdditionalControls", "Additional controls");
     anchor.classList.add("chat-control");
     anchor.dataset.contextMenu = "";
     anchor.innerHTML = '<i class="fas fa-ellipsis-vertical fa-fw"></i>';
