@@ -4,6 +4,8 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+## [3.17.0] - 2026-11-06
+
 ### Added
 - Added `npm run validate:sequencer`, which checks every effect-manifest Sequencer database key against the locally installed JB2A free-tier and PSFX databases, including array-index addressing.
 - Added a GM-only world-ready audit that reports unknown live `effectProfiles` references across world items, actor items, and unlinked token items before they reach gameplay.
@@ -34,6 +36,7 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 - Localized the previously hardcoded Marvel-die tooltip labels on the character sheet and damage-roll dialog.
 
 ### Fixed
+- Fixed world initialization failing with a localization error: the init-hook context relay dropped the Campaign Framework document class, registering an undefined Item data model. The full context is now forwarded and a regression test locks the chain.
 - Fixed missing English localization keys (`Initiative`, `Issues`, `Wiki`, `TargetRequired`, `ActionRoll.FocusCost`, `ActionRoll.AreaTargetRequired`) that could render as raw `MARVEL_MULTIVERSE.*` text.
 - Fixed the undo-conditions chat handler referencing an out-of-scope variable in its failure message path.
 - Fixed a duplicate `runspeed` key in movement normalization and made the full ESLint run clean, baselining the unloaded legacy `module/` tree.
