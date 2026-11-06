@@ -301,7 +301,11 @@ Useful checks:
 npx eslint lib/services/effect-profile-manager.mjs lib/services/effect-library.mjs
 npm run build:code
 npm run build:db
+npm run validate:effects
+npm run validate:sequencer
 ```
+
+`validate:sequencer` verifies every manifest `sequencer-database` key against the locally installed JB2A free-tier and PSFX databases (set `FOUNDRY_DATA_PATH` to override the default Foundry data folder; the check skips gracefully when the modules are not installed). At world ready, the system also audits live documents (world items, actor items, and unlinked token items) and reports any `effectProfile`/`effectProfiles` references that do not resolve in the manifest before they can surface mid-gameplay.
 
 The local Foundry installation loads `marvel-multiverse.mjs` and `lib/*.mjs` directly. When testing source changes, deploy the touched source modules and assets in addition to `marvel-multiverse-compiled.mjs`.
 

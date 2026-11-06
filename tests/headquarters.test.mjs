@@ -65,12 +65,12 @@ test("headquarters workflow manages resources, facilities, upgrades, and actor l
 });
 
 test("Foundry registers a first-class Headquarters model and complete sheet", async () => {
-  const template = JSON.parse(await readFile(new URL("../template.json", import.meta.url), "utf8"));
+  const system = JSON.parse(await readFile(new URL("../system.json", import.meta.url), "utf8"));
   const bootstrap = await readFile(new URL("../lib/bootstrap.mjs", import.meta.url), "utf8");
   const documents = await readFile(new URL("../lib/documents.mjs", import.meta.url), "utf8");
   const sheet = await readFile(new URL("../templates/item/item-headquarters-sheet.hbs", import.meta.url), "utf8");
 
-  assert.ok(template.Item.types.includes("headquarters"));
+  assert.ok(Object.keys(system.documentTypes.Item).includes("headquarters"));
   assert.match(bootstrap, /headquarters:\s*DocumentMarvelMultiverseHeadquarters/u);
   assert.match(documents, /class MarvelMultiverseHeadquarters extends MarvelMultiverseItemBase/u);
   for (const field of [

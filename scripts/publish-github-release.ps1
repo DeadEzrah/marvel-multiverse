@@ -38,8 +38,7 @@ $files = @(
     'CHANGELOG.md',
     'LICENSE.txt',
     'README.md',
-    'system.json',
-    'template.json'
+    'system.json'
 )
 foreach ($file in $files) {
     Copy-Item -Path (Join-Path $repoRoot $file) -Destination $staging -Force

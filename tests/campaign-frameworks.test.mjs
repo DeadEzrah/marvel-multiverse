@@ -118,13 +118,13 @@ test("campaign framework actor linkage is permission checked and de-duplicated",
 });
 
 test("Foundry registers and authors first-class Campaign Framework Items", async () => {
-  const template = JSON.parse(await readFile(new URL("../template.json", import.meta.url), "utf8"));
+  const system = JSON.parse(await readFile(new URL("../system.json", import.meta.url), "utf8"));
   const bootstrap = await readFile(new URL("../lib/bootstrap.mjs", import.meta.url), "utf8");
   const documents = await readFile(new URL("../lib/documents.mjs", import.meta.url), "utf8");
   const sheet = await readFile(new URL("../templates/item/item-campaignFramework-sheet.hbs", import.meta.url), "utf8");
   const actorItems = await readFile(new URL("../templates/actor/parts/actor-items.hbs", import.meta.url), "utf8");
 
-  assert.ok(template.Item.types.includes("campaignFramework"));
+  assert.ok(Object.keys(system.documentTypes.Item).includes("campaignFramework"));
   assert.match(bootstrap, /campaignFramework:\s*DocumentMarvelMultiverseCampaignFramework/u);
   assert.match(documents, /class MarvelMultiverseCampaignFramework extends MarvelMultiverseItemBase/u);
   for (const field of [

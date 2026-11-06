@@ -18,9 +18,9 @@ test("gear categories cover the expansion equipment foundations", () => {
 });
 
 test("Foundry registers structured gear without removing legacy items", async () => {
-  const template = JSON.parse(await readFile(new URL("../template.json", import.meta.url), "utf8"));
-  assert.ok(template.Item.types.includes("item"));
-  assert.ok(template.Item.types.includes("gear"));
+  const system = JSON.parse(await readFile(new URL("../system.json", import.meta.url), "utf8"));
+  assert.ok(Object.keys(system.documentTypes.Item).includes("item"));
+  assert.ok(Object.keys(system.documentTypes.Item).includes("gear"));
 
   const bootstrap = await readFile(new URL("../lib/bootstrap.mjs", import.meta.url), "utf8");
   assert.match(bootstrap, /gear:\s*DocumentMarvelMultiverseGear/u);

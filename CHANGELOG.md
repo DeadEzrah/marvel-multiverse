@@ -5,6 +5,11 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 ## [Unreleased]
 
 ### Added
+- Added `npm run validate:sequencer`, which checks every effect-manifest Sequencer database key against the locally installed JB2A free-tier and PSFX databases, including array-index addressing.
+- Added a GM-only world-ready audit that reports unknown live `effectProfiles` references across world items, actor items, and unlinked token items before they reach gameplay.
+- Added the missing Spanish, French, and French (Canada) translations for Karma actions, chat controls, attack outcomes, and diagnostic/theme settings, bringing all locales to full key parity with English.
+- Added semantic effect profiles to Levitation, Regain Focus, Flexible Fingers, Rubberneck, and Immovable using existing generic manifest entries.
+- Added regression tests for automation-preset merging, `damage.enabled: false` overrides, Focus spend/refund transactions, large-token nearest-cell range measurement, unlinked-token embedded items, and duplicate-status prevention.
 - Added an expansion coverage audit for X-Men, Spider-Verse, Avengers, and Secret Wars features, including verified system gaps and a recommended implementation order.
 - Added a first-class structured Gear Item type for equipment, Iconic Items, Battle Suits, Narrative Items, gadgets, and vehicle mounts.
 - Added Gear fields for equip state, uniqueness, reliance, requirements, grants, protection, durability, and mount configuration while preserving legacy generic items.
@@ -23,6 +28,15 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 - Added reusable Campaign Framework Items for responsibilities, bounded plot resources, general or mutant reputation, schooling and progression, henchmen groups, and large-battle state.
 - Added permission-checked campaign mutations, transaction history, drift-safe undo, Actor and Scene linkage, authoring sheets, public APIs and hooks, focused tests, and distribution guidance.
 - Added an ignored `.private-content/` boundary and guidance for personal sourcebook-derived records that must remain outside public packs and Git history.
+
+### Changed
+- Declared Actor and Item document types in `system.json` (`documentTypes`) and removed the deprecated `template.json` ahead of its Foundry V16 removal.
+- Localized the previously hardcoded Marvel-die tooltip labels on the character sheet and damage-roll dialog.
+
+### Fixed
+- Fixed missing English localization keys (`Initiative`, `Issues`, `Wiki`, `TargetRequired`, `ActionRoll.FocusCost`, `ActionRoll.AreaTargetRequired`) that could render as raw `MARVEL_MULTIVERSE.*` text.
+- Fixed the undo-conditions chat handler referencing an out-of-scope variable in its failure message path.
+- Fixed a duplicate `runspeed` key in movement normalization and made the full ESLint run clean, baselining the unloaded legacy `module/` tree.
 
 ## [3.16.0] - 2026-11-04
 

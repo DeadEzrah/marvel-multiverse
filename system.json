@@ -30,6 +30,25 @@
         "minimum": 12,
         "verified": "14.365"
     },
+    "documentTypes": {
+        "Actor": {
+            "character": {},
+            "npc": {}
+        },
+        "Item": {
+            "item": {},
+            "gear": {},
+            "alternateForm": {},
+            "headquarters": {},
+            "campaignFramework": {},
+            "weapon": {},
+            "trait": {},
+            "tag": {},
+            "origin": {},
+            "occupation": {},
+            "power": {}
+        }
+    },
     "esmodules": [
         "marvel-multiverse.mjs"
     ],

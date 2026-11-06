@@ -401,12 +401,18 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Repository And Release Hygiene
 
-- [ ] Review the large dirty worktree and separate changes into logical commits without reverting unrelated work.
-- [ ] Review generated `css/marvel-multiverse.css` changes alongside all modified SCSS sources.
-- [ ] Verify generated LevelDB packs match the reviewed JSON sources.
-- [ ] Update `AUTOMATION.md`, `CHANGELOG.md`, and release notes after each completed family.
-- [ ] Confirm `system.json` compatibility declarations reflect the supported Foundry versions.
-- [ ] Address the `template.json` deprecation before Foundry V16.
+- [x] Review the large dirty worktree and separate changes into logical commits without reverting unrelated work.
+  - The worktree is clean; all session work landed as focused commits (localization, effect tooling, regression tests, lint cleanup, release hygiene).
+- [x] Review generated `css/marvel-multiverse.css` changes alongside all modified SCSS sources.
+  - `npm run build:css` regenerates identical output; the tracked CSS matches the SCSS sources.
+- [x] Verify generated LevelDB packs match the reviewed JSON sources.
+  - An unpack round-trip (`build:db` then `build:json`) produced only serializer formatting and filename-slug churn with zero data differences; the ignored unpack artifacts were removed.
+- [x] Update `AUTOMATION.md`, `CHANGELOG.md`, and release notes after each completed family.
+  - CHANGELOG documents the localization, effect tooling, test, lint, and template.json work; AUTOMATION.md documents `validate:sequencer` and the world-ready live-profile audit.
+- [x] Confirm `system.json` compatibility declarations reflect the supported Foundry versions.
+  - `minimum: 12, verified: 14.365` matches the code: V2 sheets and DialogV2 are used with classic fallbacks, and `documentTypes` requires V11+.
+- [x] Address the `template.json` deprecation before Foundry V16.
+  - Declared all Actor/Item types via `documentTypes` in `system.json` (every type already had a registered DataModel), removed `template.json`, and updated the tests and release script that referenced it.
 - [ ] Remove diagnostic effects, temporary test items, tokens, Regions, and stale actor-specific profiles before release.
 - [ ] Back up the world before final migration and perform one clean install/sync smoke test.
 
