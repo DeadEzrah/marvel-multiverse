@@ -371,12 +371,18 @@ The 13 weapon records are structured locally but still require complete live gat
   - Deafen now applies `deafened` for one round on a hit and deals regular damage only on a Fantastic success. Double Tap, Point-Blank Parry, and Snap Shooting apply `bleeding` on a Fantastic success; their directly coupled targeting and regular/Fantastic damage structures are explicit, including Snap Shooting's one-or-two-target half/full scaling.
   - Live gates verified Deafen's exact 5-Focus spend, zero ordinary-success damage, one-round status lifecycle, active-combat selection, and expiration cleanup. Fantastic Double Tap dealt double damage, applied manual-duration bleeding, and supported condition and damage undo. Nine embedded Ranged Weapons copies were refreshed and all temporary data was removed.
   - Optional-choice controls, third-party recipients, delayed movement/reaction triggers, subjective area/geometry decisions, and Narrator adjudication remain explicit manual boundaries; unsupported `pinned` outcomes use the documented `restrained` mapping or remain a stated choice.
-- [ ] Add automated tests for automation-preset merging and explicit-field precedence.
-- [ ] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
-- [ ] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.
-- [ ] Add tests for large-token nearest-cell range measurement.
-- [ ] Add tests for unlinked-token embedded item behavior.
-- [ ] Add tests for power-event trigger matching, duplicate status prevention, duration, and undo.
+- [x] Add automated tests for automation-preset merging and explicit-field precedence.
+  - `tests/automation-presets.test.mjs`: preset identifiers, deep merging, explicit-field precedence, unknown-preset passthrough, and `materializeAutomationSource` identity preservation.
+- [x] Add regression tests proving `damage.enabled: false` overrides attack and legacy damage hints.
+  - Covered for preset-backed and legacy attack/damage-type hint items in `tests/automation-presets.test.mjs`.
+- [x] Add regression tests for modern `actionFocus` spend/refund and duplicate-spend prevention.
+  - `tests/focus-transactions.test.mjs`: fixed and variable spends, exact-value refunds, double-refund rejection, insufficient-Focus blocking, and the `actionFocus` conflict/force add-back path.
+- [x] Add tests for large-token nearest-cell range measurement.
+  - `tests/range-measurement.test.mjs`: nearest-cell measurement for 2x2/3x3 tokens, `measurePath` normalization, fractional-size fallback, and min/max range preflight.
+- [x] Add tests for unlinked-token embedded item behavior.
+  - `tests/unlinked-token-items.test.mjs`: roll contexts preserve `Scene...Token...Item` uuids and Focus spend/refund resolves the unlinked token's synthetic actor.
+- [x] Add tests for power-event trigger matching, duplicate status prevention, duration, and undo.
+  - Trigger matching, duration sweeps, and undo were already covered in `tests/power-events.test.mjs`; added the missing duplicate-status stacking test (default stacking skips an already-present status).
 - [ ] Run each migrated power through no-target, invalid-target, success, failure, Fantastic success, insufficient-Focus, apply, and undo gates as applicable.
 - [ ] Repeat permission-sensitive workflows with a player connected to a GM.
 - [ ] Make the full ESLint run clean or explicitly baseline documented legacy findings.

@@ -705,3 +705,87 @@ test("duration sweeps close stale transactions whose effects are already gone", 
     globalThis.fromUuidSync = originalFromUuidSync;
   }
 });
+
+test("default stacking skips a status the target already has", async () => {
+  const originalGame = globalThis.game;
+  const originalFromUuidSync = globalThis.fromUuidSync;
+  const created = [];
+  const stunnedTarget = {
+    uuid: "Actor.already-stunned",
+    documentName: "Actor",
+    effects: [{ id: "existing-stun", statuses: new Set(["stunned"]) }],
+    async createEmbeddedDocuments(_type, data) {
+      created.push(...data);
+      return data.map((entry, index) => ({ ...entry, id: `created-${index}` }));
+    }
+  };
+  const freshTarget = {
+    uuid: "Actor.fresh",
+    documentName: "Actor",
+    statuses: new Set(),
+    effects: [],
+    async createEmbeddedDocuments(_type, data) {
+      created.push(...data);
+      return data.map((entry, index) => ({ ...entry, id: `created-fresh-${index}` }));
+    }
+  };
+  const item = {
+    uuid: "Item.stunning-blow",
+    system: {
+      events: [{
+        id: "stun-on-hit",
+        trigger: "target-hit",
+        recipient: "target",
+        outcomes: [{
+          id: "apply-stunned",
+          type: "status",
+          statusId: "stunned"
+        }]
+      }]
+    }
+  };
+  const flags = {
+    rollContext: {
+      actorUuid: "Actor.attacker",
+      itemUuid: item.uuid
+    },
+    attackResolution: {
+      targets: [
+        { uuid: stunnedTarget.uuid, actorUuid: stunnedTarget.uuid, name: "Already Stunned", outcome: "hit" },
+        { uuid: freshTarget.uuid, actorUuid: freshTarget.uuid, name: "Fresh", outcome: "hit" }
+      ]
+    }
+  };
+  const message = {
+    uuid: "ChatMessage.stunning-blow",
+    getFlag: (_scope, key) => flags[key] ?? null,
+    async update() {}
+  };
+  globalThis.game = {
+    ...originalGame,
+    user: { id: "gm", isGM: true },
+    users: { activeGM: { id: "gm" } }
+  };
+  globalThis.fromUuidSync = (uuid) => {
+    if (uuid === stunnedTarget.uuid) return stunnedTarget;
+    if (uuid === freshTarget.uuid) return freshTarget;
+    if (uuid === item.uuid) return item;
+    return null;
+  };
+
+  try {
+    const result = await applyPowerOutcomes(message, {
+      item,
+      eventIds: ["stun-on-hit"],
+      triggers: ["target-hit"]
+    });
+
+    assert.equal(result.success, true);
+    // Only the target without the status receives a new effect; the duplicate is skipped.
+    assert.equal(created.length, 1);
+    assert.equal(created[0].statuses.includes("stunned"), true);
+  } finally {
+    globalThis.game = originalGame;
+    globalThis.fromUuidSync = originalFromUuidSync;
+  }
+});
