@@ -30,7 +30,10 @@
           }
         ]
       }
-    ]
+    ],
+    "effectProfiles": {
+      "activation": "martial.brace"
+    }
   },
   "flags": {},
   "effects": [],

@@ -16,6 +16,9 @@
     "telekinesis": {
       "mode": "self-levitation",
       "flightEqualsRunSpeed": true
+    },
+    "effectProfiles": {
+      "activation": "telekinesis.lift"
     }
   },
   "flags": {},

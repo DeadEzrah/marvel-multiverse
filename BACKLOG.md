@@ -117,9 +117,12 @@ The 13 weapon records are structured locally but still require complete live gat
 ## Effects And Assets
 
 - [x] Add an automated audit that validates every semantic profile against `assets/effects-manifest.json`.
-- [ ] Check declared Sequencer database keys against supported JB2A tiers.
-- [ ] Report unknown live `effectProfiles` before they reach gameplay.
-- [ ] Add or select profiles for remaining power families without using hero-specific IDs.
+- [x] Check declared Sequencer database keys against supported JB2A tiers.
+  - Added `npm run validate:sequencer` (`scripts/validate-sequencer-keys.mjs`): verifies every manifest `sequencer-database` key against the locally installed JB2A free-tier and PSFX databases, including array-index addressing, and flags keys that declare free-tier support without a free-database entry. All 210 declared references verify.
+- [x] Report unknown live `effectProfiles` before they reach gameplay.
+  - Added `auditEffectProfileDocuments` plus a GM-only ready-time scan (`reportUnknownLiveEffectProfiles`) over world items, actor items, and unlinked token items that logs unknown profile references and raises one notification.
+- [x] Add or select profiles for remaining power families without using hero-specific IDs.
+  - Assigned existing semantic profiles to the remaining active powers: Levitation (`telekinesis.lift`), Regain Focus (`healing.focus`), Flexible Fingers and Rubberneck (`plasticity.movement`), and Immovable (`martial.brace`). All other unprofiled powers are passives or deliberately unanimated per guard tests (Power Control mutations, time powers, drain/dispel magic, transformation/disguise Basics).
 - [ ] Verify visual gates in external Microsoft Edge; the VS Code browser does not reliably decode JB2A WebM files.
 - [ ] Verify rules still complete when Sequencer effects or optional asset modules are disabled.
 
