@@ -1,6 +1,5 @@
 import {
   logValidationResult,
-  resolvePowerSetCategory,
   validateActiveEffect,
   validateCharacterActor,
   validateDocument,
@@ -12,10 +11,8 @@ import {
   MarvelMultiverseCombatant as DocumentMarvelMultiverseCombatant,
   MarvelMultiverseActor as DocumentMarvelMultiverseActor,
   MarvelMultiverseItem as DocumentMarvelMultiverseItem,
-  MarvelMultiverseActorBase as DocumentMarvelMultiverseActorBase,
   MarvelMultiverseCharacter as DocumentMarvelMultiverseCharacter,
   MarvelMultiverseNPC as DocumentMarvelMultiverseNPC,
-  MarvelMultiverseItemBase as DocumentMarvelMultiverseItemBase,
   MarvelMultiverseGear as DocumentMarvelMultiverseGear,
   MarvelMultiverseAlternateForm as DocumentMarvelMultiverseAlternateForm,
   MarvelMultiverseHeadquarters as DocumentMarvelMultiverseHeadquarters,
@@ -40,28 +37,8 @@ import {
   previewNormalization,
 } from "./lib/normalization.mjs";
 import {
-  attachRollContext,
-  buildRollContext,
-  debugRollContext,
-  getRollContext,
-  hasRollContext,
-  migrateLegacyRollContext,
-} from "./lib/roll-context.mjs";
-import {
-  canPerformPositionalAction,
-  getResolvedTargetActors,
-  getResolvedTargetTokens,
-  getStoredTargetUuids,
-  resolveStoredTargets,
-  resolveTargetUuid,
-  resolveTargetUuids,
-} from "./lib/target-resolution.mjs";
-import {
-  compareAttackToStoredTargets,
-  getAttackResolution,
   refreshAttackResolution,
-} from "./lib/attack-resolution.mjs";
-import {
+} from "./lib/attack-resolution.mjs";import {
   getDamageApplications,
   hasAppliedMessageDamage,
 } from "./lib/damage-application.mjs";
@@ -70,9 +47,6 @@ import {
   requestUndoMessageDamage,
 } from "./lib/services/socket-relay.mjs";
 import {
-  buildDamageContext,
-  calculateMarvelDamage,
-  getDamageContext,
   refreshDamageContext,
 } from "./lib/damage-calculation.mjs";
 import {
@@ -82,15 +56,11 @@ import {
   spendMessageFocus,
 } from "./lib/focus-automation.mjs";
 import {
-  getEligibleEscapeTargets,
   getEscapeActionEntries,
-  markTargetEscaped,
-  recordStatusTransaction,
   rollEscapeCheck,
 } from "./lib/escape-automation.mjs";
 import {
   endConcentration,
-  prepareActorStatusDisplay,
   startConcentration,
 } from "./lib/concentration.mjs";
 import {
@@ -1381,8 +1351,8 @@ class ChatMessageMarvel extends ChatMessage {
 
     const legacyFlavor = String(message?.flavor ?? "");
     const legacyContent = String(message?.content ?? "");
-    const costMatch = legacyFlavor.match(/cost\s*[:\-]\s*([^<\n]+)/i)
-      ?? legacyContent.match(/cost\s*[:\-]\s*([^<\n]+)/i);
+    const costMatch = legacyFlavor.match(/cost\s*[:-]\s*([^<\n]+)/i)
+      ?? legacyContent.match(/cost\s*[:-]\s*([^<\n]+)/i);
     if (costMatch?.[1]) {
       const parsedLegacy = parseFocusCost(costMatch[1].trim());
       if (parsedLegacy?.valid) return parsedLegacy;
@@ -1544,7 +1514,6 @@ class ChatMessageMarvel extends ChatMessage {
       || hasSourceConditions
       || rollContext?.source?.itemName
     );
-    const hasStoredTargets = Array.isArray(rollContext?.targetUuids) && rollContext.targetUuids.length > 0;
     const hasLegacyDamageHint = /damagetype\s*:/i.test(String(message?.flavor ?? ""))
       || /damagetype\s*:/i.test(String(message?.content ?? ""));
     const explicitlyNoDamage = rollContext?.dealsDamage === false || damageContext?.dealsDamage === false;
@@ -1842,9 +1811,10 @@ class ChatMessageMarvel extends ChatMessage {
 
   async _handleUndoConditions(message, button) {
     let undoneCount = 0;
+    let lastResult = null;
     for (let index = 0; index < 5; index += 1) {
-      const result = await undoMessageConditions(message, { quiet: true });
-      if (!result?.success) break;
+      lastResult = await undoMessageConditions(message, { quiet: true });
+      if (!lastResult?.success) break;
       undoneCount += 1;
     }
     if (undoneCount > 0) {
@@ -1852,7 +1822,7 @@ class ChatMessageMarvel extends ChatMessage {
       ui.notifications.info(game.i18n.localize("MARVEL_MULTIVERSE.ConditionsUndone") || "Conditions undone.");
       return;
     }
-    ui.notifications.warn(result?.issues?.[0]?.message || game.i18n.localize("MARVEL_MULTIVERSE.ConditionsUndoFailed") || "Condition undo failed.");
+    ui.notifications.warn(lastResult?.issues?.[0]?.message || game.i18n.localize("MARVEL_MULTIVERSE.ConditionsUndoFailed") || "Condition undo failed.");
   }
 
   /**
@@ -2703,7 +2673,7 @@ class ChatMessageMarvel extends ChatMessage {
    * Wait to apply appropriate element heights until after the chat log has completed its initial batch render.
    * @param {jQuery} html  The chat log HTML.
    */
-  static onRenderChatLog(html) {
+  static onRenderChatLog(_html) {
   }
 }
 

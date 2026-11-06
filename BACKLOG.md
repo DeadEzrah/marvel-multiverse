@@ -385,8 +385,10 @@ The 13 weapon records are structured locally but still require complete live gat
   - Trigger matching, duration sweeps, and undo were already covered in `tests/power-events.test.mjs`; added the missing duplicate-status stacking test (default stacking skips an already-present status).
 - [ ] Run each migrated power through no-target, invalid-target, success, failure, Fantastic success, insufficient-Focus, apply, and undo gates as applicable.
 - [ ] Repeat permission-sensitive workflows with a player connected to a GM.
-- [ ] Make the full ESLint run clean or explicitly baseline documented legacy findings.
-- [ ] Run `npm run build`, pack validation, and `git diff --check` before release.
+- [x] Make the full ESLint run clean or explicitly baseline documented legacy findings.
+  - `npm run lint` now reports zero problems. Fixed live errors (duplicate `runspeed` key, useless regex escapes, out-of-scope `result` in the undo-conditions handler), removed dead private code and unused imports, underscore-prefixed intentional unused parameters, and baselined the unloaded legacy `module/` tree in `eslint.config.mjs` with a documented ignore.
+- [x] Run `npm run build`, pack validation, and `git diff --check` before release.
+  - `npm run build` (code + css + db), `validate:effects`, `validate:sequencer`, `validate:release`, the 314-test suite, and `git diff --check` all pass.
 
 ## Targeted Animation Semantic Cleanup
 
