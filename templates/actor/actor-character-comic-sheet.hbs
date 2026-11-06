@@ -8,6 +8,7 @@
           <div class="mmcomic-team-controls">
             <select name="system.teamManeuver.maneuverType" aria-label="Team Maneuver">{{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank="None"}}</select>
             <select name="system.teamManeuver.level" aria-label="Team Maneuver Level">{{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}</select>
+            <select name="system.teamManeuver.alignment" aria-label="Team Maneuver Alignment">{{selectOptions teamManeuverAlignments selected=system.teamManeuver.alignment}}</select>
           </div>
         </div>
         <span class="mmcomic-status"><strong>Conditions</strong>{{#if statusDisplay.concentration.active}}Concentrating{{else}}None active{{/if}}</span>
@@ -29,7 +30,9 @@
       <section class="mmcomic-stats">
         <label class="mmcomic-rankbox">
           <span class="mmcomic-rankbox__label">Rank</span>
-          <input class="mmcomic-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}">
+          <select name="system.attributes.rank.mode" aria-label="Rank mode">{{selectOptions rankModes selected=system.attributes.rank.mode labelAttr="label"}}</select>
+          <input class="mmcomic-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}" title="Standard rank or legacy numeric rank">
+          <input class="mmcomic-rankbox__value" name="system.attributes.rank.scale" type="number" min="0" value="{{system.attributes.rank.scale}}" title="Rank X numerical scale; 0 preserves the legacy rank value">
         </label>
         <label class="mmcomic-resource mmcomic-resource--karma">
           <span class="mmcomic-resource__name">Karma</span>

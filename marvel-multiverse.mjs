@@ -16,6 +16,10 @@ import {
   MarvelMultiverseCharacter as DocumentMarvelMultiverseCharacter,
   MarvelMultiverseNPC as DocumentMarvelMultiverseNPC,
   MarvelMultiverseItemBase as DocumentMarvelMultiverseItemBase,
+  MarvelMultiverseGear as DocumentMarvelMultiverseGear,
+  MarvelMultiverseAlternateForm as DocumentMarvelMultiverseAlternateForm,
+  MarvelMultiverseHeadquarters as DocumentMarvelMultiverseHeadquarters,
+  MarvelMultiverseCampaignFramework as DocumentMarvelMultiverseCampaignFramework,
   MarvelMultiverseWeapon as DocumentMarvelMultiverseWeapon,
   MarvelMultiverseOccupation as DocumentMarvelMultiverseOccupation,
   MarvelMultiverseOrigin as DocumentMarvelMultiverseOrigin,
@@ -127,6 +131,7 @@ import {
 } from "./lib/services/guided-resolution.mjs";
 import { promptDialog } from "./lib/services/dialog-compat.mjs";
 import { restoreConsumedFutureRollModifiers } from "./lib/services/future-roll-modifiers.mjs";
+import { TEAM_MANEUVER_ALIGNMENTS } from "./lib/team-maneuvers.mjs";
 
 const MARVEL_MULTIVERSE = {};
 /**
@@ -314,86 +319,12 @@ MARVEL_MULTIVERSE.elements = {
   swarm: { label: "Swarm", fantasticEffect: "The target is frightened." },
 };
 
-MARVEL_MULTIVERSE.teamManeuvers = [
-  {
-    maneuverType: "Offensive",
-    levels: [
-      {
-        level: 1,
-        cost: "5 focus, each",
-        rankAvg: [1, 2],
-        description:
-          "The team members all get an edge on any attack they make this round.",
-      },
-      {
-        level: 2,
-        cost: "10 focus, each",
-        rankAvg: [3, 4],
-        description:
-          "The team members can each reroll all their dice on any attack they make this round. They get to use the better result.",
-      },
-      {
-        level: 3,
-        cost: "15 focus, each",
-        rankAvg: [5, 6],
-        description:
-          "The team members can each turn their Marvel die to a Fantastic success on any attack roll they make this round against targets of equal or highter rank.",
-      },
-    ],
-  },
-  {
-    maneuverType: "Defensive",
-    levels: [
-      {
-        level: 1,
-        cost: "5 focus, each",
-        rankAvg: [1, 2],
-        description:
-          "The team members all have Damage Reduction 2 for this round",
-      },
-      {
-        level: 2,
-        cost: "10 focus, each",
-        rankAvg: [3, 4],
-        description:
-          "The team members all have Damage Reduction 4 for this round",
-      },
-      {
-        level: 3,
-        cost: "15 focus, each",
-        rankAvg: [5, 6],
-        description:
-          "The team members all have Damage Reduction 8 for this round",
-      },
-    ],
-  },
-  {
-    maneuverType: "Rally",
-    levels: [
-      {
-        level: 1,
-        cost: "5 focus, each",
-        rankAvg: [1, 2],
-        description:
-          "All actions taken against team members have trouble this round.",
-      },
-      {
-        level: 2,
-        cost: "10 focus, each",
-        rankAvg: [3, 4],
-        description:
-          "Each member of the team can make a speedy recovery roll for either Health or Focus, as if they had spent a point of Karma",
-      },
-      {
-        level: 3,
-        cost: "15 focus, each",
-        rankAvg: [5, 6],
-        description:
-          "A single member of the team who has been killed or shattered in battle is healed to at least Health: 0 and Focus: 0",
-      },
-    ],
-  },
-];
+MARVEL_MULTIVERSE.teamManeuverAlignments = TEAM_MANEUVER_ALIGNMENTS;
+MARVEL_MULTIVERSE.teamManeuvers = ["Offensive", "Defensive", "Rally"].map((maneuverType) => ({
+  maneuverType,
+  alignment: "any",
+  levels: [1, 2, 3].map((level) => ({ level })),
+}));
 
 MARVEL_MULTIVERSE.sizeEffects = {
   microscopic: {
@@ -2818,7 +2749,10 @@ registerSystemHooks({
   DocumentMarvelMultiverseCombatant,
   DocumentMarvelMultiverseActor,
   DocumentMarvelMultiverseItem,
-  DocumentMarvelMultiverseGear: documentModels.MarvelMultiverseItem,
+  DocumentMarvelMultiverseGear,
+  DocumentMarvelMultiverseAlternateForm,
+  DocumentMarvelMultiverseHeadquarters,
+  DocumentMarvelMultiverseCampaignFramework,
   DocumentMarvelMultiverseCharacter,
   DocumentMarvelMultiverseNPC,
   DocumentMarvelMultiverseWeapon,

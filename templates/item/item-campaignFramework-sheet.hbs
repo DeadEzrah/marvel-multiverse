@@ -1,0 +1,94 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img -fill">
+      <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input"><input name="name" type="text" value="{{item.name}}" placeholder="Campaign Framework"/></div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs mm-tabs" data-group="primary">
+    <a class="item" data-tab="overview">Overview</a>
+    <a class="item" data-tab="people">Responsibilities</a>
+    <a class="item" data-tab="tracks">Resources &amp; Tracks</a>
+    <a class="item" data-tab="battle">Henchmen &amp; Battle</a>
+    <a class="item" data-tab="links">Links &amp; History</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="overview">
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Framework</span></label><div class="mm-styled-input"><select name="system.frameworkType">{{selectOptions campaignFrameworkTypes selected=system.frameworkType labelAttr="label"}}</select></div></div>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Status</span></label><div class="mm-styled-input"><input name="system.status" value="{{system.status}}" placeholder="active"></div></div>
+      </div>
+      <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Description and table procedure</span></label><div class="mm-styled-input"><prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror></div></div>
+      <p class="notes">Framework values are generic campaign state. Authors define labels, bounds, triggers, and interpretations appropriate to their table.</p>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="people">
+      <div class="flexrow"><h3>Personal Responsibilities</h3><button type="button" data-action="addCampaignEntry" data-collection="responsibilities" data-label="New Responsibility"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.responsibilities as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}">
+          <div class="flexrow -gap-sm">
+            <input name="system.responsibilities.{{index}}.id" type="hidden" value="{{entry.id}}">
+            <input name="system.responsibilities.{{index}}.label" value="{{entry.label}}" placeholder="Responsibility">
+            <input name="system.responsibilities.{{index}}.status" value="{{entry.status}}" placeholder="Status">
+            <input name="system.responsibilities.{{index}}.actorUuid" value="{{entry.actorUuid}}" placeholder="Related Actor UUID">
+            <button type="button" data-action="removeCampaignEntry" data-collection="responsibilities"><i class="fas fa-trash"></i></button>
+          </div>
+          <div class="flexrow -gap-sm">
+            <button type="button" data-action="adjustCampaignValue" data-collection="responsibilities" data-amount="-1">−</button>
+            <input type="number" name="system.responsibilities.{{index}}.progress" value="{{entry.progress}}" title="Progress">
+            <input type="number" name="system.responsibilities.{{index}}.min" value="{{entry.min}}" title="Minimum">
+            <input type="number" name="system.responsibilities.{{index}}.max" value="{{entry.max}}" title="Maximum">
+            <button type="button" data-action="adjustCampaignValue" data-collection="responsibilities" data-amount="1">+</button>
+          </div>
+          <textarea name="system.responsibilities.{{index}}.notes" placeholder="Notes">{{entry.notes}}</textarea>
+        </fieldset>
+      {{/each}}
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="tracks">
+      <div class="flexrow"><h3>Bounded Resources</h3><button type="button" data-action="addCampaignEntry" data-collection="resources" data-label="New Resource"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.resources as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}"><input name="system.resources.{{index}}.id" type="hidden" value="{{entry.id}}"><div class="flexrow -gap-sm"><input name="system.resources.{{index}}.label" value="{{entry.label}}" placeholder="Resource label"><button type="button" data-action="adjustCampaignValue" data-collection="resources" data-amount="-1">−</button><input type="number" name="system.resources.{{index}}.value" value="{{entry.value}}"><input type="number" name="system.resources.{{index}}.min" value="{{entry.min}}" title="Minimum"><input type="number" name="system.resources.{{index}}.max" value="{{entry.max}}" title="Maximum"><button type="button" data-action="adjustCampaignValue" data-collection="resources" data-amount="1">+</button><button type="button" data-action="removeCampaignEntry" data-collection="resources"><i class="fas fa-trash"></i></button></div><textarea name="system.resources.{{index}}.notes" placeholder="Acquisition, spending, or reset notes">{{entry.notes}}</textarea></fieldset>
+      {{/each}}
+
+      <div class="flexrow"><h3>Reputation</h3><button type="button" data-action="addCampaignEntry" data-collection="reputations" data-label="New Reputation"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.reputations as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}"><input name="system.reputations.{{index}}.id" type="hidden" value="{{entry.id}}"><div class="flexrow -gap-sm"><input name="system.reputations.{{index}}.label" value="{{entry.label}}" placeholder="Audience"><input name="system.reputations.{{index}}.scope" value="{{entry.scope}}" placeholder="General, mutant, or custom scope"><button type="button" data-action="adjustCampaignValue" data-collection="reputations" data-amount="-1">−</button><input type="number" name="system.reputations.{{index}}.value" value="{{entry.value}}"><input type="number" name="system.reputations.{{index}}.min" value="{{entry.min}}"><input type="number" name="system.reputations.{{index}}.max" value="{{entry.max}}"><button type="button" data-action="adjustCampaignValue" data-collection="reputations" data-amount="1">+</button><button type="button" data-action="removeCampaignEntry" data-collection="reputations"><i class="fas fa-trash"></i></button></div><textarea name="system.reputations.{{index}}.notes">{{entry.notes}}</textarea></fieldset>
+      {{/each}}
+
+      <div class="flexrow"><h3>Schooling / Progression</h3><button type="button" data-action="addCampaignEntry" data-collection="progressions" data-label="New Progression Track"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.progressions as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}"><input name="system.progressions.{{index}}.id" type="hidden" value="{{entry.id}}"><div class="flexrow -gap-sm"><input name="system.progressions.{{index}}.label" value="{{entry.label}}" placeholder="Track"><input name="system.progressions.{{index}}.category" value="{{entry.category}}" placeholder="Schooling or custom category"><button type="button" data-action="adjustCampaignValue" data-collection="progressions" data-amount="-1">−</button><input type="number" name="system.progressions.{{index}}.progress" value="{{entry.progress}}"><input type="number" name="system.progressions.{{index}}.min" value="{{entry.min}}"><input type="number" name="system.progressions.{{index}}.max" value="{{entry.max}}"><button type="button" data-action="adjustCampaignValue" data-collection="progressions" data-amount="1">+</button><button type="button" data-action="removeCampaignEntry" data-collection="progressions"><i class="fas fa-trash"></i></button></div><textarea name="system.progressions.{{index}}.notes">{{entry.notes}}</textarea></fieldset>
+      {{/each}}
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="battle">
+      <div class="flexrow"><h3>Henchmen Groups</h3><button type="button" data-action="addCampaignEntry" data-collection="henchmenGroups" data-label="New Henchmen Group"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.henchmenGroups as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}"><input name="system.henchmenGroups.{{index}}.id" type="hidden" value="{{entry.id}}"><div class="flexrow -gap-sm"><input name="system.henchmenGroups.{{index}}.label" value="{{entry.label}}" placeholder="Group"><input name="system.henchmenGroups.{{index}}.actorUuid" value="{{entry.actorUuid}}" placeholder="Template Actor UUID"><button type="button" data-action="adjustCampaignValue" data-collection="henchmenGroups" data-amount="-1">−</button><input type="number" name="system.henchmenGroups.{{index}}.current" value="{{entry.current}}" title="Current"><input type="number" name="system.henchmenGroups.{{index}}.min" value="{{entry.min}}" title="Minimum"><input type="number" name="system.henchmenGroups.{{index}}.max" value="{{entry.max}}" title="Maximum"><button type="button" data-action="adjustCampaignValue" data-collection="henchmenGroups" data-amount="1">+</button><button type="button" data-action="removeCampaignEntry" data-collection="henchmenGroups"><i class="fas fa-trash"></i></button></div><textarea name="system.henchmenGroups.{{index}}.notes">{{entry.notes}}</textarea></fieldset>
+      {{/each}}
+
+      <h3>Large-Battle State</h3>
+      <div class="flexrow -gap-sm"><input name="system.largeBattle.state" value="{{system.largeBattle.state}}" placeholder="State or phase"><input type="number" min="0" name="system.largeBattle.round" value="{{system.largeBattle.round}}" placeholder="Round"><input name="system.largeBattle.sceneUuid" value="{{system.largeBattle.sceneUuid}}" placeholder="Scene UUID"></div>
+      <textarea name="system.largeBattle.notes" placeholder="Battle state and adjudication notes">{{system.largeBattle.notes}}</textarea>
+      <div class="flexrow"><h3>Battle Objectives</h3><button type="button" data-action="addCampaignEntry" data-collection="battleObjectives" data-label="New Battle Objective"><i class="fas fa-plus"></i> Add</button></div>
+      {{#each system.battleObjectives as |entry index|}}
+        <fieldset data-entry-id="{{entry.id}}"><input name="system.battleObjectives.{{index}}.id" type="hidden" value="{{entry.id}}"><div class="flexrow -gap-sm"><input name="system.battleObjectives.{{index}}.label" value="{{entry.label}}" placeholder="Objective"><input name="system.battleObjectives.{{index}}.side" value="{{entry.side}}" placeholder="Side"><button type="button" data-action="adjustCampaignValue" data-collection="battleObjectives" data-amount="-1">−</button><input type="number" name="system.battleObjectives.{{index}}.progress" value="{{entry.progress}}"><input type="hidden" name="system.battleObjectives.{{index}}.min" value="{{entry.min}}"><input type="number" name="system.battleObjectives.{{index}}.target" value="{{entry.target}}" title="Target"><button type="button" data-action="adjustCampaignValue" data-collection="battleObjectives" data-amount="1">+</button><button type="button" data-action="removeCampaignEntry" data-collection="battleObjectives"><i class="fas fa-trash"></i></button></div><textarea name="system.battleObjectives.{{index}}.notes">{{entry.notes}}</textarea></fieldset>
+      {{/each}}
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="links">
+      <div data-campaign-actors>
+        <h3>Linked Actors</h3>
+        <div class="flexrow -gap-sm"><input type="text" data-actor-uuid placeholder="Actor UUID"><button type="button" data-action="addCampaignActor"><i class="fas fa-link"></i> Link Actor</button></div>
+        {{#each system.actorUuids as |uuid|}}<div class="flexrow -gap-sm"><code>{{uuid}}</code><button type="button" data-action="openCampaignLink" data-uuid="{{uuid}}"><i class="fas fa-external-link-alt"></i></button><button type="button" data-action="removeCampaignActor" data-uuid="{{uuid}}"><i class="fas fa-unlink"></i></button></div>{{/each}}
+      </div>
+      <h3>Transaction History</h3>
+      {{#each campaignTransactions as |transaction|}}
+        <div class="flexrow -gap-sm"><span>{{transaction.collection}}: {{transaction.before}} → {{transaction.after}}</span><small>{{transaction.createdAt}}</small>{{#if transaction.undone}}<em>Undone</em>{{else}}<button type="button" data-action="undoCampaignTransaction" data-transaction-id="{{transaction.id}}">Undo</button>{{/if}}</div>
+      {{else}}<p class="mm-empty-state">No bounded mutations recorded.</p>{{/each}}
+    </div>
+  </section>
+</form>

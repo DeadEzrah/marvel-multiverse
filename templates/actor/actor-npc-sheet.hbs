@@ -12,7 +12,9 @@
     </div>
     <label class="mmrdp-rankbox">
       <span class="mmrdp-rankbox__label">Rank</span>
-      <input class="mmrdp-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}">
+      <select name="system.attributes.rank.mode" aria-label="Rank mode">{{selectOptions rankModes selected=system.attributes.rank.mode labelAttr="label"}}</select>
+      <input class="mmrdp-rankbox__value" name="system.attributes.rank.value" type="number" value="{{system.attributes.rank.value}}" title="Standard rank or legacy numeric rank">
+      <input class="mmrdp-rankbox__value" name="system.attributes.rank.scale" type="number" min="0" value="{{system.attributes.rank.scale}}" title="Rank X numerical scale; 0 preserves the legacy rank value">
     </label>
   </header>
 
@@ -139,6 +141,7 @@
               <label><span>Default Element</span><select name="system.defaultElement">{{selectOptions elements selected=system.defaultElement labelAttr="label" blank=""}}</select></label>
               <label><span>Team Maneuver</span><select name="system.teamManeuver.maneuverType">{{selectOptions teamManeuverTypes selected=system.teamManeuver.maneuverType labelAttr="label" blank=""}}</select></label>
               <label><span>Level</span><select name="system.teamManeuver.level">{{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}</select></label>
+              <label><span>Alignment</span><select name="system.teamManeuver.alignment">{{selectOptions teamManeuverAlignments selected=system.teamManeuver.alignment}}</select></label>
             </div>
           </section>
         </div>
@@ -174,6 +177,22 @@
               <label><span>Base</span><input type="text" name="system.base" value="{{system.base}}"></label>
             </div>
           </section>
+          <section class="mmrdp-card">
+            <h2 class="mmrdp-card__title"><span>Vehicle &amp; Starship</span></h2>
+            <div class="mmrdp-card__body mmrdp-identity-grid">
+              <label><span>Vehicle Profile</span><input type="checkbox" name="system.vehicle.enabled" {{checked system.vehicle.enabled}}></label>
+              <label><span>Operational</span><input type="checkbox" name="system.vehicle.operational" {{checked system.vehicle.operational}}></label>
+              <label><span>Category</span><select name="system.vehicle.category">{{selectOptions vehicleCategories selected=system.vehicle.category labelAttr="label"}}</select></label>
+              <label><span>Scale</span><input type="text" name="system.vehicle.scale" value="{{system.vehicle.scale}}"></label>
+              <label><span>Minimum Crew</span><input type="number" min="0" name="system.vehicle.crewMinimum" value="{{system.vehicle.crewMinimum}}"></label>
+              <label><span>Maximum Crew</span><input type="number" min="0" name="system.vehicle.crewMaximum" value="{{system.vehicle.crewMaximum}}"></label>
+              <label><span>Passengers</span><input type="number" min="0" name="system.vehicle.passengerCapacity" value="{{system.vehicle.passengerCapacity}}"></label>
+              <label><span>Operator UUID</span><input type="text" name="system.vehicle.operatorUuid" value="{{system.vehicle.operatorUuid}}"></label>
+              <label><span>Handling</span><input type="text" name="system.vehicle.handling" value="{{system.vehicle.handling}}"></label>
+              <label><span>Speed</span><input type="text" name="system.vehicle.speed" value="{{system.vehicle.speed}}"></label>
+              <label><span>Cargo</span><textarea name="system.vehicle.cargo">{{system.vehicle.cargo}}</textarea></label>
+            </div>
+          </section>
           <section class="mmrdp-card"><h2 class="mmrdp-card__title"><span>Biography</span></h2><div class="mmrdp-card__body">{{> "systems/marvel-multiverse/templates/actor/parts/actor-biography.hbs"}}</div></section>
         </div>
       </div>
@@ -191,4 +210,3 @@
     </section>
   </main>
 </div>
-

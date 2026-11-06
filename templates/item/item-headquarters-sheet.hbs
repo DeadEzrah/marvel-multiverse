@@ -1,0 +1,109 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img -fill">
+      <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input"><input name="name" type="text" value="{{item.name}}" placeholder="Headquarters Name"/></div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs mm-tabs" data-group="primary">
+    <a class="item" data-tab="overview">Overview</a>
+    <a class="item" data-tab="operations">Operations</a>
+    <a class="item" data-tab="features">Facilities &amp; Upgrades</a>
+    <a class="item" data-tab="links">Links</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="overview">
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Ownership</span></label>
+          <div class="mm-styled-input"><select name="system.ownership.type">{{selectOptions headquartersOwnerTypes selected=selectedHeadquartersOwnerType labelAttr="label"}}</select></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Owner</span></label>
+          <div class="mm-styled-input"><input type="text" name="system.ownership.ownerName" value="{{system.ownership.ownerName}}"></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Team</span></label>
+          <div class="mm-styled-input"><input type="text" name="system.ownership.teamName" value="{{system.ownership.teamName}}"></div>
+        </div>
+      </div>
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Scale</span></label>
+          <div class="mm-styled-input"><select name="system.scale">{{selectOptions headquartersScales selected=selectedHeadquartersScale labelAttr="label"}}</select></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Location</span></label>
+          <div class="mm-styled-input"><input type="text" name="system.location" value="{{system.location}}"></div>
+        </div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Description</span></label>
+        <div class="mm-styled-input">
+          <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="operations">
+      <h3>Resources</h3>
+      <div class="flexrow -gap-sm">
+        <button type="button" data-action="adjustHeadquartersResource" data-amount="-1" title="Spend one resource"><i class="fas fa-minus"></i></button>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Current</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.resources.value" value="{{system.resources.value}}"></div></div>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Maximum</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.resources.max" value="{{system.resources.max}}"></div></div>
+        <button type="button" data-action="adjustHeadquartersResource" data-amount="1" title="Restore one resource"><i class="fas fa-plus"></i></button>
+      </div>
+      <h3>Defenses</h3>
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Physical</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.defenses.physical" value="{{system.defenses.physical}}"></div></div>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Electronic</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.defenses.electronic" value="{{system.defenses.electronic}}"></div></div>
+      </div>
+      <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Defense Notes</span></label><div class="mm-styled-input"><textarea name="system.defenses.notes">{{system.defenses.notes}}</textarea></div></div>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="features">
+      <div class="flexrow"><h3>Facilities</h3><button type="button" data-action="addHeadquartersFacility"><i class="fas fa-plus"></i> Add Facility</button></div>
+      {{#each system.facilities as |facility index|}}
+        <fieldset data-entry-index="{{index}}">
+          <div class="flexrow -gap-sm">
+            <input type="text" name="system.facilities.{{index}}.name" value="{{facility.name}}" placeholder="Facility">
+            <label><input type="checkbox" name="system.facilities.{{index}}.active" {{checked facility.active}}> Active</label>
+            <button type="button" data-action="removeHeadquartersFacility"><i class="fas fa-trash"></i></button>
+          </div>
+          <textarea name="system.facilities.{{index}}.description" placeholder="Description">{{facility.description}}</textarea>
+        </fieldset>
+      {{/each}}
+      <div class="flexrow"><h3>Upgrades</h3><button type="button" data-action="addHeadquartersUpgrade"><i class="fas fa-plus"></i> Add Upgrade</button></div>
+      {{#each system.upgrades as |upgrade index|}}
+        <fieldset data-entry-index="{{index}}">
+          <div class="flexrow -gap-sm">
+            <input type="text" name="system.upgrades.{{index}}.name" value="{{upgrade.name}}" placeholder="Upgrade">
+            <label><input type="checkbox" name="system.upgrades.{{index}}.active" {{checked upgrade.active}}> Active</label>
+            <button type="button" data-action="removeHeadquartersUpgrade"><i class="fas fa-trash"></i></button>
+          </div>
+          <textarea name="system.upgrades.{{index}}.description" placeholder="Description">{{upgrade.description}}</textarea>
+        </fieldset>
+      {{/each}}
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="links">
+      <div data-headquarters-scene class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Scene UUID</span></label>
+        <div class="mm-styled-input flexrow"><input type="text" name="system.sceneUuid" value="{{system.sceneUuid}}" placeholder="Scene UUID"><button type="button" data-action="openHeadquartersLink"><i class="fas fa-map"></i> Open</button></div>
+      </div>
+      <div data-headquarters-actors>
+        <h3>Linked Actors</h3>
+        <div class="flexrow -gap-sm"><input type="text" data-actor-uuid placeholder="Actor UUID"><button type="button" data-action="addHeadquartersActor"><i class="fas fa-link"></i> Link Actor</button></div>
+        {{#each system.actorUuids as |uuid|}}
+          <div class="flexrow -gap-sm">
+            <code>{{uuid}}</code>
+            <button type="button" data-action="openHeadquartersLink" data-uuid="{{uuid}}"><i class="fas fa-external-link-alt"></i></button>
+            <button type="button" data-action="removeHeadquartersActor" data-uuid="{{uuid}}"><i class="fas fa-unlink"></i></button>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+</form>

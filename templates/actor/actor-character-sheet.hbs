@@ -11,9 +11,15 @@
             </div>
             {{!-- Rank & Karma --}}
             <div class="mm-rank-block">
-              <label class="mm-label" for="system.attributes.rank.value"><span>Rank</span></label>
+              <label class="mm-label" for="system.attributes.rank.mode"><span>Rank</span></label>
               <div class="mm-input">
-                <input type="number" name="system.attributes.rank.value" value="{{system.attributes.rank.value}}" data-dtype="Number"/>
+                <select name="system.attributes.rank.mode">{{selectOptions rankModes selected=system.attributes.rank.mode labelAttr="label"}}</select>
+              </div>
+              <div class="mm-input">
+                <input type="number" name="system.attributes.rank.value" value="{{system.attributes.rank.value}}" data-dtype="Number" title="Standard rank or legacy numeric rank"/>
+              </div>
+              <div class="mm-input">
+                <input type="number" min="0" name="system.attributes.rank.scale" value="{{system.attributes.rank.scale}}" data-dtype="Number" title="Rank X numerical scale; 0 preserves the legacy rank value"/>
               </div>
             </div>
             <div class="mm-karma-block">
@@ -241,6 +247,12 @@
                   {{selectOptions teamManeuverLevels selected=system.teamManeuver.level}}
                 </select>
               </label>
+              <label>
+                <span>Alignment</span>
+                <select name="system.teamManeuver.alignment" aria-label="Team maneuver alignment">
+                  {{selectOptions teamManeuverAlignments selected=system.teamManeuver.alignment}}
+                </select>
+              </label>
             </div>
           </div>
         </div>
@@ -313,4 +325,3 @@
 </div>
 
 {{log system}}
-

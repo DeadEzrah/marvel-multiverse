@@ -1,0 +1,74 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="mm-styled-field -lg -img -fill">
+      <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
+      <div class="mm-styled-input"><input name="name" type="text" value="{{item.name}}" placeholder="Form Name"/></div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs mm-tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="appearance">Appearance</a>
+    <a class="item" data-tab="overrides">Overrides</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="description">
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Description</span></label>
+        <div class="mm-styled-input">
+          <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="appearance">
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Transition Mode</span></label>
+        <div class="mm-styled-input"><select name="system.mode">{{selectOptions alternateFormModes selected=selectedAlternateFormMode labelAttr="label"}}</select></div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Displayed Name</span></label>
+        <div class="mm-styled-input"><input type="text" name="system.appearance.name" value="{{system.appearance.name}}"></div>
+      </div>
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left"><span>Portrait Path</span></label>
+        <div class="mm-styled-input"><input type="text" name="system.appearance.img" value="{{system.appearance.img}}"></div>
+      </div>
+      <p>Cosmetic Change applies only the displayed name and portrait. Power Down and Power Swap also apply the explicit overrides below.</p>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="overrides">
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Size</span></label>
+          <div class="mm-styled-input"><select name="system.overrides.size">{{selectOptions sizes selected=system.overrides.size labelAttr="label" blank=""}}</select></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Reach</span></label>
+          <div class="mm-styled-input"><input type="number" name="system.overrides.reach" value="{{system.overrides.reach}}"></div>
+        </div>
+      </div>
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Health Maximum</span></label><div class="mm-styled-input"><input type="number" name="system.overrides.healthMaximum" value="{{system.overrides.healthMaximum}}"></div></div>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Focus Maximum</span></label><div class="mm-styled-input"><input type="number" name="system.overrides.focusMaximum" value="{{system.overrides.focusMaximum}}"></div></div>
+      </div>
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Health DR</span></label><div class="mm-styled-input"><input type="number" name="system.overrides.healthDamageReduction" value="{{system.overrides.healthDamageReduction}}"></div></div>
+        <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>Focus DR</span></label><div class="mm-styled-input"><input type="number" name="system.overrides.focusDamageReduction" value="{{system.overrides.focusDamageReduction}}"></div></div>
+      </div>
+      <h3>Abilities</h3>
+      <div class="flexcol gap-sm">
+        {{#each abilities as |ability key|}}
+          <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>{{ability.label}}</span></label><div class="mm-styled-input"><input type="number" name="system.overrides.abilities.{{key}}" value="{{lookup ../system.overrides.abilities key}}"></div></div>
+        {{/each}}
+      </div>
+      <h3>Movement</h3>
+      <div class="flexcol gap-sm">
+        {{#each movementTypes as |movement key|}}
+          <div class="mm-styled-field -fill"><label class="mm-styled-label -align-left"><span>{{movement.label}}</span></label><div class="mm-styled-input"><input type="number" min="0" name="system.overrides.movement.{{key}}" value="{{lookup ../system.overrides.movement key}}"></div></div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+</form>

@@ -19,5 +19,8 @@ packs/*
 # Node Modules
 node_modules/
 
+# Personal licensed content
+.private-content/
+
 # OS Specific
 .DS_Store

@@ -8,6 +8,10 @@
   "Item": {
     "types": [
       "item",
+      "gear",
+      "alternateForm",
+      "headquarters",
+      "campaignFramework",
       "weapon",
       "trait",
       "tag",

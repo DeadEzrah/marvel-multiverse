@@ -4,6 +4,26 @@ All notable changes to the Marvel Multiverse Foundry system should be documented
 
 ## [Unreleased]
 
+### Added
+- Added an expansion coverage audit for X-Men, Spider-Verse, Avengers, and Secret Wars features, including verified system gaps and a recommended implementation order.
+- Added a first-class structured Gear Item type for equipment, Iconic Items, Battle Suits, Narrative Items, gadgets, and vehicle mounts.
+- Added Gear fields for equip state, uniqueness, reliance, requirements, grants, protection, durability, and mount configuration while preserving legacy generic items.
+- Added structured Gear authoring documentation and regression coverage.
+- Added reversible Cosmetic Change, Power Down, and Power Swap records with explicit appearance, statistic, ability, and movement overrides.
+- Added exact alternate-form snapshots so deactivation restores only the fields changed during activation.
+- Added an explicit Rank X actor mode with a separately authored numerical scale and backward-compatible legacy-rank fallback.
+- Routed rank-scaled damage, movement, Karma recovery, targeting, areas, and utility activations through the shared Rank X resolver.
+- Added operable vehicle and starship metadata to NPC-backed profiles, including category, scale, operational state, crew, passengers, operator, handling, speed, stations, and cargo.
+- Added permission-checked boarding and leaving transactions with capacity enforcement while preserving existing destructible vehicle behavior.
+- Added a first-class, distributable Headquarters Item with ownership and team metadata, Scene and Actor UUID links, scale, location, resources, defenses, facilities, and upgrades.
+- Added a Headquarters sheet workflow for resource adjustments, feature management, and opening linked Foundry documents, plus focused authoring guidance and tests.
+- Added generic hero, villain, neutral, and unrestricted team-maneuver alignment while preserving the legacy maneuver type and level fields.
+- Added participant UUIDs, individual and pooled resource costs, eligibility checks, declarative duration/effect metadata, persistent transactions, and drift-safe undo.
+- Added reusable Actor team-resource pools, owner-checked resource management APIs, public maneuver hooks, focused tests, and authoring documentation.
+- Added reusable Campaign Framework Items for responsibilities, bounded plot resources, general or mutant reputation, schooling and progression, henchmen groups, and large-battle state.
+- Added permission-checked campaign mutations, transaction history, drift-safe undo, Actor and Scene linkage, authoring sheets, public APIs and hooks, focused tests, and distribution guidance.
+- Added an ignored `.private-content/` boundary and guidance for personal sourcebook-derived records that must remain outside public packs and Git history.
+
 ## [3.16.0] - 2026-11-04
 
 ### Added

@@ -1,0 +1,138 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="flexcol -gap-sm">
+      <div class="mm-styled-field -lg -img -fill">
+        <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
+        <div class="mm-styled-input">
+          <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+        </div>
+      </div>
+      <div class="flexrow -gap-sm">
+        <div class="mm-styled-field -flex-relative">
+          <label class="mm-styled-label -align-left"><span>Category</span></label>
+          <div class="mm-styled-input">
+            <select name="system.category">
+              {{selectOptions gearCategories selected=selectedGearCategory labelAttr="label"}}
+            </select>
+          </div>
+        </div>
+        <div class="mm-styled-field -flex-relative">
+          <label class="mm-styled-label -align-left"><span>Quantity</span></label>
+          <div class="mm-styled-input">
+            <input type="number" min="1" name="system.quantity" value="{{system.quantity}}" />
+          </div>
+        </div>
+        <div class="mm-styled-field -flex-relative">
+          <label class="mm-styled-label -align-left"><span>Weight</span></label>
+          <div class="mm-styled-input">
+            <input type="number" min="0" name="system.weight" value="{{system.weight}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs mm-tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="configuration">Configuration</a>
+    <a class="item" data-tab="grants">Grants</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="description">
+      <div class="mm-styled-field -fill">
+        <label class="mm-styled-label -align-left" for="system.description"><span>Description</span></label>
+        <div class="mm-styled-input">
+          <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{enriched.description}}}</prose-mirror>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="configuration">
+      <div class="flexcol gap-sm">
+        <div class="flexrow -gap-sm">
+          <div class="mm-styled-field -fill -checkbox">
+            <label class="mm-styled-label -align-left"><span>Equipped</span></label>
+            <div class="mm-styled-input"><input type="checkbox" name="system.equipped" {{checked system.equipped}}></div>
+          </div>
+          <div class="mm-styled-field -fill -checkbox">
+            <label class="mm-styled-label -align-left"><span>Unique</span></label>
+            <div class="mm-styled-input"><input type="checkbox" name="system.unique" {{checked system.unique}}></div>
+          </div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Reliance</span></label>
+          <div class="mm-styled-input"><input type="text" name="system.reliance" value="{{system.reliance}}"></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Requirements</span></label>
+          <div class="mm-styled-input"><textarea name="system.requirements">{{system.requirements}}</textarea></div>
+        </div>
+        <div class="flexrow -gap-sm">
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Health DR</span></label>
+            <div class="mm-styled-input"><input type="number" min="0" name="system.protection.healthDamageReduction" value="{{system.protection.healthDamageReduction}}"></div>
+          </div>
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Focus DR</span></label>
+            <div class="mm-styled-input"><input type="number" min="0" name="system.protection.focusDamageReduction" value="{{system.protection.focusDamageReduction}}"></div>
+          </div>
+        </div>
+        <div class="flexrow -gap-sm">
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Durability</span></label>
+            <div class="mm-styled-input"><input type="number" min="0" name="system.durability.value" value="{{system.durability.value}}"></div>
+          </div>
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Maximum</span></label>
+            <div class="mm-styled-input"><input type="number" min="0" name="system.durability.max" value="{{system.durability.max}}"></div>
+          </div>
+        </div>
+        <div class="flexrow -gap-sm">
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Mount Kind</span></label>
+            <div class="mm-styled-input"><input type="text" name="system.mount.kind" value="{{system.mount.kind}}"></div>
+          </div>
+          <div class="mm-styled-field -fill">
+            <label class="mm-styled-label -align-left"><span>Station</span></label>
+            <div class="mm-styled-input"><input type="text" name="system.mount.station" value="{{system.mount.station}}"></div>
+          </div>
+          <div class="mm-styled-field -fill -checkbox">
+            <label class="mm-styled-label -align-left"><span>Requires Operator</span></label>
+            <div class="mm-styled-input"><input type="checkbox" name="system.mount.requiresOperator" {{checked system.mount.requiresOperator}}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="grants">
+      <div class="flexcol gap-sm">
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Abilities</span></label>
+          <div class="mm-styled-input"><textarea name="system.grants.abilities">{{system.grants.abilities}}</textarea></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Powers</span></label>
+          <div class="mm-styled-input"><textarea name="system.grants.powers">{{system.grants.powers}}</textarea></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Traits</span></label>
+          <div class="mm-styled-input"><textarea name="system.grants.traits">{{system.grants.traits}}</textarea></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Tags</span></label>
+          <div class="mm-styled-input"><textarea name="system.grants.tags">{{system.grants.tags}}</textarea></div>
+        </div>
+        <div class="mm-styled-field -fill">
+          <label class="mm-styled-label -align-left"><span>Movement</span></label>
+          <div class="mm-styled-input"><textarea name="system.grants.movement">{{system.grants.movement}}</textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="effects">
+      {{> "systems/marvel-multiverse/templates/item/parts/item-effects.hbs"}}
+    </div>
+  </section>
+</form>
