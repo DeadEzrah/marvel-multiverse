@@ -1,5 +1,13 @@
 {
   "MARVEL_MULTIVERSE": {
+    "Karma": "Karma",
+    "RecoverHealthWithKarma": "Gasta 1 Karma para recuperar Salud",
+    "RecoverFocusWithKarma": "Gasta 1 Karma para recuperar Enfoque",
+    "KarmaRecoveryFailed": "Falló la recuperación de Karma.",
+    "Initiative": "Iniciativa",
+    "Issues": "Incidencias",
+    "Wiki": "Wiki",
+    "TargetRequired": "Selecciona al menos un objetivo antes de usar un poder de ataque.",
     "fantasticRoll": "Tirada fantástica",
     "edgeMode": {
       "trouble": "Problema",
@@ -59,6 +67,7 @@
     },
     "Effect": {
       "Source": "Fuente",
+      "Duration": "Duración",
       "Toggle": "Alternar efecto",
       "Temporary": "Efectos temporales",
       "Passive": "Efectos pasivos",
@@ -95,6 +104,7 @@
     "RollSituationalBonus": "¿Bonus situacional?",
     "RollMode": "Modo de tirada",
     "ApplyDamage": "DAÑO",
+    "AdditionalControls": "Controles adicionales",
     "ResolveAction": "Resolver acción",
     "ActionResolved": "Acción resuelta",
     "DamageApplyFailed": "Acción resuelta, pero no se pudo aplicar el daño.",
@@ -112,6 +122,10 @@
     "ChooseFocusCost": "Elegir coste de enfoque",
     "SpendCustomFocus": "Gastar enfoque personalizado",
     "RefundFocus": "Reembolsar enfoque",
+    "ApplyConditions": "Aplicar condiciones",
+    "UndoConditions": "Deshacer condiciones",
+    "ApplyPowerOutcomes": "Aplicar resultados de poder",
+    "UndoPowerOutcomes": "Deshacer resultados de poder",
     "FocusSpent": "Enfoque gastado.",
     "FocusSpendFailed": "Falló gastar enfoque.",
     "FocusPaid": "Enfoque pagado",
@@ -175,6 +189,9 @@
       "TargetNumberPlaceholder": "Opcional",
       "Edge": "Ventaja",
       "Trouble": "Problema",
+      "Circumstances": "Circunstancias",
+      "FocusCost": "Coste de enfoque",
+      "AreaTargetRequired": "El área seleccionada no contiene objetivos válidos.",
       "BaseModifier": "Modificador Base",
       "Roll": "Tirada",
       "RollButton": "Tirar",
@@ -196,6 +213,16 @@
       "FantasticSuccess": "Éxito fantástico",
       "FantasticFailure": "Fracaso fantástico",
       "DealsDamage": "Inflige {damageType} daño a {count}"
+    },
+    "AttackOutcome": {
+      "Hit": "Impacto",
+      "FantasticHit": "Impacto fantástico",
+      "Miss": "Fallo",
+      "Unresolved": "Sin resolver"
+    },
+    "MarvelResult": {
+      "M": "Marvel",
+      "6": "6"
     },
     "GuidedPhase": {
       "Configure": "Configurar",
@@ -247,6 +274,26 @@
       "unconscious": "Inconsciente"
     },
     "Settings": {
+      "Debug": {
+        "Name": "Activar registro de depuración",
+        "Hint": "Activa registros de depuración adicionales de Marvel Multiverse para diagnósticos."
+      },
+      "RulesAuditDebugging": {
+        "Name": "Activar depuración de auditoría de reglas",
+        "Hint": "Expone ayudas del inspector de auditoría de reglas, solo para el Narrador, en game.marvelMultiverse.rulesAudit."
+      },
+      "ShowRuleSourceReferences": {
+        "Name": "Mostrar referencias de fuentes de reglas",
+        "Hint": "Muestra detalles de referencia de fuente cuando están disponibles en las salidas de auditoría/depuración."
+      },
+      "WarnOnUnverifiedAutomation": {
+        "Name": "Avisar sobre automatización no verificada",
+        "Hint": "Muestra avisos cuando el comportamiento de la automatización aún no está verificado contra las fuentes de reglas oficiales."
+      },
+      "StrictValidationMode": {
+        "Name": "Modo de validación estricta",
+        "Hint": "Aplica comprobaciones de validación más estrictas para diagnósticos sin cambiar los datos del mundo automáticamente."
+      },
       "GuidedResolutionEnabled": {
         "Name": "Activar resolucion guiada",
         "Hint": "Activa el flujo guiado Configurar -> Tirar -> Resolver -> Aplicar antes de lanzar acciones."
@@ -274,6 +321,12 @@
       "EnableSequencerEffects": {
         "Name": "Activar efectos visuales Sequencer/JB2A",
         "Hint": "Permite que los eventos de poder reproduzcan una animacion de Sequencer (por ejemplo, un recurso JB2A) al resolverse. Puramente cosmetico, requiere el modulo Sequencer instalado y activo. Desactivado de forma predeterminada."
+      },
+      "ActorSheetTheme": {
+        "Name": "Tema de la hoja de actor",
+        "Hint": "Selecciona el estilo visual usado por las hojas de Personaje y PNJ en este cliente.",
+        "Standard": "Estándar",
+        "ClassicComic": "Cómic clásico"
       }
     }
   },

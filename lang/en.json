@@ -4,6 +4,10 @@
     "RecoverHealthWithKarma": "Spend 1 Karma to recover Health",
     "RecoverFocusWithKarma": "Spend 1 Karma to recover Focus",
     "KarmaRecoveryFailed": "Karma recovery failed.",
+    "Initiative": "Initiative",
+    "Issues": "Issues",
+    "Wiki": "Wiki",
+    "TargetRequired": "Select at least one target before using an attack power.",
     "fantasticRoll": "Fantastic Roll",
     "edgeMode": {
       "trouble": "Trouble",
@@ -186,6 +190,8 @@
       "Edge": "Edge",
       "Trouble": "Trouble",
       "Circumstances": "Circumstances",
+      "FocusCost": "Focus Cost",
+      "AreaTargetRequired": "The selected area does not contain any valid targets.",
       "BaseModifier": "Base Modifier",
       "Roll": "Roll",
       "RollButton": "Roll",
@@ -213,6 +219,10 @@
       "FantasticHit": "Fantastic Hit",
       "Miss": "Miss",
       "Unresolved": "Unresolved"
+    },
+    "MarvelResult": {
+      "M": "Marvel",
+      "6": "6"
     },
     "GuidedPhase": {
       "Configure": "Configure",

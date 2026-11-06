@@ -1,5 +1,13 @@
 {
   "MARVEL_MULTIVERSE": {
+    "Karma": "Karma",
+    "RecoverHealthWithKarma": "Dépensez 1 Karma pour récupérer de la Santé",
+    "RecoverFocusWithKarma": "Dépensez 1 Karma pour récupérer de la Concentration",
+    "KarmaRecoveryFailed": "La récupération de Karma a échoué.",
+    "Initiative": "Initiative",
+    "Issues": "Rapports de problèmes",
+    "Wiki": "Wiki",
+    "TargetRequired": "Sélectionnez au moins une cible avant d'utiliser un pouvoir d'attaque.",
     "fantasticRoll": "Lancer fantastique",
     "edgeMode": {
       "trouble": "Difficulté",
@@ -59,6 +67,7 @@
     },
     "Effect": {
       "Source": "Source",
+      "Duration": "Durée",
       "Toggle": "Activer l’effet",
       "Temporary": "Effets temporaires",
       "Passive": "Effets passifs",
@@ -95,6 +104,7 @@
     "RollSituationalBonus": "Bonus de situation ?",
     "RollMode": "Mode de lancer",
     "ApplyDamage": "DGT",
+    "AdditionalControls": "Contrôles supplémentaires",
     "ResolveAction": "Résoudre l'action",
     "ActionResolved": "Action résolue",
     "DamageApplyFailed": "Action résolue, mais les dégâts n'ont pas pu être appliqués.",
@@ -112,6 +122,10 @@
     "ChooseFocusCost": "Choisir le coût en concentration",
     "SpendCustomFocus": "Dépenser une concentration personnalisée",
     "RefundFocus": "Rembourser la concentration",
+    "ApplyConditions": "Appliquer les conditions",
+    "UndoConditions": "Annuler les conditions",
+    "ApplyPowerOutcomes": "Appliquer les résultats de pouvoir",
+    "UndoPowerOutcomes": "Annuler les résultats de pouvoir",
     "FocusSpent": "Concentration dépensée.",
     "FocusSpendFailed": "Échec du paiement de concentration.",
     "FocusPaid": "Concentration payée",
@@ -175,6 +189,9 @@
       "TargetNumberPlaceholder": "Facultatif",
       "Edge": "Avantage",
       "Trouble": "Problème",
+      "Circumstances": "Circonstances",
+      "FocusCost": "Coût en concentration",
+      "AreaTargetRequired": "La zone sélectionnée ne contient aucune cible valide.",
       "BaseModifier": "Modificateur de Base",
       "Roll": "Jet",
       "RollButton": "Lancer",
@@ -196,6 +213,16 @@
       "FantasticSuccess": "Succès fantastique",
       "FantasticFailure": "Échec fantastique",
       "DealsDamage": "Inflige {damageType} dégâts à {count}"
+    },
+    "AttackOutcome": {
+      "Hit": "Touché",
+      "FantasticHit": "Touché fantastique",
+      "Miss": "Manqué",
+      "Unresolved": "Non résolu"
+    },
+    "MarvelResult": {
+      "M": "Marvel",
+      "6": "6"
     },
     "GuidedPhase": {
       "Configure": "Configurer",
@@ -247,6 +274,26 @@
       "unconscious": "Inconscient"
     },
     "Settings": {
+      "Debug": {
+        "Name": "Activer la journalisation de débogage",
+        "Hint": "Active des journaux de débogage supplémentaires de Marvel Multiverse pour les diagnostics."
+      },
+      "RulesAuditDebugging": {
+        "Name": "Activer le débogage d'audit des règles",
+        "Hint": "Expose des aides d'inspection d'audit des règles réservées au Narrateur sur game.marvelMultiverse.rulesAudit."
+      },
+      "ShowRuleSourceReferences": {
+        "Name": "Afficher les références des sources de règles",
+        "Hint": "Affiche les détails de référence de source lorsqu'ils sont disponibles dans les sorties d'audit/débogage."
+      },
+      "WarnOnUnverifiedAutomation": {
+        "Name": "Avertir en cas d'automatisation non vérifiée",
+        "Hint": "Affiche des avertissements lorsque le comportement de l'automatisation n'est pas encore vérifié par rapport aux sources de règles officielles."
+      },
+      "StrictValidationMode": {
+        "Name": "Mode de validation stricte",
+        "Hint": "Applique des contrôles de validation plus stricts pour les diagnostics sans modifier automatiquement les données du monde."
+      },
       "GuidedResolutionEnabled": {
         "Name": "Activer la resolution guidee",
         "Hint": "Active le flux guide Configurer -> Lancer -> Resoudre -> Appliquer avant les actions."
@@ -274,6 +321,12 @@
       "EnableSequencerEffects": {
         "Name": "Activer les effets visuels Sequencer/JB2A",
         "Hint": "Permet aux evenements de pouvoir de jouer une animation Sequencer (par exemple une ressource JB2A) lors de leur resolution. Purement cosmetique, necessite le module Sequencer installe et actif. Desactive par defaut."
+      },
+      "ActorSheetTheme": {
+        "Name": "Thème de la fiche d'acteur",
+        "Hint": "Sélectionnez le style visuel utilisé par les fiches de Personnage et de PNJ sur ce client.",
+        "Standard": "Standard",
+        "ClassicComic": "Bande dessinée classique"
       }
     }
   },

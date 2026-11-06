@@ -125,8 +125,10 @@ The 13 weapon records are structured locally but still require complete live gat
 
 ## Localization And Interface
 
-- [ ] Translate newly added action labels in `es.json`, `fr.json`, and `fr-CA.json`.
-- [ ] Audit chat-card localization calls so missing keys never appear as `MARVEL_MULTIVERSE.*` text.
+- [x] Translate newly added action labels in `es.json`, `fr.json`, and `fr-CA.json`.
+  - Added the 29 missing keys per locale: Karma actions, Effect duration, additional chat controls, condition/power-outcome buttons, circumstances, attack outcomes, and diagnostic/theme settings.
+- [x] Audit chat-card localization calls so missing keys never appear as `MARVEL_MULTIVERSE.*` text.
+  - Added missing live keys (`Initiative`, `Issues`, `Wiki`, `TargetRequired`, `ActionRoll.FocusCost`, `ActionRoll.AreaTargetRequired`, `MarvelResult.M`/`.6`) to all four locales and wrapped literal template `title` attributes in `{{localize}}`. Remaining unresolved keys exist only in the unloaded legacy `module/` tree.
 - [ ] Verify compact icon toolbars at narrow and wide chat-sidebar sizes.
 - [ ] Verify every icon action has a Foundry tooltip, native title, and accessible label.
 - [ ] Verify action cards rerender correctly after apply, undo, spend, refund, resolve, and concentration changes.
